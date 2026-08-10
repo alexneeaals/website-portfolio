@@ -904,8 +904,25 @@ body.menu-open .burger span:nth-child(2) { transform: translateY(-6.5px) rotate(
 .btn > * { position: relative; z-index: 1; }
 
 .form__status { margin-top: 20px; font-size: 14px; min-height: 22px; }
-.form__status.ok  { color: var(--accent); }
 .form__status.bad { color: #B4453F; }
+
+/* Успешная отправка — ключевой момент, поэтому крупнее и в рамке,
+   а не мелкой строкой под кнопкой */
+.form__status.ok {
+  font-family: var(--serif);
+  font-size: clamp(16px, 1.5vw, 19px);
+  line-height: 1.5;
+  color: var(--accent);
+  border: 1px solid var(--accent-mid);
+  padding: 18px 22px;
+  margin-top: 26px;
+  background: var(--white);
+  animation: statusIn .5s var(--ease) both;
+}
+@keyframes statusIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
 
 .contact__side { padding-top: 8px; }
 .contact__row { padding: 22px 0; border-top: 1px solid var(--hair); }
