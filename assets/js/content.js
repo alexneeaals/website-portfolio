@@ -775,8 +775,7 @@ window.PROJECTS = [
   {
     slug: 'bagstory',
     year: '2026',
-    client: 'Баггаж',
-    clientEn: 'Baggazh',
+    client: 'NDA',
     dir: 'bagstory',
     // кадр вертикальный, плитка горизонтальная — держим в рамке бирку
     // и подпись, обрезая пустой верх с фоном аэропорта
