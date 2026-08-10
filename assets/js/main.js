@@ -424,10 +424,15 @@ var CONTACT_EMAIL = 'alexneeaals@gmail.com';
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
           access_key: WEB3FORMS_KEY,
-          subject: 'Заявка с сайта — ' + payload.name,
-          from_name: payload.name,
+          subject: 'Заявка с сайта: ' + payload.type + ' — ' + payload.name,
+          from_name: 'sandraniko.com',
           email: payload.email,
+          // replyto — чтобы в почте кнопка «Ответить» вела прямо клиенту,
+          // а не на служебный адрес сервиса
+          replyto: payload.email,
+          'Имя': payload.name,
           'Тип проекта': payload.type,
+          'Язык сайта': I18N.lang === 'ru' ? 'Русский' : 'English',
           message: payload.message
         })
       })
