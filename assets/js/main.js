@@ -142,10 +142,13 @@ var CONTACT_EMAIL = 'alexneeaals@gmail.com';
       var c = p[lang];
       // cover — отдельная картинка для плитки, если задана
       var tile = p.cover || p.images[0];
+      // focus — какую часть кадра держать в рамке, когда пропорции
+      // картинки и плитки не совпадают (по умолчанию центр)
+      var focus = p.focus ? ' style="object-position:' + p.focus + '"' : '';
       host.appendChild(el(
         '<a class="work" href="projects/' + p.slug + '.html">' +
           '<div class="work__media">' +
-            '<img src="assets/img/projects/' + p.dir + '/' + tile + '" alt="' + esc(c.title) + '" loading="lazy">' +
+            '<img src="assets/img/projects/' + p.dir + '/' + tile + '" alt="' + esc(c.title) + '" loading="lazy"' + focus + '>' +
             '<span class="work__frame"></span>' +
           '</div>' +
           '<div class="work__body">' +

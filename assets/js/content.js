@@ -778,6 +778,9 @@ window.PROJECTS = [
     client: 'Баггаж',
     clientEn: 'Baggazh',
     dir: 'bagstory',
+    // кадр вертикальный, плитка горизонтальная — держим в рамке бирку
+    // и подпись, обрезая пустой верх с фоном аэропорта
+    focus: 'center 78%',
     images: ['hero.jpg', '01-app.jpg', '02-journeys.jpg', '03-journeys-b.jpg'],
     ru: {
       title: 'История чемодана',
