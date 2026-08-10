@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Страница не найдена — Александра Николаева</title>
+<meta name="robots" content="noindex">
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500&family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<header class="topbar is-stuck">
+  <div class="shell topbar__in">
+    <a class="brand" href="/">Sandra Niko</a>
+  </div>
+</header>
+
+<main>
+  <section class="section" style="min-height:70svh;display:flex;align-items:center">
+    <div class="shell">
+      <div class="tick"></div>
+      <span class="label label--accent" id="l-label">Ошибка 404</span>
+      <h1 class="h-section" style="margin:18px 0 14px" id="l-title">Такой страницы нет</h1>
+      <p class="lede" style="max-width:560px" id="l-text">
+        Возможно, ссылка устарела или в адресе опечатка. Вернитесь на главную —
+        оттуда легко найти нужный проект.
+      </p>
+      <p style="margin-top:36px">
+        <a class="btn" href="/"><span id="l-btn">На главную</span></a>
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="shell footer__in">
+    <span class="footer__copy" id="l-copy">© Александра Николаева — Рим, Италия</span>
+  </div>
+</footer>
+
+<script>
+// Страница автономная: показываем её на языке браузера или на том,
+// который посетитель уже выбирал на сайте.
+(function () {
+  var lang = 'ru';
+  try { lang = localStorage.getItem('sn-lang') || ((navigator.language || 'ru').slice(0, 2) === 'ru' ? 'ru' : 'en'); } catch (e) {}
+  if (lang !== 'en') return;
+  document.documentElement.lang = 'en';
+  document.title = 'Page not found — Sandra Niko';
+  document.getElementById('l-label').textContent = 'Error 404';
+  document.getElementById('l-title').textContent = 'This page does not exist';
+  document.getElementById('l-text').textContent =
+    'The link may be outdated or the address mistyped. Head back to the homepage — every project is one click away from there.';
+  document.getElementById('l-btn').textContent = 'Back to homepage';
+  document.getElementById('l-copy').textContent = '© Sandra Niko — Rome, Italy';
+})();
+</script>
+</body>
+</html>
