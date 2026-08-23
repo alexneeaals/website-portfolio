@@ -458,6 +458,23 @@ var CONTACT_EMAIL = 'alexneeaals@gmail.com';
     });
   }
 
+  /** Переход с витрины продуктов: подставляем продукт в сообщение,
+      чтобы заявка сразу говорила, о чём речь. Работает, пока не
+      подключён эквайринг. */
+  function prefillFromQuery() {
+    var m = /[?&]product=([^&#]+)/.exec(window.location.search);
+    if (!m) return;
+    var product = decodeURIComponent(m[1].replace(/\+/g, ' '));
+    var msg = $('#field-message');
+    if (msg && !msg.value) {
+      msg.value = 'Здравствуйте! Интересует: ' + product + '.';
+    }
+    // адрес чистим, чтобы подстановка не повторялась при обновлении
+    if (window.history.replaceState) {
+      window.history.replaceState(null, '', window.location.pathname + '#contact');
+    }
+  }
+
   function renderFormOptions() {
     var sel = $('#field-type');
     if (!sel) return;
@@ -490,6 +507,7 @@ var CONTACT_EMAIL = 'alexneeaals@gmail.com';
     activateMap();
 
     renderFormOptions();
+    prefillFromQuery();
 
     I18N.setMeta(I18N.t('meta.title'), I18N.t('meta.desc'));
     MOTION.reveal();

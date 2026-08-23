@@ -5,35 +5,7 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://sandraniko.com/projects/agrobiotuscany</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://sandraniko.com/projects/bagstory</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://sandraniko.com/projects/menok-spa</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://sandraniko.com/projects/meshchovsk</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://sandraniko.com/projects/mesto-history</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://sandraniko.com/projects/moscow-picnic</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://sandraniko.com/projects/novosibirsk</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://sandraniko.com/projects/rebirth-forum</loc>
+    <loc>https://sandraniko.com/projects/rose-stone</loc>
     <priority>0.8</priority>
   </url>
   <url>
@@ -41,11 +13,55 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sandraniko.com/projects/rose-stone</loc>
+    <loc>https://sandraniko.com/projects/valley-wanderers</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sandraniko.com/projects/valley-wanderers</loc>
+    <loc>https://sandraniko.com/projects/menok-spa</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sandraniko.com/projects/agrobiotuscany</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sandraniko.com/projects/rebirth-forum</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sandraniko.com/projects/bagstory</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sandraniko.com/projects/moscow-picnic</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sandraniko.com/projects/mesto-history</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sandraniko.com/projects/meshchovsk</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sandraniko.com/projects/novosibirsk</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sandraniko.com/products/</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sandraniko.com/products/spiktera</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sandraniko.com/products/constructor</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sandraniko.com/products/brand-calculator</loc>
     <priority>0.8</priority>
   </url>
 </urlset>
