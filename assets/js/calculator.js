@@ -748,7 +748,7 @@
     }
     if (t.type === 'range'){
       t.dataset.empty = '0';
-      var out = document.getElementById('bcv_' + t.id.slice(2));
+      var out = document.getElementById('bcv_' + t.id.replace(/^bcf_/, ''));
       out.textContent = String(t.value).replace('.', ',') + ' из 10';
       out.className = 'bc-scale__val';
     }
