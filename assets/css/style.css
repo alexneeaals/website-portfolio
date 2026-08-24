@@ -1230,6 +1230,13 @@ body.cursor-lg .cursor { opacity: 0; }
 .prod-card__format { font-size: 13.5px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 22px; }
 .prod-card__price { display: block; font-family: var(--serif); font-size: clamp(21px, 2vw, 27px); color: var(--ink); margin-bottom: 22px; }
 .prod-card__price--tight { margin-bottom: 6px; }
+/* Зачёркнутая цена до пресейла — и в витрине, и в блоке покупки */
+.prod-card__price s, .pd-buy__price s {
+  color: var(--muted);
+  font-size: .66em;
+  margin-right: 12px;
+  text-decoration-thickness: 1px;
+}
 .prod-card__note { display: block; font-size: 13px; color: var(--muted); margin-bottom: 22px; }
 
 /* ------------------------- Кнопки ------------------------- */
