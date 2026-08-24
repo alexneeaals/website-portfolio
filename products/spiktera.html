@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Курс «Спиктера» — Александра Николаева</title>
-<meta name="description" content="Готовый записанный курс по подготовке к публичным выступлениям: 5 видео-модулей, рабочая тетрадь, чек-листы, анти-стресс методики. Старт — октябрь 2026, ранняя запись 15 000 ₽.">
+<title>Курс «Спиктера» — пошаговый навигатор для начинающих спикеров</title>
+<meta name="description" content="Онлайн-курс «Спиктера»: 5 модулей, 20 видеоуроков, бот-поддержка и консультация. Пошаговый навигатор от первого шага до уверенного выступления. Ранняя запись — 15 000 ₽.">
 
 <meta property="og:type" content="article">
-<meta property="og:title" content="Курс «Спиктера» — Александра Николаева">
-<meta property="og:description" content="Готовый записанный курс по подготовке к публичным выступлениям: 5 видео-модулей, рабочая тетрадь, чек-листы, анти-стресс методики. Старт — октябрь 2026, ранняя запись 15 000 ₽.">
+<meta property="og:title" content="Курс «Спиктера» — пошаговый навигатор для начинающих спикеров">
+<meta property="og:description" content="5 модулей, 20 видеоуроков, бот-поддержка и консультация. Ранняя запись — 15 000 ₽.">
 <meta property="og:image" content="https://sandraniko.com/assets/img/products/spiktera-cover.jpg">
 
 <link rel="canonical" href="https://sandraniko.com/products/spiktera">
@@ -23,106 +23,486 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@200;300;400;500&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/style.css?v=20260824b">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- ==================================================================
+     Лендинг курса «Спиктера».
+
+     Страница собрана из макета «Спиктера - лендинг и кабинет.dc.html»
+     и намеренно живёт по своим правилам: у курса собственный бренд и
+     своя палитра, style.css сайта здесь не подключается.
+
+     Из макета взят только вид «О курсе». Личный кабинет и переключатель
+     между видами убраны. Всё остальное перенесено один в один: движок
+     макета понимал свойства вида borderRadius и атрибут style-hover,
+     обычный браузер — нет, поэтому первые переведены в обычный CSS,
+     а вторые собраны в правила :hover ниже.
+     ================================================================== -->
+<style>
+  body { margin: 0; background: #f2f8ff; color: #0b2545; font-family: Manrope, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #1668d9; text-decoration: none; }
+  a:hover { color: #0b4ba8; }
+  ::selection { background: #bfe0ff; color: #0b2545; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes spinRev { to { transform: rotate(-360deg); } }
+  @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  @keyframes pulseRing { 0% { opacity: .55; transform: scale(.86); } 70% { opacity: 0; transform: scale(1.25); } 100% { opacity: 0; } }
+  @keyframes marq { to { transform: translateX(-50%); } }
+
+  /* Наведение: в макете это были атрибуты style-hover */
+  a, button, [class^="sp-h"] { transition: background .2s ease, border-color .2s ease, color .2s ease, transform .2s ease; }
+  .sp-h1:hover { border-color: #1668d9; color: #0b4ba8 }
+  .sp-h2:hover { background: #0b4ba8; transform: translateY(-2px) }
+  .sp-h3:hover { border-color: rgba(22,104,217,0.45); transform: translateY(-3px) }
+  .sp-h4:hover { border-color: rgba(22,104,217,0.45); transform: translateY(-3px) }
+  .sp-h5:hover { border-color: rgba(22,104,217,0.45); transform: translateY(-3px) }
+  .sp-h6:hover { border-color: rgba(22,104,217,0.45); transform: translateY(-3px) }
+  .sp-h7:hover { border-color: rgba(22,104,217,0.45); transform: translateY(-3px) }
+  .sp-h8:hover { border-color: rgba(22,104,217,0.45); transform: translateY(-3px) }
+  .sp-h9:hover { border-color: rgba(22,104,217,0.45); transform: translateY(-3px) }
+  .sp-h10:hover { border-color: rgba(22,104,217,0.4) }
+  .sp-h11:hover { border-color: rgba(22,104,217,0.4) }
+  .sp-h12:hover { border-color: rgba(22,104,217,0.4) }
+  .sp-h13:hover { border-color: rgba(22,104,217,0.4) }
+  .sp-h14:hover { border-color: rgba(22,104,217,0.4) }
+  .sp-h15:hover { background: #0b4ba8; transform: translateY(-2px) }
+  .sp-h16:hover { border-color: rgba(22,104,217,0.4); background: rgba(22,104,217,0.06) }
+  .sp-h17:hover { border-color: rgba(22,104,217,0.4); background: rgba(22,104,217,0.06) }
+  .sp-h18:hover { border-color: rgba(22,104,217,0.4); background: rgba(22,104,217,0.06) }
+  .sp-h19:hover { border-color: rgba(22,104,217,0.4); background: rgba(22,104,217,0.06) }
+  .sp-h20:hover { border-color: rgba(22,104,217,0.4); background: rgba(22,104,217,0.06) }
+  .sp-h21:hover { border-color: #1668d9; color: #0b4ba8 }
+  .sp-h22:hover { background: #0b4ba8 }
+
+  /* Ответ формы */
+  #sp-status { font-size: 14px; line-height: 1.5; color: #4a6785; min-height: 20px; }
+  #sp-status.ok { color: #0f7a4a; }
+  #sp-status.bad { color: #c0392b; }
+
+  /* ------------------------------------------------------------------
+     Узкие экраны. В макете их не было — он рисовался только под десктоп.
+     Раскладку рабочего стола эти правила не трогают: они включаются
+     ниже 900px и просто складывают колонки в одну.
+     ------------------------------------------------------------------ */
+  @media (max-width: 900px) {
+    [style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+    [style*="repeat(5, 1fr)"], [style*="repeat(3, 1fr)"] { grid-template-columns: repeat(2, 1fr) !important; }
+    h1 { font-size: 38px !important; }
+    h2 { font-size: 27px !important; }
+    header nav { display: none !important; }
+    main { padding-left: 20px !important; padding-right: 20px !important; }
+    section { padding-left: 0 !important; padding-right: 0 !important; }
+    [style*="padding: 96px 0 88px"] { padding: 48px 0 !important; }
+    [style*="padding: 56px 44px"], [style*="padding: 44px"] { padding: 28px 22px !important; }
+    [style*="height: 420px"] { height: 300px !important; }
+    #sp-glow { display: none; }
+  }
+  @media (max-width: 560px) {
+    [style*="repeat(5, 1fr)"], [style*="repeat(3, 1fr)"] { grid-template-columns: 1fr !important; }
+    /* h1[style] — иначе правило проигрывает селектору по атрибуту ниже */
+    h1[style] { font-size: 34px !important; }
+    [style*="font-size: 58px"] { font-size: 40px !important; }
+    /* Возврат к продуктам не должен ломаться на две строки рядом с логотипом */
+    header a[href="/products/"] { white-space: nowrap; padding: 8px 14px !important; font-size: 12px !important; }
+    header > div { gap: 12px !important; padding-left: 20px !important; padding-right: 20px !important; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; }
+    #sp-glow { display: none; }
+  }
+</style>
 </head>
 <body>
 
-<header class="topbar is-stuck">
-  <div class="shell topbar__in">
-    <a class="backlink" href="/products/" data-magnet>
-      <svg width="18" height="8" viewBox="0 0 18 8" fill="none" aria-hidden="true">
-        <path d="M0 4h17M4 1 1 4l3 3" stroke="currentColor" stroke-width="1"/>
-      </svg>
-      <span>Ко всем продуктам</span>
-    </a>
-    <a class="brand" href="/">Sandra Niko</a>
-    <span style="width:150px"></span>
-  </div>
-</header>
+<div style="position: relative; overflow: hidden; min-height: 100vh; background: radial-gradient(1200px 700px at 50% -10%, #dceeff 0%, #f2f8ff 60%);">
 
-<main>
-  <section class="pd-hero">
-    <div class="shell">
-      <span class="label label--accent" style="display:block;margin-bottom:24px">Курс</span>
-      <h1>Спиктера</h1>
-      <div class="pd-tagline">С чего начать свой путь спикера: пошаговый навигатор <br>для новичков</div>
-      <p class="pd-lede">Готовый записанный курс для тех, кто хочет побороть все страхи и&nbsp; уверенно выступать на конференциях, вебинарах, в соцсетях и добиваться поставленных целей.</p>
-      <div class="pd-rule"><i></i><b></b><i></i></div>
-      <div class="pd-meta">
-        <div><span class="label" style="display:block;margin-bottom:6px">Формат</span><span class="pd-meta__v">Видеоуроки, анти-стресс методики, чек-листы</span></div>
-        <div><span class="label" style="display:block;margin-bottom:6px">Доступ</span><span class="pd-meta__v">Навсегда</span></div>
-        <div><span class="label" style="display:block;margin-bottom:6px">Старт</span><span class="pd-meta__v">Октябрь 2026</span></div>
-        <div><span class="label" style="display:block;margin-bottom:6px">Цена</span><span class="pd-meta__v">15 000 ₽ на пресейле</span></div>
-      </div>
+  <div id="sp-glow" style="position: fixed; left: 0; top: 0; width: 620px; height: 620px; border-radius: 50%; background: radial-gradient(circle, rgba(22,104,217,0.16) 0%, rgba(88,166,255,0.08) 40%, rgba(242,248,255,0) 70%); pointer-events: none; z-index: 0; will-change: transform;"></div>
+
+
+  <header style="position: sticky; top: 0; z-index: 40; backdrop-filter: blur(14px); background: rgba(242,248,255,0.80); border-bottom: 1px solid rgba(11,37,69,0.10);">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 16px 28px; display: flex; align-items: center; gap: 28px;">
+      <div style="font-size: 19px; font-weight: 800; letter-spacing: -0.02em;">Спиктера<span style="color: #1668d9;">.</span></div>
+      <nav style="display: flex; gap: 22px; font-size: 14px; color: #6b86a6; margin-left: 8px;">
+        <a href="#about" style="color: inherit;">о курсе</a>
+        <a href="#modules" style="color: inherit;">модули</a>
+        <a href="#bot" style="color: inherit;">бот</a>
+        <a href="#price" style="color: inherit;">стоимость</a>
+        <a href="#extra" style="color: inherit;">услуги</a>
+      </nav>
+      <div style="flex: 1;"></div>
+      <a href="/products/" style="display: inline-flex; align-items: center; gap: 8px; padding: 9px 18px; border-radius: 999px; border: 1px solid rgba(11,37,69,0.13); background: #ffffff; font-size: 13px; font-weight: 600; color: #6b86a6;" class="sp-h1"><span style="font-size: 15px;">←</span> Ко всем продуктам</a>
     </div>
-  </section>
+  </header>
 
-  <div class="shell rv">
-    <figure class="pd-cover"><img src="/assets/img/products/spiktera-cover.jpg?v=2" alt="Курс «Спиктера»"></figure>
-  </div>
+  <main style="position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; padding: 0 28px 120px;">
 
-  <section class="section" style="padding:clamp(64px,8vw,120px) 0">
-    <div class="shell pd-cols">
-      <div class="rv">
-        <span class="label label--accent" style="display:block;margin-bottom:20px">Кому подходит</span>
-        <ul class="pd-list">
-          <li>Экспертам и предпринимателям, которые хотят начать выступать публично</li>
-          <li>Авторам и спикерам, которые хотят усилить своё влияние</li>
-          <li>Тем, кто боится сцены, но понимает, что выступления — это инструмент роста</li>
-        </ul>
-      </div>
-      <div class="rv" data-rv-delay="120">
-        <span class="label label--accent" style="display:block;margin-bottom:20px">Что внутри</span>
-        <ul class="pd-list">
-          <li>5 видео-модулей (от подбора площадки до работы с возражениями)</li>
-          <li>Рабочая тетрадь для проработки каждого модуля</li>
-          <li>Чек-листы и шаблоны для подготовки</li>
-          <li>Анти-стресс методики&nbsp;</li>
-          <li class="is-bonus">Бонус: бесплатная консультация перед вашим выступлением, разбор вашей презентации, целей и репетиция.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--ivory" style="padding:clamp(56px,7vw,104px) 0">
-    <div class="shell">
-      <div class="pd-result rv">
-        <span class="label label--accent" style="display:block;margin-bottom:18px">Результат</span>
-        <p>Вы получите готовую систему, которая позволит вам готовить выступления быстро, уверенно и без страха. Ваши выступления станут яркими, структурированными и продающими.</p>
-      </div>
-      <div class="pd-buy rv">
-        <div>
-          <span class="label label--accent" style="display:block;margin-bottom:8px">Ранняя запись</span>
-          <span class="pd-buy__price"><s>30 000 ₽</s> 15 000 ₽</span>
-          <span class="pd-buy__extra">Цена ранней записи. Обычная стоимость курса — 30 000 ₽. Курс стартует в октябре 2026 года, места на пресейле открыты уже сейчас.</span>
+    <section style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 48px; align-items: center; padding: 96px 0 88px;">
+      <div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: #1668d9; margin-bottom: 26px;">онлайн-курс · 5 модулей · 20 уроков</div>
+        <h1 style="margin: 0 0 22px; font-size: 58px; line-height: 1.04; letter-spacing: -0.035em; font-weight: 800; text-wrap: pretty;">Ты хочешь выступать, но не знаешь, с чего начать?</h1>
+        <p style="margin: 0 0 18px; font-size: 18px; line-height: 1.6; color: #4a6785; max-width: 560px;">Где искать организаторов? Как предложить себя? О чем рассказывать? Как перебороть все страхи и сомнения?</p>
+        <p style="margin: 0 0 34px; font-size: 18px; line-height: 1.6; color: #0b2545; max-width: 560px;">Спиктера. — пошаговый навигатор для новичков. Курс, который проведёт тебя от первого шага до уверенного выступления.</p>
+        <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+          <a href="#price" style="display: inline-flex; align-items: center; gap: 10px; padding: 17px 30px; border-radius: 999px; background: #1668d9; color: #ffffff; font-size: 16px; font-weight: 700;" class="sp-h2">Начать путь <span style="font-size: 18px;">→</span></a>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #6b86a6;">Старт: <span style="color: #0b2545;">15 000 ₽</span></div>
         </div>
-        <a class="pbtn pbtn--solid" href="#" data-buy="spiktera">Записаться на курс</a>
+      </div>
+
+      <div style="position: relative; height: 420px; display: flex; align-items: center; justify-content: center; perspective: 900px;">
+        <div id="sp-orbit" style="position: relative; width: 340px; height: 340px; transform-style: preserve-3d; will-change: transform;">
+          <div style="position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(22,104,217,0.32); animation: spin 26s linear infinite;">
+            <div style="position: absolute; top: -5px; left: 50%; width: 10px; height: 10px; border-radius: 50%; background: #1668d9; box-shadow: 0 0 22px #1668d9;"></div>
+          </div>
+          <div style="position: absolute; inset: 44px; border-radius: 50%; border: 1px dashed rgba(11,37,69,0.20); animation: spinRev 18s linear infinite;">
+            <div style="position: absolute; bottom: -4px; left: 50%; width: 8px; height: 8px; border-radius: 50%; background: #0891b2; box-shadow: 0 0 18px #0891b2;"></div>
+          </div>
+          <div style="position: absolute; inset: 92px; border-radius: 50%; border: 1px solid rgba(11,37,69,0.13); animation: spin 12s linear infinite;"></div>
+          <div style="position: absolute; inset: 92px; border-radius: 50%; border: 1px solid rgba(22,104,217,0.4); animation: pulseRing 3.4s ease-out infinite;"></div>
+          <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; text-align: center;">
+            <div style="font-size: 46px; font-weight: 800; letter-spacing: -0.04em;">20</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #6b86a6;">видеоуроков</div>
+            <div style="width: 34px; height: 1px; background: rgba(11,37,69,0.18); margin: 8px 0;"></div>
+            <div style="font-size: 13px; color: #4a6785;">по 5–10 минут</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" style="padding: 24px 0 96px;">
+      <h2 style="margin: 0 0 34px; font-size: 34px; letter-spacing: -0.03em; font-weight: 700;">Узнаёшь себя?</h2>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;">
+        <div style="padding: 24px; border-radius: 18px; border: 1px solid rgba(11,37,69,0.11); background: #ffffff; font-size: 16px; line-height: 1.5;" class="sp-h3">Я хочу выступать, но не знаю, где искать организаторов</div>
+        <div style="padding: 24px; border-radius: 18px; border: 1px solid rgba(11,37,69,0.11); background: #ffffff; font-size: 16px; line-height: 1.5;" class="sp-h4">Не понимаю, как правильно предложить себя</div>
+        <div style="padding: 24px; border-radius: 18px; border: 1px solid rgba(11,37,69,0.11); background: #ffffff; font-size: 16px; line-height: 1.5;" class="sp-h5">Не знаю, что такое медиакит и как его составлять</div>
+        <div style="padding: 24px; border-radius: 18px; border: 1px solid rgba(11,37,69,0.11); background: #ffffff; font-size: 16px; line-height: 1.5;" class="sp-h6">Боюсь писать незнакомым людям</div>
+        <div style="padding: 24px; border-radius: 18px; border: 1px solid rgba(11,37,69,0.11); background: #ffffff; font-size: 16px; line-height: 1.5;" class="sp-h7">Не знаю, как себя вести на сцене</div>
+        <div style="padding: 24px; border-radius: 18px; border: 1px solid rgba(11,37,69,0.11); background: #ffffff; font-size: 16px; line-height: 1.5;" class="sp-h8">Боюсь «провалиться» на вопросах</div>
+        <div style="padding: 24px; border-radius: 18px; border: 1px solid rgba(11,37,69,0.11); background: #ffffff; font-size: 16px; line-height: 1.5;" class="sp-h9">Хочу сказать многое, а времени мало</div>
+        <div style="grid-column: span 2; padding: 24px 28px; border-radius: 18px; border: 1px solid rgba(22,104,217,0.32); background: linear-gradient(120deg, rgba(22,104,217,0.12), rgba(8,145,178,0.07)); font-size: 20px; font-weight: 700; letter-spacing: -0.02em; display: flex; align-items: center;">Мы знаем эти страхи. И знаем, что с ними делать.</div>
+      </div>
+    </section>
+
+    <section id="modules" style="padding: 0 0 96px;">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 34px; flex-wrap: wrap;">
+        <h2 style="margin: 0; font-size: 34px; letter-spacing: -0.03em; font-weight: 700;">Что внутри курса</h2>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #6b86a6;">5 модулей — 20 видеоуроков (по 5-10 минут)</div>
+      </div>
+
+      <div style="display: grid; gap: 14px;">
+        <article style="display: grid; grid-template-columns: 300px 1fr; gap: 40px; padding: 32px; border-radius: 22px; border: 1px solid rgba(11,37,69,0.11); background: #ffffff;" class="sp-h10">
+          <div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #1668d9; margin-bottom: 12px;">МОДУЛЬ 1</div>
+            <h3 style="margin: 0; font-size: 24px; letter-spacing: -0.02em; font-weight: 700; line-height: 1.2;">С чего начать</h3>
+          </div>
+          <div style="display: grid; gap: 12px;">
+            <div style="display: flex; gap: 14px; align-items: baseline; font-size: 16px; color: #3c5a7d; padding-bottom: 12px; border-bottom: 1px solid #e8f2ff;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8aa3bd;">01</span>Как найти свою площадку и не провалиться с выбором</div>
+            <div style="display: flex; gap: 14px; align-items: baseline; font-size: 16px; color: #3c5a7d; padding-bottom: 12px; border-bottom: 1px solid #e8f2ff;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8aa3bd;">02</span>Создание медиакита — упаковка эксперта для организаторов</div>
+            <div style="display: flex; gap: 14px; align-items: baseline; font-size: 16px; color: #3c5a7d; padding-bottom: 12px; border-bottom: 1px solid #e8f2ff;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8aa3bd;">03</span>Определение целей и KPI выступления</div>
+            <div style="display: flex; gap: 14px; align-items: baseline; font-size: 16px; color: #3c5a7d;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8aa3bd;">04</span>Как понять, что выступление было успешным</div>
+          </div>
+        </article>
+
+        <article style="display: grid; grid-template-columns: 300px 1fr; gap: 40px; padding: 32px; border-radius: 22px; border: 1px solid rgba(11,37,69,0.11); background: #ffffff;" class="sp-h11">
+          <div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #1668d9; margin-bottom: 12px;">МОДУЛЬ 2</div>
+            <h3 style="margin: 0; font-size: 24px; letter-spacing: -0.02em; font-weight: 700; line-height: 1.2;">Работа со страхом и уверенностью</h3>
+          </div>
+          <div style="display: grid; gap: 12px;">
+            <div style="display: flex; gap: 14px; align-items: baseline; font-size: 16px; color: #3c5a7d; padding-bottom: 12px; border-bottom: 1px solid #e8f2ff;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8aa3bd;">05</span>Откуда берутся зажимы</div>
+            <div style="display: flex; gap: 14px; align-items: baseline; font-size: 16px; color: #3c5a7d; padding-bottom: 12px; border-bottom: 1px solid #e8f2ff;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8aa3bd;">06</span>Техники и упражнения для спокойствия</div>
+            <div style="display: flex; gap: 14px; align-items: baseline; font-size: 16px; color: #3c5a7d; padding-bottom: 12px; border-bottom: 1px solid #e8f2ff;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8aa3bd;">07</span>Работа с голосом через тело</div>
+            <div style="display: flex; gap: 14px; align-items: baseline; font-size: 16px; color: #3c5a7d;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8aa3bd;">08</span>Как «включить» уверенность за 2 минуты до выхода</div>
+          </div>
+        </article>
+
+        <article style="display: grid; grid-template-columns: 300px 1fr; gap: 40px; padding: 32px; border-radius: 22px; border: 1px solid rgba(11,37,69,0.11); background: #ffffff;" class="sp-h12">
+          <div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #1668d9; margin-bottom: 12px;">МОДУЛЬ 3</div>
+            <h3 style="margin: 0; font-size: 24px; letter-spacing: -0.02em; font-weight: 700; line-height: 1.2;">Работа с речью и голосом</h3>
+          </div>
+          <div style="display: grid; gap: 12px;">
+            <div style="display: flex; gap: 14px; align-items: baseline; font-size: 16px; color: #3c5a7d; padding-bottom: 12px; border-bottom: 1px solid #e8f2ff;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8aa3bd;">09</span>Дикция и артикуляция — упражнения для чёткой речи</div>
+            <div style="display: flex; gap: 14px; align-items: baseline; font-size: 16px; color: #3c5a7d; padding-bottom: 12px; border-bottom: 1px solid #e8f2ff;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8aa3bd;">10</span>Голос как инструмент влияния</div>
+            <div style="display: flex; gap: 14px; align-items: baseline; font-size: 16px; color: #3c5a7d; padding-bottom: 12px; border-bottom: 1px solid #e8f2ff;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8aa3bd;">11</span>Как бороться со словами-паразитами «ээээ», «вот»</div>
+            <div style="display: flex; gap: 14px; align-items: baseline; font-size: 16px; color: #3c5a7d;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8aa3bd;">12</span>Как работать с интонацией и делать речь живой, увлекательной</div>
+          </div>
+        </article>
+
+        <article style="display: grid; grid-template-columns: 300px 1fr; gap: 40px; padding: 32px; border-radius: 22px; border: 1px solid rgba(11,37,69,0.11); background: #ffffff;" class="sp-h13">
+          <div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #1668d9; margin-bottom: 12px;">МОДУЛЬ 4</div>
+            <h3 style="margin: 0; font-size: 24px; letter-spacing: -0.02em; font-weight: 700; line-height: 1.2;">Создание презентации с ИИ</h3>
+          </div>
+          <div style="display: grid; gap: 12px;">
+            <div style="display: flex; gap: 14px; align-items: baseline; font-size: 16px; color: #3c5a7d; padding-bottom: 12px; border-bottom: 1px solid #e8f2ff;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8aa3bd;">13</span>Топ нейросетей не по шаблону как у всех</div>
+            <div style="display: flex; gap: 14px; align-items: baseline; font-size: 16px; color: #3c5a7d; padding-bottom: 12px; border-bottom: 1px solid #e8f2ff;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8aa3bd;">14</span>Как с помощью Claude и ChatGPT создать структуру и текст</div>
+            <div style="display: flex; gap: 14px; align-items: baseline; font-size: 16px; color: #3c5a7d; padding-bottom: 12px; border-bottom: 1px solid #e8f2ff;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8aa3bd;">15</span>Figma Make — создаём дизайн без дизайнера</div>
+            <div style="display: flex; gap: 14px; align-items: baseline; font-size: 16px; color: #3c5a7d;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8aa3bd;">16</span>Как адаптировать презентацию под разную аудиторию</div>
+          </div>
+        </article>
+
+        <article style="display: grid; grid-template-columns: 300px 1fr; gap: 40px; padding: 32px; border-radius: 22px; border: 1px solid rgba(11,37,69,0.11); background: #ffffff;" class="sp-h14">
+          <div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #1668d9; margin-bottom: 12px;">МОДУЛЬ 5</div>
+            <h3 style="margin: 0; font-size: 24px; letter-spacing: -0.02em; font-weight: 700; line-height: 1.2;">Этика выступления и работа с залом</h3>
+          </div>
+          <div style="display: grid; gap: 12px;">
+            <div style="display: flex; gap: 14px; align-items: baseline; font-size: 16px; color: #3c5a7d; padding-bottom: 12px; border-bottom: 1px solid #e8f2ff;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8aa3bd;">17</span>Этика публичного выступления</div>
+            <div style="display: flex; gap: 14px; align-items: baseline; font-size: 16px; color: #3c5a7d; padding-bottom: 12px; border-bottom: 1px solid #e8f2ff;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8aa3bd;">18</span>Как отвечать на вопросы: техника «безопасный ответ»</div>
+            <div style="display: flex; gap: 14px; align-items: baseline; font-size: 16px; color: #3c5a7d; padding-bottom: 12px; border-bottom: 1px solid #e8f2ff;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8aa3bd;">19</span>Сложные вопросы и конфликтные ситуации</div>
+            <div style="display: flex; gap: 14px; align-items: baseline; font-size: 16px; color: #3c5a7d;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8aa3bd;">20</span>Поведение на сцене: жесты, мимика, дистанция</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section style="padding: 0 0 96px;">
+      <h2 style="margin: 0 0 34px; font-size: 34px; letter-spacing: -0.03em; font-weight: 700;">Что входит в курс</h2>
+      <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px;">
+        <div style="padding: 26px 22px; border-radius: 18px; border: 1px solid rgba(11,37,69,0.11); background: #ffffff;">
+          <div style="width: 34px; height: 34px; border-radius: 10px; background: rgba(22,104,217,0.12); border: 1px solid rgba(22,104,217,0.32); margin-bottom: 18px;"></div>
+          <div style="font-size: 16px; line-height: 1.45; font-weight: 600;">20 видеоуроков</div>
+          <div style="font-size: 14px; color: #6b86a6; margin-top: 6px;">доступ навсегда</div>
+        </div>
+        <div style="padding: 26px 22px; border-radius: 18px; border: 1px solid rgba(11,37,69,0.11); background: #ffffff;">
+          <div style="width: 34px; height: 34px; border-radius: 10px; background: rgba(22,104,217,0.12); border: 1px solid rgba(22,104,217,0.32); margin-bottom: 18px;"></div>
+          <div style="font-size: 16px; line-height: 1.45; font-weight: 600;">Готовые шаблоны</div>
+          <div style="font-size: 14px; color: #6b86a6; margin-top: 6px;">медиакит, чек-листы, скрипты</div>
+        </div>
+        <div style="padding: 26px 22px; border-radius: 18px; border: 1px solid rgba(11,37,69,0.11); background: #ffffff;">
+          <div style="width: 34px; height: 34px; border-radius: 10px; background: rgba(8,145,178,0.10); border: 1px solid rgba(8,145,178,0.32); margin-bottom: 18px;"></div>
+          <div style="font-size: 16px; line-height: 1.45; font-weight: 600;">Личный Telegram-бот</div>
+          <div style="font-size: 14px; color: #6b86a6; margin-top: 6px;">поддержка перед выступлением</div>
+        </div>
+        <div style="padding: 26px 22px; border-radius: 18px; border: 1px solid rgba(11,37,69,0.11); background: #ffffff;">
+          <div style="width: 34px; height: 34px; border-radius: 10px; background: rgba(22,104,217,0.12); border: 1px solid rgba(22,104,217,0.32); margin-bottom: 18px;"></div>
+          <div style="font-size: 16px; line-height: 1.45; font-weight: 600;">2 часа консультации</div>
+          <div style="font-size: 14px; color: #6b86a6; margin-top: 6px;">в подарок</div>
+        </div>
+        <div style="padding: 26px 22px; border-radius: 18px; border: 1px solid rgba(11,37,69,0.11); background: #ffffff;">
+          <div style="width: 34px; height: 34px; border-radius: 10px; background: rgba(22,104,217,0.12); border: 1px solid rgba(22,104,217,0.32); margin-bottom: 18px;"></div>
+          <div style="font-size: 16px; line-height: 1.45; font-weight: 600;">Трекер целей</div>
+          <div style="font-size: 14px; color: #6b86a6; margin-top: 6px;">и система мотивации</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="bot" style="padding: 0 0 96px;">
+      <div style="display: grid; grid-template-columns: 1fr 420px; gap: 48px; align-items: center; padding: 44px; border-radius: 28px; border: 1px solid rgba(11,37,69,0.11); background: linear-gradient(140deg, rgba(8,145,178,0.06), rgba(22,104,217,0.08));">
+        <div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: #0891b2; margin-bottom: 20px;">твой бот-помощник</div>
+          <h2 style="margin: 0 0 18px; font-size: 34px; letter-spacing: -0.03em; font-weight: 700; line-height: 1.15;">Забота и поддержка на каждом шагу.</h2>
+          <p style="margin: 0 0 26px; font-size: 17px; line-height: 1.6; color: #4a6785; max-width: 460px;">После курса ты получаешь личного бота в Telegram. Он будет:</p>
+          <div style="display: grid; gap: 12px; max-width: 480px;">
+            <div style="display: flex; gap: 12px; align-items: center; font-size: 16px;"><span style="width: 6px; height: 6px; border-radius: 50%; background: #0891b2; flex: 0 0 auto;"></span>Напоминать о шагах подготовки</div>
+            <div style="display: flex; gap: 12px; align-items: center; font-size: 16px;"><span style="width: 6px; height: 6px; border-radius: 50%; background: #0891b2; flex: 0 0 auto;"></span>Успокаивать и настраивать перед выходом</div>
+            <div style="display: flex; gap: 12px; align-items: center; font-size: 16px;"><span style="width: 6px; height: 6px; border-radius: 50%; background: #0891b2; flex: 0 0 auto;"></span>Присылать утренние челленджи</div>
+            <div style="display: flex; gap: 12px; align-items: center; font-size: 16px;"><span style="width: 6px; height: 6px; border-radius: 50%; background: #0891b2; flex: 0 0 auto;"></span>Отвечать на вопросы по материалам</div>
+          </div>
+        </div>
+        <div style="border-radius: 22px; border: 1px solid rgba(11,37,69,0.13); background: #ffffff; padding: 20px; animation: floaty 7s ease-in-out infinite;">
+          <div style="display: flex; align-items: center; gap: 12px; padding-bottom: 16px; border-bottom: 1px solid rgba(11,37,69,0.10);">
+            <div style="width: 34px; height: 34px; border-radius: 50%; background: rgba(22,104,217,0.14); border: 1px solid rgba(22,104,217,0.4);"></div>
+            <div>
+              <div style="font-size: 14px; font-weight: 600;">Спиктера. Бот</div>
+              <div style="font-size: 12px; color: #0891b2;">онлайн</div>
+            </div>
+          </div>
+          <div style="display: grid; gap: 10px; padding-top: 16px;">
+            <div style="padding: 13px 16px; border-radius: 14px; border-top-left-radius: 4px; background: #e8f2ff; font-size: 14px; line-height: 1.5;">Доброе утро! Сегодня челлендж: 5 минут дикции по упражнению из урока 09.</div>
+            <div style="padding: 13px 16px; border-radius: 14px; border-top-right-radius: 4px; background: rgba(22,104,217,0.14); font-size: 14px; line-height: 1.5; margin-left: 52px;">Боюсь, что забуду слова</div>
+            <div style="padding: 13px 16px; border-radius: 14px; border-top-left-radius: 4px; background: #e8f2ff; font-size: 14px; line-height: 1.5;">Сделай 3 глубоких вдоха и вспомни первую фразу. Дальше тело знает, что делать — ты репетировала.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="price" style="padding: 0 0 96px;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+        <div style="padding: 44px; border-radius: 28px; border: 1px solid rgba(22,104,217,0.4); background: linear-gradient(160deg, rgba(22,104,217,0.10), #ffffff);">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: #1668d9; margin-bottom: 22px;">стоимость и старт</div>
+          <div style="display: flex; align-items: baseline; gap: 14px; margin-bottom: 10px;">
+            <div style="font-size: 58px; font-weight: 800; letter-spacing: -0.04em;">15 000 ₽</div>
+          </div>
+          <div style="font-size: 17px; color: #4a6785; margin-bottom: 32px;">доступ навсегда</div>
+          <a href="#" data-buy="spiktera" style="display: inline-flex; align-items: center; gap: 10px; padding: 17px 30px; border-radius: 999px; background: #1668d9; color: #ffffff; font-size: 16px; font-weight: 700;" class="sp-h15">Приобрести курс <span style="font-size: 18px;">→</span></a>
+        </div>
+        <div style="padding: 44px; border-radius: 28px; border: 1px solid rgba(11,37,69,0.11); background: #ffffff;">
+          <div style="font-size: 17px; font-weight: 700; margin-bottom: 24px;">Что ещё входит в стоимость:</div>
+          <div style="display: grid; gap: 16px;">
+            <div style="display: flex; justify-content: space-between; gap: 16px; font-size: 16px; color: #3c5a7d; padding-bottom: 16px; border-bottom: 1px solid #e8f2ff;">Доступ ко всем материалам</div>
+            <div style="display: flex; justify-content: space-between; gap: 16px; font-size: 16px; color: #3c5a7d; padding-bottom: 16px; border-bottom: 1px solid #e8f2ff;">Бесплатная консультация 2 часа</div>
+            <div style="display: flex; justify-content: space-between; gap: 16px; font-size: 16px; color: #3c5a7d; padding-bottom: 16px; border-bottom: 1px solid #e8f2ff;">Личный бот-поддержка</div>
+            <div style="display: flex; justify-content: space-between; gap: 16px; font-size: 16px; color: #3c5a7d;">Обновления курса в подарок</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="extra" style="padding: 0 0 96px;">
+      <h2 style="margin: 0 0 34px; font-size: 34px; letter-spacing: -0.03em; font-weight: 700;">Если тебе нужно больше, чем курс</h2>
+      <div style="display: grid; gap: 10px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 24px 28px; border-radius: 16px; border: 1px solid rgba(11,37,69,0.11); background: #ffffff;" class="sp-h16">
+          <div style="font-size: 17px;">«Сделаю презентацию под твой текст»</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 16px; color: #1668d9; white-space: nowrap;">от 5 000 ₽</div>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 24px 28px; border-radius: 16px; border: 1px solid rgba(11,37,69,0.11); background: #ffffff;" class="sp-h17">
+          <div style="font-size: 17px;">«Консультация с педагогом по речи»</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 16px; color: #1668d9; white-space: nowrap;">2 000 ₽/час</div>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 24px 28px; border-radius: 16px; border: 1px solid rgba(11,37,69,0.11); background: #ffffff;" class="sp-h18">
+          <div style="font-size: 17px;">«Консультация с психологом»</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 16px; color: #1668d9; white-space: nowrap;">3 000 ₽/час</div>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 24px 28px; border-radius: 16px; border: 1px solid rgba(11,37,69,0.11); background: #ffffff;" class="sp-h19">
+          <div style="font-size: 17px;">«Разбор твоей презентации»</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 16px; color: #1668d9; white-space: nowrap;">3 000 ₽</div>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 24px 28px; border-radius: 16px; border: 1px solid rgba(11,37,69,0.11); background: #ffffff;" class="sp-h20">
+          <div style="font-size: 17px;">«Индивидуальный коучинг перед выступлением»</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 16px; color: #1668d9; white-space: nowrap;">10 000 ₽</div>
+        </div>
+      </div>
+      <a href="#contact" style="display: inline-flex; align-items: center; gap: 10px; margin-top: 26px; padding: 15px 26px; border-radius: 999px; border: 1px solid rgba(11,37,69,0.20); color: #0b2545; font-size: 15px; font-weight: 600;" class="sp-h21">Записаться на консультацию <span>→</span></a>
+    </section>
+
+    <section id="contact" style="padding: 0 0 40px;">
+      <div style="padding: 56px 44px; border-radius: 28px; border: 1px solid #dbe9f8; background: radial-gradient(600px 300px at 20% 0%, rgba(22,104,217,0.12), #ffffff); display: grid; grid-template-columns: 1fr 380px; gap: 48px; align-items: center;">
+        <div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: #1668d9; margin-bottom: 20px;">есть вопросы?</div>
+          <h2 style="margin: 0 0 18px; font-size: 36px; letter-spacing: -0.03em; font-weight: 700; line-height: 1.12;">Сомневаешься, подойдёт ли тебе курс?</h2>
+          <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #4a6785; max-width: 520px;">Запишись на разбор твоего выступления за 3 000 ₽. Мы посмотрим, что у тебя есть, и скажем, что нужно сделать.</p>
+        </div>
+        <div style="display: grid; gap: 12px;">
+          <input id="sp-name" placeholder="Твоё имя" style="padding: 16px 18px; border-radius: 14px; border: 1px solid rgba(11,37,69,0.16); background: #ffffff; color: #0b2545; font-family: Manrope, sans-serif; font-size: 15px; outline: none;">
+          <input id="sp-contact" placeholder="Телефон или @username" style="padding: 16px 18px; border-radius: 14px; border: 1px solid rgba(11,37,69,0.16); background: #ffffff; color: #0b2545; font-family: Manrope, sans-serif; font-size: 15px; outline: none;">
+          <button style="padding: 17px 24px; border-radius: 14px; border: none; background: #1668d9; color: #ffffff; font-family: Manrope, sans-serif; font-size: 16px; font-weight: 700; cursor: pointer;" class="sp-h22" id="sp-send">Записаться на разбор</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="position: relative; z-index: 1; border-top: 1px solid rgba(11,37,69,0.10);">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 40px 28px 56px; display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; flex-wrap: wrap;">
+      <div>
+        <div style="font-size: 19px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 8px;">Спиктера<span style="color: #1668d9;">.</span></div>
+        <div style="font-size: 15px; color: #6b86a6;">твой навигатор в мир публичных выступлений</div>
+      </div>
+      <div style="display: flex; gap: 24px; font-size: 15px;">
+        <a href="mailto:info@speaktera.ru">info@speaktera.ru</a>
+        <a href="https://t.me/speaktera_bot">@speaktera_bot</a>
       </div>
     </div>
-  </section>
+  </footer>
+</div>
 
-  <section class="section" style="padding:clamp(40px,5vw,70px) 0">
-    <div class="shell pd-nav">
-      <a class="pd-nav__next" href="/products/constructor.html">
-        <span class="label">Следующий продукт</span>
-        <b>Конструктор туристических проектов →</b>
-      </a>
-    </div>
-  </section>
-</main>
-
-<footer class="footer">
-  <div class="shell footer__in">
-    <span class="footer__copy">© Александра Николаева — Рим, Италия</span>
-    <nav class="footer__links">
-      <a href="https://instagram.com/sandraniko_com" target="_blank" rel="noopener noreferrer">Instagram</a>
-      <a href="https://t.me/nikolaeva_creates" target="_blank" rel="noopener noreferrer">Telegram</a>
-    </nav>
-  </div>
-</footer>
-
-<script src="/assets/js/motion.js?v=20260824b"></script>
 <script src="/assets/js/products.js?v=20260824b"></script>
+<script>
+/* ------------------------------------------------------------------
+   Оживление макета. В Claude Design это делал класс Component:
+   свечение следует за курсором, орбита в первом экране наклоняется.
+   Здесь та же математика на ванильном JS.
+   ------------------------------------------------------------------ */
+(function () {
+  'use strict';
+
+  var glow  = document.getElementById('sp-glow');
+  var orbit = document.getElementById('sp-orbit');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var touch  = window.matchMedia && window.matchMedia('(hover: none)').matches;
+
+  if (glow && (reduce || touch)) glow.style.display = 'none';
+
+  if (!reduce && !touch && (glow || orbit)) {
+    var t = { x: 0.5, y: 0.35 };
+    var c = { x: 0.5, y: 0.35 };
+
+    window.addEventListener('mousemove', function (e) {
+      t.x = e.clientX / window.innerWidth;
+      t.y = e.clientY / window.innerHeight;
+    }, { passive: true });
+
+    (function loop() {
+      c.x += (t.x - c.x) * 0.07;
+      c.y += (t.y - c.y) * 0.07;
+      if (glow) {
+        glow.style.opacity = '1';
+        glow.style.transform = 'translate3d(' + (c.x * window.innerWidth - 310) + 'px,' +
+                                                (c.y * window.innerHeight - 310) + 'px,0)';
+      }
+      if (orbit) {
+        orbit.style.transform = 'rotateX(' + ((c.y - 0.5) * -16).toFixed(2) + 'deg) rotateY(' +
+                                             ((c.x - 0.5) * 26).toFixed(2) + 'deg)';
+      }
+      requestAnimationFrame(loop);
+    })();
+  }
+
+  /* ----------------------------------------------------------------
+     Форма «Записаться на разбор». В макете это была картинка формы —
+     кнопка ничего не отправляла. Отправляем через тот же Web3Forms,
+     что и форма на главной, письмо приходит на ту же почту.
+     ---------------------------------------------------------------- */
+  var WEB3FORMS_KEY = '8c7b279b-790e-449a-81dd-1b78939b3375';
+  var CONTACT_EMAIL = 'alexneeaals@gmail.com';
+
+  var btn = document.getElementById('sp-send');
+  if (!btn) return;
+
+  var nameEl    = document.getElementById('sp-name');
+  var contactEl = document.getElementById('sp-contact');
+  var status    = document.createElement('div');
+  status.id = 'sp-status';
+  btn.parentNode.appendChild(status);
+
+  btn.addEventListener('click', function () {
+    var who = (nameEl.value || '').trim();
+    var how = (contactEl.value || '').trim();
+
+    if (!who || !how) {
+      status.textContent = 'Заполните имя и контакт — иначе я не смогу ответить.';
+      status.className = 'bad';
+      return;
+    }
+
+    var label = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Отправляю…';
+    status.textContent = '';
+    status.className = '';
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_KEY,
+        subject: 'Заявка с лендинга «Спиктера» — ' + who,
+        from_name: 'sandraniko.com',
+        'Имя': who,
+        'Контакт': how,
+        message: 'Заявка на разбор выступления с лендинга курса «Спиктера».'
+      })
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (!d.success) throw new Error(d.message || 'failed');
+        status.textContent = 'Заявка отправлена. Я свяжусь с вами.';
+        status.className = 'ok';
+        nameEl.value = '';
+        contactEl.value = '';
+      })
+      .catch(function () {
+        status.innerHTML = 'Не удалось отправить. Напишите мне на ' +
+          '<a href="mailto:' + CONTACT_EMAIL + '">' + CONTACT_EMAIL + '</a>.';
+        status.className = 'bad';
+      })
+      .finally(function () {
+        btn.disabled = false;
+        btn.textContent = label;
+      });
+  });
+})();
+</script>
 </body>
 </html>
