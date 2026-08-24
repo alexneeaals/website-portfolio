@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Калькулятор силы бренда — Александра Николаева</title>
-<meta name="description" content="Интерактивный инструмент: оценивает бренд по 20+ метрикам и 5 ключевым параметрам, показывает зоны роста.">
+<title>Калькулятор силы бренда — бесплатный инструмент — Александра Николаева</title>
+<meta name="description" content="Бесплатный калькулятор силы бренда: 24 показателя по пяти направлениям. Показывает индекс от 0 до 100, слабые места и что делать в первую очередь. Без регистрации, расчёт идёт в браузере.">
 
 <meta property="og:type" content="article">
-<meta property="og:title" content="Калькулятор силы бренда — Александра Николаева">
-<meta property="og:description" content="Интерактивный инструмент: оценивает бренд по 20+ метрикам и 5 ключевым параметрам, показывает зоны роста.">
+<meta property="og:title" content="Калькулятор силы бренда — бесплатный инструмент">
+<meta property="og:description" content="24 показателя, 5 направлений, индекс от 0 до 100 и конкретные шаги. Бесплатно и без регистрации.">
 <meta property="og:image" content="https://sandraniko.com/assets/img/products/calculator-cover.jpg">
 
 <link rel="canonical" href="https://sandraniko.com/products/brand-calculator">
@@ -24,7 +24,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@200;300;400;500&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/style.css?v=20260822">
+<link rel="stylesheet" href="/assets/css/style.css?v=20260824">
+<link rel="stylesheet" href="/assets/css/calculator.css?v=20260824">
 </head>
 <body>
 
@@ -42,16 +43,27 @@
 </header>
 
 <main>
+
+  <!-- Заголовок появляется только в печатной версии и в PDF -->
+  <div class="shell bc-print">
+    <h1>Отчёт о силе бренда</h1>
+    <p id="bcPrintDate"></p>
+  </div>
+
   <section class="pd-hero">
     <div class="shell">
-      <span class="label label--accent" style="display:block;margin-bottom:24px">Инструмент</span>
+      <span class="label label--accent" style="display:block;margin-bottom:24px">Инструмент · Бесплатно</span>
       <h1>Калькулятор силы бренда</h1>
       <div class="pd-tagline">Насколько ваш бренд устойчив и конкурентоспособен</div>
-      <p class="pd-lede">Интерактивный инструмент, который оценивает ваш бренд по 20+ метрикам и 5 ключевым параметрам и показывает зоны роста.</p>
+      <p class="pd-lede">24 показателя по пяти направлениям — финансы, сознание потребителя, поведение клиентов, коммуникация и развитие. Заполняете то, что знаете, и получаете индекс силы бренда, список слабых мест и порядок действий.</p>
       <div class="pd-rule"><i></i><b></b><i></i></div>
       <div class="pd-meta">
         <div><span class="label" style="display:block;margin-bottom:6px">Формат</span><span class="pd-meta__v">Онлайн-калькулятор с расшифровкой</span></div>
-        <div><span class="label" style="display:block;margin-bottom:6px">Цена</span><span class="pd-meta__v">1990 ₽&nbsp;</span></div>
+        <div><span class="label" style="display:block;margin-bottom:6px">Стоимость</span><span class="pd-meta__v">Бесплатно, без регистрации</span></div>
+        <div><span class="label" style="display:block;margin-bottom:6px">Время</span><span class="pd-meta__v">10–15 минут</span></div>
+      </div>
+      <div class="prod-actions" style="max-width:320px;margin-top:clamp(32px,4vw,48px)">
+        <a class="pbtn pbtn--solid" href="#calc">Пройти калькулятор</a>
       </div>
     </div>
   </section>
@@ -68,40 +80,159 @@
           <li>Владельцам бизнеса, которые хотят понять, насколько их бренд силён</li>
           <li>Маркетологам и бренд-менеджерам для быстрой диагностики</li>
           <li>Тем, кто планирует запуск нового бренда или ребрендинг</li>
+          <li>Всем, кто вкладывает в рекламу и не видит отдачи</li>
         </ul>
       </div>
       <div class="rv" data-rv-delay="120">
         <span class="label label--accent" style="display:block;margin-bottom:20px">Как работает</span>
         <ol class="pd-list pd-list--steps">
-          <li><span class="pd-step">01</span><span>Вы отвечаете на вопросы о позиционировании, визуале, коммуникации и лояльности аудитории.</span></li>
-          <li><span class="pd-step">02</span><span>Калькулятор анализирует ваши ответы и строит профиль бренда.</span></li>
-          <li><span class="pd-step">03</span><span>Вы получаете расшифровку результатов с конкретными рекомендациями.</span></li>
+          <li><span class="pd-step">01</span><span>Вы вводите показатели, которые есть под рукой. Заполнять все поля не обязательно — пустые в расчёте не участвуют.</span></li>
+          <li><span class="pd-step">02</span><span>Калькулятор сверяет каждое значение с нормой и собирает профиль бренда по пяти направлениям.</span></li>
+          <li><span class="pd-step">03</span><span>Вы получаете индекс от 0 до 100, слабые места и порядок действий — что делать в первую очередь.</span></li>
+          <li><span class="pd-step">04</span><span>Расчёт идёт прямо в браузере: данные никуда не отправляются. Отчёт можно распечатать или сохранить в PDF.</span></li>
         </ol>
       </div>
     </div>
   </section>
 
-  <section class="section section--ivory" style="padding:clamp(56px,7vw,104px) 0">
+  <!-- ============================ КАЛЬКУЛЯТОР ============================ -->
+  <section class="section section--ivory" id="calc" style="padding:clamp(56px,7vw,104px) 0">
     <div class="shell">
-      <div class="pd-result rv">
-        <span class="label label--accent" style="display:block;margin-bottom:18px">Результат</span>
-        <p>Вы увидите сильные стороны бренда и точки роста. Поймёте, что нужно улучшить, чтобы бренд стал устойчивым и приносил больше прибыли.</p>
+
+      <div class="section-head">
+        <div class="tick"></div>
+        <span class="label label--accent">Расчёт</span>
+        <h2 class="h-section" style="margin:16px 0 18px">Заполните показатели</h2>
+        <p class="lede" style="margin:0">Достаточно восьми значений, чтобы получить честный вывод. Чем больше полей заполнено, тем точнее картина.</p>
       </div>
-      <div class="pd-buy rv">
-        <div>
-          <span class="label label--accent" style="display:block;margin-bottom:8px">Стоимость</span>
-          <span class="pd-buy__price">1 990 ₽ <small>разовый доступ</small></span>
-          <span class="pd-buy__extra">Или: Бесплатный доступ в составе подписки комьюнити «Сборка» — 1 000 ₽ / месяц</span>
+
+      <div class="bc-layout">
+
+        <!-- Форма -->
+        <div class="bc-form">
+          <form id="bcForm" novalidate>
+            <div id="bcGroups"><!-- группы полей строит calculator.js --></div>
+
+            <div class="bc-warn" id="bcWarning"></div>
+
+            <button type="submit" class="pbtn pbtn--solid bc-cta">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg>
+              Получить отчёт
+            </button>
+            <p class="bc-note">Оценка ориентировочная и рассчитана на малый и средний бизнес.</p>
+          </form>
         </div>
-        <div class="pd-buy__actions">
-          <a class="pbtn pbtn--solid" href="#" data-buy="calculator">Купить доступ</a>
-          <a class="pbtn" href="#" data-buy="subscription">Узнать о подписке</a>
+
+        <!-- Панель индекса -->
+        <aside class="bc-panel">
+          <div class="bc-panel__body">
+            <span class="label bc-panel__label" style="display:block">Индекс силы бренда</span>
+            <div class="bc-idx">
+              <span class="bc-idx__num" id="bcIdxNum">—</span>
+              <span class="bc-idx__max">/ 100</span>
+            </div>
+            <p class="bc-idx__verdict" id="bcIdxVerdict">Заполните показатели</p>
+            <p class="bc-idx__sub" id="bcIdxSub">Оценка появится, когда вы введёте первые значения.</p>
+            <div class="bc-idx__track"><div class="bc-idx__fill" id="bcIdxFill"></div></div>
+
+            <div class="bc-mini">
+              <h3 class="label">По направлениям</h3>
+              <div id="bcMiniRows"></div>
+            </div>
+          </div>
+          <nav class="bc-tabs" id="bcTabs"></nav>
+        </aside>
+
+      </div>
+
+      <!-- ============================== ОТЧЁТ ============================== -->
+      <section class="bc-report" id="bcReport">
+
+        <div class="bc-sum">
+          <div class="bc-sum__head">
+            <div class="bc-dial">
+              <svg width="104" height="104" viewBox="0 0 104 104" aria-hidden="true">
+                <circle cx="52" cy="52" r="45" fill="none" stroke="#E4DED6" stroke-width="6"/>
+                <circle id="bcDialArc" cx="52" cy="52" r="45" fill="none" stroke="#742B3C" stroke-width="6"
+                        stroke-dasharray="283" stroke-dashoffset="283"/>
+              </svg>
+              <div class="bc-dial__val"><b id="bcSumIndex">0</b><span>из 100</span></div>
+            </div>
+            <div class="bc-sum__title">
+              <h2 id="bcSumVerdict"></h2>
+              <p id="bcSumFilled"></p>
+            </div>
+          </div>
+
+          <div class="bc-story" id="bcSumStory"></div>
+
+          <div class="bc-cols">
+            <div class="bc-col">
+              <h3 class="label label--accent">Что мешает бренду</h3>
+              <ul class="bc-list" id="bcIssues"></ul>
+            </div>
+            <div class="bc-col">
+              <h3 class="label label--accent">Что сделать в первую очередь</h3>
+              <ul class="bc-list" id="bcAdvices"></ul>
+            </div>
+          </div>
+
+          <div class="bc-actions">
+            <button type="button" class="pbtn" id="bcToggleDetails">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+              <span id="bcToggleDetailsText">Подробнее по каждому показателю</span>
+            </button>
+            <button type="button" class="pbtn" id="bcPrintBtn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+              Печать или PDF
+            </button>
+            <button type="button" class="pbtn" id="bcEditBtn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+              Изменить данные
+            </button>
+          </div>
+        </div>
+
+        <!-- Врезка с контактами появляется вместе с отчётом: человек уже
+             увидел свои слабые места, и это лучший момент написать. -->
+        <div class="prod-note-box">
+          <p>Видите слабые места в своём бренде? Я подготовлю для вас работающие идеи, инструменты и стратегии.</p>
+          <div class="bc-mail">
+            <a href="mailto:alexneeaals@gmail.com?subject=Калькулятор%20силы%20бренда">Написать мне</a>
+            <span class="bc-mail__addr"><a href="mailto:alexneeaals@gmail.com?subject=Калькулятор%20силы%20бренда">alexneeaals@gmail.com</a></span>
+          </div>
+        </div>
+
+        <div class="bc-details">
+          <div class="bc-details__in" id="bcDetailsInner">
+            <div class="bc-legend">
+              <span><i style="background:#5B6E4F"></i>зелёная зона — работает</span>
+              <span><i style="background:#B0812E"></i>жёлтая зона — требует внимания</span>
+              <span><i style="background:#9C3B2E"></i>красная зона — критично</span>
+            </div>
+            <div id="bcDetailGroups"></div>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </section>
+
+  <!-- Постоянный блок с контактами -->
+  <section class="section" style="padding:clamp(64px,8vw,120px) 0">
+    <div class="shell">
+      <div class="prod-note-box rv">
+        <p>Видите слабые места в своём бренде? Я подготовлю для вас работающие идеи, инструменты и стратегии.</p>
+        <div class="bc-mail">
+          <a href="mailto:alexneeaals@gmail.com?subject=Калькулятор%20силы%20бренда">Написать мне</a>
+          <span class="bc-mail__addr"><a href="mailto:alexneeaals@gmail.com?subject=Калькулятор%20силы%20бренда">alexneeaals@gmail.com</a></span>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section" style="padding:clamp(40px,5vw,70px) 0">
+  <section class="section" style="padding:0 0 clamp(40px,5vw,70px)">
     <div class="shell pd-nav">
       <a href="/products/constructor.html">
         <span class="label">Предыдущий</span>
@@ -121,7 +252,15 @@
   </div>
 </footer>
 
-<script src="/assets/js/motion.js?v=20260822"></script>
-<script src="/assets/js/products.js?v=20260822"></script>
+<!-- Липкая плашка: на телефоне кнопка отчёта всегда под рукой -->
+<div class="bc-sticky">
+  <div class="bc-sticky__in">
+    <div class="bc-sticky__idx"><b id="bcMIdx">—</b><span>индекс</span></div>
+    <button type="button" class="pbtn pbtn--solid bc-cta" id="bcMSubmit">Получить отчёт</button>
+  </div>
+</div>
+
+<script src="/assets/js/motion.js?v=20260824"></script>
+<script src="/assets/js/calculator.js?v=20260824"></script>
 </body>
 </html>

@@ -1,0 +1,609 @@
+/* ==================================================================
+   calculator.css — «Калькулятор силы бренда» на /products/brand-calculator
+
+   Подключается ПОСЛЕ style.css и переиспользует его токены: --ivory,
+   --ink, --accent, --hair, --serif, --sans. Своих цветов здесь только
+   три — зоны оценки.
+
+   Все классы начинаются с bc-. Это не прихоть: в style.css уже заняты
+   .panel, .field, .metric, .label, .card и .step, а .panel вдобавок
+   ловится анимацией появления в motion.js — без префикса калькулятор
+   стартовал бы невидимым.
+   ================================================================== */
+
+:root {
+  /* Зоны оценки в палитре сайта: терракота, охра, олива */
+  --z-red: #9C3B2E;
+  --z-yel: #B0812E;
+  --z-grn: #5B6E4F;
+  --z-red-wash: rgba(156, 59, 46, .07);
+  --z-yel-wash: rgba(176, 129, 46, .08);
+  --z-grn-wash: rgba(91, 110, 79, .09);
+}
+
+/* ------------------------------------------------------------------
+   Каркас: форма слева, панель индекса справа
+   ------------------------------------------------------------------ */
+.bc-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: clamp(20px, 2.4vw, 34px);
+  align-items: start;
+}
+
+/* ------------------------------------------------------------------
+   Форма
+   ------------------------------------------------------------------ */
+.bc-form {
+  /* min-width:0 обязателен: без него колонка грида раздувается до
+     min-content самого широкого содержимого и страница едет вбок */
+  min-width: 0;
+  background: var(--white);
+  border: 1px solid var(--hair);
+  border-bottom-color: var(--accent-soft);
+  padding: clamp(22px, 2.6vw, 38px);
+}
+
+.bc-group { border: 0; padding: 0; margin: 0 0 clamp(30px, 3.4vw, 44px); }
+.bc-group:last-of-type { margin-bottom: clamp(24px, 2.6vw, 32px); }
+
+.bc-group__head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 6px; }
+/* Серифный номер бордо — тот же приём, что у карточек продуктов */
+.bc-group__n {
+  flex: none;
+  font-family: var(--serif);
+  font-size: 13px;
+  letter-spacing: .16em;
+  color: var(--accent);
+}
+.bc-group__head h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(18px, 1.6vw, 23px);
+  line-height: 1.24;
+  margin: 0;
+}
+.bc-group__desc {
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.6;
+  margin: 0 0 22px 34px;
+  max-width: 640px;
+}
+
+.bc-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 20px; }
+.bc-field { min-width: 0; position: relative; }
+
+.bc-field__label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+.bc-field__label .bc-txt { min-width: 0; }
+
+/* Подсказка ------------------------------------------------------- */
+.bc-hint {
+  flex: none;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  border: 1px solid var(--muted);
+  background: transparent;
+  color: var(--muted);
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 10px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .3s var(--ease), border-color .3s var(--ease), color .3s var(--ease);
+}
+.bc-hint:hover,
+.bc-hint[aria-expanded="true"] { background: var(--accent); border-color: var(--accent); color: #FFFFFF; }
+
+/* Всплывающая подсказка привязана к полю, а не к иконке: так она
+   никогда не вылезает за край экрана и не включает прокрутку вбок. */
+.bc-hintwrap { position: static; display: inline-flex; }
+.bc-tip {
+  position: absolute;
+  z-index: 40;
+  left: 0; right: 0;
+  bottom: calc(100% - 4px);
+  display: none;
+  background: var(--white);
+  color: var(--ink-soft);
+  border: 1px solid var(--hair);
+  border-bottom-color: var(--accent-soft);
+  padding: 13px 15px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  box-shadow: 0 18px 44px rgba(20, 16, 15, .10);
+}
+.bc-tip b { color: var(--ink); font-weight: 500; }
+.bc-hintwrap.open .bc-tip { display: block; }
+
+/* Числовое поле ---------------------------------------------------- */
+.bc-control { position: relative; display: block; }
+/* Поля текстовые, а не number: иначе браузер молча отбрасывает ввод
+   через запятую («2,5»), а так пишут почти все. */
+.bc-control input {
+  width: 100%;
+  background: var(--ivory);
+  border: 1px solid var(--hair);
+  padding: 13px 62px 13px 14px;
+  font-family: var(--sans);
+  font-size: 15px;
+  color: var(--ink);
+  appearance: none;
+  transition: border-color .3s var(--ease), background .3s var(--ease);
+}
+.bc-control input:hover { border-color: var(--accent-soft); }
+.bc-control input:focus {
+  outline: 0;
+  background: var(--white);
+  border-color: var(--accent);
+}
+.bc-control input::placeholder { color: var(--muted); opacity: .6; }
+.bc-unit {
+  position: absolute;
+  right: 14px; top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  font-size: 12.5px;
+  pointer-events: none;
+  max-width: 54px;
+  text-align: right;
+}
+
+/* Ползунок для оценок 1–10 ---------------------------------------- */
+.bc-scale { background: var(--ivory); border: 1px solid var(--hair); padding: 11px 14px 10px; }
+.bc-scale__top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
+.bc-scale__val { font-family: var(--serif); font-size: 17px; color: var(--ink); }
+.bc-scale__val.empty { font-family: var(--sans); font-size: 13px; color: var(--muted); }
+.bc-scale__reset {
+  border: 0;
+  background: none;
+  padding: 2px 0;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color .3s var(--ease);
+}
+.bc-scale__reset:hover { color: var(--accent); }
+
+.bc-scale input[type=range] {
+  width: 100%;
+  appearance: none;
+  background: transparent;
+  margin: 6px 0 0;
+  height: 18px;
+}
+.bc-scale input[type=range]::-webkit-slider-runnable-track { height: 1px; background: var(--hair); }
+.bc-scale input[type=range]::-moz-range-track { height: 1px; background: var(--hair); }
+.bc-scale input[type=range]::-webkit-slider-thumb {
+  appearance: none;
+  width: 13px; height: 13px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 0;
+  margin-top: -6px;
+  cursor: pointer;
+}
+.bc-scale input[type=range]::-moz-range-thumb {
+  width: 13px; height: 13px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 0;
+  cursor: pointer;
+}
+.bc-scale input[type=range]:focus { outline: 0; }
+.bc-scale input[type=range]:focus::-webkit-slider-thumb { box-shadow: 0 0 0 4px var(--accent-wash); }
+.bc-scale input[type=range]:focus::-moz-range-thumb { box-shadow: 0 0 0 4px var(--accent-wash); }
+.bc-scale__ends {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 2px;
+}
+
+/* Кнопка и предупреждение ------------------------------------------ */
+/* Форма кнопки берётся у .pbtn--solid из style.css, здесь только размер */
+.bc-cta {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 18px 24px;
+  font-size: 12px;
+}
+.bc-cta svg { flex: none; }
+.bc-note { text-align: center; color: var(--muted); font-size: 12px; line-height: 1.55; margin: 14px 0 0; }
+
+.bc-warn {
+  display: none;
+  margin: 0 0 16px;
+  border: 1px solid var(--z-yel);
+  background: var(--z-yel-wash);
+  color: var(--ink-soft);
+  padding: 13px 15px;
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+.bc-warn.on { display: block; }
+
+/* ------------------------------------------------------------------
+   Панель индекса
+   ------------------------------------------------------------------ */
+.bc-panel {
+  min-width: 0;
+  position: sticky;
+  top: 92px;
+  background: var(--white);
+  border: 1px solid var(--accent-mid);
+}
+.bc-panel__body { padding: clamp(22px, 2.2vw, 28px); }
+.bc-panel__label { margin: 0 0 12px; }
+
+.bc-idx { display: flex; align-items: baseline; gap: 10px; }
+.bc-idx__num {
+  font-family: var(--serif);
+  font-size: clamp(46px, 5vw, 64px);
+  line-height: 1;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.bc-idx__num.none { font-size: 26px; color: var(--muted); }
+.bc-idx__max { font-family: var(--serif); font-size: 17px; color: var(--muted); }
+.bc-idx__verdict {
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.35;
+  color: var(--accent);
+  margin: 14px 0 0;
+}
+.bc-idx__sub { margin: 8px 0 0; font-size: 13px; line-height: 1.5; color: var(--muted); }
+
+.bc-idx__track { height: 2px; background: var(--hair); margin: 20px 0 24px; overflow: hidden; }
+.bc-idx__fill { height: 100%; width: 0; background: var(--accent); transition: width .5s var(--ease); }
+
+.bc-mini { border-top: 1px solid var(--hair); padding-top: 20px; }
+.bc-mini h3 { margin: 0 0 16px; }
+.bc-mini__row { margin-bottom: 14px; }
+.bc-mini__row:last-child { margin-bottom: 0; }
+.bc-mini__top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 6px; }
+.bc-mini__name { font-size: 13px; color: var(--ink-soft); }
+.bc-mini__score { font-family: var(--serif); font-size: 15px; color: var(--ink); font-variant-numeric: tabular-nums; }
+.bc-mini__score.none { font-family: var(--sans); font-size: 13px; color: var(--muted); }
+.bc-mini__track { height: 2px; background: var(--hair); overflow: hidden; }
+.bc-mini__fill { height: 100%; width: 0; background: var(--accent); transition: width .5s var(--ease), background .3s var(--ease); }
+
+/* Вкладки-переходы по направлениям */
+.bc-tabs { display: flex; border-top: 1px solid var(--hair); }
+.bc-tab {
+  flex: 1;
+  border: 0;
+  border-right: 1px solid var(--hair);
+  background: transparent;
+  cursor: pointer;
+  padding: 14px 4px;
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  line-height: 1.3;
+  color: var(--muted);
+  transition: background .3s var(--ease), color .3s var(--ease);
+}
+.bc-tab:last-child { border-right: 0; }
+.bc-tab:hover { color: var(--accent); }
+.bc-tab.active { color: var(--accent); background: var(--accent-wash); }
+.bc-tab .bc-dot {
+  display: block;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--hair);
+  margin: 0 auto 7px;
+}
+
+/* Липкая плашка на телефоне ---------------------------------------- */
+.bc-sticky {
+  display: none;
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 50;
+  background: var(--white);
+  border-top: 1px solid var(--accent-mid);
+  padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+  box-shadow: 0 -8px 28px rgba(20, 16, 15, .08);
+}
+.bc-sticky__in { display: flex; align-items: center; gap: 14px; max-width: 640px; margin: 0 auto; }
+.bc-sticky__idx { flex: none; line-height: 1.1; }
+.bc-sticky__idx b { display: block; font-family: var(--serif); font-weight: 400; font-size: 24px; color: var(--ink); }
+.bc-sticky__idx span { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+.bc-sticky .bc-cta { flex: 1; width: auto; padding: 15px 16px; gap: 10px; }
+
+/* ------------------------------------------------------------------
+   Отчёт
+   ------------------------------------------------------------------ */
+.bc-report { display: none; margin-top: clamp(28px, 3.4vw, 44px); }
+.bc-report.on { display: block; }
+
+.bc-sum {
+  background: var(--white);
+  border: 1px solid var(--hair);
+  border-bottom-color: var(--accent-soft);
+  padding: clamp(24px, 3vw, 40px);
+}
+.bc-sum__head { display: flex; align-items: center; gap: clamp(18px, 2.4vw, 30px); flex-wrap: wrap; margin-bottom: 26px; }
+
+.bc-dial { position: relative; width: 104px; height: 104px; flex: none; }
+.bc-dial svg { transform: rotate(-90deg); }
+.bc-dial__val {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.bc-dial__val b { font-family: var(--serif); font-weight: 400; font-size: 30px; color: var(--ink); }
+.bc-dial__val span { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+
+.bc-sum__title h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(21px, 2.2vw, 30px);
+  line-height: 1.2;
+  margin: 0 0 8px;
+}
+.bc-sum__title p { margin: 0; color: var(--muted); font-size: 13.5px; line-height: 1.6; max-width: 560px; }
+
+/* Общий вывод — врезка серифом, как .pd-result */
+.bc-story {
+  border-left: 1px solid var(--accent-soft);
+  padding-left: 24px;
+  margin: 0 0 30px;
+}
+.bc-story p {
+  font-family: var(--serif);
+  font-size: clamp(16px, 1.5vw, 19px);
+  line-height: 1.66;
+  color: var(--ink);
+  margin: 0 0 12px;
+  text-wrap: pretty;
+}
+.bc-story p:last-child { margin: 0; }
+
+.bc-cols { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 3vw, 44px); }
+.bc-col h3 { margin: 0 0 18px; }
+
+.bc-list { list-style: none; margin: 0; padding: 0; }
+.bc-list li {
+  display: flex;
+  gap: 13px;
+  padding: 14px 0;
+  border-top: 1px solid var(--hair);
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+.bc-mark {
+  flex: none;
+  width: 22px; height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid currentColor;
+  font-family: var(--sans);
+  font-size: 11px;
+  margin-top: 2px;
+}
+.bc-mark.red { color: var(--z-red); background: var(--z-red-wash); }
+.bc-mark.yellow { color: var(--z-yel); background: var(--z-yel-wash); }
+.bc-mark.blue { color: var(--accent); background: var(--accent-wash); }
+.bc-sub { display: block; color: var(--muted); font-size: 12px; margin-top: 4px; }
+
+.bc-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  padding-top: 26px;
+  border-top: 1px solid var(--hair);
+}
+/* Кнопки отчёта — те же .pbtn, только с иконкой внутри */
+.bc-actions .pbtn {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 14px 24px;
+}
+
+/* Подробный разбор -------------------------------------------------- */
+.bc-details { margin-top: 16px; }
+.bc-details__in {
+  display: none;
+  background: var(--white);
+  border: 1px solid var(--hair);
+  padding: clamp(22px, 2.6vw, 36px);
+  margin-top: 16px;
+}
+.bc-details__in.on { display: block; }
+
+.bc-legend {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 0 0 26px;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+.bc-legend i { display: inline-block; width: 8px; height: 8px; margin-right: 8px; vertical-align: 1px; }
+
+.bc-dgroup { margin-bottom: clamp(30px, 3.4vw, 44px); break-inside: avoid; }
+.bc-dgroup:last-child { margin-bottom: 0; }
+.bc-dgroup__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+.bc-dgroup__head h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(17px, 1.6vw, 22px);
+  line-height: 1.25;
+  margin: 0;
+}
+.bc-dgroup__score { font-size: 12.5px; color: var(--muted); }
+.bc-dgroup__score b { font-family: var(--serif); font-weight: 400; font-size: 15px; color: var(--ink); }
+
+/* Рамки соседних показателей склеиваются в одну сетку */
+.bc-metric { border: 1px solid var(--hair); padding: 16px 18px; margin-bottom: -1px; break-inside: avoid; }
+.bc-metric.skip { background: var(--ivory); }
+.bc-metric.skip .bc-m__name { color: var(--muted); }
+
+.bc-m__top { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; flex-wrap: wrap; margin-bottom: 10px; }
+.bc-m__name { font-size: 14.5px; color: var(--ink); }
+.bc-m__right { display: flex; align-items: center; gap: 12px; }
+.bc-m__value { font-family: var(--serif); font-size: 16px; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+.bc-zone {
+  border: 1px solid currentColor;
+  padding: 4px 10px;
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.bc-zone.green { color: var(--z-grn); background: var(--z-grn-wash); }
+.bc-zone.yellow { color: var(--z-yel); background: var(--z-yel-wash); }
+.bc-zone.red { color: var(--z-red); background: var(--z-red-wash); }
+.bc-zone.grey { color: var(--muted); background: var(--ivory); border-color: var(--hair); }
+
+.bc-m__verdict { font-size: 14px; line-height: 1.62; color: var(--ink-soft); margin: 0 0 12px; text-wrap: pretty; }
+.bc-m__advice {
+  display: flex;
+  gap: 11px;
+  background: var(--accent-wash);
+  border-left: 1px solid var(--accent-soft);
+  padding: 12px 15px;
+  font-size: 14px;
+  line-height: 1.62;
+  color: var(--ink-soft);
+  text-wrap: pretty;
+}
+.bc-m__advice b { color: var(--accent); font-weight: 500; }
+.bc-m__advice .bc-ic { flex: none; margin-top: 3px; color: var(--accent); }
+.bc-m__norm { font-size: 12px; color: var(--muted); margin: 10px 0 0; }
+
+/* ------------------------------------------------------------------
+   Блок «напишите мне» — та же врезка, что .prod-note-box, плюс адрес
+   ------------------------------------------------------------------ */
+.bc-mail { display: flex; flex-direction: column; gap: 14px; flex: none; }
+/* .prod-note-box красит кнопкой ЛЮБУЮ ссылку внутри себя — адрес
+   приходится возвращать к обычному тексту вручную. */
+.bc-mail__addr { font-size: 13px; color: var(--muted); text-align: center; }
+.bc-mail__addr a {
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid var(--accent-soft);
+  color: var(--accent);
+  font-size: 13px;
+  letter-spacing: normal;
+  text-transform: none;
+  transition: border-color .35s var(--ease);
+}
+.bc-mail__addr a:hover { background: transparent; color: var(--accent); border-bottom-color: var(--accent); }
+
+/* Копия врезки внутри отчёта — с отступом от кнопок разбора */
+.bc-report .prod-note-box { margin-top: clamp(28px, 3.4vw, 44px); }
+
+.bc-print { display: none; }
+
+/* ------------------------------------------------------------------
+   Адаптив
+   ------------------------------------------------------------------ */
+@media (max-width: 1180px) {
+  .bc-layout { grid-template-columns: minmax(0, 1fr); }
+  /* Панель уходит наверх: на узком экране индекс должен быть виден
+     до формы, иначе о нём никто не узнает. */
+  .bc-panel { position: static; order: -1; }
+}
+
+@media (max-width: 900px) {
+  .bc-fields { grid-template-columns: 1fr; gap: 16px; }
+  .bc-group__desc { margin-left: 0; }
+  .bc-cols { grid-template-columns: 1fr; }
+  .bc-sum__head { gap: 16px; }
+  .bc-dial { width: 86px; height: 86px; }
+  .bc-dial__val b { font-size: 25px; }
+
+  /* На телефоне кнопка живёт в липкой плашке снизу */
+  .bc-form .bc-cta { display: none; }
+  .bc-form .bc-note { margin-top: 0; }
+  .bc-sticky { display: block; }
+
+  .bc-tabs { overflow-x: auto; }
+  .bc-tab { min-width: 92px; flex: none; }
+
+  /* Липкая плашка перекрывает подвал — освобождаем под неё место */
+  .footer { padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
+}
+
+@media (max-width: 560px) {
+  .bc-form { padding: 20px 16px; }
+  .bc-sum { padding: 22px 18px; }
+  .bc-details__in { padding: 20px 16px; }
+  .bc-metric { padding: 14px 15px; }
+  .bc-story { padding-left: 18px; }
+  /* 16px — минимум, при котором iOS не увеличивает масштаб на фокусе */
+  .bc-control input { font-size: 16px; }
+  .bc-actions .pbtn { flex: 1 1 100%; justify-content: center; }
+}
+
+/* ------------------------------------------------------------------
+   Печать и сохранение в PDF
+   ------------------------------------------------------------------ */
+@media print {
+  /* Печатаем только отчёт. Прячем всю страницу и возвращаем нужное:
+     так не остаются пустые секции от скрытых по одному блоков. */
+  .bc-sticky, .footer { display: none !important; }
+  main > section, main > div { display: none !important; }
+
+  body.bc-has-report main > .bc-print { display: block !important; margin-bottom: 18px; }
+  .bc-print h1 { font-family: var(--serif); font-weight: 400; font-size: 20pt; margin: 0 0 4px; }
+  .bc-print p { margin: 0; font-size: 10pt; color: #555; }
+
+  main > #calc { display: block !important; padding: 0 !important; background: #FFFFFF !important; }
+  #calc > .shell { padding: 0 !important; max-width: none; }
+  #calc .section-head, .bc-layout, .bc-actions { display: none !important; }
+
+  .bc-report.on { display: block !important; margin: 0; }
+  .bc-sum, .bc-details__in { border: 1px solid #BBB; padding: 16px; }
+  .bc-details__in { display: block !important; margin-top: 14px; }
+  .bc-cols { grid-template-columns: 1fr 1fr; }
+  .bc-dgroup { page-break-inside: avoid; }
+  .bc-m__advice { background: #F4F2EF; }
+
+  /* Врезку с контактами в отчёте оставляем: распечатку читают позже */
+  .bc-report .prod-note-box { page-break-inside: avoid; margin-top: 18px; }
+
+  a { text-decoration: none; color: #000; }
+}
