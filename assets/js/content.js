@@ -571,6 +571,41 @@ window.PROJECTS = [
   },
 
   {
+    slug: 'accessories-era',
+    year: '2026',
+    client: 'Инициативный проект',
+    clientEn: 'Self-initiated',
+    dir: 'accessories-era',
+    images: ['hero.jpg', '01-before.jpg', '02-sketch.jpg', '03-formula.jpg', '04-slider.jpg'],
+    ru: {
+      title: 'Новая эра аксессуаров',
+      kicker: 'Специальный проект · Креативное продюсирование',
+      location: 'Россия',
+      tags: ['Концепция продукта', 'Промышленный дизайн', 'Упаковка', 'Фирменный стиль', 'Бренд-аксессуар'],
+      summary: 'Thomas Münz выпускает влажные салфетки для ухода за обувью — вещь нужную, но живущую в обычной пачке: салфетки быстро высыхают, упаковка теряется в сумке и забывается. Инициативная концепция переосмысляет этот аксессуар: кейс-подвес в форме буквы U с карабином, фирменным платком и кассетой на 15–20 салфеток, который хочется носить с собой.',
+      task: 'Превратить расходник, о котором забывают сразу после покупки обуви, в носимый аксессуар бренда: сохранить функцию, дать узнаваемую форму и повод показывать её на сумке.',
+      challenge: 'Стандартная пачка проигрывает дважды. Функционально — салфетки высыхают, потому что упаковка не закрывается плотно. Эмоционально — её прячут в сумку, и бренд исчезает из поля зрения владельца в тот же день.',
+      solution: 'Форма кейса собрана из двух элементов фирменной графики: буквы U — мягкой округлой формы из логотипа Thomas Münz — и волнообразной линии, которая повторяет фирменный знак и превращает крышку из функциональной детали в узнаваемую. Кейс крепится карабином, дополняется платком-твилли с фирменным паттерном и держит 15–20 салфеток. Проработаны две вариации отверстия: с прозрачным слайдером и с выдвижным модулем-кассетой.',
+      result: 'Кейс перестаёт быть упаковкой и становится частью фирменного стиля: узнаваемый, стильный и всегда под рукой — потому что его хочется носить с собой. Вместо расходника, спрятанного в сумке, бренд получает носитель айдентики, который клиент показывает сам.',
+      metrics: [],
+      captions: ['Кейс на сумке с фирменным платком', 'Как выглядит стандартная упаковка сейчас', 'Первые эскизы: форма, карабин, кассета', 'Формула формы: буква U и фирменная волна', 'Вариация с прозрачным слайдером']
+    },
+    en: {
+      title: 'A New Era of Accessories',
+      kicker: 'Special project · Creative production',
+      location: 'Russia',
+      tags: ['Product concept', 'Industrial design', 'Packaging', 'Visual identity', 'Brand accessory'],
+      summary: 'Thomas Münz sells shoe-care wet wipes — a genuinely useful product that lives in an ordinary sachet: the wipes dry out, the pack gets lost at the bottom of a bag and forgotten. This self-initiated concept rethinks the accessory as a U-shaped clip-on case with a carabiner, a branded twilly scarf and a cassette holding 15–20 wipes — something you actually want to carry.',
+      task: 'Turn a consumable that is forgotten the moment the shoes are bought into a wearable brand accessory: keep the function, give it a recognisable form and a reason to be shown on a bag.',
+      challenge: 'The standard sachet loses twice. Functionally, the wipes dry out because the pack never closes tightly. Emotionally, it disappears into a bag — and the brand leaves the owner’s field of view the same day.',
+      solution: 'The case is built from two elements of the brand’s own graphics: the letter U — the soft rounded shape found in the Thomas Münz logo — and the wave line that echoes the brand mark and turns the lid from a functional detail into a recognisable one. The case clips on with a carabiner, comes with a patterned twilly scarf and holds 15–20 wipes. Two opening variants were developed: one limited by a transparent slider, one with a pull-out cassette module.',
+      result: 'The case stops being packaging and becomes part of the visual identity: recognisable, stylish and always at hand — because you want to carry it. Instead of a consumable hidden in a bag, the brand gains a carrier of its identity that the customer displays themselves.',
+      metrics: [],
+      captions: ['The case on a bag with the branded scarf', 'What the standard pack looks like today', 'First sketches: form, carabiner, cassette', 'The formula: the letter U and the brand wave', 'The transparent-slider variant']
+    }
+  },
+
+  {
     slug: 'rodnoe',
     year: '2025',
     client: 'NDA',
