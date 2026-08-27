@@ -32,15 +32,47 @@
     revealIO = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (!e.isIntersecting) return;
-        var el = e.target;
-        // Каскад внутри одной группы: элементы с общим родителем
-        var delay = parseFloat(el.dataset.rvDelay || 0);
-        setTimeout(function () { el.classList.add('is-in'); }, delay);
-        revealIO.unobserve(el);
+        show(e.target);
+        revealIO.unobserve(e.target);
       });
     }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
 
+    function show(el) {
+      // Каскад внутри одной группы: элементы с общим родителем
+      var delay = parseFloat(el.dataset.rvDelay || 0);
+      setTimeout(function () { el.classList.add('is-in'); }, delay);
+    }
+
     items.forEach(function (el) { revealIO.observe(el); });
+
+    /* Страховка. Наблюдатель сообщает о пересечении не сразу, а иногда —
+       если блок перерисовали и он уже стоит в кадре — не сообщает вовсе.
+       Тогда контент остаётся невидимым: именно так пропадали плитки
+       портфолио после переключения категории. Поэтому всё, что уже
+       попало в окно, показываем сами, не дожидаясь наблюдателя. */
+    function sweep() {
+      var h = window.innerHeight || document.documentElement.clientHeight;
+      items.forEach(function (el) {
+        if (el.classList.contains('is-in')) return;
+        var r = el.getBoundingClientRect();
+        if (r.height === 0 && r.width === 0) return;      // скрытый блок
+        if (r.top < h && r.bottom > 0) {
+          show(el);
+          revealIO.unobserve(el);
+        }
+      });
+    }
+
+    sweep();                          // сразу, пока вкладка активна
+    requestAnimationFrame(sweep);     // и ещё раз, когда вёрстка устаканилась
+
+    /* В фоновой вкладке размеры окна равны нулю, наблюдатель молчит,
+       и страница может остаться невидимой. Возвращаемся — пересчитываем. */
+    document.addEventListener('visibilitychange', function onVis() {
+      if (document.visibilityState !== 'visible') return;
+      document.removeEventListener('visibilitychange', onVis);
+      sweep();
+    });
   }
 
   /** Расставляет ступенчатую задержку детям контейнера. */

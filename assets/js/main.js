@@ -36,22 +36,25 @@ var CONTACT_EMAIL = 'alexneeaals@gmail.com';
   function num(i) { return String(i + 1).padStart(2, '0'); }
 
   /* ==================================================================
-     Сферы работы — плашки, разбросанные вокруг имени на первом экране.
-     Два типа: в бордовой рамке (сериф) и с подчёркиванием (санс).
-     Координаты в процентах от холста героя, поворот в градусах.
-     Порядок соответствует hero.tags в content.js.
+     Сферы работы — плашки на первом экране.
+     Раскладка по образцу «пример главного экрана.pdf»: плашки стоят
+     в свободных полях по краям, никогда не наезжая ни на кадры
+     коллажа, ни на имя. Проценты — желаемое место, но окончательное
+     решает placeHeroTags(): она сверяет каждую плашку с занятыми
+     областями и, если та накрывает кадр или текст, сдвигает её в
+     ближайшее свободное место.
      ================================================================== */
   var HERO_TAGS = [
-    { x:  4, y: 16, rot: -3,   style: 'box'  },  // Туризм
-    { x: 78, y: 10, rot: 2.5,  style: 'line' },  // MICE
-    { x: 62, y: 22, rot: -1.5, style: 'box'  },  // HoReCa
-    { x: 12, y: 74, rot: 2,    style: 'line' },  // Девелопмент
-    { x: 70, y: 63, rot: -2.5, style: 'box'  },  // Люксовые бренды
-    { x: 30, y: 8,  rot: 1.5,  style: 'line' },  // События
-    { x: 86, y: 44, rot: -2,   style: 'line' },  // Образование
-    { x:  2, y: 44, rot: 3,    style: 'box'  },  // Фиджитал-системы
-    { x: 47, y: 84, rot: -1.8, style: 'box'  },  // Косметика
-    { x: 52, y: 90, rot: 2.2,  style: 'line' }   // Креативные индустрии
+    { x: 30, y: 17, style: 'box'  },  // Туризм
+    { x:  7, y: 78, style: 'box'  },  // MICE
+    { x: 76, y: 36, style: 'line' },  // HoReCa
+    { x: 33, y: 72, style: 'line' },  // Девелопмент
+    { x: 62, y: 12, style: 'box'  },  // Люксовые бренды
+    { x: 22, y: 52, style: 'line' },  // События
+    { x: 75, y: 70, style: 'line' },  // Образование
+    { x: 22, y: 6,  style: 'line' },  // Фиджитал-системы
+    { x: 55, y: 88, style: 'box'  },  // Косметика
+    { x: 60, y: 46, style: 'line' }   // Креативные индустрии
   ];
 
   function renderHeroTags() {
@@ -60,16 +63,95 @@ var CONTACT_EMAIL = 'alexneeaals@gmail.com';
     host.innerHTML = '';
 
     I18N.t('hero.tags').forEach(function (name, i) {
-      var L = HERO_TAGS[i] || { x: 10 + (i % 4) * 22, y: 12 + Math.floor(i / 4) * 26, rot: 0, style: 'box' };
+      var L = HERO_TAGS[i] || { x: 10 + (i % 4) * 22, y: 12 + Math.floor(i / 4) * 26, style: 'box' };
       // Координаты через переменные, а не напрямую в left/top: так
       // медиазапрос может убрать разброс и построить обычный поток.
       host.appendChild(el(
         '<span class="htag htag--' + L.style + '"' +
-          ' style="--x:' + L.x + '%;--y:' + L.y + '%;--rot:' + L.rot + 'deg"' +
+          ' style="--x:' + L.x + '%;--y:' + L.y + '%"' +
           ' data-parallax="' + (0.4 + (i % 3) * 0.25).toFixed(2) + '">' +
           esc(name) +
         '</span>'
       ));
+    });
+
+    placeHeroTags();
+  }
+
+  /** Область, которую плашки обязаны обходить, с запасом в px. */
+  function padRect(r, pad) {
+    return { l: r.left - pad, t: r.top - pad, r: r.right + pad, b: r.bottom + pad };
+  }
+  function hits(a, b) {
+    return a.l < b.r && a.r > b.l && a.t < b.b && a.b > b.t;
+  }
+
+  /** Разводит плашки так, чтобы ни одна не накрывала кадр или текст. */
+  function placeHeroTags() {
+    var host = $('#hero-tags');
+    var hero = host && host.parentNode;
+    if (!host || !hero) return;
+
+    // В мобильной раскладке плашки идут обычным потоком — разводить нечего
+    if (getComputedStyle(host).position === 'static') return;
+
+    var box = host.getBoundingClientRect();
+    if (!box.width || !box.height) return;
+
+    // Запретные зоны: кадры коллажа, имя с подписями, индикатор прокрутки
+    var blocked = [];
+    [].forEach.call(hero.querySelectorAll('.collage__item, .hero__title, .hero__meta, .hero__scroll'),
+      function (n) { blocked.push(padRect(n.getBoundingClientRect(), 14)); });
+
+    var tags = [].slice.call(host.querySelectorAll('.htag'));
+
+    tags.forEach(function (tag) {
+      tag.style.left = tag.style.getPropertyValue('--x');
+      tag.style.top  = tag.style.getPropertyValue('--y');
+    });
+
+    tags.forEach(function (tag) {
+      var w = tag.offsetWidth, h = tag.offsetHeight;
+      var x0 = parseFloat(tag.style.getPropertyValue('--x'));
+      var y0 = parseFloat(tag.style.getPropertyValue('--y'));
+
+      // Кандидаты: сначала желаемая точка, затем сетка вокруг неё
+      var tries = [[x0, y0]];
+      for (var ring = 1; ring <= 12; ring++) {
+        for (var dy = -ring; dy <= ring; dy++) {
+          for (var dx = -ring; dx <= ring; dx++) {
+            if (Math.max(Math.abs(dx), Math.abs(dy)) !== ring) continue;
+            tries.push([x0 + dx * 3, y0 + dy * 4]);
+          }
+        }
+      }
+
+      var maxX = 100 - (w / box.width) * 100;
+      var maxY = 100 - (h / box.height) * 100;
+
+      for (var k = 0; k < tries.length; k++) {
+        var px = Math.min(Math.max(tries[k][0], 0), Math.max(maxX, 0));
+        var py = Math.min(Math.max(tries[k][1], 0), Math.max(maxY, 0));
+        var rect = {
+          l: box.left + box.width  * px / 100,
+          t: box.top  + box.height * py / 100
+        };
+        rect.r = rect.l + w;
+        rect.b = rect.t + h;
+
+        var free = true;
+        for (var m = 0; m < blocked.length; m++) {
+          if (hits(rect, blocked[m])) { free = false; break; }
+        }
+        if (free) {
+          tag.style.left = px + '%';
+          tag.style.top  = py + '%';
+          blocked.push(padRect({ left: rect.l, top: rect.t, right: rect.r, bottom: rect.b }, 10));
+          return;
+        }
+      }
+      // Свободного места не нашлось — лучше не показывать, чем перекрыть
+      tag.style.display = 'none';
     });
   }
 
@@ -141,6 +223,9 @@ var CONTACT_EMAIL = 'alexneeaals@gmail.com';
         workCat = cat;
         renderWorkCats();
         renderWorks();
+        // Плитки созданы заново и снова помечены .rv — без этого вызова
+        // они остались бы прозрачными: наблюдатель их уже не видит
+        MOTION.reveal();
       });
       host.appendChild(b);
     });
@@ -181,30 +266,123 @@ var CONTACT_EMAIL = 'alexneeaals@gmail.com';
     MOTION.stagger(host, '.work', 80);
   }
 
-  /* ==================== Задачи клиентов ==================== */
+  /* ==================== Задачи клиентов — слайдер ==================== */
 
   function renderAsks() {
     var host = $('#solve-list');
     if (!host) return;
-    // Номер подставляем в саму подпись: в русском это «№ 1», в английском «#1»
     var askTpl = I18N.t('solve.askLabel');
     host.innerHTML = '';
 
     I18N.t('solve.items').forEach(function (it, i) {
       host.appendChild(el(
-        '<article class="ask rv" data-rv-delay="' + (i % 2 * 90) + '">' +
+        '<article class="ask">' +
           '<span class="ask__n">' + num(i) + '</span>' +
-          '<div class="ask__body">' +
-            '<span class="label label--accent">' + esc(askTpl.replace('{n}', i + 1)) + '</span>' +
-            '<h3 class="ask__q">' + esc(it.q) + '</h3>' +
-            '<p class="ask__a">' + esc(it.a) + '</p>' +
-            '<ul class="ask__list">' +
-              it.points.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') +
-            '</ul>' +
-          '</div>' +
+          '<span class="label label--accent">' + esc(askTpl.replace('{n}', i + 1)) + '</span>' +
+          '<h3 class="ask__q">' + esc(it.q) + '</h3>' +
+          '<p class="ask__a">' + esc(it.a) + '</p>' +
+          '<ul class="ask__list">' +
+            it.points.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') +
+          '</ul>' +
         '</article>'
       ));
     });
+
+    initAskSlider();
+  }
+
+  /** Горизонтальная прокрутка карточек: свайп и колесо нативные,
+      JS отвечает только за стрелки, точки и синхронизацию. */
+  function initAskSlider() {
+    var track = $('#solve-list');
+    var dotsHost = $('#solve-dots');
+    if (!track || !dotsHost) return;
+
+    var cards = $$('.ask', track);
+    if (!cards.length) return;
+
+    var current = 0;
+
+    /* Позиция карточки в ленте. Считаем по реальному смещению узла,
+       а не по «шагу»: ширина карточки задана в процентах и на разных
+       экранах шаг разный, а после смены шрифта — ещё и плавающий. */
+    function maxScroll() { return track.scrollWidth - track.clientWidth; }
+    function cardPos(i) {
+      return Math.min(cards[i].offsetLeft - cards[0].offsetLeft, Math.max(maxScroll(), 0));
+    }
+
+    /* Последняя достижимая позиция: на широком экране видно сразу
+       несколько карточек, поэтому «страниц» меньше, чем карточек. */
+    function lastIndex() {
+      var max = maxScroll();
+      if (max <= 1) return 0;
+      for (var i = 0; i < cards.length; i++) {
+        if (cardPos(i) >= max - 1) return i;
+      }
+      return cards.length - 1;
+    }
+
+    function buildDots() {
+      var need = lastIndex() + 1;
+      if (dotsHost.children.length === need) return;
+      dotsHost.innerHTML = '';
+      for (var i = 0; i < need; i++) {
+        (function (k) {
+          var d = el('<button class="sdot" type="button" aria-label="' + (k + 1) + '"></button>');
+          d.addEventListener('click', function () { goTo(k); });
+          dotsHost.appendChild(d);
+        })(i);
+      }
+    }
+
+    function sync() {
+      buildDots();
+      var last = lastIndex();
+      $$('.sdot', dotsHost).forEach(function (d, k) { d.classList.toggle('is-on', k === current); });
+      $$('.sbtn', track.parentNode).forEach(function (b) {
+        var dir = Number(b.dataset.dir);
+        b.disabled = (dir < 0 && current === 0) || (dir > 0 && current === last);
+      });
+    }
+
+    function goTo(i) {
+      var last = lastIndex();
+      current = Math.min(Math.max(i, 0), last);
+      // Плавность задаёт CSS (scroll-behavior на ленте): вызов
+      // scrollTo с behavior:'smooth' часть движков молча игнорирует.
+      // На последнем шаге доезжаем до самого края, иначе крайняя
+      // карточка осталась бы подрезанной.
+      track.scrollLeft = (current === last) ? maxScroll() : cardPos(current);
+      sync();
+    }
+
+    /** Какая карточка ближе всего к текущему положению ленты. */
+    function fromScroll() {
+      var x = track.scrollLeft, best = 0, bestD = Infinity;
+      for (var i = 0; i <= lastIndex(); i++) {
+        var d = Math.abs(cardPos(i) - x);
+        if (d < bestD) { bestD = d; best = i; }
+      }
+      if (best !== current) { current = best; sync(); }
+    }
+
+    $$('.sbtn', track.parentNode).forEach(function (b) {
+      b.addEventListener('click', function () { goTo(current + Number(b.dataset.dir)); });
+    });
+    track.addEventListener('scroll', function () {
+      clearTimeout(track._t);
+      track._t = setTimeout(fromScroll, 90);
+    }, { passive: true });
+    track.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); goTo(current + 1); }
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); goTo(current - 1); }
+    });
+    window.addEventListener('resize', function () {
+      clearTimeout(track._r);
+      track._r = setTimeout(sync, 180);
+    }, { passive: true });
+
+    sync();
   }
 
   /* ==================== Дорожная карта образования ==================== */
@@ -378,7 +556,21 @@ var CONTACT_EMAIL = 'alexneeaals@gmail.com';
   document.addEventListener('DOMContentLoaded', function () {
     renderAll();
     initForm();
+    // Шрифты подгружаются после первой отрисовки и меняют ширину плашек,
+    // поэтому раскладку пересчитываем ещё раз, когда они готовы
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(placeHeroTags);
   });
+
+  /* При смене размера окна свободные поля вокруг имени меняются —
+     плашки нужно разложить заново. */
+  var placeTimer = null;
+  window.addEventListener('resize', function () {
+    clearTimeout(placeTimer);
+    placeTimer = setTimeout(function () {
+      [].forEach.call(document.querySelectorAll('.htag'), function (t) { t.style.display = ''; });
+      placeHeroTags();
+    }, 180);
+  }, { passive: true });
 
   document.addEventListener('langchange', renderAll);
 })();

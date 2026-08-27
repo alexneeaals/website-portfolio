@@ -52,9 +52,12 @@ window.CONTENT = {
     /* ---------- Запросы клиентов ---------- */
     solve: {
       label: 'Задачи',
-      title: 'Ваш проект заслуживает большего, чем просто «красиво»',
+      title: 'С какими задачами я работаю',
       intro: 'Я работаю с территориями, пространствами и брендами, чтобы создавать не просто объекты, а живые, работающие системы. Вот с чем я помогаю справиться.',
       askLabel: 'Запрос клиента № {n}',
+      hint: 'Листайте карточки',
+      prev: 'Назад',
+      next: 'Вперёд',
       items: [
         {
           q: '«У нас есть пространство, но оно не работает»',
@@ -125,8 +128,8 @@ window.CONTENT = {
     /* ---------- Что я делаю ---------- */
     do: {
       label: 'Услуги',
-      title: 'Что я делаю',
-      sub: 'Креативное производство и бренд-архитектура',
+      title: 'Что я создаю',
+      sub: 'Креативный продакшн и бренд-стратегия',
       items: [
         { t: 'Разработка продуктов и брендов', d: 'Создание и вывод на рынок новых продуктов, брендов, а также ребрендинг: от аналитики и концепции до визуального кода, нейминга и упаковки.' },
         { t: 'Управление брендом и продуктом', d: 'Стратегия позиционирования, целостная коммуникация и визуальный язык, управление клиентским опытом, контент-экосистема, репутационная архитектура.' },
@@ -285,9 +288,12 @@ window.CONTENT = {
 
     solve: {
       label: 'Challenges',
-      title: 'Your project deserves more than merely “beautiful”',
+      title: 'The challenges I work with',
       intro: 'I work with territories, spaces and brands to create not just objects but living, working systems. Here is what I help with.',
       askLabel: 'Client brief #{n}',
+      hint: 'Swipe the cards',
+      prev: 'Previous',
+      next: 'Next',
       items: [
         {
           q: '“We have a space, but it doesn’t work”',
@@ -356,8 +362,8 @@ window.CONTENT = {
 
     do: {
       label: 'Services',
-      title: 'What I do',
-      sub: 'Creative production & brand architecture',
+      title: 'What I create',
+      sub: 'Creative production and brand strategy',
       items: [
         { t: 'Product and brand development', d: 'Creating and launching new products and brands, plus rebrands: from research and concept to visual code, naming and packaging.' },
         { t: 'Brand and product management', d: 'Positioning strategy, coherent communication and visual language, customer experience management, content ecosystem, reputation architecture.' },
@@ -567,7 +573,7 @@ window.PROJECTS = [
     ru: {
       title: 'Родное',
       kicker: 'Усадебный парк-курорт',
-      location: 'Севастополь, Терновский округ',
+      location: 'Краснодарский край',
       tags: ['Мастер-план', 'Продуктовая концепция', 'Зонирование', 'Архитектурное задание', 'ТЭПы', 'Упаковка проекта'],
       summary: '«Родное» — место, где природа становится терапией. Круглогодичный парк-курорт для осознанного отдыха и восстановления на 67,21 га, из них 16,61 га под освоение. Проект объединяет идеи заземления, осознанного движения, пользы и настоящего комьюнити.',
       task: 'Разработать продуктовую концепцию, структуру номерного фонда, зонирование, архитектурное задание, рассчитать ТЭПы и подготовить презентационные материалы.',
@@ -585,7 +591,7 @@ window.PROJECTS = [
     en: {
       title: 'Rodnoe',
       kicker: 'Estate park-resort',
-      location: 'Sevastopol, Ternovsky district',
+      location: 'Krasnodar Krai',
       tags: ['Master plan', 'Product concept', 'Zoning', 'Architectural brief', 'Feasibility figures', 'Project packaging'],
       summary: 'Rodnoe is a place where nature becomes therapy. A year-round park-resort for mindful rest and recovery across 67.21 hectares, of which 16.61 are developed. It brings together grounding, mindful movement, wellbeing and genuine community.',
       task: 'Develop the product concept, the structure of the accommodation stock, zoning and the architectural brief; calculate feasibility figures and prepare presentation materials.',
