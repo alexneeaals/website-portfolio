@@ -110,7 +110,7 @@ window.CONTENT = {
     /* ---------- Почему бренды выбирают меня ---------- */
     why: {
       label: 'Ценность',
-      title: 'Почему бренды выбирают меня',
+      title: 'Что стоит за проектами',
       sub: 'Стратегический бренд-менеджмент и измеримая ценность',
       intro: 'Я управляю брендами на аутсорсе, где бы ни находился бизнес, — становясь вашим стратегическим партнёром, поднимая капитализацию и обеспечивая измеримый рост. Не просто консультирую: внедряю, трансформирую и выстраиваю системы, которые приносят долгосрочную ценность.',
       items: [
@@ -345,7 +345,7 @@ window.CONTENT = {
 
     why: {
       label: 'Value',
-      title: 'Why brands choose me',
+      title: 'What stands behind the projects',
       sub: 'Strategic brand management and measurable value',
       intro: 'I manage brands on an outsourcing basis, wherever the business sits — becoming your strategic partner, lifting equity and delivering measurable growth. Not merely advising: I execute, transform and build systems that create lasting value.',
       items: [
