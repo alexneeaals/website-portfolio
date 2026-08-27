@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@200;300;400;500&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=20260826">
+<link rel="stylesheet" href="assets/css/style.css?v=20260827">
 </head>
 <body>
 
@@ -37,7 +37,7 @@
     <nav class="nav">
       <a class="nav__link" href="#work"     data-i18n="nav.work"    data-magnet>Портфолио</a>
       <a class="nav__link nav__link--ru" href="/products/" data-magnet>Продукты</a>
-      <a class="nav__link" href="#map"      data-i18n="nav.map"     data-magnet>Компетенции</a>
+      <a class="nav__link" href="#solve"    data-i18n="nav.solve"   data-magnet>Задачи</a>
       <a class="nav__link" href="#formats"  data-i18n="nav.formats" data-magnet>Форматы</a>
       <a class="nav__link" href="#contact"  data-i18n="nav.contact" data-magnet>Контакты</a>
     </nav>
@@ -56,7 +56,7 @@
 <nav class="nav nav--mobile">
   <a class="nav__link" href="#work"    data-i18n="nav.work">Портфолио</a>
   <a class="nav__link nav__link--ru" href="/products/">Продукты</a>
-  <a class="nav__link" href="#map"     data-i18n="nav.map">Компетенции</a>
+  <a class="nav__link" href="#solve"   data-i18n="nav.solve">Задачи</a>
   <a class="nav__link" href="#formats" data-i18n="nav.formats">Форматы</a>
   <a class="nav__link" href="#contact" data-i18n="nav.contact">Контакты</a>
 </nav>
@@ -80,6 +80,9 @@
         <img src="assets/img/collage/01-lake.jpg" alt="">
       </figure>
     </div>
+
+    <!-- Плашки сфер разбросаны вокруг имени: раскладку задаёт main.js -->
+    <div class="hero-tags" id="hero-tags" aria-hidden="true"></div>
 
     <div class="shell hero__in">
       <h1 class="hero__title">
@@ -132,70 +135,35 @@
     </div>
   </section>
 
-  <!-- ============================== Сферы ============================== -->
-  <section class="section" id="sectors">
-    <div class="shell">
-      <div class="decos">
-        <figure class="deco deco--tr" style="--rot:1.5deg;--w:20%" data-parallax="0.5">
-          <img src="assets/img/decor/interior.jpg" alt="" loading="lazy">
-        </figure>
-      </div>
-
-      <div class="section-head rv">
-        <div class="tick"></div>
-        <span class="label" data-i18n="sectors.label">Направления работы</span>
-        <h2 class="h-section" style="margin-top:14px" data-i18n="sectors.title">Сферы, в которых я работаю</h2>
-        <p data-i18n="sectors.sub"></p>
-      </div>
-
-      <!-- Свободный разброс плашек и кадров — раскладку задаёт main.js -->
-      <div class="scatter rv" id="sectors-scatter" data-rv-delay="100"></div>
-    </div>
-  </section>
-
   <!-- ============================== Портфолио ============================== -->
-  <section class="section section--ivory" id="work">
+  <section class="section" id="work">
     <div class="shell">
       <div class="section-head rv">
         <div class="tick"></div>
         <span class="label" data-i18n="work.label">Избранное</span>
-        <h2 class="h-section" style="margin-top:14px" data-i18n="work.title">Портфолио / Проекты</h2>
-        <p data-i18n="work.sub"></p>
+        <h2 class="h-section" style="margin-top:14px" data-i18n="work.title">Портфолио</h2>
       </div>
+      <!-- Категории: раскладку и фильтрацию делает main.js -->
+      <div class="work-cats rv" id="work-cats"></div>
       <div class="works" id="works"></div>
     </div>
   </section>
 
-  <!-- ============================== Экспертиза 360 ============================== -->
-  <section class="section" id="approach">
+  <!-- ============================== Задачи клиентов ============================== -->
+  <section class="section section--ivory" id="solve">
     <div class="shell">
-      <div class="decos">
-        <figure class="deco deco--tr" style="--rot:-2deg;--w:17%" data-parallax="0.6">
-          <img src="assets/img/decor/identity.jpg" alt="" loading="lazy">
-        </figure>
-      </div>
-
       <div class="section-head rv">
         <div class="tick"></div>
-        <span class="label" data-i18n="expertise.label">Мой подход</span>
-        <h2 class="h-section" style="margin-top:14px" data-i18n="expertise.title">Экспертиза 360</h2>
-        <p data-i18n="expertise.sub"></p>
+        <span class="label" data-i18n="solve.label">Задачи</span>
+        <h2 class="h-section" style="margin-top:14px" data-i18n="solve.title">Ваш проект заслуживает большего, чем просто «красиво»</h2>
+        <p class="lede" style="margin-top:18px" data-i18n="solve.intro"></p>
       </div>
-
-      <!-- Второй кадр стоит в потоке рядом со вступлением, а не поверх текста -->
-      <div class="intro-row rv">
-        <p class="lede" data-i18n="expertise.intro"></p>
-        <figure class="deco-inline" style="--rot:2.5deg">
-          <img src="assets/img/decor/lantern.jpg" alt="" loading="lazy">
-        </figure>
-      </div>
-
-      <div class="cards cards--3" id="expertise-cards"></div>
+      <div class="asks" id="solve-list"></div>
     </div>
   </section>
 
   <!-- ====================== Почему бренды выбирают меня ====================== -->
-  <section class="section section--ivory">
+  <section class="section">
     <div class="shell">
       <div class="decos">
         <figure class="deco deco--tr" style="--rot:2deg;--w:19%" data-parallax="0.5">
@@ -224,7 +192,7 @@
   </section>
 
   <!-- ============================== Что я делаю ============================== -->
-  <section class="section">
+  <section class="section section--ivory">
     <div class="shell">
       <div class="decos">
         <figure class="deco deco--tr" style="--rot:-1.5deg;--w:18%" data-parallax="0.6">
@@ -243,7 +211,7 @@
   </section>
 
   <!-- ============================== Процесс ============================== -->
-  <section class="section section--ivory">
+  <section class="section">
     <div class="shell">
       <div class="decos">
         <figure class="deco deco--tr" style="--rot:2.2deg;--w:17%" data-parallax="0.7">
@@ -263,7 +231,7 @@
   </section>
 
   <!-- ============================== Форматы работы ============================== -->
-  <section class="section" id="formats">
+  <section class="section section--ivory" id="formats">
     <div class="shell">
       <div class="decos">
         <figure class="deco deco--tr" style="--rot:-2.4deg;--w:17%" data-parallax="0.6">
@@ -287,86 +255,21 @@
     </div>
   </section>
 
-  <!-- ==================== Карта компетенций — слайдер ==================== -->
-  <section class="section section--ivory" id="map">
+  <!-- ========================= Образование — дорожная карта ========================= -->
+  <section class="section" id="edu">
     <div class="shell">
-      <div class="decos">
-        <figure class="deco deco--tr" style="--rot:1.8deg;--w:15%" data-parallax="0.6">
-          <img src="assets/img/decor/nature.jpg" alt="" loading="lazy">
-        </figure>
-      </div>
-
       <div class="section-head rv">
         <div class="tick"></div>
-        <span class="label" data-i18n="map.label">Профиль</span>
-        <h2 class="h-section" style="margin-top:14px" data-i18n="map.title">Карта компетенций</h2>
-        <p data-i18n="map.sub"></p>
+        <span class="label" data-i18n="edu.label">Образование</span>
+        <h2 class="h-section" style="margin-top:14px" data-i18n="edu.title">Три образования — одна система мышления</h2>
       </div>
 
-      <div class="slider">
-        <div class="slider__viewport" id="map-track" tabindex="0">
+      <!-- Ступени расставляет main.js -->
+      <div class="road rv" id="edu-road"></div>
 
-          <article class="slide panel">
-            <div class="panel__head">
-              <h3 class="panel__title" data-i18n="map.skillsTitle">Профиль компетенций</h3>
-              <div class="panel__hint" data-i18n="map.skillsHint"></div>
-            </div>
-            <div class="skills" id="skills-list"></div>
-          </article>
-
-          <article class="slide panel">
-            <div class="panel__head">
-              <h3 class="panel__title" data-i18n="map.toolsTitle">Инструменты</h3>
-              <div class="panel__hint" data-i18n="map.toolsHint"></div>
-            </div>
-            <div id="tools-list"></div>
-            <p class="tools__note" data-i18n="map.toolsNote"></p>
-          </article>
-
-          <article class="slide panel">
-            <div class="panel__head">
-              <h3 class="panel__title" data-i18n="map.eduTitle">Образование</h3>
-              <div class="panel__hint" data-i18n="map.eduHint"></div>
-            </div>
-            <div class="timeline">
-              <span class="timeline__rail"></span>
-              <div class="timeline__list" id="edu-timeline"></div>
-            </div>
-          </article>
-
-          <article class="slide panel">
-            <div class="panel__head">
-              <h3 class="panel__title" data-i18n="map.langTitle">Языки</h3>
-              <div class="panel__hint" data-i18n="map.langHint"></div>
-            </div>
-            <div class="langs" id="langs"></div>
-          </article>
-
-          <article class="slide panel">
-            <div class="panel__head">
-              <h3 class="panel__title" data-i18n="map.softTitle">Soft skills</h3>
-              <div class="panel__hint" data-i18n="map.softHint"></div>
-            </div>
-            <div class="chips" id="soft-chips"></div>
-          </article>
-
-        </div>
-
-        <div class="slider__bar">
-          <div class="slider__dots" id="map-dots"></div>
-          <div class="slider__arrows">
-            <button class="sbtn" data-dir="-1" data-i18n-attr="aria-label:map.prev">
-              <svg width="20" height="8" viewBox="0 0 20 8" fill="none" aria-hidden="true">
-                <path d="M20 4H1M5 1 1 4l4 3" stroke="currentColor" stroke-width="1"/>
-              </svg>
-            </button>
-            <button class="sbtn" data-dir="1" data-i18n-attr="aria-label:map.next">
-              <svg width="20" height="8" viewBox="0 0 20 8" fill="none" aria-hidden="true">
-                <path d="M0 4h19M15 1l4 3-4 3" stroke="currentColor" stroke-width="1"/>
-              </svg>
-            </button>
-          </div>
-        </div>
+      <div class="road-note rv" data-rv-delay="120">
+        <p class="quote" data-i18n="edu.note"></p>
+        <p class="road-note__end" data-i18n="edu.note2"></p>
       </div>
     </div>
   </section>
@@ -426,7 +329,7 @@
           </div>
           <div class="contact__row">
             <span class="label" data-i18n="contact.studioLabel">Локация:</span>
-            <span data-i18n="contact.studio">Рим, Италия</span>
+            <span data-i18n="contact.studio">Работаю по всему миру</span>
           </div>
           <div class="contact__row">
             <span class="label" data-i18n="formats.priceLabel">Стоимость</span>
@@ -441,7 +344,7 @@
 
 <footer class="footer">
   <div class="shell footer__in">
-    <span class="footer__copy" data-i18n="footer.copy">© Александра Николаева — Рим, Италия</span>
+    <span class="footer__copy" data-i18n="footer.copy">© Александра Николаева</span>
     <nav class="footer__links">
       <a href="https://instagram.com/sandraniko_com" target="_blank" rel="noopener noreferrer">Instagram</a>
       <a href="https://t.me/nikolaeva_creates" target="_blank" rel="noopener noreferrer">Telegram</a>
@@ -449,9 +352,9 @@
   </div>
 </footer>
 
-<script src="assets/js/content.js?v=20260826"></script>
-<script src="assets/js/i18n.js?v=20260826"></script>
-<script src="assets/js/motion.js?v=20260826"></script>
-<script src="assets/js/main.js?v=20260826"></script>
+<script src="assets/js/content.js?v=20260827"></script>
+<script src="assets/js/i18n.js?v=20260827"></script>
+<script src="assets/js/motion.js?v=20260827"></script>
+<script src="assets/js/main.js?v=20260827"></script>
 </body>
 </html>

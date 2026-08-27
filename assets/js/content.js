@@ -15,7 +15,7 @@ window.CONTENT = {
 
     nav: {
       work: 'Портфолио',
-      map: 'Компетенции',
+      solve: 'Задачи',
       formats: 'Форматы',
       contact: 'Контакты',
       menu: 'Меню',
@@ -28,7 +28,10 @@ window.CONTENT = {
       name2: 'Николаева',
       role: 'Креативный продюсер и бренд-стратег',
       location: 'Работаю с брендами по всему миру',
-      scroll: 'Листайте'
+      scroll: 'Листайте',
+      // Сферы работы. Раньше это была отдельная секция «Сферы, в которых
+      // я работаю»; теперь плашки разбросаны вокруг имени на первом экране.
+      tags: ['Туризм', 'MICE', 'HoReCa', 'Девелопмент', 'Люксовые бренды', 'События', 'Образование', 'Фиджитал-системы', 'Косметика', 'Креативные индустрии']
     },
 
     about: {
@@ -43,43 +46,60 @@ window.CONTENT = {
       quoteAuthor: '— Гёте'
     },
 
-    sectors: {
-      label: 'Направления работы',
-      title: 'Сферы, в которых я работаю',
-      sub: 'В разных отраслях, объединённых смыслом',
-      items: ['Туризм', 'MICE', 'HoReCa', 'Девелопмент', 'Люксовые бренды', 'События', 'Образование', 'Фиджитал-системы', 'Косметика', 'Креативные индустрии']
-    },
 
-    /* ---------- Экспертиза 360 (бывш. «В чём моя разница») ---------- */
-    expertise: {
-      label: 'Мой подход',
-      title: 'Экспертиза 360',
-      sub: 'Что получает проект помимо креатива',
-      intro: 'Фантазия для меня — рабочий инструмент: придумываю миры и разворачиваю их сразу в цифровом и физическом формате, чтобы замысел не остался красивой картинкой, а стал действующей системой.',
+
+
+    /* ---------- Запросы клиентов ---------- */
+    solve: {
+      label: 'Задачи',
+      title: 'Ваш проект заслуживает большего, чем просто «красиво»',
+      intro: 'Я работаю с территориями, пространствами и брендами, чтобы создавать не просто объекты, а живые, работающие системы. Вот с чем я помогаю справиться.',
+      askLabel: 'Запрос клиента № {n}',
       items: [
         {
-          t: 'Сторителлинг и создание миров',
-          d: 'Выстраиваю вселенную бренда — легенду, характер, язык — и раскрываю её сразу в двух плоскостях: в цифровой среде и в физическом пространстве. На выходе не набор макетов, а целостный мир, в который можно войти.'
+          q: '«У нас есть пространство, но оно не работает»',
+          a: 'Я создаю концепцию, которая превращает пустующее или неэффективное место в точку притяжения.',
+          points: [
+            'Территория теряет посетителей и не приносит ожидаемого дохода.',
+            'Нет чёткого понимания, как использовать пространство, чтобы оно привлекало людей и инвестиции.',
+            'Старые площади устарели и требуют переосмысления — им нужна новая жизнь.'
+          ]
         },
         {
-          t: 'Онлайн-бренд выходит в пространство',
-          d: 'Проектирую, как digital-бренд живёт офлайн и каким предстаёт на новых площадках. Не магазин, а мультиформат: коворкинг, кафе, примерочная зона, сцена для событий. Современная среда на пересечении технологий, предметного дизайна и бренд-коммуникации.'
+          q: '«Наш бренд теряется на рынке»',
+          a: 'Я разрабатываю и запускаю бренды, которые выделяются и запоминаются, даже в переполненных нишах.',
+          points: [
+            'Бренд не отличается от конкурентов и не вызывает эмоций у аудитории.',
+            'Нет единой стратегии, которая объединяет визуал, коммуникацию и продукт.',
+            'Бренд существует только в онлайне, но не имеет «физического лица» — пространства, события, ощущения.'
+          ]
         },
         {
-          t: 'Методология вместо креатива ради креатива',
-          d: 'Работаю как методолог: собираю решения, которые бизнесу действительно нужны — те, что растят капитализацию и добавленную стоимость, а не просто украшают слайды.'
+          q: '«Мы не знаем, как создать туристический продукт»',
+          a: 'Я проектирую и упаковываю туристические продукты — от глэмпингов до фестивалей, — которые привлекают гостей и приносят прибыль.',
+          points: [
+            'Идея есть, но нет готовой структуры и экономической модели.',
+            'Непонятно, с чего начать и как избежать ошибок на старте.',
+            'Продукт не цепляет аудиторию и не вызывает желания приехать или купить.'
+          ]
         },
         {
-          t: 'Архитектурная база',
-          d: 'Первое образование — архитектурное. Поэтому решения опираются на реальный опыт проектирования: масштаб, рельеф, зонирование, потоки людей и экономика площадей — не абстракция, а рабочие параметры.'
+          q: '«Наше событие скучное и не запоминается»',
+          a: 'Я разрабатываю режиссуру событий, которые превращают любое мероприятие в яркое, эмоциональное переживание.',
+          points: [
+            'Мероприятие не вызывает отклика у гостей и не создаёт «вау-эффекта».',
+            'Нет целостной идеи, которая объединяет форум, презентацию или фестиваль.',
+            'Событие не работает на бренд и не усиливает его узнаваемость.'
+          ]
         },
         {
-          t: 'AI как рабочий инструмент',
-          d: 'Использую Claude, Figma Make, Midjourney, Higgsfield и другие современные нейросети. Они поднимают качество и заметно сокращают срок производства: идея превращается в визуализацию, сценарий и MVP в разы быстрее.'
-        },
-        {
-          t: 'Предпринимательский опыт',
-          d: 'За плечами собственное дело, поэтому замысел не остаётся замыслом: он переходит в действующие системы и методики. Веду авторский надзор, занимаюсь комплектацией и партнёрскими интеграциями.'
+          q: '«Нам нужен дизайн среды, но непонятно, с чего начать»',
+          a: 'Я проектирую среду — интерьеры, навигацию, зонирование, — которая делает пространство удобным, красивым и функциональным.',
+          points: [
+            'Пространство не соответствует задачам бизнеса и неудобно для гостей.',
+            'Дизайн есть, но он не связан с брендом и не создаёт целостного впечатления.',
+            'Нет понимания, как визуал и планировка влияют на поведение посетителей и продажи.'
+          ]
         }
       ]
     },
@@ -146,73 +166,29 @@ window.CONTENT = {
       priceNote: 'Напишите о задаче — предложу формат и объём работы.'
     },
 
-    /* ---------- Дашборд «Карта компетенций» ---------- */
-    map: {
-      label: 'Профиль',
-      title: 'Карта компетенций',
-      sub: 'Навыки, инструменты и образование — наглядно',
-      hint: 'Листайте карточки',
-      prev: 'Назад',
-      next: 'Вперёд',
-
-      skillsTitle: 'Профиль компетенций',
-      skillsHint: 'Шесть направлений, в которых я веду проект',
-      skills: [
-        'Бренд-стратегия',
-        'Средовой дизайн',
-        'Креативный продакшн',
-        'Продукт и экономика',
-        'Управление командой',
-        'AI и технологии'
-      ],
-
-      toolsTitle: 'Инструменты',
-      toolsHint: 'Уровень владения',
-      toolsNote: 'Нейросети стоят в общем ряду инструментов: они сокращают путь от замысла к готовому материалу, а не заменяют мышление.',
-      levels: ['Базовый', 'Уверенный', 'Продвинутый', 'Экспертный'],
-      tools: [
-        { name: 'Figma', v: 4, ai: false },
-        { name: 'AutoCAD', v: 4, ai: false },
-        { name: 'SketchUp', v: 3, ai: false },
-        { name: 'Adobe Photoshop', v: 3, ai: false },
-        { name: 'Adobe Illustrator', v: 3, ai: false },
-        { name: 'Notion', v: 4, ai: false },
-        { name: 'Claude', v: 4, ai: true },
-        { name: 'Figma Make', v: 4, ai: true },
-        { name: 'Midjourney', v: 3, ai: true },
-        { name: 'Higgsfield', v: 3, ai: true }
-      ],
-
-      eduTitle: 'Образование',
-      eduHint: 'Четыре ступени — одна система мышления',
-      edu: [
-        { years: '2018 — 2022', place: 'РУДН', what: 'Ландшафтная архитектура, перевод', deg: 'Бакалавриат', status: 'done' },
-        { years: '2022 — 2024', place: 'НИУ ВШЭ', what: 'Территориальный брендинг и дизайн городской среды', deg: 'Магистратура', status: 'done' },
-        { years: '2023 — 2024', place: 'МГИМО и Нетология', what: 'Туризм и гостеприимство · Brand & Product Management', deg: 'Доп. образование', status: 'done' },
-        { years: '2026 — 2027', place: 'Rome Business School', what: 'Art & Culture · Brand Management', deg: 'Магистратура', status: 'progress' }
-      ],
-      eduInProgress: 'В процессе',
-
-      langTitle: 'Языки',
-      langHint: 'Свободно веду переговоры и презентации',
-      langs: [
-        { name: 'Русский', level: 'Родной', v: 1 },
-        { name: 'English', level: 'C1', v: 0.8 },
-        { name: 'Italiano', level: 'A2', v: 0.35 }
-      ],
-
-      softTitle: 'Soft skills',
-      softHint: 'Как я работаю с людьми и задачами',
-      soft: ['Лидерство', 'Управление командой', 'Менторинг', 'Переговоры', 'Публичные выступления', 'Стратегическое мышление', 'Креативное мышление', 'Эмоциональный интеллект', 'Многозадачность', 'Защита проекта']
-    },
 
     /* ---------- Портфолио ---------- */
+
+    /* ---------- Дорожная карта образования ---------- */
+    edu: {
+      label: 'Образование',
+      title: 'Три образования — одна система мышления',
+      items: [
+        { place: 'РУДН', what: 'Архитектор среды' },
+        { place: 'НИУ ВШЭ', what: 'Бренд-менеджер' },
+        { place: 'Римская бизнес-школа', what: 'Международный менеджер в искусстве и культуре' }
+      ],
+      note: 'Мой подход — на стыке архитектуры, брендинга и режиссуры. Такого нет у 99% специалистов.',
+      note2: 'Я закрываю все этапы. От идеи до реализации.'
+    },
+
     work: {
       label: 'Избранное',
-      title: 'Портфолио / Проекты',
-      sub: 'Реализованные кейсы: туризм, девелопмент, бренды и события',
+      title: 'Портфолио',
+      sub: '',
       view: 'Смотреть кейс',
       all: 'Все проекты',
+      cats: { all: 'Все проекты', spaces: 'Пространства', brands: 'Бренды', events: 'События' },
       prev: 'Предыдущий кейс',
       next: 'Следующий кейс',
       back: 'К портфолио'
@@ -239,12 +215,12 @@ window.CONTENT = {
       errEmail: 'Укажите корректный email',
       errMessage: 'Расскажите пару слов о задаче',
       emailLabel: 'Email:',
-      studioLabel: 'Локация:',
-      studio: 'Рим, Италия — работаю по всему миру'
+      studioLabel: 'География:',
+      studio: 'Работаю по всему миру'
     },
 
     footer: {
-      copy: '© Александра Николаева — Рим, Италия',
+      copy: '© Александра Николаева',
       rights: 'Все проекты и изображения принадлежат автору'
     },
 
@@ -275,7 +251,7 @@ window.CONTENT = {
 
     nav: {
       work: 'Work',
-      map: 'Competencies',
+      solve: 'Challenges',
       formats: 'Formats',
       contact: 'Contact',
       menu: 'Menu',
@@ -288,7 +264,8 @@ window.CONTENT = {
       name2: 'Niko',
       role: 'Creative Producer & Brand Strategist',
       location: 'Working with brands worldwide',
-      scroll: 'Scroll'
+      scroll: 'Scroll',
+      tags: ['Tourism', 'MICE', 'HoReCa', 'Development', 'Luxury brands', 'Events', 'Education', 'Phygital systems', 'Cosmetics', 'Creative industries']
     },
 
     about: {
@@ -303,42 +280,59 @@ window.CONTENT = {
       quoteAuthor: '— Goethe'
     },
 
-    sectors: {
-      label: 'Fields of work',
-      title: 'Sectors I work in',
-      sub: 'Across industries, united by meaning',
-      items: ['Tourism', 'MICE', 'HoReCa', 'Development', 'Luxury brands', 'Events', 'Education', 'Phygital systems', 'Cosmetics', 'Creative industries']
-    },
 
-    expertise: {
-      label: 'My approach',
-      title: 'Expertise 360',
-      sub: 'What a project gains beyond creative',
-      intro: 'Imagination is a working instrument for me: I invent worlds and unfold them in the digital and the physical at once, so the idea never stays a pretty picture but becomes a functioning system.',
+
+
+    solve: {
+      label: 'Challenges',
+      title: 'Your project deserves more than merely “beautiful”',
+      intro: 'I work with territories, spaces and brands to create not just objects but living, working systems. Here is what I help with.',
+      askLabel: 'Client brief #{n}',
       items: [
         {
-          t: 'Storytelling and world-building',
-          d: 'I build the universe of a brand — its legend, character and language — and reveal it on two planes at once: in the digital environment and in physical space. What you get is not a set of layouts but a coherent world you can walk into.'
+          q: '“We have a space, but it doesn’t work”',
+          a: 'I create a concept that turns an empty or underperforming place into a destination.',
+          points: [
+            'The site is losing visitors and not generating the expected revenue.',
+            'There is no clear idea of how to use the space so that it attracts people and investment.',
+            'Ageing venues need rethinking — they need a new life.'
+          ]
         },
         {
-          t: 'Online brands moving into space',
-          d: 'I design how a digital brand lives offline and how it appears on new sites. Not a shop, but a multi-format venue: coworking, café, fitting area, a stage for events. A contemporary environment where technology, product design and brand communication intersect.'
+          q: '“Our brand gets lost in the market”',
+          a: 'I develop and launch brands that stand out and stay in mind, even in crowded niches.',
+          points: [
+            'The brand looks like its competitors and stirs no emotion in the audience.',
+            'There is no single strategy tying together visuals, communication and product.',
+            'The brand exists only online and has no physical face — no space, event or sensation.'
+          ]
         },
         {
-          t: 'Methodology over creative for its own sake',
-          d: 'I work as a methodologist: I assemble solutions a business genuinely needs — the ones that grow capitalization and added value rather than merely decorate slides.'
+          q: '“We don’t know how to build a tourism product”',
+          a: 'I design and package tourism products — from glampings to festivals — that draw guests and turn a profit.',
+          points: [
+            'There is an idea, but no ready structure and no economic model.',
+            'It is unclear where to start and how to avoid mistakes at launch.',
+            'The product fails to engage the audience and gives no reason to come or to buy.'
+          ]
         },
         {
-          t: 'An architectural foundation',
-          d: 'My first degree is in architecture. Decisions therefore rest on real design experience: scale, terrain, zoning, pedestrian flows and the economics of floor area are working parameters, not abstractions.'
+          q: '“Our event is dull and forgettable”',
+          a: 'I direct events that turn any occasion into a vivid, emotional experience.',
+          points: [
+            'The event gets no response from guests and creates no wow effect.',
+            'There is no coherent idea holding the forum, presentation or festival together.',
+            'The event does nothing for the brand and adds no recognition.'
+          ]
         },
         {
-          t: 'AI as a working instrument',
-          d: 'I use Claude, Figma Make, Midjourney, Higgsfield and other modern neural networks. They raise quality and noticeably shorten production time: an idea becomes visualization, scenario and MVP several times faster.'
-        },
-        {
-          t: 'Entrepreneurial experience',
-          d: 'I have run my own business, so an idea never stays an idea: it turns into functioning systems and methodologies. I supervise as design author, handle procurement and partner integrations.'
+          q: '“We need environmental design, but don’t know where to begin”',
+          a: 'I design environments — interiors, wayfinding, zoning — that make a space comfortable, beautiful and functional.',
+          points: [
+            'The space does not match the needs of the business and is awkward for guests.',
+            'There is a design, but it is disconnected from the brand and leaves no coherent impression.',
+            'There is no understanding of how visuals and layout shape visitor behaviour and sales.'
+          ]
         }
       ]
     },
@@ -401,71 +395,27 @@ window.CONTENT = {
       priceNote: 'Tell me about the task and I will propose a format and scope.'
     },
 
-    map: {
-      label: 'Profile',
-      title: 'Competency Map',
-      sub: 'Skills, tools and education at a glance',
-      hint: 'Swipe the cards',
-      prev: 'Previous',
-      next: 'Next',
 
-      skillsTitle: 'Competency profile',
-      skillsHint: 'Six directions in which I lead a project',
-      skills: [
-        'Brand strategy',
-        'Environmental design',
-        'Creative production',
-        'Product & economics',
-        'Team management',
-        'AI & technology'
+
+    edu: {
+      label: 'Education',
+      title: 'Three degrees — one way of thinking',
+      items: [
+        { place: 'RUDN University', what: 'Environmental architect' },
+        { place: 'HSE University', what: 'Brand manager' },
+        { place: 'Rome Business School', what: 'International manager in arts and culture' }
       ],
-
-      toolsTitle: 'Tools',
-      toolsHint: 'Proficiency',
-      toolsNote: 'Neural networks sit alongside every other instrument: they shorten the path from idea to finished material rather than replacing thought.',
-      levels: ['Basic', 'Confident', 'Advanced', 'Expert'],
-      tools: [
-        { name: 'Figma', v: 4, ai: false },
-        { name: 'AutoCAD', v: 4, ai: false },
-        { name: 'SketchUp', v: 3, ai: false },
-        { name: 'Adobe Photoshop', v: 3, ai: false },
-        { name: 'Adobe Illustrator', v: 3, ai: false },
-        { name: 'Notion', v: 4, ai: false },
-        { name: 'Claude', v: 4, ai: true },
-        { name: 'Figma Make', v: 4, ai: true },
-        { name: 'Midjourney', v: 3, ai: true },
-        { name: 'Higgsfield', v: 3, ai: true }
-      ],
-
-      eduTitle: 'Education',
-      eduHint: 'Four stages — one way of thinking',
-      edu: [
-        { years: '2018 — 2022', place: 'RUDN University', what: 'Landscape architecture, translation', deg: "Bachelor's", status: 'done' },
-        { years: '2022 — 2024', place: 'HSE University', what: 'Territorial branding and urban environment design', deg: "Master's", status: 'done' },
-        { years: '2023 — 2024', place: 'MGIMO and Netology', what: 'Tourism & hospitality · Brand & product management', deg: 'Additional', status: 'done' },
-        { years: '2026 — 2027', place: 'Rome Business School', what: 'Art & Culture · Brand Management', deg: "Master's", status: 'progress' }
-      ],
-      eduInProgress: 'In progress',
-
-      langTitle: 'Languages',
-      langHint: 'I negotiate and present freely',
-      langs: [
-        { name: 'Russian', level: 'Native', v: 1 },
-        { name: 'English', level: 'C1', v: 0.8 },
-        { name: 'Italiano', level: 'A2', v: 0.35 }
-      ],
-
-      softTitle: 'Soft skills',
-      softHint: 'How I work with people and tasks',
-      soft: ['Leadership', 'Team management', 'Mentoring', 'Negotiation', 'Public speaking', 'Strategic thinking', 'Creative thinking', 'Emotional intelligence', 'Multitasking', 'Pitching']
+      note: 'My approach sits where architecture, branding and directing meet. 99% of specialists do not have that combination.',
+      note2: 'I cover every stage. From the idea to delivery.'
     },
 
     work: {
       label: 'Selected',
-      title: 'Portfolio / Projects',
-      sub: 'Delivered cases: tourism, development, brands and events',
+      title: 'Portfolio',
+      sub: '',
       view: 'View case',
       all: 'All projects',
+      cats: { all: 'All projects', spaces: 'Spaces', brands: 'Brands', events: 'Events' },
       prev: 'Previous case',
       next: 'Next case',
       back: 'Back to portfolio'
@@ -491,12 +441,12 @@ window.CONTENT = {
       errEmail: 'Please enter a valid email',
       errMessage: 'Tell me a couple of words about the task',
       emailLabel: 'Email:',
-      studioLabel: 'Location:',
-      studio: 'Rome, Italy — working worldwide'
+      studioLabel: 'Reach:',
+      studio: 'Working worldwide'
     },
 
     footer: {
-      copy: '© Sandra Niko — Rome, Italy',
+      copy: '© Sandra Niko',
       rights: 'All projects and images belong to the author'
     },
 
@@ -530,6 +480,7 @@ window.PROJECTS = [
 
   {
     slug: 'rose-stone',
+    cat: 'spaces',
     year: '2026',
     client: 'NDA',
     dir: 'rose-stone',
@@ -572,6 +523,7 @@ window.PROJECTS = [
 
   {
     slug: 'accessories-era',
+    cat: 'brands',
     year: '2026',
     client: 'Инициативный проект',
     clientEn: 'Self-initiated',
@@ -607,6 +559,7 @@ window.PROJECTS = [
 
   {
     slug: 'rodnoe',
+    cat: 'spaces',
     year: '2025',
     client: 'NDA',
     dir: 'rodnoe',
@@ -651,6 +604,7 @@ window.PROJECTS = [
 
   {
     slug: 'valley-wanderers',
+    cat: 'spaces',
     year: '2026',
     client: 'NDA',
     dir: 'valley-wanderers',
@@ -692,11 +646,14 @@ window.PROJECTS = [
 
   {
     slug: 'menok-spa',
+    cat: 'spaces',
     year: '2026',
     client: 'Сапожковские грязи',
     clientEn: 'Sapozhkovskie Gryazi',
     dir: 'menok-spa',
-    images: ['hero.jpg', '01-interior.jpg', '02-plan.jpg', '03-signage.jpg', '04-packaging.jpg', '05-soap.jpg', '06-cream.jpg', '07-flags.jpg'],
+    images: ['hero.jpg', '08-day-night.jpg', '01-interior.jpg', '12-rooms.jpg', '09-terrace.jpg',
+             '10-lounge.jpg', '11-zoning.jpg', '02-plan.jpg', '14-planter.jpg', '03-signage.jpg',
+             '13-modules.jpg', '04-packaging.jpg', '05-soap.jpg', '06-cream.jpg', '07-flags.jpg'],
     ru: {
       title: 'MENOK SPA',
       kicker: 'Модульный спа-комплекс и бренд косметики',
@@ -712,7 +669,13 @@ window.PROJECTS = [
         { v: '4', l: 'транспортных модуля 6×3×3 м' },
         { v: '15+', l: 'модулей в год по франшизе' }
       ],
-      captions: ['Спа-комплекс в среде', 'Интерьер и материалы', 'Планировка модуля', 'Интеграция бренда в среду', 'Упаковка косметики', 'Линейка мыла', 'Крем на основе торфа', 'Носители фирменного стиля']
+      captions: ['Спа-комплекс в среде', 'Комплекс днём и вечером', 'Интерьер и материалы',
+                 'Процедурный кабинет и зона ресепшена', 'Терраса под фирменным навесом',
+                 'Мебель и озеленение зоны отдыха', 'План и аксонометрия: девять зон',
+                 'Планировка модуля', 'Модуль-кашпо из архитектурного бетона',
+                 'Интеграция бренда в среду', 'Модули навигации и наклейки',
+                 'Упаковка косметики', 'Линейка мыла', 'Крем на основе торфа',
+                 'Носители фирменного стиля']
     },
     en: {
       title: 'MENOK SPA',
@@ -729,12 +692,19 @@ window.PROJECTS = [
         { v: '4', l: 'shipping modules 6×3×3 m' },
         { v: '15+', l: 'modules per year via franchise' }
       ],
-      captions: ['The spa complex in its setting', 'Interior and materials', 'Module layout', 'Brand integrated into the environment', 'Cosmetics packaging', 'The soap line', 'Peat-based cream', 'Identity carriers']
+      captions: ['The spa complex in its setting', 'The complex by day and by night', 'Interior and materials',
+                 'Treatment room and reception area', 'Terrace under the branded canopy',
+                 'Furniture and planting in the lounge area', 'Plan and axonometry: nine zones',
+                 'Module layout', 'Planter module in architectural concrete',
+                 'Brand integrated into the environment', 'Wayfinding modules and window decals',
+                 'Cosmetics packaging', 'The soap line', 'Peat-based cream',
+                 'Identity carriers']
     }
   },
 
   {
     slug: 'agrobiotuscany',
+    cat: 'spaces',
     year: '2026',
     client: 'NDA',
     dir: 'agrobiotuscany',
@@ -775,6 +745,7 @@ window.PROJECTS = [
 
   {
     slug: 'rebirth-forum',
+    cat: 'events',
     year: '2026',
     client: 'NDA',
     dir: 'rebirth-forum',
@@ -809,6 +780,7 @@ window.PROJECTS = [
 
   {
     slug: 'bagstory',
+    cat: 'brands',
     year: '2026',
     client: 'NDA',
     dir: 'bagstory',
@@ -846,6 +818,7 @@ window.PROJECTS = [
 
   {
     slug: 'moscow-picnic',
+    cat: 'brands',
     year: '2025',
     client: 'Парки Москвы',
     clientEn: 'Moscow Parks',
@@ -889,6 +862,7 @@ window.PROJECTS = [
 
   {
     slug: 'mesto-history',
+    cat: 'brands',
     year: '2024',
     client: 'История места',
     clientEn: 'Istoriya Mesta',
@@ -928,6 +902,7 @@ window.PROJECTS = [
 
   {
     slug: 'meshchovsk',
+    cat: 'brands',
     year: '2024',
     client: 'Проектный офис',
     clientEn: 'Project office',
@@ -967,6 +942,7 @@ window.PROJECTS = [
 
   {
     slug: 'novosibirsk',
+    cat: 'brands',
     year: '2023',
     client: 'Россвет',
     clientEn: 'Rossvet',
