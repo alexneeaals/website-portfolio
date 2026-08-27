@@ -357,36 +357,47 @@ body.menu-open .burger span:nth-child(2) { transform: translateY(-6.5px) rotate(
 .about__quote cite { display: block; font-style: normal; font-size: 12px; letter-spacing: .12em; color: var(--muted); margin-top: 8px; }
 
 /* ==================================================================
-   Плашки сфер на первом экране
-   Пришли из бывшей секции «Сферы, в которых я работаю»: те же два
-   типа — в бордовой рамке и с подчёркиванием, — но теперь раскиданы
-   вокруг имени. Координаты приходят из main.js инлайновым style.
+   Сферы работы — бегущая строка
+   Стоит между первым экраном и «Обо мне». Плашки чередуются через
+   одну: в бордовой рамке (сериф) и с подчёркиванием (санс) — те же
+   два типа, что были в бывшей секции «Сферы, в которых я работаю».
    ================================================================== */
-.hero-tags {
-  position: absolute;
-  inset: clamp(96px, 13vh, 150px) var(--gut) clamp(80px, 11vh, 120px);
-  z-index: 1;
-  pointer-events: none;
+.tagline-strip {
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--hair);
+  border-bottom: 1px solid var(--hair);
+  padding: clamp(18px, 2.2vw, 30px) 0;
+  /* Края растворяются, чтобы плашки не обрубались на границе экрана */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
 
-.htag {
-  position: absolute;
-  left: var(--x); top: var(--y);
-  --x: 0; --y: 0; --rot: 0deg;
-  transform: rotate(var(--rot));
-  transform-origin: center;
-  white-space: nowrap;
-  pointer-events: auto;
-  transition: transform .5s var(--ease), color .4s var(--ease), border-color .4s var(--ease);
+.tagline-strip__track {
+  --marq-time: 42s;
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 2.4vw, 38px);
+  width: max-content;
+  animation: marq var(--marq-time) linear infinite;
 }
-.htag:hover { transform: rotate(0deg) translateY(-3px); }
+/* Наведение притормаживает ленту — можно прочитать нужное */
+.tagline-strip:hover .tagline-strip__track { animation-play-state: paused; }
+
+@keyframes marq {
+  from { transform: translateX(0); }
+  /* Список напечатан дважды, поэтому уезжаем ровно на половину */
+  to   { transform: translateX(-50%); }
+}
+
+.htag { flex: none; white-space: nowrap; transition: color .4s var(--ease), border-color .4s var(--ease); }
 
 /* Тип 1 — в тонкой бордовой рамке, сериф */
 .htag--box {
   font-family: var(--serif);
-  font-size: clamp(12px, 1.05vw, 16px);
+  font-size: clamp(14px, 1.15vw, 18px);
   color: var(--accent);
-  padding: 9px 18px;
+  padding: 10px 22px;
   border: 1px solid var(--accent-mid);
   background: var(--white);
 }
@@ -395,19 +406,13 @@ body.menu-open .burger span:nth-child(2) { transform: translateY(-6.5px) rotate(
 /* Тип 2 — без рамки, санс, с подчёркиванием */
 .htag--line {
   font-family: var(--sans);
-  font-size: clamp(11px, .9vw, 14px);
+  font-size: clamp(12px, .95vw, 15px);
   font-weight: 300;
   color: var(--muted);
-  padding: 3px 2px 7px;
+  padding: 4px 2px 9px;
   border-bottom: 1px solid var(--accent-mid);
-  /* Плашка без рамки может попасть на кадр коллажа — мягкая подложка
-     из тени держит её читаемой, не добавляя видимого прямоугольника */
-  text-shadow: 0 0 6px var(--white), 0 0 12px var(--white);
 }
 .htag--line:hover { color: var(--accent); }
-
-/* Имя и подпись всегда поверх плашек */
-.hero__in { position: relative; z-index: 2; }
 
 /* ------------- Декоративные кадры внутри секций -------------
    Живут в свободном поле справа и слева от текстовой колонки. */
@@ -1052,21 +1057,8 @@ body.cursor-lg .cursor { opacity: 0; }
   .about__grid { grid-template-columns: 1fr; }
   .about__figure { max-width: 400px; }
 
-  /* Плашки сфер: на узком экране разброс складывается в обычный ряд
-     и уходит под имя — первым посетитель должен увидеть имя, а не теги */
-  .hero { flex-direction: column; justify-content: center; }
-  .hero__in { order: 1; }
-  .hero-tags {
-    order: 2;
-    position: static;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px 10px;
-    margin-top: clamp(28px, 5vw, 44px);
-    padding: 0 var(--gut);
-  }
-  .hero__scroll { order: 3; }
-  .htag { position: static; }
+  /* Лента на узком экране едет быстрее и держит компактный кегль */
+  .tagline-strip__track { gap: 16px; }
   .htag--box { padding: 7px 14px; font-size: 13px; }
   .htag--line { font-size: 12px; }
 
@@ -1141,6 +1133,11 @@ body.cursor-lg .cursor { opacity: 0; }
 
 /* Уважаем системную настройку «уменьшить движение» */
 @media (prefers-reduced-motion: reduce) {
+  /* Лента замирает: бесконечное движение — первое, что мешает
+     при системной настройке «уменьшить движение» */
+  .tagline-strip__track { animation: none; }
+  .tagline-strip { -webkit-mask-image: none; mask-image: none; overflow-x: auto; }
+
   html { scroll-behavior: auto; }
   *, *::before, *::after {
     animation-duration: .001ms !important;

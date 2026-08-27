@@ -36,123 +36,33 @@ var CONTACT_EMAIL = 'alexneeaals@gmail.com';
   function num(i) { return String(i + 1).padStart(2, '0'); }
 
   /* ==================================================================
-     Сферы работы — плашки на первом экране.
-     Раскладка по образцу «пример главного экрана.pdf»: плашки стоят
-     в свободных полях по краям, никогда не наезжая ни на кадры
-     коллажа, ни на имя. Проценты — желаемое место, но окончательное
-     решает placeHeroTags(): она сверяет каждую плашку с занятыми
-     областями и, если та накрывает кадр или текст, сдвигает её в
-     ближайшее свободное место.
+     Сферы работы — бегущая строка между первым экраном и «Обо мне».
+     Плашки чередуются через одну: в бордовой рамке и с подчёркиванием.
+     Список печатается дважды подряд: пока уезжает первая половина,
+     вторая занимает её место, и шов не виден.
      ================================================================== */
-  var HERO_TAGS = [
-    { x: 30, y: 17, style: 'box'  },  // Туризм
-    { x:  7, y: 78, style: 'box'  },  // MICE
-    { x: 76, y: 36, style: 'line' },  // HoReCa
-    { x: 33, y: 72, style: 'line' },  // Девелопмент
-    { x: 62, y: 12, style: 'box'  },  // Люксовые бренды
-    { x: 22, y: 52, style: 'line' },  // События
-    { x: 75, y: 70, style: 'line' },  // Образование
-    { x: 22, y: 6,  style: 'line' },  // Фиджитал-системы
-    { x: 55, y: 88, style: 'box'  },  // Косметика
-    { x: 60, y: 46, style: 'line' }   // Креативные индустрии
-  ];
-
-  function renderHeroTags() {
-    var host = $('#hero-tags');
+  function renderTagStrip() {
+    var host = $('#tag-strip');
     if (!host) return;
-    host.innerHTML = '';
 
-    I18N.t('hero.tags').forEach(function (name, i) {
-      var L = HERO_TAGS[i] || { x: 10 + (i % 4) * 22, y: 12 + Math.floor(i / 4) * 26, style: 'box' };
-      // Координаты через переменные, а не напрямую в left/top: так
-      // медиазапрос может убрать разброс и построить обычный поток.
-      host.appendChild(el(
-        '<span class="htag htag--' + L.style + '"' +
-          ' style="--x:' + L.x + '%;--y:' + L.y + '%"' +
-          ' data-parallax="' + (0.4 + (i % 3) * 0.25).toFixed(2) + '">' +
-          esc(name) +
-        '</span>'
-      ));
-    });
+    var items = I18N.t('hero.tags') || [];
+    if (!items.length) return;
 
-    placeHeroTags();
-  }
+    function row() {
+      return items.map(function (name, i) {
+        var kind = (i % 2 === 0) ? 'box' : 'line';
+        return '<span class="htag htag--' + kind + '">' + esc(name) + '</span>';
+      }).join('');
+    }
 
-  /** Область, которую плашки обязаны обходить, с запасом в px. */
-  function padRect(r, pad) {
-    return { l: r.left - pad, t: r.top - pad, r: r.right + pad, b: r.bottom + pad };
-  }
-  function hits(a, b) {
-    return a.l < b.r && a.r > b.l && a.t < b.b && a.b > b.t;
-  }
+    host.innerHTML = row() + row();
 
-  /** Разводит плашки так, чтобы ни одна не накрывала кадр или текст. */
-  function placeHeroTags() {
-    var host = $('#hero-tags');
-    var hero = host && host.parentNode;
-    if (!host || !hero) return;
-
-    // В мобильной раскладке плашки идут обычным потоком — разводить нечего
-    if (getComputedStyle(host).position === 'static') return;
-
-    var box = host.getBoundingClientRect();
-    if (!box.width || !box.height) return;
-
-    // Запретные зоны: кадры коллажа, имя с подписями, индикатор прокрутки
-    var blocked = [];
-    [].forEach.call(hero.querySelectorAll('.collage__item, .hero__title, .hero__meta, .hero__scroll'),
-      function (n) { blocked.push(padRect(n.getBoundingClientRect(), 14)); });
-
-    var tags = [].slice.call(host.querySelectorAll('.htag'));
-
-    tags.forEach(function (tag) {
-      tag.style.left = tag.style.getPropertyValue('--x');
-      tag.style.top  = tag.style.getPropertyValue('--y');
-    });
-
-    tags.forEach(function (tag) {
-      var w = tag.offsetWidth, h = tag.offsetHeight;
-      var x0 = parseFloat(tag.style.getPropertyValue('--x'));
-      var y0 = parseFloat(tag.style.getPropertyValue('--y'));
-
-      // Кандидаты: сначала желаемая точка, затем сетка вокруг неё
-      var tries = [[x0, y0]];
-      for (var ring = 1; ring <= 12; ring++) {
-        for (var dy = -ring; dy <= ring; dy++) {
-          for (var dx = -ring; dx <= ring; dx++) {
-            if (Math.max(Math.abs(dx), Math.abs(dy)) !== ring) continue;
-            tries.push([x0 + dx * 3, y0 + dy * 4]);
-          }
-        }
-      }
-
-      var maxX = 100 - (w / box.width) * 100;
-      var maxY = 100 - (h / box.height) * 100;
-
-      for (var k = 0; k < tries.length; k++) {
-        var px = Math.min(Math.max(tries[k][0], 0), Math.max(maxX, 0));
-        var py = Math.min(Math.max(tries[k][1], 0), Math.max(maxY, 0));
-        var rect = {
-          l: box.left + box.width  * px / 100,
-          t: box.top  + box.height * py / 100
-        };
-        rect.r = rect.l + w;
-        rect.b = rect.t + h;
-
-        var free = true;
-        for (var m = 0; m < blocked.length; m++) {
-          if (hits(rect, blocked[m])) { free = false; break; }
-        }
-        if (free) {
-          tag.style.left = px + '%';
-          tag.style.top  = py + '%';
-          blocked.push(padRect({ left: rect.l, top: rect.t, right: rect.r, bottom: rect.b }, 10));
-          return;
-        }
-      }
-      // Свободного места не нашлось — лучше не показывать, чем перекрыть
-      tag.style.display = 'none';
-    });
+    /* Скорость привязана к длине строки, иначе на разных языках лента
+       ехала бы с разной прытью. Границы — на случай, если измерить
+       ширину не удалось: без них лента могла бы уехать за миг. */
+    var width = host.scrollWidth / 2;
+    var secs = Math.min(Math.max(Math.round(width / 55), 22), 70);
+    host.style.setProperty('--marq-time', secs + 's');
   }
 
   /* ==================== Карточки и списки ==================== */
@@ -535,7 +445,7 @@ var CONTACT_EMAIL = 'alexneeaals@gmail.com';
   /* ==================== Сборка ==================== */
 
   function renderAll() {
-    renderHeroTags();
+    renderTagStrip();
     renderCards('#why-cards', 'why.items');
     renderCards('#do-cards', 'do.items');
     renderCards('#formats-cards', 'formats.items');
@@ -556,21 +466,10 @@ var CONTACT_EMAIL = 'alexneeaals@gmail.com';
   document.addEventListener('DOMContentLoaded', function () {
     renderAll();
     initForm();
-    // Шрифты подгружаются после первой отрисовки и меняют ширину плашек,
-    // поэтому раскладку пересчитываем ещё раз, когда они готовы
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(placeHeroTags);
+    // Шрифты подгружаются после первой отрисовки и меняют длину ленты —
+    // пересчитываем скорость, когда они готовы
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(renderTagStrip);
   });
-
-  /* При смене размера окна свободные поля вокруг имени меняются —
-     плашки нужно разложить заново. */
-  var placeTimer = null;
-  window.addEventListener('resize', function () {
-    clearTimeout(placeTimer);
-    placeTimer = setTimeout(function () {
-      [].forEach.call(document.querySelectorAll('.htag'), function (t) { t.style.display = ''; });
-      placeHeroTags();
-    }, 180);
-  }, { passive: true });
 
   document.addEventListener('langchange', renderAll);
 })();
