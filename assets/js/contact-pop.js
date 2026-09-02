@@ -5,9 +5,10 @@
    в мессенджер или на почту. В каждом канале уже подставлен готовый
    текст — остаётся дописать своё.
 
-   Закрыли окно — больше не показываем: отметка живёт в localStorage
-   и держится неделю. Так возвращающийся посетитель не видит его
-   на каждой странице.
+   Закрыли окно — оно сворачивается в кружок в том же углу, и открыть
+   его снова можно одним касанием. Отметка о закрытии живёт неделю
+   в localStorage: вернувшийся посетитель увидит уже свёрнутый кружок,
+   а не окно во весь угол.
    ------------------------------------------------------------------ */
 
 /* ===== Куда писать ================================================
@@ -36,8 +37,8 @@ var CONTACT_POP = {
       title: 'Написать напрямую',
       lede: 'Отвечаю лично — обычно в течение часа.',
       close: 'Закрыть',
+      open: 'Написать',
       live: 'На связи',
-      open: 'Быстрая связь',
       mail: 'Почта',
       script: 'Здравствуйте, Александра! Пишу с сайта sandraniko.com. Хочу обсудить проект: ',
       subject: 'Заявка с сайта sandraniko.com',
@@ -47,8 +48,8 @@ var CONTACT_POP = {
       title: 'Write to me directly',
       lede: 'I answer personally — usually within the hour.',
       close: 'Close',
+      open: 'Write to me',
       live: 'Online',
-      open: 'Quick contact',
       mail: 'Email',
       script: 'Hello Sandra! I am writing from sandraniko.com. I would like to discuss a project: ',
       subject: 'Enquiry from sandraniko.com',
@@ -76,10 +77,30 @@ var CONTACT_POP = {
   var ICONS = {
     tg: '<svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.7.8l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.8 8.8-8c.4-.3-.1-.5-.6-.2L6.7 13.2 2.1 11.8c-1-.3-1-1 .2-1.5l18.2-7c.8-.3 1.6.2 1.4 1z"/></svg>',
     wa: '<svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5v-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.4c.1.2 1.6 2.6 4 3.6 1.4.6 2 .7 2.7.6.4-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1l-.3-.1Z"/></svg>',
-    mail: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15"/><path d="m3 6 9 7 9-7"/></svg>'
+    mail: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15"/><path d="m3 6 9 7 9-7"/></svg>',
+    chat: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-3.7-.7L3 21l1.9-4.9A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4Z"/></svg>'
   };
 
-  function build() {
+  /* Свёрнутый вид: кружок в углу. Из него окно открывается обратно,
+     поэтому закрытие больше не тупик. */
+  function launcher() {
+    var t = TXT[lang()];
+    var b = document.createElement('button');
+    b.className = 'qpop-mini';
+    b.type = 'button';
+    b.setAttribute('aria-label', t.open);
+    b.innerHTML = '<span class="qpop-mini__dot"></span>' + ICONS.chat;
+    b.addEventListener('click', function () {
+      b.remove();
+      build(true);
+    });
+    document.body.appendChild(b);
+    void b.offsetWidth;
+    b.classList.add('is-in');
+    return b;
+  }
+
+  function build(manual) {
     var t = TXT[lang()];
     var wrap = document.createElement('div');
     wrap.className = 'qpop';
@@ -113,7 +134,7 @@ var CONTACT_POP = {
     wrap.querySelector('.qpop__x').addEventListener('click', function () {
       wrap.classList.remove('is-in');
       silence();
-      setTimeout(function () { wrap.remove(); }, 400);
+      setTimeout(function () { wrap.remove(); launcher(); }, 400);
     });
 
     document.body.appendChild(wrap);
@@ -133,8 +154,10 @@ var CONTACT_POP = {
   }
 
   function start() {
-    if (silenced()) return;
-    setTimeout(build, C.delay * 1000);
+    // Уже закрывали — сразу показываем кружок, окно не разворачиваем
+    if (silenced()) { launcher(); return; }
+    if (C.delay > 0) setTimeout(build, C.delay * 1000);
+    else build();
   }
 
   if (document.readyState === 'loading') {

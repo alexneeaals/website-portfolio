@@ -1244,15 +1244,50 @@ body.menu-open .burger span:nth-child(2) { transform: translateY(-6.5px) rotate(
 .qpop__row:hover { color: var(--accent); }
 .qpop__ic { flex: none; display: flex; color: var(--accent); }
 
+/* Свёрнутый вид: кружок в том же углу, из него окно открывается обратно */
+.qpop-mini {
+  position: fixed;
+  right: clamp(16px, 2.4vw, 34px);
+  bottom: clamp(16px, 2.4vw, 34px);
+  z-index: 95;
+  width: 56px; height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #FFFFFF;
+  cursor: pointer;
+  box-shadow: 0 14px 34px rgba(116, 43, 60, .32);
+  opacity: 0;
+  transform: scale(.8);
+  transition: opacity .4s var(--ease), transform .4s var(--ease), box-shadow .4s var(--ease);
+}
+.qpop-mini.is-in { opacity: 1; transform: none; }
+.qpop-mini:hover { box-shadow: 0 18px 42px rgba(116, 43, 60, .42); }
+
+/* Расходящееся кольцо вокруг кружка — тот же приём, что в окне */
+.qpop-mini__dot {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  animation: qpulse 2.2s ease-out infinite;
+  pointer-events: none;
+}
+
 @media (max-width: 900px) {
   /* На телефоне окно не должно перекрывать липкую плашку калькулятора */
   .qpop { bottom: 16px; right: 16px; left: 16px; width: auto; padding: 20px 20px 16px; }
   body.bc-has-report .qpop, .bc-sticky ~ .qpop { bottom: 92px; }
+  .qpop-mini { width: 50px; height: 50px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .qpop { transition: none; }
-  .qpop__dot::after { animation: none; opacity: 0; }
+  .qpop__dot::after, .qpop-mini__dot { animation: none; opacity: 0; }
+  .qpop-mini { transition: none; }
 }
 
 /* ==================================================================
