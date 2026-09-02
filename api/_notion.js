@@ -32,8 +32,23 @@ var BUSY = 'Занят';
 
 function must(name) {
   var v = process.env[name];
-  if (!v) throw new Error('Не задана переменная окружения ' + name);
+  if (!v) {
+    var e = new Error('Не задана переменная окружения ' + name);
+    e.reason = name === 'NOTION_TOKEN' ? 'no_token' : 'no_db';
+    throw e;
+  }
   return v;
+}
+
+/* Категория ошибки — чтобы понять, что чинить, не раскрывая наружу
+   ни токена, ни устройства базы. Подробности уходят только в логи. */
+function reasonFor(status, message) {
+  var m = String(message || '').toLowerCase();
+  if (status === 401) return 'bad_token';
+  if (status === 404) return 'not_shared';
+  if (m.indexOf('property') > -1 || m.indexOf('is not a property') > -1) return 'bad_property';
+  if (status === 429) return 'rate_limit';
+  return 'notion';
 }
 
 async function notion(path, options) {
@@ -54,6 +69,7 @@ async function notion(path, options) {
     console.error('Notion ' + res.status + ':', data && data.message);
     var err = new Error(data && data.message ? data.message : 'notion error');
     err.status = res.status;
+    err.reason = reasonFor(res.status, data && data.message);
     throw err;
   }
   return data;

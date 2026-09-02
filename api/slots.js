@@ -24,7 +24,9 @@ module.exports = async function handler(req, res) {
     });
   } catch (e) {
     console.error('slots:', e && e.message);
-    // Наружу — без подробностей: страница просто покажет «не удалось загрузить»
-    return res.status(502).json({ error: 'unavailable' });
+    /* Наружу — только категория: чего не хватает, видно, а токен
+       и устройство базы не раскрываются. Страница на любую ошибку
+       просто прячет блок. */
+    return res.status(502).json({ error: 'unavailable', reason: e && e.reason ? e.reason : 'notion' });
   }
 };
