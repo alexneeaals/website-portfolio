@@ -666,6 +666,63 @@ body.menu-open .burger span:nth-child(2) { transform: translateY(-6.5px) rotate(
 }
 .field.has-error .field__err { display: block; }
 
+/* Согласие на обработку данных ------------------------------------ */
+.field--check { margin-bottom: 26px; }
+
+/* Селектор с .field--check обязателен: правило `.field > label`
+   специфичнее одиночного `.check` и превращало бы строку в блок,
+   а квадратик галочки — в инлайн нулевой ширины. */
+.field--check > .check {
+  display: flex;
+  margin-bottom: 0;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+/* Родную галочку прячем, но оставляем в потоке фокуса и для скринридеров */
+.check input {
+  position: absolute;
+  width: 1px; height: 1px;
+  opacity: 0;
+  margin: 0;
+}
+.check__box {
+  display: block;
+  flex: none;
+  width: 16px; height: 16px;
+  margin-top: 3px;
+  border: 1px solid var(--hair);
+  background: transparent;
+  position: relative;
+  transition: border-color .35s var(--ease), background .35s var(--ease);
+}
+/* Галка — тонкий бордовый штрих, как засечки в остальном макете */
+.check__box::after {
+  content: '';
+  position: absolute;
+  left: 4px; top: 1px;
+  width: 5px; height: 9px;
+  border: solid #FFFFFF;
+  border-width: 0 1px 1px 0;
+  transform: rotate(45deg) scale(.6);
+  opacity: 0;
+  transition: opacity .25s var(--ease), transform .25s var(--ease);
+}
+.check:hover .check__box { border-color: var(--accent-mid); }
+.check input:focus-visible + .check__box { outline: 1px solid var(--accent); outline-offset: 2px; }
+.check input:checked + .check__box { background: var(--accent); border-color: var(--accent); }
+.check input:checked + .check__box::after { opacity: 1; transform: rotate(45deg) scale(1); }
+
+.check__text {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted);
+  text-wrap: pretty;
+}
+.field--check.has-error .check__box { border-color: var(--accent); }
+.field--check.has-error .check__text { color: var(--ink-soft); }
+
 .hp { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
 
 .btn {

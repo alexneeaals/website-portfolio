@@ -333,6 +333,8 @@ var CONTACT_EMAIL = 'alexneeaals@gmail.com';
 
     $$('input, textarea, select', form).forEach(function (f) {
       f.addEventListener('input', function () { clearError(f); });
+      // У галочки события input может не быть — слушаем change
+      if (f.type === 'checkbox') f.addEventListener('change', function () { clearError(f); });
     });
 
     form.addEventListener('submit', function (e) {
@@ -344,11 +346,13 @@ var CONTACT_EMAIL = 'alexneeaals@gmail.com';
       var email = form.elements.email;
       var message = form.elements.message;
       var type = form.elements.type;
+      var consent = form.elements.consent;
       var ok = true;
 
       if (!name.value.trim()) { setError(name, 'contact.errName'); ok = false; }
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim())) { setError(email, 'contact.errEmail'); ok = false; }
       if (message.value.trim().length < 5) { setError(message, 'contact.errMessage'); ok = false; }
+      if (consent && !consent.checked) { setError(consent, 'contact.errConsent'); ok = false; }
       if (!ok) return;
 
       // Honeypot: боты заполняют скрытое поле — тихо выходим.
@@ -358,7 +362,8 @@ var CONTACT_EMAIL = 'alexneeaals@gmail.com';
         name: name.value.trim(),
         email: email.value.trim(),
         type: type.value,
-        message: message.value.trim()
+        message: message.value.trim(),
+        consent: (consent && consent.checked) ? 'да' : 'нет'
       };
 
       if (!WEB3FORMS_KEY) {
@@ -392,6 +397,7 @@ var CONTACT_EMAIL = 'alexneeaals@gmail.com';
           replyto: payload.email,
           'Имя': payload.name,
           'Тип проекта': payload.type,
+          'Согласие на обработку данных': payload.consent,
           'Язык сайта': I18N.lang === 'ru' ? 'Русский' : 'English',
           message: payload.message
         })
@@ -421,9 +427,23 @@ var CONTACT_EMAIL = 'alexneeaals@gmail.com';
     var m = /[?&]product=([^&#]+)/.exec(window.location.search);
     if (!m) return;
     var product = decodeURIComponent(m[1].replace(/\+/g, ' '));
-    var msg = $('#field-message');
-    if (msg && !msg.value) {
-      msg.value = 'Здравствуйте! Интересует: ' + product + '.';
+
+    /* Если для продукта есть пункт в списке — выбираем его и ставим
+       готовую заготовку. Иначе просто называем продукт в сообщении. */
+    var sel = $('#field-type');
+    var matched = false;
+    if (sel) {
+      [].forEach.call(sel.options, function (opt, i) {
+        if (!matched && opt.value === product) { sel.selectedIndex = i; matched = true; }
+      });
+    }
+    if (matched) {
+      applyScript(product, false);
+    } else {
+      var msg = $('#field-message');
+      if (msg && !msg.value) {
+        msg.value = 'Здравствуйте! Интересует: ' + product + '.';
+      }
     }
     // адрес чистим, чтобы подстановка не повторялась при обновлении
     if (window.history.replaceState) {
@@ -437,9 +457,56 @@ var CONTACT_EMAIL = 'alexneeaals@gmail.com';
     var current = sel.selectedIndex;
     sel.innerHTML = '';
     I18N.t('contact.typeOptions').forEach(function (o) {
-      sel.appendChild(el('<option value="' + esc(o) + '">' + esc(o) + '</option>'));
+      sel.appendChild(el('<option value="' + esc(o.t) + '">' + esc(o.t) + '</option>'));
     });
     if (current > -1) sel.selectedIndex = current;
+
+    /* Сменили язык — вместе с подписями меняем и заготовку в поле,
+       если человек её не переписал под себя. */
+    var msg = $('#field-message');
+    if (msg && autoScript && msg.value === autoScript) {
+      autoScript = '';
+      msg.value = '';
+      applyScript(sel.value, false);
+    }
+  }
+
+  /** Заготовка письма для выбранного типа проекта, если она есть. */
+  function scriptFor(label) {
+    var found = null;
+    I18N.t('contact.typeOptions').forEach(function (o) {
+      if (o.t === label && o.script) found = o.script;
+    });
+    return found;
+  }
+
+  /* Текст, который подставили мы сами. Нужен, чтобы при смене пункта
+     заменить свою же заготовку, но не затереть то, что человек написал. */
+  var autoScript = '';
+
+  /** Ставит заготовку в поле сообщения и выделяет её, чтобы сразу
+      было видно: текст можно дополнить или стереть. */
+  function applyScript(label, focus) {
+    var msg = $('#field-message');
+    if (!msg) return;
+    var text = scriptFor(label);
+    if (!text) return;
+    // Чужой текст не трогаем
+    if (msg.value.trim() && msg.value !== autoScript) return;
+    msg.value = text;
+    autoScript = text;
+    msg.closest('.field').classList.remove('has-error');
+    if (focus) {
+      msg.focus();
+      // Курсор в конец, а не в начало — дописывать удобнее
+      try { msg.setSelectionRange(text.length, text.length); } catch (err) {}
+    }
+  }
+
+  function initTypeScripts() {
+    var sel = $('#field-type');
+    if (!sel) return;
+    sel.addEventListener('change', function () { applyScript(sel.value, true); });
   }
 
   /* ==================== Сборка ==================== */
@@ -466,6 +533,7 @@ var CONTACT_EMAIL = 'alexneeaals@gmail.com';
   document.addEventListener('DOMContentLoaded', function () {
     renderAll();
     initForm();
+    initTypeScripts();
     // Шрифты подгружаются после первой отрисовки и меняют длину ленты —
     // пересчитываем скорость, когда они готовы
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(renderTagStrip);

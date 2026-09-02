@@ -207,9 +207,23 @@ window.CONTENT = {
       email: 'Email',
       emailPh: 'you@example.com',
       type: 'Тип проекта',
-      typeOptions: ['Туризм и MICE', 'Девелопмент и территории', 'Бренд и продукт', 'Событие и спецпроект', 'Обучение и стратсессия', 'Другое'],
+      /* Тип проекта. У продуктов есть script — заготовка, которая
+         подставляется в поле сообщения, когда выбирают этот пункт. */
+      typeOptions: [
+        { t: 'Туризм и MICE' },
+        { t: 'Девелопмент и территории' },
+        { t: 'Бренд и продукт' },
+        { t: 'Событие и спецпроект' },
+        { t: 'Обучение и стратсессия' },
+        { t: 'Курс «Спиктера»',
+          script: 'Здравствуйте! Хочу записаться на курс «Спиктера» по цене ранней записи.\n\nПодскажите, пожалуйста:\n— как проходит оплата и когда откроется доступ к материалам;\n— что входит в курс и сколько времени занимает прохождение;\n— как воспользоваться консультацией перед выступлением.' },
+        { t: 'Конструктор туристических проектов',
+          script: 'Здравствуйте! Интересует «Конструктор туристических проектов».\n\nО нас: (организация, город, стадия проекта).\n\nПрошу выставить счёт на юридическое лицо и подсказать:\n— что входит в комплект материалов;\n— когда приходит доступ после оплаты.' },
+        { t: 'Другое' }
+      ],
       message: 'Сообщение',
       messagePh: 'Коротко о задаче, сроках и ожидаемом результате',
+      consent: 'Соглашаюсь на обработку персональных данных: имени, адреса почты и текста сообщения — чтобы я могла ответить на заявку.',
       submit: 'Отправить запрос',
       sending: 'Отправляем…',
       success: 'Благодарю за заполнение формы — свяжусь с вами в течение часа.',
@@ -217,6 +231,7 @@ window.CONTENT = {
       errName: 'Укажите имя',
       errEmail: 'Укажите корректный email',
       errMessage: 'Расскажите пару слов о задаче',
+      errConsent: 'Без согласия я не смогу обработать заявку',
       emailLabel: 'Email:',
       studioLabel: 'География:',
       studio: 'Работаю по всему миру'
@@ -436,9 +451,21 @@ window.CONTENT = {
       email: 'Email',
       emailPh: 'you@example.com',
       type: 'Project type',
-      typeOptions: ['Tourism & MICE', 'Development & territories', 'Brand & product', 'Event & special project', 'Training & strategy session', 'Other'],
+      typeOptions: [
+        { t: 'Tourism & MICE' },
+        { t: 'Development & territories' },
+        { t: 'Brand & product' },
+        { t: 'Event & special project' },
+        { t: 'Training & strategy session' },
+        { t: 'Spiktera course',
+          script: 'Hello! I would like to join the Spiktera course at the early-bird price.\n\nCould you tell me:\n— how payment works and when the materials open;\n— what the course includes and how long it takes;\n— how to use the consultation before a talk.' },
+        { t: 'Tourism project constructor',
+          script: 'Hello! I am interested in the Tourism Project Constructor.\n\nAbout us: (organisation, city, stage of the project).\n\nPlease issue an invoice to the legal entity and let me know:\n— what the set of materials includes;\n— when access arrives after payment.' },
+        { t: 'Other' }
+      ],
       message: 'Message',
       messagePh: 'Briefly about the task, timeline and expected outcome',
+      consent: 'I agree to the processing of my personal data — name, email and message — so that Sandra can reply to this request.',
       submit: 'Send inquiry',
       sending: 'Sending…',
       success: 'Thank you for your message — I will get back to you within the hour.',
@@ -446,6 +473,7 @@ window.CONTENT = {
       errName: 'Please enter your name',
       errEmail: 'Please enter a valid email',
       errMessage: 'Tell me a couple of words about the task',
+      errConsent: 'Without your consent I cannot process the request',
       emailLabel: 'Email:',
       studioLabel: 'Reach:',
       studio: 'Working worldwide'
