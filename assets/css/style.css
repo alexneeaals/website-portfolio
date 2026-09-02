@@ -1170,7 +1170,40 @@ body.menu-open .burger span:nth-child(2) { transform: translateY(-6.5px) rotate(
   transition: opacity .5s var(--ease), transform .5s var(--ease);
 }
 .qpop.is-in { opacity: 1; transform: none; }
-.qpop .tick { margin-bottom: 16px; }
+/* Строка «на связи» с пульсирующим кружком — вместо засечки */
+.qpop__live {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 14px;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.qpop__dot {
+  position: relative;
+  flex: none;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+/* Расходящееся кольцо: отдельный слой, чтобы сама точка не дрожала */
+.qpop__dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  animation: qpulse 2.2s ease-out infinite;
+}
+@keyframes qpulse {
+  0%   { opacity: .7; transform: scale(1); }
+  70%  { opacity: 0;  transform: scale(3.2); }
+  100% { opacity: 0;  transform: scale(3.2); }
+}
 
 .qpop__x {
   position: absolute;
@@ -1218,6 +1251,7 @@ body.menu-open .burger span:nth-child(2) { transform: translateY(-6.5px) rotate(
 
 @media (prefers-reduced-motion: reduce) {
   .qpop { transition: none; }
+  .qpop__dot::after { animation: none; opacity: 0; }
 }
 
 /* ==================================================================

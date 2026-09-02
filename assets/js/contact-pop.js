@@ -16,8 +16,8 @@
    WhatsApp просто не показывается — остальные работают.
    ================================================================= */
 var CONTACT_POP = {
-  telegram: 'nikolaeva_creates',
-  whatsapp: '',
+  telegram: 'AlexandraNikolaevaDirects',
+  whatsapp: '79778297414',
   email:    'alexneeaals@gmail.com',
   delay:    60,   // через сколько секунд показать
   quiet:    7     // на сколько дней замолчать после закрытия
@@ -36,6 +36,7 @@ var CONTACT_POP = {
       title: 'Написать напрямую',
       lede: 'Отвечаю лично — обычно в течение часа.',
       close: 'Закрыть',
+      live: 'На связи',
       open: 'Быстрая связь',
       mail: 'Почта',
       script: 'Здравствуйте, Александра! Пишу с сайта sandraniko.com. Хочу обсудить проект: ',
@@ -46,6 +47,7 @@ var CONTACT_POP = {
       title: 'Write to me directly',
       lede: 'I answer personally — usually within the hour.',
       close: 'Close',
+      live: 'Online',
       open: 'Quick contact',
       mail: 'Email',
       script: 'Hello Sandra! I am writing from sandraniko.com. I would like to discuss a project: ',
@@ -103,7 +105,7 @@ var CONTACT_POP = {
       '<button class="qpop__x" type="button" aria-label="' + t.close + '">' +
         '<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="m1 1 10 10M11 1 1 11"/></svg>' +
       '</button>' +
-      '<div class="tick"></div>' +
+      '<div class="qpop__live"><span class="qpop__dot"></span>' + t.live + '</div>' +
       '<div class="qpop__t">' + t.title + '</div>' +
       '<p class="qpop__lede">' + t.lede + '</p>' +
       '<div class="qpop__rows">' + rows + '</div>';
