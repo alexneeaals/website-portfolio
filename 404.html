@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500&family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/style.css?v=20260828">
+<link rel="stylesheet" href="/assets/css/style.css?v=20260902">
 </head>
 <body>
 
@@ -41,8 +41,16 @@
 </main>
 
 <footer class="footer">
-  <div class="shell footer__in">
-    <span class="footer__copy" id="l-copy">© Александра Николаева</span>
+  <div class="shell">
+    <div class="footer__in">
+      <span class="footer__copy" id="l-copy">© Александра Николаева</span>
+      <nav class="footer__links">
+        <a href="/legal/privacy.html" id="l-privacy">Политика конфиденциальности</a>
+        <a href="/legal/cookies.html" id="l-cookies">Политика cookie</a>
+        <a href="/legal/offer.html" id="l-offer">Публичная оферта</a>
+      </nav>
+    </div>
+    <p class="footer__legal">ИП Николаева Александра Владимировна · ОГРНИП 324508100031852 · ИНН 503618605992</p>
   </div>
 </footer>
 
@@ -61,6 +69,9 @@
     'The link may be outdated or the address mistyped. Head back to the homepage — every project is one click away from there.';
   document.getElementById('l-btn').textContent = 'Back to homepage';
   document.getElementById('l-copy').textContent = '© Sandra Niko';
+  document.getElementById('l-privacy').textContent = 'Privacy Policy';
+  document.getElementById('l-cookies').textContent = 'Cookie Policy';
+  document.getElementById('l-offer').textContent = 'Public Offer';
 })();
 </script>
 </body>

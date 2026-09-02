@@ -100,8 +100,30 @@
 
       document.querySelectorAll('[data-i18n]').forEach(function (el) {
         var v = resolve(lang, el.getAttribute('data-i18n'));
-        if (typeof v === 'string') el.textContent = typo(v);
-        else console.warn('[i18n] нет ключа:', el.getAttribute('data-i18n'));
+        if (typeof v !== 'string') {
+          console.warn('[i18n] нет ключа:', el.getAttribute('data-i18n'));
+          return;
+        }
+
+        /* Единственная фраза со ссылкой внутри — согласие на обработку
+           данных: по закону оно должно вести на саму Политику. Место
+           ссылки размечено в словаре как {a}текст{/a}, адрес берётся из
+           data-i18n-link. Собираем узлами, без innerHTML. */
+        var href = el.getAttribute('data-i18n-link');
+        if (href && v.indexOf('{a}') > -1) {
+          var parts = typo(v).split(/\{a\}|\{\/a\}/);
+          var a = document.createElement('a');
+          a.href = href;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          a.textContent = parts[1] || '';
+          el.textContent = parts[0] || '';
+          el.appendChild(a);
+          el.appendChild(document.createTextNode(parts[2] || ''));
+          return;
+        }
+
+        el.textContent = typo(v);
       });
 
       // data-i18n-attr="placeholder:contact.namePh" (можно несколько через ;)

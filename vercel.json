@@ -8,6 +8,10 @@
     {
       "source": "/products/:slug",
       "destination": "/products/:slug.html"
+    },
+    {
+      "source": "/legal/:slug",
+      "destination": "/legal/:slug.html"
     }
   ],
   "headers": [

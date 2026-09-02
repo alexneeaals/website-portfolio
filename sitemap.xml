@@ -68,4 +68,16 @@
     <loc>https://sandraniko.com/products/brand-calculator</loc>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://sandraniko.com/legal/privacy</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://sandraniko.com/legal/cookies</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://sandraniko.com/legal/offer</loc>
+    <priority>0.3</priority>
+  </url>
 </urlset>

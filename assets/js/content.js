@@ -223,7 +223,7 @@ window.CONTENT = {
       ],
       message: 'Сообщение',
       messagePh: 'Коротко о задаче, сроках и ожидаемом результате',
-      consent: 'Соглашаюсь на обработку персональных данных: имени, адреса почты и текста сообщения — чтобы я могла ответить на заявку.',
+      consent: 'Я даю согласие ИП Николаевой Александре Владимировне (ОГРНИП 324508100031852) на обработку моих персональных данных на условиях, изложенных в {a}Политике конфиденциальности{/a}, и подтверждаю, что ознакомлен(а) с её содержанием.',
       submit: 'Отправить запрос',
       sending: 'Отправляем…',
       success: 'Благодарю за заполнение формы — свяжусь с вами в течение часа.',
@@ -239,7 +239,11 @@ window.CONTENT = {
 
     footer: {
       copy: '© Александра Николаева',
-      rights: 'Все проекты и изображения принадлежат автору'
+      rights: 'Все проекты и изображения принадлежат автору',
+      privacy: 'Политика конфиденциальности',
+      cookies: 'Политика cookie',
+      offer: 'Публичная оферта',
+      legal: 'ИП Николаева Александра Владимировна · ОГРНИП 324508100031852 · ИНН 503618605992'
     },
 
     /* ---------- Подписи на странице кейса ---------- */
@@ -465,7 +469,7 @@ window.CONTENT = {
       ],
       message: 'Message',
       messagePh: 'Briefly about the task, timeline and expected outcome',
-      consent: 'I agree to the processing of my personal data — name, email and message — so that Sandra can reply to this request.',
+      consent: 'I consent to Sole proprietor Aleksandra V. Nikolaeva (OGRNIP 324508100031852) processing my personal data on the terms set out in the {a}Privacy Policy{/a}, and confirm that I have read it.',
       submit: 'Send inquiry',
       sending: 'Sending…',
       success: 'Thank you for your message — I will get back to you within the hour.',
@@ -481,7 +485,11 @@ window.CONTENT = {
 
     footer: {
       copy: '© Sandra Niko',
-      rights: 'All projects and images belong to the author'
+      rights: 'All projects and images belong to the author',
+      privacy: 'Privacy Policy',
+      cookies: 'Cookie Policy',
+      offer: 'Public Offer',
+      legal: 'Sole proprietor Aleksandra V. Nikolaeva · OGRNIP 324508100031852 · INN 503618605992'
     },
 
     project: {
