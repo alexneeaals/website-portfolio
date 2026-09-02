@@ -16,6 +16,7 @@ window.CONTENT = {
     nav: {
       work: 'Портфолио',
       solve: 'Задачи',
+      booking: 'Консультация',
       formats: 'Форматы',
       contact: 'Контакты',
       menu: 'Меню',
@@ -197,6 +198,20 @@ window.CONTENT = {
       back: 'К портфолио'
     },
 
+
+    /* ---------- Запись на консультацию ---------- */
+    booking: {
+      label: 'Консультация',
+      title: 'Записаться на консультацию',
+      sub: 'Час разговора о вашем проекте: разбираю задачу, показываю решения и говорю, с чего начать. Выберите свободное время — часы обновляются из моего календаря.',
+      mDur: 'Длительность',
+      mDurV: 'От 1 часа',
+      mPrice: 'Стоимость',
+      mPriceV: '3 500 ₽ в час',
+      mPrep: 'Подготовка',
+      mPrepV: 'Материалы за 24 часа'
+    },
+
     /* ---------- Контакты ---------- */
     contact: {
       label: 'Контакты',
@@ -274,6 +289,7 @@ window.CONTENT = {
     nav: {
       work: 'Work',
       solve: 'Challenges',
+      booking: 'Consultation',
       formats: 'Formats',
       contact: 'Contact',
       menu: 'Menu',
@@ -444,6 +460,19 @@ window.CONTENT = {
       prev: 'Previous case',
       next: 'Next case',
       back: 'Back to portfolio'
+    },
+
+
+    booking: {
+      label: 'Consultation',
+      title: 'Book a consultation',
+      sub: 'An hour about your project: I unpack the task, show possible solutions and say where to start. Pick a free time — the hours come straight from my calendar.',
+      mDur: 'Duration',
+      mDurV: 'From 1 hour',
+      mPrice: 'Rate',
+      mPriceV: '3,500 ₽ per hour',
+      mPrep: 'Preparation',
+      mPrepV: 'Materials 24 hours ahead'
     },
 
     contact: {
