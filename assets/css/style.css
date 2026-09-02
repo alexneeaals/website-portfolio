@@ -344,8 +344,9 @@ body.menu-open .burger span:nth-child(2) { transform: translateY(-6.5px) rotate(
 .about__text p { margin: 0 0 20px; }
 .about__stats {
   display: flex;
-  gap: clamp(32px, 5vw, 72px);
-  margin: 40px 0 34px;
+  flex-wrap: wrap;
+  gap: clamp(28px, 4vw, 64px);
+  margin: 40px 0 0;
 }
 .stat__v {
   font-family: var(--serif);
@@ -355,9 +356,6 @@ body.menu-open .burger span:nth-child(2) { transform: translateY(-6.5px) rotate(
   display: block;
 }
 .stat__l { font-size: 12px; letter-spacing: .1em; color: var(--muted); margin-top: 8px; display: block; }
-
-.about__quote { border-left: 1px solid var(--accent-soft); padding-left: 22px; }
-.about__quote cite { display: block; font-style: normal; font-size: 12px; letter-spacing: .12em; color: var(--muted); margin-top: 8px; }
 
 /* ==================================================================
    Сферы работы — бегущая строка

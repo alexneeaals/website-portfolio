@@ -42,8 +42,8 @@ window.CONTENT = {
       m1l: 'лет опыта',
       m2v: '60+',
       m2l: 'реализованных кейсов',
-      quote: '«Архитектура — это застывшая музыка.»',
-      quoteAuthor: '— Гёте'
+      m3v: '35+',
+      m3l: 'выступлений на форумах'
     },
 
 
@@ -298,8 +298,8 @@ window.CONTENT = {
       m1l: 'years of experience',
       m2v: '60+',
       m2l: 'delivered projects',
-      quote: '"Architecture is frozen music."',
-      quoteAuthor: '— Goethe'
+      m3v: '35+',
+      m3l: 'talks at forums'
     },
 
 
