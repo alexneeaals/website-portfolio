@@ -12,6 +12,10 @@
     {
       "source": "/legal/:slug",
       "destination": "/legal/:slug.html"
+    },
+    {
+      "source": "/team",
+      "destination": "/team.html"
     }
   ],
   "headers": [

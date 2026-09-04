@@ -15,7 +15,6 @@ window.CONTENT = {
 
     nav: {
       work: 'Портфолио',
-      solve: 'Задачи',
       formats: 'Форматы',
       contact: 'Контакты',
       menu: 'Меню',
@@ -275,7 +274,6 @@ window.CONTENT = {
 
     nav: {
       work: 'Work',
-      solve: 'Challenges',
       formats: 'Formats',
       contact: 'Contact',
       menu: 'Menu',
