@@ -1430,28 +1430,25 @@ body.menu-open .burger span:nth-child(2) { transform: translateY(-6.5px) rotate(
   color: var(--accent);
   margin-bottom: 10px;
 }
+/* Имя и роль держим в одну строку: пять карточек рядом читаются как
+   ряд, только когда все строки на одной высоте. Размер шрифта привязан
+   к ширине окна — колонка в пятиколоночной раскладке узкая (около 190px
+   при 1180px и около 220px при 1440px), и фиксированный кегль на узком
+   конце вылезал бы за край. */
 .tm__name {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: clamp(19px, 1.8vw, 24px);
+  font-size: clamp(16px, 1.3vw, 19.5px);
   line-height: 1.24;
   margin: 0 0 10px;
+  white-space: nowrap;
 }
 .tm__role {
-  font-size: 13.5px;
+  font-size: clamp(11.5px, .92vw, 13px);
   line-height: 1.6;
   color: var(--accent);
   margin: 0;
-  text-wrap: pretty;
-}
-.tm__note {
-  margin: 14px 0 0;
-  padding-top: 14px;
-  border-top: 1px solid var(--hair);
-  font-size: 13.5px;
-  line-height: 1.7;
-  color: var(--muted);
-  text-wrap: pretty;
+  white-space: nowrap;
 }
 
 /* ==================================================================
