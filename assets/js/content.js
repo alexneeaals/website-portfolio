@@ -437,7 +437,7 @@ window.CONTENT = {
         { t: 'Уникальная концепция', d: 'Каждое событие придумывается с нуля. Ни одна концепция не повторяет соседей по рынку и не тиражируется.' },
         { t: 'Смысл вперёд декораций', d: 'Сначала — что должен почувствовать гость. Только потом сцена, свет и оформление.' },
         { t: 'Стратегия и сцена в одних руках', d: 'Бренд-стратег и режиссёр в одном человеке: событие продолжает бренд, а не спорит с ним.' },
-        { t: 'Обновление площадки', d: 'Беру закоренелое событие с историей и возвращаю ему жизнь, не теряя постоянную аудиторию.' }
+        { t: 'Архитектурный взгляд на пространство', d: 'Первое образование — архитектор среды. Читаю площадку как пространство: потоки, зонирование и путь гостя закладываю до того, как появятся сцена и декор.' }
       ],
 
       ctaText: 'Расскажите о событии — предложу идею и формат работы.',
@@ -938,7 +938,7 @@ window.CONTENT = {
         { t: 'A one-off concept', d: 'Every event is invented from scratch. No concept repeats the neighbours on the market and none is reused.' },
         { t: 'Meaning before decoration', d: 'First — what the guest should feel. Only then the stage, the light and the decor.' },
         { t: 'Strategy and stage in one pair of hands', d: 'A brand strategist and a director in one person: the event continues the brand instead of arguing with it.' },
-        { t: 'Renewing the venue', d: 'I take a long-running event and bring it back to life without losing its regular audience.' }
+        { t: 'An architect’s view of space', d: 'My first degree is in environmental architecture. I read a venue as space: flows, zoning and the guest’s route are set before the stage and the decor appear.' }
       ],
 
       ctaText: 'Tell me about your event — I will propose an idea and a way to work.',
