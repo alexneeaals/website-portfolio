@@ -2191,3 +2191,24 @@ body.cursor-lg .cursor { opacity: 0; }
 @media (max-width: 900px) {
   .evg { grid-template-columns: 1fr; max-width: 560px; }
 }
+
+/* ==================================================================
+   Мобильная версия (телефон и планшет) — правки 15 сентября 2026
+   ================================================================== */
+@media (max-width: 900px) {
+  /* Главная: на первом экране без кнопок */
+  .hero__cta { display: none; }
+
+  /* Главная: портфолио сразу после Brand Experience. Порядок меняем
+     только визуально, разметка не трогается. Фоны секций при этом
+     переставлены, чтобы белые и светлые блоки по-прежнему чередовались. */
+  #top { display: flex; flex-direction: column; }
+  #top > * { order: 2; }
+  #top > .hero, #top > .tagline-strip, #top > #about, #top > #experience { order: 0; }
+  #top > #work { order: 1; background: var(--ivory); }
+  #top > #growth { background: var(--white); }
+
+  /* Режиссура: обложку под первым экраном прячем, картинка остаётся
+     только у блока с фразой */
+  .ev-cover-wrap { display: none; }
+}

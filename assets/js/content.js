@@ -435,7 +435,7 @@ window.CONTENT = {
       whyTitle: 'Авторский почерк события',
       why: [
         { t: 'Уникальная концепция', d: 'Каждое событие придумывается с нуля. Ни одна концепция не повторяет соседей по рынку и не тиражируется.' },
-        { t: 'Смысл вперёд декораций', d: 'Сначала — что должен почувствовать гость. Только потом сцена, свет и оформление.' },
+        { t: 'Смысл и влияние', d: 'Сначала — что должен почувствовать гость. Только потом сцена, свет и оформление.' },
         { t: 'Стратегия и сцена в одних руках', d: 'Бренд-стратег и режиссёр в одном человеке: событие продолжает бренд, а не спорит с ним.' },
         { t: 'Архитектурный взгляд на пространство', d: 'Первое образование — архитектор среды. Читаю площадку как пространство: потоки, зонирование и путь гостя закладываю до того, как появятся сцена и декор.' }
       ],
@@ -936,7 +936,7 @@ window.CONTENT = {
       whyTitle: 'The signature hand of an event',
       why: [
         { t: 'A one-off concept', d: 'Every event is invented from scratch. No concept repeats the neighbours on the market and none is reused.' },
-        { t: 'Meaning before decoration', d: 'First — what the guest should feel. Only then the stage, the light and the decor.' },
+        { t: 'Meaning and impact', d: 'First — what the guest should feel. Only then the stage, the light and the decor.' },
         { t: 'Strategy and stage in one pair of hands', d: 'A brand strategist and a director in one person: the event continues the brand instead of arguing with it.' },
         { t: 'An architect’s view of space', d: 'My first degree is in environmental architecture. I read a venue as space: flows, zoning and the guest’s route are set before the stage and the decor appear.' }
       ],
