@@ -199,7 +199,9 @@ window.CONTENT = {
           inc: ['Идея и драматургия', 'Сценарий и креатив', 'Арт-дирекшн и визуал', 'Коллаборации и партнёры', 'Продакшн и режиссура на площадке'],
           time: 'от 4 недель до 3 месяцев',
           price: 'По запросу',
-          pick: 'Режиссура спецпроекта или события'
+          pick: 'Режиссура спецпроекта или события',
+          link: 'events.html',
+          linkLabel: 'Подробнее о режиссуре'
         }
       ],
       extra: [
@@ -316,6 +318,131 @@ window.CONTENT = {
       tgBtn: 'Написать в Telegram',
       studioLabel: 'География:',
       studio: 'Работаю по всему миру'
+    },
+
+    /* ---------- Страница «Режиссура событий» ---------- */
+    ev: {
+      metaTitle: 'Режиссура событий — Александра Николаева',
+      metaDesc: 'Режиссура фестивалей, форумов, выставок и инвест-выездов: концепция, сценарий, пространство, дизайн-код, программа и Event book. Управление под ключ.',
+      back: 'К услугам',
+      label: 'Режиссура',
+      title: 'События',
+      tagline: 'Событие — часть архитектуры бренда, а не просто развлечение',
+      lede: 'Работаю с событием комплексно: от идеи и режиссуры до последней минуты на площадке. Подбираю подрядчиков, артистов и творцов, при необходимости — спикеров; выстраиваю пространство, визуальный код, программу, работу с экспонентами и каждую точку контакта.',
+      lede2: 'Одна идея считывается во всём — от финального визуала до самого действа.',
+      meta: [
+        { l: 'Форматы', v: 'Фестивали · Форумы · Выставки · Инвест-выезды' },
+        { l: 'Роль', v: 'Режиссёр и креативный продюсер' },
+        { l: 'Срок', v: 'от 1 до 3 месяцев' },
+        { l: 'Стоимость', v: 'По запросу' }
+      ],
+      coverAlt: 'Просторный общественный зал: поток людей в светлом транспортном хабе',
+
+      phrase: 'Событие сегодня — это борьба за впечатление и узнаваемость. Зритель перед вами или предприниматель на форуме — его важно впечатлить так, чтобы день изменил взгляды, дал цель, силы на рывок и единомышленников. Поэтому событие —',
+      accent: 'часть архитектуры бренда.',
+      phraseNote: 'Первое живое знакомство с брендом, лояльность, список будущих клиентов и репутация, которую не купишь рекламой.',
+
+      metricsLabel: 'Метрики события',
+      metricsTitle: 'Что приносит бизнесу сильная режиссура',
+      metrics: [
+        { t: 'Узнаваемость', d: 'Событие — самое живое знакомство с брендом: его запоминают ощущением, а не баннером.' },
+        { t: 'Лояльность и возвраты', d: 'Гости возвращаются на следующий год и приводят с собой своих.' },
+        { t: 'База будущих клиентов', d: 'Каждый гость — контакт и естественный повод для следующего касания.' },
+        { t: 'Конверсия в сделки', d: 'После события переговоры начинаются не с нуля, а с доверия.' },
+        { t: 'Средний чек на площадке', d: 'Продуманный сценарий ведёт гостя к покупке, а не к очереди.' },
+        { t: 'Цена участия для партнёров', d: 'Сильная программа поднимает стоимость спонсорского пакета и стенда.' },
+        { t: 'Медийный охват и UGC', d: 'Кадры, которые хочется снять и выложить, работают как бесплатное медиа.' },
+        { t: 'NPS гостей', d: 'Рекомендуют то, что прожили, а не то, на что купили билет.' },
+        { t: 'Возвращаемость экспонентов', d: 'Экспоненты бронируют следующий год ещё на площадке.' },
+        { t: 'HR-бренд', d: 'Событие сплачивает команду и притягивает людей в компанию.' }
+      ],
+
+      withLabel: 'С кем работаю',
+      withTitle: 'События, в которых нужна режиссура',
+      withText: 'Работаю с крупными площадками, организаторами деловых и городских событий, девелоперами, брендами и институтами развития.',
+      withTags: ['Фестивали', 'Форумы', 'Выставки', 'Инвест-выезды', 'Конференции', 'Поп-ап активации', 'Деловые программы', 'Презентации и открытия'],
+
+      whatLabel: 'Что я делаю',
+      whatTitle: 'Каждая точка контакта продумана',
+      what: [
+        { t: 'Концепция и режиссура', p: ['Идея, легенда и смысл события', 'Драматургия дня: завязка, кульминация, финал', 'Сценарий и тайминг до секунды', 'Речи, роли ведущих и модераторов'] },
+        { t: 'Пространство', p: ['Планировка и зонирование площадки', 'Потоки гостей и навигация', 'Сцена, зоны контента и нетворкинга', 'Свет, звук и атмосфера'] },
+        { t: 'Дизайн-код и брендинг', p: ['Визуальный код события', 'Носители: от бейджа до сцены', 'Фотозоны и кадры для соцсетей', 'Мерч и подарки гостям'] },
+        { t: 'Экспоненты и партнёры', p: ['Концепция выставочной части', 'Стандарты и сценарии стендов', 'Активности для экспонентов', 'Пакеты и логика для спонсоров'] },
+        { t: 'Программа', p: ['Деловая и специальная программа', 'Спикеры, модерация, интерактивы', 'Коллаборации и спецпроекты', 'Шоу-программа'] },
+        { t: 'Вечерняя часть', p: ['Сценарий вечера', 'Артисты и музыкальная линия', 'Гастрономия и атмосфера', 'Финальная кульминация и послевкусие'] }
+      ],
+
+      bookLabel: 'Результат',
+      bookTitle: 'Event book — событие, собранное в один стратегический документ',
+      bookText: 'По Event book событие можно провести без меня: в нём зафиксировано всё — от смысла до строки закупки.',
+      book: [
+        { t: 'Концепция и смысл', d: 'Идея события, легенда, тон и обещание гостю' },
+        { t: 'Визуальные носители', d: 'Полный перечень и макеты: от бейджа до сцены' },
+        { t: 'Кто что делает', d: 'Зоны ответственности команды и подрядчиков' },
+        { t: 'Планировка пространства', d: 'Что где стоит, висит и работает на площадке' },
+        { t: 'Сценарий по секундам', d: 'Тайминг, речи, реплики и переходы' },
+        { t: 'Таблицы наполнения', d: 'Excel: что для чего нужно, где закупить и почём' }
+      ],
+
+      formatsLabel: 'Форматы работы',
+      formatsTitle: 'Два способа работать со мной',
+      incLabel: 'Что входит',
+      timeLabel: 'Срок',
+      priceLabel: 'Стоимость',
+      cta: 'Обсудить событие',
+      formats: [
+        {
+          t: 'Создание режиссуры',
+          d: 'Придумываю и выстраиваю событие целиком — от смысла до финальной минуты — и передаю вам Event book, по которому работает ваша команда.',
+          inc: ['Концепция, легенда и драматургия', 'Сценарий и тайминг', 'Планировка и дизайн-код пространства', 'Брендинг и точки контакта', 'Деловая, шоу- и вечерняя программа', 'Event book со всеми таблицами'],
+          time: 'от 1 до 3 месяцев',
+          price: 'По запросу'
+        },
+        {
+          t: 'Управление под ключ',
+          d: 'Беру процесс на себя: подбираю и курирую подрядчиков и исполнителей, веду подготовку и работу на площадке. Оплачивается отдельно от режиссуры.',
+          inc: ['Подбор и переговоры с подрядчиками', 'Бюджет, графики и контроль сроков', 'Продюсирование подготовки', 'Кураторство на площадке', 'Контроль сценария и тайминга в день события'],
+          time: 'от 1 месяца до даты события',
+          price: 'Отдельная плата, по запросу'
+        }
+      ],
+
+      casesLabel: 'Проекты',
+      casesTitle: 'События в портфолио',
+      casesNote: 'Здесь появятся новые события — раздел пополняется.',
+      cases: [
+        {
+          t: 'Фестиваль пирсов',
+          d: 'Международный фестиваль пирсов, который связывает архитектуру набережной, туристов и идентичность города через локальные фестивали, ремёсла и артистов. Новый диалог города и события.',
+          img: '/assets/img/events/piers-festival.jpg'
+        },
+        {
+          t: 'Монголия ИнвестФест',
+          d: 'Событие, приуроченное к сбору инвесторов и девелоперов: премиальные локации для будущего проектирования и диалог локальной культуры, артистов и бизнеса.',
+          img: '/assets/img/events/mongolia-investfest.jpg'
+        },
+        {
+          t: 'Форум RE:BIRTH',
+          d: 'Комплексная упаковка научно-практической конференции: концепция, сценография зала, айдентика и система навигации для гостей.',
+          img: '/assets/img/projects/rebirth-forum/hero.jpg',
+          href: '/projects/rebirth-forum.html',
+          hrefLabel: 'Смотреть кейс'
+        }
+      ],
+
+      whyLabel: 'Почему со мной',
+      whyTitle: 'Авторский почерк события',
+      why: [
+        { t: 'Уникальная концепция', d: 'Каждое событие придумывается с нуля. Ни одна концепция не повторяет соседей по рынку и не тиражируется.' },
+        { t: 'Смысл вперёд декораций', d: 'Сначала — что должен почувствовать гость. Только потом сцена, свет и оформление.' },
+        { t: 'Стратегия и сцена в одних руках', d: 'Бренд-стратег и режиссёр в одном человеке: событие продолжает бренд, а не спорит с ним.' },
+        { t: 'Обновление площадки', d: 'Беру закоренелое событие с историей и возвращаю ему жизнь, не теряя постоянную аудиторию.' }
+      ],
+
+      ctaText: 'Расскажите о событии — предложу идею и формат работы.',
+      pick: 'Режиссура спецпроекта или события',
+      more: 'Все услуги'
     },
 
     /* ---------- Страница «Террабук» ---------- */
@@ -584,7 +711,9 @@ window.CONTENT = {
           inc: ['Idea and dramaturgy', 'Script and creative', 'Art direction and visuals', 'Collaborations and partners', 'Production and on-site direction'],
           time: '4 weeks to 3 months',
           price: 'On request',
-          pick: 'Special project or event direction'
+          pick: 'Special project or event direction',
+          link: 'events.html',
+          linkLabel: 'More about event direction'
         }
       ],
       extra: [
@@ -691,6 +820,130 @@ window.CONTENT = {
       tgBtn: 'Message me on Telegram',
       studioLabel: 'Reach:',
       studio: 'Working worldwide'
+    },
+
+    ev: {
+      metaTitle: 'Event direction — Sandra Niko',
+      metaDesc: 'Direction for festivals, forums, exhibitions and investment tours: concept, script, space, design code, programme and the Event book. Turnkey management.',
+      back: 'Back to services',
+      label: 'Direction',
+      title: 'Events',
+      tagline: 'An event is part of the brand architecture, not just entertainment',
+      lede: 'I work with an event end to end: from the idea and the direction to the last minute on site. I select contractors, artists and makers — speakers where they are needed — and build the space, the visual code, the programme, the work with exhibitors and every touchpoint.',
+      lede2: 'One idea reads through all of it, from the final visual to the action itself.',
+      meta: [
+        { l: 'Formats', v: 'Festivals · Forums · Exhibitions · Investment tours' },
+        { l: 'Role', v: 'Director and creative producer' },
+        { l: 'Timeline', v: '1 to 3 months' },
+        { l: 'Fee', v: 'On request' }
+      ],
+      coverAlt: 'A vast public hall: a flow of people in a light-filled transport hub',
+
+      phrase: 'An event today is a fight for impression and recognition. Whether it is a visitor or an entrepreneur at a forum, the day has to move them — change their views, give them a goal, the strength for a leap and people who think alike. That is why an event is',
+      accent: 'part of the brand architecture.',
+      phraseNote: 'The first living encounter with the brand, loyalty, a list of future clients and a reputation advertising cannot buy.',
+
+      metricsLabel: 'Event metrics',
+      metricsTitle: 'What strong direction brings the business',
+      metrics: [
+        { t: 'Recognition', d: 'An event is the most alive encounter with a brand: it is remembered as a feeling, not a banner.' },
+        { t: 'Loyalty and returns', d: 'Guests come back next year and bring their own people with them.' },
+        { t: 'A base of future clients', d: 'Every guest is a contact and a natural reason for the next touch.' },
+        { t: 'Conversion into deals', d: 'After the event, talks start from trust rather than from zero.' },
+        { t: 'Average spend on site', d: 'A considered scenario leads the guest to a purchase, not to a queue.' },
+        { t: 'Partner participation price', d: 'A strong programme lifts the price of a sponsor package and a stand.' },
+        { t: 'Media reach and UGC', d: 'Scenes people want to film and share work as free media.' },
+        { t: 'Guest NPS', d: 'People recommend what they lived through, not what they bought a ticket for.' },
+        { t: 'Exhibitor retention', d: 'Exhibitors book next year while still on site.' },
+        { t: 'Employer brand', d: 'An event unites the team and attracts people to the company.' }
+      ],
+
+      withLabel: 'Who I work with',
+      withTitle: 'Events that need direction',
+      withText: 'I work with major venues, organisers of business and city events, developers, brands and development institutions.',
+      withTags: ['Festivals', 'Forums', 'Exhibitions', 'Investment tours', 'Conferences', 'Pop-up activations', 'Business programmes', 'Launches and openings'],
+
+      whatLabel: 'What I do',
+      whatTitle: 'Every touchpoint is considered',
+      what: [
+        { t: 'Concept and direction', p: ['The idea, legend and meaning of the event', 'Dramaturgy of the day: opening, climax, finale', 'Script and timing down to the second', 'Speeches and the roles of hosts and moderators'] },
+        { t: 'Space', p: ['Venue layout and zoning', 'Guest flows and wayfinding', 'Stage, content and networking zones', 'Light, sound and atmosphere'] },
+        { t: 'Design code and branding', p: ['The visual code of the event', 'Carriers: from the badge to the stage', 'Photo zones and shots for social media', 'Merch and guest gifts'] },
+        { t: 'Exhibitors and partners', p: ['Concept of the exhibition part', 'Stand standards and scenarios', 'Activities for exhibitors', 'Packages and logic for sponsors'] },
+        { t: 'Programme', p: ['Business and special programme', 'Speakers, moderation, interactive formats', 'Collaborations and special projects', 'Show programme'] },
+        { t: 'The evening', p: ['The evening scenario', 'Artists and the musical line', 'Gastronomy and atmosphere', 'Final climax and afterglow'] }
+      ],
+
+      bookLabel: 'Deliverable',
+      bookTitle: 'The Event book — the whole event in one strategic document',
+      bookText: 'The Event book lets the event run without me: everything is fixed in it, from the meaning to the purchase line.',
+      book: [
+        { t: 'Concept and meaning', d: 'The idea, legend, tone and the promise to the guest' },
+        { t: 'Visual carriers', d: 'The full list and artwork: from the badge to the stage' },
+        { t: 'Who does what', d: 'Areas of responsibility for the team and contractors' },
+        { t: 'Space layout', d: 'What stands, hangs and works where on site' },
+        { t: 'Script by the second', d: 'Timing, speeches, cues and transitions' },
+        { t: 'Content tables', d: 'Excel: what is needed for what, where to buy it and at what price' }
+      ],
+
+      formatsLabel: 'Ways to work',
+      formatsTitle: 'Two ways to work with me',
+      incLabel: 'What’s included',
+      timeLabel: 'Timeline',
+      priceLabel: 'Fee',
+      cta: 'Discuss an event',
+      formats: [
+        {
+          t: 'Event direction',
+          d: 'I invent and build the whole event — from its meaning to the final minute — and hand you the Event book your team runs on.',
+          inc: ['Concept, legend and dramaturgy', 'Script and timing', 'Layout and design code of the space', 'Branding and touchpoints', 'Business, show and evening programme', 'Event book with all the tables'],
+          time: '1 to 3 months',
+          price: 'On request'
+        },
+        {
+          t: 'Turnkey management',
+          d: 'I take the process on: selecting and supervising contractors and performers, running the preparation and the work on site. Charged separately from the direction.',
+          inc: ['Selecting and negotiating with contractors', 'Budget, schedules and deadline control', 'Producing the preparation', 'Supervision on site', 'Control of script and timing on the day'],
+          time: 'from 1 month to the event date',
+          price: 'Separate fee, on request'
+        }
+      ],
+
+      casesLabel: 'Projects',
+      casesTitle: 'Events in the portfolio',
+      casesNote: 'More events will appear here — the section is growing.',
+      cases: [
+        {
+          t: 'Piers Festival',
+          d: 'An international festival of piers that links waterfront architecture, tourists and the identity of the city through local festivals, crafts and performers. A new dialogue between a city and an event.',
+          img: '/assets/img/events/piers-festival.jpg'
+        },
+        {
+          t: 'Mongolia InvestFest',
+          d: 'An event built around a gathering of investors and developers: premium locations for future projects and a dialogue between local culture, performers and business.',
+          img: '/assets/img/events/mongolia-investfest.jpg'
+        },
+        {
+          t: 'RE:BIRTH Forum',
+          d: 'End-to-end packaging of a scientific and practical conference: concept, hall scenography, identity and a wayfinding system for guests.',
+          img: '/assets/img/projects/rebirth-forum/hero.jpg',
+          href: '/projects/rebirth-forum.html',
+          hrefLabel: 'View the case'
+        }
+      ],
+
+      whyLabel: 'Why me',
+      whyTitle: 'The signature hand of an event',
+      why: [
+        { t: 'A one-off concept', d: 'Every event is invented from scratch. No concept repeats the neighbours on the market and none is reused.' },
+        { t: 'Meaning before decoration', d: 'First — what the guest should feel. Only then the stage, the light and the decor.' },
+        { t: 'Strategy and stage in one pair of hands', d: 'A brand strategist and a director in one person: the event continues the brand instead of arguing with it.' },
+        { t: 'Renewing the venue', d: 'I take a long-running event and bring it back to life without losing its regular audience.' }
+      ],
+
+      ctaText: 'Tell me about your event — I will propose an idea and a way to work.',
+      pick: 'Special project or event direction',
+      more: 'All services'
     },
 
     tb: {

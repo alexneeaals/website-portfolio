@@ -171,7 +171,7 @@ var CONTACT_EMAIL = 'alexneeaals@gmail.com';
             '<div class="svc__meta"><span class="label">' + L.price + '</span><b class="' + priceClass(it.price) + '">' + esc(it.price) + '</b></div>' +
             '<div class="svc__acts">' +
               '<a class="pbtn pbtn--solid" href="#contact" data-pick="' + esc(it.pick) + '">' + L.cta + '</a>' +
-              (it.link ? '<a class="pbtn" href="' + it.link + '">' + L.more + '</a>' : '') +
+              (it.link ? '<a class="pbtn" href="' + it.link + '">' + (it.linkLabel ? esc(it.linkLabel) : L.more) + '</a>' : '') +
             '</div>' +
           '</div>' +
         '</article>'
