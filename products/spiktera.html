@@ -405,7 +405,7 @@
   </footer>
 </div>
 
-<script src="/assets/js/products.js?v=20260905e"></script>
+<script src="/assets/js/products.js?v=20260915d"></script>
 <script>
 /* ------------------------------------------------------------------
    Оживление макета. В Claude Design это делал класс Component:
@@ -453,7 +453,7 @@
      что и форма на главной, письмо приходит на ту же почту.
      ---------------------------------------------------------------- */
   var WEB3FORMS_KEY = '8c7b279b-790e-449a-81dd-1b78939b3375';
-  var CONTACT_EMAIL = 'alexneeaals@gmail.com';
+  var CONTACT_TG = 'https://t.me/AlexandraNikolaevaDirects';
 
   var btn = document.getElementById('sp-send');
   if (!btn) return;
@@ -501,8 +501,8 @@
         contactEl.value = '';
       })
       .catch(function () {
-        status.innerHTML = 'Не удалось отправить. Напишите мне на ' +
-          '<a href="mailto:' + CONTACT_EMAIL + '">' + CONTACT_EMAIL + '</a>.';
+        status.innerHTML = 'Не удалось отправить. Напишите мне в ' +
+          '<a href="' + CONTACT_TG + '" target="_blank" rel="noopener noreferrer">Telegram</a>.';
         status.className = 'bad';
       })
       .finally(function () {

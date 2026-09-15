@@ -1,6 +1,7 @@
 /* ------------------------------------------------------------------
-   main.js — главная страница: рендер динамических блоков,
-   слайдер «Карта компетенций» и форма обратной связи.
+   main.js — главная страница: рендер динамических блоков
+   (Brand Experience, формула, услуги, портфолио, задачи),
+   и форма обратной связи.
    ------------------------------------------------------------------ */
 
 /* ===== Ключ доступа Web3Forms =====================================
@@ -83,29 +84,129 @@ var CONTACT_EMAIL = 'alexneeaals@gmail.com';
     MOTION.stagger(host, '.card', 70);
   }
 
-  function renderBadges() {
-    var host = $('#why-badges');
-    if (!host) return;
-    host.innerHTML = '';
-    I18N.t('why.badges').forEach(function (b) {
-      host.appendChild(el('<span class="badge">' + esc(b) + '</span>'));
-    });
-  }
+  /* ==================== Метрики бренда ====================
+     Все десять метрик раскрыты сразу — название и пояснение,
+     без кликов. */
 
-  function renderSteps() {
-    var host = $('#process-steps');
+  function renderGrowth() {
+    var host = $('#grow');
     if (!host) return;
     host.innerHTML = '';
-    I18N.t('process.items').forEach(function (s, i) {
+    (I18N.t('exp.items') || []).forEach(function (it) {
       host.appendChild(el(
-        '<article class="step">' +
-          '<span class="step__n">' + num(i) + '</span>' +
-          '<h3 class="step__t">' + esc(s.t) + '</h3>' +
-          '<p class="step__d">' + esc(s.d) + '</p>' +
+        '<article class="grow__i">' +
+          '<span class="grow__arr" aria-hidden="true">↑</span>' +
+          '<h3 class="grow__t">' + esc(it.t) + '</h3>' +
+          '<p class="grow__d">' + esc(it.d) + '</p>' +
         '</article>'
       ));
     });
-    MOTION.stagger(host, '.step', 70);
+    MOTION.stagger(host, '.grow__i', 50);
+  }
+
+  /* ==================== Формула бренда ====================
+     Текст с фирменными тегами: в словаре [слово] — тег в рамке,
+     {слово} — тег с подчёркиванием. Под текстом — результат. */
+
+  function renderFormula() {
+    var text = $('#formula-text');
+    var res = $('#formula-result');
+    if (!text || !res) return;
+
+    text.innerHTML = esc(I18N.t('formula.text'))
+      .replace(/\[([^\]]+)\]/g, '<span class="ftag ftag--box">$1</span>')
+      .replace(/\{([^}]+)\}/g, '<span class="ftag ftag--line">$1</span>');
+
+    res.innerHTML =
+      '<div>' +
+        '<span class="fres__k">' + esc(I18N.t('formula.resultLabel')) + '</span>' +
+        '<p class="fres__t">' + esc(I18N.t('formula.result')) + '</p>' +
+      '</div>' +
+      '<ul class="fres__out">' +
+        (I18N.t('formula.outcomes') || []).map(function (o) {
+          return '<li><b>' + esc(o.k) + '</b>' + esc(o.t) + '</li>';
+        }).join('') +
+      '</ul>';
+  }
+
+  /* ==================== Услуги ====================
+     Пять основных форматов строками «как в меню» и два дополнительных
+     карточками. Кнопка «Обсудить» выбирает нужный пункт в форме
+     и подставляет заготовку письма. */
+
+  function renderServices() {
+    var list = $('#svc-list');
+    var extra = $('#svc-extra');
+    if (!list || !extra) return;
+
+    var L = {
+      inc: esc(I18N.t('do.incLabel')),
+      time: esc(I18N.t('do.timeLabel')),
+      price: esc(I18N.t('do.priceLabel')),
+      cta: esc(I18N.t('do.cta')),
+      more: esc(I18N.t('do.more'))
+    };
+
+    // Цифры в цене — акцентом, «по запросу» — спокойным серым
+    function priceClass(p) { return /\d/.test(p) ? 'svc__price' : 'svc__price svc__price--ask'; }
+
+    list.innerHTML = '';
+    I18N.t('do.items').forEach(function (it, i) {
+      list.appendChild(el(
+        '<article class="svc__row' + (it.tag ? ' svc__row--flag' : '') + '">' +
+          '<div class="svc__head">' +
+            '<span class="svc__n">' + num(i) + '</span>' +
+            (it.tag ? '<span class="svc__tag">' + esc(it.tag) + '</span>' : '') +
+            '<h3 class="svc__t">' + esc(it.t) + '</h3>' +
+          '</div>' +
+          '<div class="svc__body">' +
+            '<p class="svc__d">' + esc(it.d) + '</p>' +
+            '<span class="label">' + L.inc + '</span>' +
+            '<ul class="svc__inc">' +
+              it.inc.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') +
+            '</ul>' +
+          '</div>' +
+          '<div class="svc__side">' +
+            '<div class="svc__meta"><span class="label">' + L.time + '</span><b>' + esc(it.time) + '</b></div>' +
+            '<div class="svc__meta"><span class="label">' + L.price + '</span><b class="' + priceClass(it.price) + '">' + esc(it.price) + '</b></div>' +
+            '<div class="svc__acts">' +
+              '<a class="pbtn pbtn--solid" href="#contact" data-pick="' + esc(it.pick) + '">' + L.cta + '</a>' +
+              (it.link ? '<a class="pbtn" href="' + it.link + '">' + L.more + '</a>' : '') +
+            '</div>' +
+          '</div>' +
+        '</article>'
+      ));
+    });
+    MOTION.stagger(list, '.svc__row', 60);
+
+    extra.innerHTML = '';
+    I18N.t('do.extra').forEach(function (it, i) {
+      extra.appendChild(el(
+        '<article class="card svc-card">' +
+          '<span class="card__n">+ ' + num(i) + '</span>' +
+          '<h3 class="h-card card__t">' + esc(it.t) + '</h3>' +
+          '<p class="card__d">' + esc(it.d) + '</p>' +
+          '<div class="svc-card__foot">' +
+            '<div class="svc__meta"><span class="label">' + L.time + '</span><b>' + esc(it.time) + '</b></div>' +
+            '<div class="svc__meta"><span class="label">' + L.price + '</span><b class="' + priceClass(it.price) + '">' + esc(it.price) + '</b></div>' +
+            '<a class="pbtn" href="#contact" data-pick="' + esc(it.pick) + '">' + L.cta + '</a>' +
+          '</div>' +
+        '</article>'
+      ));
+    });
+    MOTION.stagger(extra, '.svc-card', 70);
+  }
+
+  /** «Обсудить» у услуги: выбираем пункт в форме и ставим заготовку.
+      Прокрутку к форме делает общий обработчик якорей в motion.js. */
+  function initServicePicks() {
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('[data-pick]');
+      if (!a) return;
+      var sel = $('#field-type');
+      if (!sel) return;
+      if (selectOption(a.getAttribute('data-pick'))) applyScript(false);
+    });
   }
 
   /* ==================== Портфолио ==================== */
@@ -295,25 +396,6 @@ var CONTACT_EMAIL = 'alexneeaals@gmail.com';
     sync();
   }
 
-  /* ==================== Дорожная карта образования ==================== */
-
-  function renderRoad() {
-    var host = $('#edu-road');
-    if (!host) return;
-    host.innerHTML = '';
-
-    I18N.t('edu.items').forEach(function (e, i) {
-      host.appendChild(el(
-        '<div class="road__step">' +
-          '<span class="road__dot"></span>' +
-          '<span class="road__n">' + num(i) + '</span>' +
-          '<span class="road__place">' + esc(e.place) + '</span>' +
-          '<span class="road__what">' + esc(e.what) + '</span>' +
-        '</div>'
-      ));
-    });
-  }
-
   /* ==================== Форма ==================== */
 
   function initForm() {
@@ -361,6 +443,7 @@ var CONTACT_EMAIL = 'alexneeaals@gmail.com';
       var payload = {
         name: name.value.trim(),
         email: email.value.trim(),
+        dir: (formDirs()[formDir] || {}).t || '',
         type: type.value,
         message: message.value.trim(),
         consent: (consent && consent.checked) ? 'да' : 'нет'
@@ -370,7 +453,7 @@ var CONTACT_EMAIL = 'alexneeaals@gmail.com';
         var body =
           I18N.t('contact.name') + ': ' + payload.name + '\n' +
           I18N.t('contact.email') + ': ' + payload.email + '\n' +
-          I18N.t('contact.type') + ': ' + payload.type + '\n\n' +
+          I18N.t('contact.dirLabel') + ': ' + payload.dir + ' — ' + payload.type + '\n\n' +
           payload.message;
         window.location.href = 'mailto:' + CONTACT_EMAIL +
           '?subject=' + encodeURIComponent('Заявка с сайта — ' + payload.name) +
@@ -396,7 +479,8 @@ var CONTACT_EMAIL = 'alexneeaals@gmail.com';
           // а не на служебный адрес сервиса
           replyto: payload.email,
           'Имя': payload.name,
-          'Тип проекта': payload.type,
+          'Направление': payload.dir,
+          'Запрос': payload.type,
           'Согласие на обработку данных': payload.consent,
           'Язык сайта': I18N.lang === 'ru' ? 'Русский' : 'English',
           message: payload.message
@@ -430,15 +514,9 @@ var CONTACT_EMAIL = 'alexneeaals@gmail.com';
 
     /* Если для продукта есть пункт в списке — выбираем его и ставим
        готовую заготовку. Иначе просто называем продукт в сообщении. */
-    var sel = $('#field-type');
-    var matched = false;
-    if (sel) {
-      [].forEach.call(sel.options, function (opt, i) {
-        if (!matched && opt.value === product) { sel.selectedIndex = i; matched = true; }
-      });
-    }
+    var matched = selectOption(product);
     if (matched) {
-      applyScript(product, false);
+      applyScript(false);
     } else {
       var msg = $('#field-message');
       if (msg && !msg.value) {
@@ -451,15 +529,50 @@ var CONTACT_EMAIL = 'alexneeaals@gmail.com';
     }
   }
 
+  /* ==================== Форма: направление и пункт ====================
+     Сначала человек выбирает направление — услуги или продукты, —
+     затем конкретный пункт. Номер направления переживает смену языка. */
+
+  var formDir = 0;
+
+  function formDirs(lang) {
+    var c = window.CONTENT[lang || I18N.lang];
+    return (c && c.contact && c.contact.dirs) || [];
+  }
+
+  /** Экранирование для value без typo(): иначе в название попадут
+      неразрывные пробелы и оно перестанет совпадать с исходным. */
+  function attr(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c];
+    });
+  }
+
   function renderFormOptions() {
     var sel = $('#field-type');
-    if (!sel) return;
+    var host = $('#field-dir');
+    if (!sel || !host) return;
+    var dirs = formDirs();
+    if (!dirs.length) return;
+    formDir = Math.min(formDir, dirs.length - 1);
+
+    host.innerHTML = '';
+    dirs.forEach(function (d, i) {
+      var b = el('<button class="fdir' + (i === formDir ? ' is-on' : '') + '" type="button" aria-pressed="' +
+                 (i === formDir) + '">' + esc(d.t) + '</button>');
+      b.addEventListener('click', function () { setFormDir(i); });
+      host.appendChild(b);
+    });
+
+    var label = $('#field-type-label');
+    if (label) label.textContent = window.typo(dirs[formDir].label);
+
     var current = sel.selectedIndex;
     sel.innerHTML = '';
-    I18N.t('contact.typeOptions').forEach(function (o) {
-      sel.appendChild(el('<option value="' + esc(o.t) + '">' + esc(o.t) + '</option>'));
+    dirs[formDir].options.forEach(function (o) {
+      sel.appendChild(el('<option value="' + attr(o.t) + '">' + esc(o.t) + '</option>'));
     });
-    if (current > -1) sel.selectedIndex = current;
+    if (current > -1 && current < sel.options.length) sel.selectedIndex = current;
 
     /* Сменили язык — вместе с подписями меняем и заготовку в поле,
        если человек её не переписал под себя. */
@@ -467,17 +580,54 @@ var CONTACT_EMAIL = 'alexneeaals@gmail.com';
     if (msg && autoScript && msg.value === autoScript) {
       autoScript = '';
       msg.value = '';
-      applyScript(sel.value, false);
+      applyScript(false);
     }
   }
 
-  /** Заготовка письма для выбранного типа проекта, если она есть. */
-  function scriptFor(label) {
-    var found = null;
-    I18N.t('contact.typeOptions').forEach(function (o) {
-      if (o.t === label && o.script) found = o.script;
-    });
-    return found;
+  /** Переключает направление. Наша заготовка в сообщении уходит
+      вместе со старым пунктом, текст человека остаётся. */
+  function setFormDir(i) {
+    if (i === formDir) return;
+    formDir = i;
+    var msg = $('#field-message');
+    if (msg && autoScript && msg.value === autoScript) { msg.value = ''; autoScript = ''; }
+    var sel = $('#field-type');
+    if (sel) sel.selectedIndex = 0;
+    renderFormOptions();
+  }
+
+  /** Выбирает пункт по названию и переключает направление, если надо.
+      Ищем в обоих языках: ссылки с витрины продуктов приходят
+      по-русски и на английской версии тоже. */
+  function selectOption(name) {
+    var norm = function (x) { return String(x).replace(/ /g, ' ').trim(); };
+    var want = norm(name);
+    var langs = ['ru', 'en'];
+    for (var l = 0; l < langs.length; l++) {
+      var dirs = formDirs(langs[l]);
+      for (var d = 0; d < dirs.length; d++) {
+        for (var k = 0; k < dirs[d].options.length; k++) {
+          var t = norm(dirs[d].options[k].t);
+          // Точное совпадение или уточнение: «Конструктор … — счёт на юрлицо»
+          if (want === t || want.indexOf(t + ' — ') === 0) {
+            setFormDir(d);
+            var sel = $('#field-type');
+            if (sel) sel.selectedIndex = k;
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  }
+
+  /** Заготовка письма для выбранного пункта, если она есть. */
+  function currentScript() {
+    var sel = $('#field-type');
+    var dir = formDirs()[formDir];
+    if (!sel || !dir) return null;
+    var o = dir.options[sel.selectedIndex];
+    return (o && o.script) || null;
   }
 
   /* Текст, который подставили мы сами. Нужен, чтобы при смене пункта
@@ -486,10 +636,10 @@ var CONTACT_EMAIL = 'alexneeaals@gmail.com';
 
   /** Ставит заготовку в поле сообщения и выделяет её, чтобы сразу
       было видно: текст можно дополнить или стереть. */
-  function applyScript(label, focus) {
+  function applyScript(focus) {
     var msg = $('#field-message');
     if (!msg) return;
-    var text = scriptFor(label);
+    var text = currentScript();
     if (!text) return;
     // Чужой текст не трогаем
     if (msg.value.trim() && msg.value !== autoScript) return;
@@ -506,22 +656,20 @@ var CONTACT_EMAIL = 'alexneeaals@gmail.com';
   function initTypeScripts() {
     var sel = $('#field-type');
     if (!sel) return;
-    sel.addEventListener('change', function () { applyScript(sel.value, true); });
+    sel.addEventListener('change', function () { applyScript(true); });
   }
 
   /* ==================== Сборка ==================== */
 
   function renderAll() {
     renderTagStrip();
-    renderCards('#why-cards', 'why.items');
-    renderCards('#do-cards', 'do.items');
+    renderGrowth();
+    renderFormula();
+    renderServices();
     renderCards('#formats-cards', 'formats.items');
-    renderBadges();
-    renderSteps();
     renderWorkCats();
     renderWorks();
     renderAsks();
-    renderRoad();
 
     renderFormOptions();
     prefillFromQuery();
@@ -534,6 +682,7 @@ var CONTACT_EMAIL = 'alexneeaals@gmail.com';
     renderAll();
     initForm();
     initTypeScripts();
+    initServicePicks();
     // Шрифты подгружаются после первой отрисовки и меняют длину ленты —
     // пересчитываем скорость, когда они готовы
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(renderTagStrip);

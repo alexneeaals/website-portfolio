@@ -2,8 +2,9 @@
    contact-pop.js — окно быстрой связи в правом нижнем углу.
 
    Появляется сразу при открытии страницы и предлагает написать
-   в мессенджер или на почту. В каждом канале уже подставлен готовый
-   текст — остаётся дописать своё.
+   в мессенджер. В каждом канале уже подставлен готовый текст —
+   остаётся дописать своё. Почты здесь нет сознательно: писать
+   предлагаем в Telegram, WhatsApp или через форму заявки.
 
    Закрыли окно — оно сворачивается в кружок в том же углу, и открыть
    его снова можно одним касанием. Отметка о закрытии живёт неделю
@@ -19,7 +20,6 @@
 var CONTACT_POP = {
   telegram: 'AlexandraNikolaevaDirects',
   whatsapp: '79778297414',
-  email:    'alexneeaals@gmail.com',
   delay:    0,    // через сколько секунд показать (0 — сразу)
   quiet:    7     // на сколько дней замолчать после закрытия
 };
@@ -39,10 +39,8 @@ var CONTACT_POP = {
       close: 'Закрыть',
       open: 'Написать',
       live: 'На связи',
-      mail: 'Почта',
-      script: 'Здравствуйте, Александра! Пишу с сайта sandraniko.com. Хочу обсудить проект: ',
-      subject: 'Заявка с сайта sandraniko.com',
-      letter: 'Здравствуйте, Александра!\n\nПишу с сайта sandraniko.com.\n\nО проекте: \nСроки: \nКак связаться: \n'
+      form: 'Оставить заявку',
+      script: 'Здравствуйте, Александра! Пишу с сайта sandraniko.com. Хочу обсудить проект: '
     },
     en: {
       title: 'Write to me directly',
@@ -50,10 +48,8 @@ var CONTACT_POP = {
       close: 'Close',
       open: 'Write to me',
       live: 'Online',
-      mail: 'Email',
-      script: 'Hello Sandra! I am writing from sandraniko.com. I would like to discuss a project: ',
-      subject: 'Enquiry from sandraniko.com',
-      letter: 'Hello Sandra!\n\nI am writing from sandraniko.com.\n\nAbout the project: \nTimeline: \nHow to reach me: \n'
+      form: 'Send an inquiry',
+      script: 'Hello Sandra! I am writing from sandraniko.com. I would like to discuss a project: '
     }
   };
 
@@ -118,9 +114,9 @@ var CONTACT_POP = {
               '<span class="qpop__ic">' + ICONS.wa + '</span>WhatsApp</a>';
     }
 
-    rows += '<a class="qpop__row" href="mailto:' + C.email + '?subject=' +
-            encodeURIComponent(t.subject) + '&body=' + encodeURIComponent(t.letter) + '">' +
-            '<span class="qpop__ic">' + ICONS.mail + '</span>' + t.mail + '</a>';
+    // Вместо почты — форма заявки на главной
+    rows += '<a class="qpop__row" href="/#contact">' +
+            '<span class="qpop__ic">' + ICONS.mail + '</span>' + t.form + '</a>';
 
     wrap.innerHTML =
       '<button class="qpop__x" type="button" aria-label="' + t.close + '">' +

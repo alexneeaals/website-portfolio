@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@200;300;400;500&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=20260905e">
+<link rel="stylesheet" href="assets/css/style.css?v=20260915d">
 </head>
 <body>
 
@@ -35,11 +35,11 @@
     <a class="brand" href="#top">Sandra Niko</a>
 
     <nav class="nav">
-      <a class="nav__link" href="#work"     data-i18n="nav.work"    data-magnet>Портфолио</a>
+      <a class="nav__link" href="#work"     data-i18n="nav.work"     data-magnet>Портфолио</a>
+      <a class="nav__link" href="#services" data-i18n="nav.services" data-magnet>Услуги</a>
       <a class="nav__link nav__link--ru" href="/products/" data-magnet>Продукты</a>
       <a class="nav__link nav__link--ru" href="/team" data-magnet>Команда</a>
-      <a class="nav__link" href="#formats"  data-i18n="nav.formats" data-magnet>Форматы</a>
-      <a class="nav__link" href="#contact"  data-i18n="nav.contact" data-magnet>Контакты</a>
+      <a class="nav__link" href="#contact"  data-i18n="nav.contact"  data-magnet>Контакты</a>
     </nav>
 
     <div class="topbar__actions">
@@ -54,11 +54,11 @@
 </header>
 
 <nav class="nav nav--mobile">
-  <a class="nav__link" href="#work"    data-i18n="nav.work">Портфолио</a>
+  <a class="nav__link" href="#work"     data-i18n="nav.work">Портфолио</a>
+  <a class="nav__link" href="#services" data-i18n="nav.services">Услуги</a>
   <a class="nav__link nav__link--ru" href="/products/">Продукты</a>
   <a class="nav__link nav__link--ru" href="/team">Команда</a>
-  <a class="nav__link" href="#formats" data-i18n="nav.formats">Форматы</a>
-  <a class="nav__link" href="#contact" data-i18n="nav.contact">Контакты</a>
+  <a class="nav__link" href="#contact"  data-i18n="nav.contact">Контакты</a>
 </nav>
 
 <main id="top">
@@ -82,13 +82,19 @@
     </div>
 
     <div class="shell hero__in">
+      <span class="hero__kicker" data-i18n="hero.kicker">Brand Experience Architect</span>
       <h1 class="hero__title">
         <span class="h-display" data-i18n="hero.name1">Александра</span>
         <span class="h-display" data-i18n="hero.name2">Николаева</span>
       </h1>
       <div class="hero__meta">
         <div class="hero__role" data-i18n="hero.role">Креативный продюсер и бренд-стратег</div>
+        <p class="hero__sign" data-i18n="hero.sign">Создаю бренды и пространства, которые трудно забыть</p>
         <div class="hero__loc" data-i18n="hero.location">Работаю с брендами по всему миру</div>
+      </div>
+      <div class="hero__cta">
+        <a class="btn btn--solid" href="#contact"><span data-i18n="hero.cta1">Обсудить проект</span></a>
+        <a class="btn hero__cta-more" href="#services"><span data-i18n="hero.cta2">Услуги и стоимость</span></a>
       </div>
     </div>
 
@@ -117,6 +123,7 @@
 
         <p class="lede" style="margin-top:22px" data-i18n="about.text"></p>
         <p data-i18n="about.text2"></p>
+        <p class="quote about__quote" data-i18n="about.quote"></p>
 
         <div class="about__stats">
           <div class="stat">
@@ -136,6 +143,37 @@
     </div>
   </section>
 
+  <!-- ====================== Brand Experience — кадр, фраза, метрики ====================== -->
+  <section class="section" id="experience">
+    <div class="shell xp">
+      <figure class="xp__media rv">
+        <img src="assets/img/decor/brand-experience.jpg?v=1" alt="" loading="lazy">
+      </figure>
+
+      <div class="xp__body rv" data-rv-delay="120">
+        <div class="tick"></div>
+        <span class="label label--accent" data-i18n="exp.label">Brand Experience</span>
+        <p class="xp__phrase">
+          <span data-i18n="exp.phrase"></span>
+          <em data-i18n="exp.accent">Brand Experience</em>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== Метрики бренда — всё раскрыто сразу ====================== -->
+  <section class="section section--ivory" id="growth">
+    <div class="shell">
+      <div class="section-head section-head--wide rv">
+        <div class="tick"></div>
+        <span class="label" data-i18n="exp.growLabel">Метрики бренда</span>
+        <h2 class="h-section" style="margin-top:14px" data-i18n="exp.lead">Что растёт, когда бренд проживается, а не просто выглядит</h2>
+      </div>
+      <!-- Метрики расставляет main.js -->
+      <div class="grow" id="grow"></div>
+    </div>
+  </section>
+
   <!-- ============================== Портфолио ============================== -->
   <section class="section" id="work">
     <div class="shell">
@@ -150,37 +188,22 @@
     </div>
   </section>
 
-  <!-- ====================== Что стоит за проектами ====================== -->
-  <section class="section">
+  <!-- ============================== УТП — формула бренда ============================== -->
+  <section class="section section--ivory" id="formula">
     <div class="shell">
-      <div class="decos">
-        <figure class="deco deco--tr" style="--rot:2deg;--w:19%" data-parallax="0.5">
-          <img src="assets/img/decor/cream.jpg" alt="" loading="lazy">
-        </figure>
-      </div>
-
       <div class="section-head rv">
         <div class="tick"></div>
-        <span class="label" data-i18n="why.label">Ценность</span>
-        <h2 class="h-section" style="margin-top:14px" data-i18n="why.title">Что стоит за проектами</h2>
-        <p data-i18n="why.sub"></p>
+        <span class="label" data-i18n="formula.label">Мой подход</span>
+        <h2 class="h-section" style="margin-top:14px" data-i18n="formula.title">Формула бренда, который задаёт тренды</h2>
       </div>
-
-      <div class="intro-row rv">
-        <p class="lede" data-i18n="why.intro"></p>
-        <figure class="deco-inline" style="--rot:-3deg">
-          <img src="assets/img/decor/merch.jpg" alt="" loading="lazy">
-        </figure>
-      </div>
-
-      <div class="cards cards--3" id="why-cards"></div>
-      <div class="badges rv" id="why-badges"></div>
-      <p class="quote rv" style="max-width:900px;margin-top:clamp(44px,5vw,72px)" data-i18n="why.outro"></p>
+      <!-- Текст с фирменными тегами и результат собирает main.js -->
+      <p class="ftext rv" id="formula-text"></p>
+      <div class="fres rv" id="formula-result"></div>
     </div>
   </section>
 
-  <!-- ============================== Что я делаю ============================== -->
-  <section class="section section--ivory">
+  <!-- ============================== Услуги ============================== -->
+  <section class="section" id="services">
     <div class="shell">
       <div class="decos">
         <figure class="deco deco--tr" style="--rot:-1.5deg;--w:18%" data-parallax="0.6">
@@ -194,32 +217,37 @@
         <h2 class="h-section" style="margin-top:14px" data-i18n="do.title">Что я создаю</h2>
         <p data-i18n="do.sub"></p>
       </div>
-      <div class="cards cards--2" id="do-cards"></div>
+
+      <div class="svc" id="svc-list"></div>
+
+      <span class="label label--accent svc-extra__label rv" data-i18n="do.extraLabel">Дополнительно</span>
+      <div class="svc-extra" id="svc-extra"></div>
     </div>
   </section>
 
-  <!-- ============================== Процесс ============================== -->
-  <section class="section">
+  <!-- ====================== Калькулятор силы бренда — приглашение ====================== -->
+  <section class="section section--ivory section--compact">
     <div class="shell">
-      <div class="decos">
-        <figure class="deco deco--tr" style="--rot:2.2deg;--w:17%" data-parallax="0.7">
-          <img src="assets/img/decor/magazine.jpg" alt="" loading="lazy">
-        </figure>
+      <div class="ct rv">
+        <div class="ct__gauge" aria-hidden="true">
+          <span class="ct__num">0<i>—</i>100</span>
+          <span class="ct__scale"><b></b></span>
+        </div>
+        <div class="ct__body">
+          <span class="label label--accent" data-i18n="calc.label">Бесплатный инструмент</span>
+          <h2 class="ct__t" data-i18n="calc.title">Насколько силён ваш бренд?</h2>
+          <p class="ct__d" data-i18n="calc.text"></p>
+          <span class="ct__note" data-i18n="calc.note">Бесплатно и без регистрации</span>
+        </div>
+        <a class="btn btn--solid ct__btn" href="/products/brand-calculator.html#calc">
+          <span data-i18n="calc.btn">Проверить свой бренд</span>
+        </a>
       </div>
-
-      <div class="section-head rv">
-        <div class="tick"></div>
-        <span class="label" data-i18n="process.label">Процесс</span>
-        <h2 class="h-section" style="margin-top:14px" data-i18n="process.title">Как я работаю: от идеи до MVP</h2>
-        <p data-i18n="process.sub"></p>
-      </div>
-      <div class="steps" id="process-steps"></div>
-      <p class="quote process__note rv" data-i18n="process.note"></p>
     </div>
   </section>
 
   <!-- ============================== Форматы работы ============================== -->
-  <section class="section section--ivory" id="formats">
+  <section class="section" id="formats">
     <div class="shell">
       <div class="decos">
         <figure class="deco deco--tr" style="--rot:-2.4deg;--w:17%" data-parallax="0.6">
@@ -234,31 +262,6 @@
         <p data-i18n="formats.sub"></p>
       </div>
       <div class="cards cards--2" id="formats-cards"></div>
-
-      <div class="price rv">
-        <span class="label label--accent" data-i18n="formats.priceLabel">Стоимость</span>
-        <span class="price__v" data-i18n="formats.price"></span>
-        <span class="price__note" data-i18n="formats.priceNote"></span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================= Образование — дорожная карта ========================= -->
-  <section class="section" id="edu">
-    <div class="shell">
-      <div class="section-head rv">
-        <div class="tick"></div>
-        <span class="label" data-i18n="edu.label">Образование</span>
-        <h2 class="h-section" style="margin-top:14px" data-i18n="edu.title">Три образования — одна система мышления</h2>
-      </div>
-
-      <!-- Ступени расставляет main.js -->
-      <div class="road rv" id="edu-road"></div>
-
-      <div class="road-note rv" data-rv-delay="120">
-        <p class="quote" data-i18n="edu.note"></p>
-        <p class="road-note__end" data-i18n="edu.note2"></p>
-      </div>
     </div>
   </section>
 
@@ -295,57 +298,6 @@
     </div>
   </section>
 
-  <!-- ===================== Партнёр — только русская версия ===================== -->
-  <section class="section is-ru-only" id="partner">
-    <div class="shell">
-      <div class="section-head rv">
-        <div class="tick"></div>
-        <span class="label label--accent">Партнёр</span>
-        <h2 class="h-section" style="margin-top:14px">Анна Кожевникова</h2>
-      </div>
-
-      <div class="pt">
-        <figure class="pt__figure rv">
-          <img src="assets/img/partner-anna.jpg?v=1" alt="Анна Кожевникова" loading="lazy">
-          <span class="pt__dot"></span>
-        </figure>
-
-        <div class="pt__body rv" data-rv-delay="120">
-          <p class="pt__role">Эксперт по маркетингу, аналитике и развитию бизнеса</p>
-          <p class="pt__lede">Специализация — быстро видеть, где бизнес теряет деньги и возможности, и соединять маркетинг, аналитику, процессы и людей в работающую систему.</p>
-
-          <div class="pt__facts">
-            <div class="pt__fact"><span class="pt__fact-v">15+</span><span class="pt__fact-l">лет в маркетинге и управлении</span></div>
-            <div class="pt__fact"><span class="pt__fact-v">1+ млрд ₽</span><span class="pt__fact-l">рекламных бюджетов</span></div>
-            <div class="pt__fact"><span class="pt__fact-v">120+</span><span class="pt__fact-l">реализованных кампаний</span></div>
-          </div>
-
-          <!-- Подробности свёрнуты: details работает без скрипта -->
-          <details class="pt__more">
-            <summary>
-              <span>Подробнее об опыте</span>
-              <svg width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true">
-                <path d="M1 1.5 6 6.5l5-5" stroke="currentColor" stroke-width="1.2"/>
-              </svg>
-            </summary>
-            <ul class="pt__list">
-              <li>6 лет в Video International Russia — школа большого медиарынка: медиапланирование, аналитика и рекламные кампании для бизнеса самых разных отраслей</li>
-              <li>10 лет маркетинга изнутри бизнеса — от стратегии и запусков до участия в развитии компаний</li>
-              <li>Опыт работы с бизнесами миллиардного масштаба и запуски в десятках городов России</li>
-              <li>Практика в B2B и B2C: food, производство, строительство, гастрономические проекты, retail, premium real estate, медиа</li>
-              <li>Красный диплом по маркетингу · MBA по маркетингу и бизнесу, 2025 · профессиональная награда за лучший пакет радиороликов в строительной отрасли, 2024</li>
-            </ul>
-          </details>
-
-          <div class="pt__actions">
-            <a class="pbtn pbtn--solid" href="tel:+79536236283">+7 953 623-62-83</a>
-            <a class="pbtn" href="https://t.me/zavodnaia_ptica" target="_blank" rel="noopener noreferrer">Telegram</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ============================== Контакты ============================== -->
   <section class="section" id="contact">
     <div class="shell">
@@ -361,6 +313,19 @@
           <!-- honeypot: настоящие люди это поле не видят -->
           <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
 
+          <!-- Сначала направление, затем конкретная услуга или продукт:
+               список пунктов меняет main.js -->
+          <div class="field">
+            <span class="label" id="field-dir-label" data-i18n="contact.dirLabel">Направление</span>
+            <div class="fdirs" id="field-dir" role="group" aria-labelledby="field-dir-label"></div>
+          </div>
+
+          <div class="field">
+            <label class="label" for="field-type" id="field-type-label">Услуга</label>
+            <select id="field-type" name="type"></select>
+            <span class="field__err"></span>
+          </div>
+
           <div class="field">
             <label class="label" for="field-name" data-i18n="contact.name">Имя</label>
             <input id="field-name" name="name" type="text" autocomplete="name"
@@ -372,12 +337,6 @@
             <label class="label" for="field-email" data-i18n="contact.email">Email</label>
             <input id="field-email" name="email" type="email" autocomplete="email"
                    data-i18n-attr="placeholder:contact.emailPh">
-            <span class="field__err"></span>
-          </div>
-
-          <div class="field">
-            <label class="label" for="field-type" data-i18n="contact.type">Тип проекта</label>
-            <select id="field-type" name="type"></select>
             <span class="field__err"></span>
           </div>
 
@@ -404,17 +363,17 @@
         </form>
 
         <aside class="contact__side rv" data-rv-delay="140">
-          <div class="contact__row">
-            <span class="label" data-i18n="contact.emailLabel">Email:</span>
-            <a href="mailto:alexneeaals@gmail.com">alexneeaals@gmail.com</a>
+          <div class="contact__tg">
+            <span class="label label--accent" data-i18n="contact.tgLabel">Быстрая связь</span>
+            <p class="contact__tg-t" data-i18n="contact.tgText"></p>
+            <a class="btn btn--solid" href="https://t.me/AlexandraNikolaevaDirects" target="_blank" rel="noopener noreferrer">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.7.8l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.8 8.8-8c.4-.3-.1-.5-.6-.2L6.7 13.2 2.1 11.8c-1-.3-1-1 .2-1.5l18.2-7c.8-.3 1.6.2 1.4 1z"/></svg>
+              <span data-i18n="contact.tgBtn">Написать в Telegram</span>
+            </a>
           </div>
           <div class="contact__row">
-            <span class="label" data-i18n="contact.studioLabel">Локация:</span>
+            <span class="label" data-i18n="contact.studioLabel">География:</span>
             <span data-i18n="contact.studio">Работаю по всему миру</span>
-          </div>
-          <div class="contact__row">
-            <span class="label" data-i18n="formats.priceLabel">Стоимость</span>
-            <span data-i18n="formats.price"></span>
           </div>
         </aside>
       </div>
@@ -439,10 +398,10 @@
   </div>
 </footer>
 
-<script src="assets/js/content.js?v=20260905e"></script>
-<script src="assets/js/i18n.js?v=20260905e"></script>
-<script src="assets/js/motion.js?v=20260905e"></script>
-<script src="assets/js/contact-pop.js?v=20260905e"></script>
-<script src="assets/js/main.js?v=20260905e"></script>
+<script src="assets/js/content.js?v=20260915d"></script>
+<script src="assets/js/i18n.js?v=20260915d"></script>
+<script src="assets/js/motion.js?v=20260915d"></script>
+<script src="assets/js/contact-pop.js?v=20260915d"></script>
+<script src="assets/js/main.js?v=20260915d"></script>
 </body>
 </html>

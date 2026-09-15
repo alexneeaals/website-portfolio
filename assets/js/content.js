@@ -15,6 +15,7 @@ window.CONTENT = {
 
     nav: {
       work: 'Портфолио',
+      services: 'Услуги',
       formats: 'Форматы',
       contact: 'Контакты',
       menu: 'Меню',
@@ -25,8 +26,12 @@ window.CONTENT = {
     hero: {
       name1: 'Александра',
       name2: 'Николаева',
+      kicker: 'Brand Experience Architect',
       role: 'Креативный продюсер и бренд-стратег',
+      sign: 'Создаю бренды и пространства, которые трудно забыть',
       location: 'Работаю с брендами по всему миру',
+      cta1: 'Обсудить проект',
+      cta2: 'Услуги и стоимость',
       scroll: 'Листайте',
       // Сферы работы. Раньше это была отдельная секция «Сферы, в которых
       // я работаю»; теперь плашки разбросаны вокруг имени на первом экране.
@@ -35,8 +40,9 @@ window.CONTENT = {
 
     about: {
       label: 'Обо мне',
-      text: 'Моя зона экспертизы — стык маркетинга, арт-дирекшена, средового дизайна и режиссуры. Первый диплом архитектурный, второй — бренд-менеджмент. Отсюда системное мышление и умение вести пространство, бренд и коммуникацию как единый комплекс точек контакта.',
+      text: 'Моя зона экспертизы — стык маркетинга, арт-дирекшена, средового дизайна и режиссуры. Первое образование — архитектор среды, второе — бренд-стратег. Отсюда системное мышление и умение вести пространство, бренд и коммуникацию как единый комплекс точек контакта.',
       text2: 'Гибридный бэкграунд позволяет соединять философию бизнеса, стратегию, проектирование и экономику так, чтобы замысел читался всеми сторонами — подрядчиком, клиентом, предпринимателем, администрацией.',
+      quote: '«Архитектура, дизайн и маркетинг работают как единый механизм впечатления»',
       m1v: '7',
       m1l: 'лет опыта',
       m2v: '60+',
@@ -106,50 +112,121 @@ window.CONTENT = {
       ]
     },
 
-    /* ---------- Что стоит за проектами ---------- */
-    why: {
-      label: 'Ценность',
-      title: 'Что стоит за проектами',
-      sub: 'Стратегический бренд-менеджмент и измеримая ценность',
-      intro: 'Я управляю брендами на аутсорсе, где бы ни находился бизнес, — становясь вашим стратегическим партнёром, поднимая капитализацию и обеспечивая измеримый рост. Не просто консультирую: внедряю, трансформирую и выстраиваю системы, которые приносят долгосрочную ценность.',
+    /* ---------- Brand Experience: кадр, фраза и метрики-кнопки ---------- */
+    exp: {
+      label: 'Brand Experience',
+      phrase: 'Времена меняются. Выигрывать будут компании, которые создают не просто продукт, а целостный опыт и впечатление гостя. Именно это сегодня определяет бренд —',
+      accent: 'Brand Experience',
+      growLabel: 'Метрики бренда',
+      lead: 'Ваш бизнес растёт и процветает, когда есть сильный узнаваемый бренд',
       items: [
-        { t: 'Часть семьи вашего бренда', d: 'Погружаюсь в мир вашего бренда и работаю как доверенный партнёр, которому искренне важен ваш успех.' },
-        { t: 'Глобальный бренд-менеджмент', d: 'Полный аутсорсинг бренд-стратегии — беру на себя роль вашего удалённого бренд-директора.' },
-        { t: 'Повышение капитализации', d: 'Поднимаю рыночную стоимость через люксовое позиционирование и создание высокоценных активов.' },
-        { t: 'Добавленная стоимость и премиум', d: 'Стратегическое перепозиционирование даёт право на более высокий ценник — маржинальность растёт на 15–30%.' },
-        { t: 'Ключевые метрики бренда', d: 'Отслеживаю индекс капитала бренда, CLV, NPS, рост доли рынка и ROI бренд-инвестиций.' },
-        { t: 'Фиджитал-инновации', d: 'Соединяю физическое и цифровое: бесшовные фиджитал-сценарии и продуманная среда вокруг них.' }
-      ],
-      badges: ['+15–30% рост маржинальности', '100% удалённо — из любой точки', 'Полный цикл: от аналитики до запуска'],
-      outro: 'Я не только управляю брендами — я становлюсь частью их истории, создаю наследие, поднимаю ценность и держу их актуальность в меняющемся мире, сохраняя коммуникацию открытой, тёплой и человечной.'
-    },
-
-    /* ---------- Что я делаю ---------- */
-    do: {
-      label: 'Услуги',
-      title: 'Что я создаю',
-      sub: 'Креативный продакшн и бренд-стратегия',
-      items: [
-        { t: 'Разработка продуктов и брендов', d: 'Создание и вывод на рынок новых продуктов, брендов, а также ребрендинг: от аналитики и концепции до визуального кода, нейминга и упаковки.' },
-        { t: 'Управление брендом и продуктом', d: 'Стратегия позиционирования, целостная коммуникация и визуальный язык, управление клиентским опытом, контент-экосистема, репутационная архитектура.' },
-        { t: 'Специальные проекты и события', d: 'Форматы, сценарии, креативы, коллаборации, поп-ап активации и мероприятия под ключ — от замысла до площадки.' },
-        { t: 'Стратегические сессии и обучение', d: 'Мастер-классы, воркшопы, ДПО, деловые и креативные игры для корпораций и вузов.' }
+        { t: 'Лояльность', d: 'Гость возвращается не за скидкой, а за ощущением, которого нет у конкурента.' },
+        { t: 'Средний чек', d: 'Впечатление даёт право на более высокую цену — и гость платит её охотно.' },
+        { t: 'Стоимость услуги и кв. м', d: 'Смысл, вложенный в пространство, поднимает его цену на 30–50% — без лишних квадратных метров.' },
+        { t: 'NPS', d: 'Рекомендуют то, что прожили, а не то, что купили.' },
+        { t: 'UGC', d: 'Места и события, которые хочется снимать и выкладывать, становятся бесплатным медиа бренда.' },
+        { t: 'LTV', d: 'Клиент остаётся с брендом дольше и возвращается в новых сценариях.' },
+        { t: 'Узнаваемость', d: 'Бренд узнают по ощущению, а не только по логотипу.' },
+        { t: 'Время пребывания', d: 'Продуманный сценарий удерживает гостя дольше и ведёт к новым покупкам.' },
+        { t: 'Скорость согласований', d: 'Упакованный бренд или продукт с чёткой логикой быстрее одобряют клиенты, инвесторы и партнёры.' },
+        { t: 'HR-бренд и eNPS', d: 'Сильная культура бренда притягивает людей в команду и удерживает их.' }
       ]
     },
 
-    /* ---------- Процесс ---------- */
-    process: {
-      label: 'Процесс',
-      title: 'Как я работаю: от идеи до MVP',
-      sub: 'Полный цикл развития бренда',
+    /* ---------- УТП: формула бренда ---------- */
+    formula: {
+      label: 'Мой подход',
+      title: 'Формула бренда, который задаёт тренды',
+      /* [слово] — фирменный тег в рамке, {слово} — тег с подчёркиванием */
+      text: 'Я создаю бренды и продукты на основе тщательного [исследования рынка]. Работаю с [культурой бренда]: с тем, как она влияет на общество, рождая новые [тренды] и направления, и как формирует корпоративную культуру и [HR-бренд]. Для этого создаю {специальные проекты}, {мероприятия}, {события} и {активности} — и провожу их через каналы бренда: {коммуникацию}, {дизайн среды}, {режиссуру} и {арт-дирекшн}.',
+      resultLabel: 'Результат',
+      result: 'Бренд, который выбирают',
+      outcomes: [
+        { k: 'Снаружи', t: 'Влияет на общество — рождает новые тренды и направления' },
+        { k: 'Внутри', t: 'Формирует корпоративную культуру и сильный HR-бренд' }
+      ]
+    },
+
+    /* ---------- Услуги ---------- */
+    do: {
+      label: 'Услуги',
+      title: 'Что я создаю',
+      sub: 'От часа консультации до полного цикла — выберите глубину погружения',
+      incLabel: 'Что входит',
+      timeLabel: 'Срок',
+      priceLabel: 'Стоимость',
+      cta: 'Обсудить',
+      more: 'Что такое Террабук',
+      extraLabel: 'Дополнительно',
       items: [
-        { t: 'Аналитика', d: 'Рынок, аудитория, философия бизнеса, тайный покупатель' },
-        { t: 'Стратегия', d: 'Позиционирование, смыслы, юнит-экономика' },
-        { t: 'Концепция', d: 'Идея, CJM, зонирование, нейминг, визуальный код' },
-        { t: 'Упаковка', d: 'Визуализации, презентация для инвестора, администрации, партнёра' },
-        { t: 'Запуск (MVP)', d: 'Координация подрядчиков, контроль реализации, сопровождение' }
+        {
+          t: 'Консультация',
+          d: 'Разбор одной задачи один на один: бренд, продукт, пространство или событие. Свежий взгляд и понятные следующие шаги — без долгих договоров.',
+          inc: ['Бриф до встречи', 'Сессия онлайн или офлайн', 'Разбор задачи и гипотезы', 'Рекомендации и следующие шаги'],
+          time: '1–2 часа',
+          price: '5 000 ₽ / час',
+          pick: 'Консультация'
+        },
+        {
+          t: 'Аудит бренда или продукта',
+          d: 'Исследование того, как бренд или продукт работает сейчас: где он теряет гостей, деньги и смысл — и что исправить в первую очередь.',
+          inc: ['Анализ рынка и конкурентов', 'Портрет и путь аудитории (CJM)', 'Аудит точек контакта, тайный покупатель', 'Позиционирование и коммуникация', 'Отчёт с приоритетами'],
+          time: '3–5 недель',
+          price: 'от 150 000 ₽',
+          pick: 'Аудит бренда или продукта'
+        },
+        {
+          t: 'Создание бренда или продукта',
+          d: 'Бренд или продукт с нуля — от исследования до готовой системы, с которой можно выходить на рынок.',
+          inc: ['Анализ рынка и аудитории', 'Платформа бренда: миссия, ценности', 'Нейминг, слоган, легенда', 'Коммуникационная стратегия', 'Визуальная система и упаковка', 'Стратегия запуска'],
+          time: '2–4 месяца',
+          price: 'По запросу',
+          pick: 'Создание бренда или продукта'
+        },
+        {
+          t: 'Террабук',
+          tag: 'Авторская методология',
+          d: 'Брендбук для территории. Единый документ, который фиксирует не только образ, но и то, как человек живёт внутри пространства, — от мастер-плана до сценария впечатлений.',
+          inc: ['Исследование и ДНК места', 'Нейминг и легенда', 'CJM и мастер-план', 'Айдентика и дизайн-код среды', 'Режиссура впечатлений'],
+          time: '3–5 месяцев',
+          price: 'По запросу',
+          pick: 'Террабук',
+          link: 'terrabook.html'
+        },
+        {
+          t: 'Режиссура спецпроекта или события',
+          d: 'Рекламные кампании, ивенты и поп-ап активации, о которых говорят. Идея, драматургия и воплощение — до последней детали на площадке.',
+          inc: ['Идея и драматургия', 'Сценарий и креатив', 'Арт-дирекшн и визуал', 'Коллаборации и партнёры', 'Продакшн и режиссура на площадке'],
+          time: 'от 4 недель до 3 месяцев',
+          price: 'По запросу',
+          pick: 'Режиссура спецпроекта или события'
+        }
       ],
-      note: 'Я не передаю проект «в другие руки» на середине пути — веду его от идеи до живого продукта.'
+      extra: [
+        {
+          t: 'Стратегические сессии и обучение',
+          d: 'Воркшопы, мастер-классы, программы ДПО, деловые и креативные игры для команд, корпораций и вузов.',
+          time: 'от 1 дня',
+          price: 'По запросу',
+          pick: 'Стратегические сессии и обучение'
+        },
+        {
+          t: 'Управление брендом',
+          d: 'Ребрендинг, бренд-маркетинг, культура бренда и HR-бренд. Веду направление как бренд-директор на аутсорсе.',
+          time: 'от 2 месяцев',
+          price: 'По запросу',
+          pick: 'Управление брендом'
+        }
+      ]
+    },
+
+    /* ---------- Приглашение в калькулятор силы бренда ---------- */
+    calc: {
+      label: 'Бесплатный инструмент',
+      title: 'Насколько силён ваш бренд?',
+      text: '24 показателя по пяти направлениям — финансы, восприятие, поведение клиентов, коммуникация и развитие. На выходе — индекс силы бренда от 0 до 100, слабые места и порядок действий.',
+      note: 'Бесплатно и без регистрации',
+      btn: 'Проверить свой бренд'
     },
 
     /* ---------- Форматы работы ---------- */
@@ -162,27 +239,11 @@ window.CONTENT = {
         { t: 'Проектная работа', d: 'Короткое сотрудничество на один или несколько проектов — с чётким объёмом, сроком и результатом на выходе.' },
         { t: 'Интенсивы и образовательные программы', d: 'Разовый воркшоп, серия мастер-классов или полноценный курс ДПО — под аудиторию и задачу.' },
         { t: 'Независимый эксперт и команда', d: 'Веду проекты самостоятельно. Под конкретную задачу подключаю свою команду — архитекторов, дизайнеров, маркетологов.' }
-      ],
-      priceLabel: 'Стоимость',
-      price: 'По запросу — рассчитывается по техническому заданию.',
-      priceNote: 'Напишите о задаче — предложу формат и объём работы.'
+      ]
     },
 
 
     /* ---------- Портфолио ---------- */
-
-    /* ---------- Дорожная карта образования ---------- */
-    edu: {
-      label: 'Образование',
-      title: 'Три образования — одна система мышления',
-      items: [
-        { place: 'РУДН', what: 'Архитектор среды' },
-        { place: 'НИУ ВШЭ', what: 'Бренд-менеджер' },
-        { place: 'Римская бизнес-школа', what: 'Международный менеджер в искусстве и культуре' }
-      ],
-      note: 'Мой подход — на стыке архитектуры, брендинга и режиссуры. Такого нет у 99% специалистов.',
-      note2: 'Я закрываю все этапы. От идеи до реализации.'
-    },
 
     work: {
       label: 'Избранное',
@@ -207,20 +268,37 @@ window.CONTENT = {
       namePh: 'Как к вам обращаться',
       email: 'Email',
       emailPh: 'you@example.com',
-      type: 'Тип проекта',
-      /* Тип проекта. У продуктов есть script — заготовка, которая
-         подставляется в поле сообщения, когда выбирают этот пункт. */
-      typeOptions: [
-        { t: 'Туризм и MICE' },
-        { t: 'Девелопмент и территории' },
-        { t: 'Бренд и продукт' },
-        { t: 'Событие и спецпроект' },
-        { t: 'Обучение и стратсессия' },
-        { t: 'Курс «Спиктера»',
-          script: 'Здравствуйте! Хочу записаться на курс «Спиктера» по цене ранней записи.\n\nПодскажите, пожалуйста:\n— как проходит оплата и когда откроется доступ к материалам;\n— что входит в курс и сколько времени занимает прохождение;\n— как воспользоваться консультацией перед выступлением.' },
-        { t: 'Конструктор туристических проектов',
-          script: 'Здравствуйте! Интересует «Конструктор туристических проектов».\n\nО нас: (организация, город, стадия проекта).\n\nПрошу выставить счёт на юридическое лицо и подсказать:\n— что входит в комплект материалов;\n— когда приходит доступ после оплаты.' },
-        { t: 'Другое' }
+      dirLabel: 'Направление',
+      /* Два направления формы, у каждого свой список. У пункта может
+         быть script — заготовка письма, которая подставляется, когда
+         пункт выбирают. Порядок направлений и пунктов в ru и en должен
+         совпадать: при смене языка форма держит выбор по номеру.
+         Названия услуг совпадают с pick в do.items, названия продуктов —
+         с TITLES в products.js: по ним ссылки находят нужный пункт. */
+      dirs: [
+        {
+          t: 'Услуги',
+          label: 'Услуга',
+          options: [
+            { t: 'Консультация', script: 'Здравствуйте, Александра! Хочу записаться на консультацию.\n\nЗадача: \nУдобные дни и время: ' },
+            { t: 'Аудит бренда или продукта', script: 'Здравствуйте! Интересует аудит бренда или продукта.\n\nО компании: \nЧто хотим понять: ' },
+            { t: 'Создание бренда или продукта', script: 'Здравствуйте! Хотим создать бренд / продукт.\n\nО проекте: \nСтадия и сроки: ' },
+            { t: 'Террабук', script: 'Здравствуйте! Интересует Террабук для нашего проекта.\n\nТерритория или объект: (локация, площадь, стадия)\nЗадача: ' },
+            { t: 'Режиссура спецпроекта или события', script: 'Здравствуйте! Нужна режиссура спецпроекта / события.\n\nФормат: (кампания, ивент, поп-ап)\nДата и площадка: \nЗадача: ' },
+            { t: 'Стратегические сессии и обучение', script: 'Здравствуйте! Интересует стратегическая сессия / обучение.\n\nДля кого: (команда, компания, вуз)\nТема и формат: ' },
+            { t: 'Управление брендом', script: 'Здравствуйте! Интересует управление брендом.\n\nО бренде: \nЗадача: (ребрендинг, бренд-маркетинг, культура бренда, HR-бренд)' },
+            { t: 'Другая задача' }
+          ]
+        },
+        {
+          t: 'Продукты',
+          label: 'Продукт',
+          options: [
+            { t: 'Курс «Спиктера»', script: 'Здравствуйте! Хочу записаться на курс «Спиктера» по цене ранней записи.\n\nПодскажите, пожалуйста:\n— как проходит оплата и когда откроется доступ к материалам;\n— что входит в курс и сколько времени занимает прохождение;\n— как воспользоваться консультацией перед выступлением.' },
+            { t: 'Конструктор туристических проектов', script: 'Здравствуйте! Интересует «Конструктор туристических проектов».\n\nО нас: (организация, город, стадия проекта).\n\nПрошу выставить счёт на юридическое лицо и подсказать:\n— что входит в комплект материалов;\n— когда приходит доступ после оплаты.' },
+            { t: 'Вариации мастер-планов для туристических проектов', script: 'Здравствуйте! Хочу заказать сборник «Вариации мастер-планов для туристических проектов».\n\nПодскажите, пожалуйста, как оплатить и когда придёт файл.' }
+          ]
+        }
       ],
       message: 'Сообщение',
       messagePh: 'Коротко о задаче, сроках и ожидаемом результате',
@@ -228,14 +306,69 @@ window.CONTENT = {
       submit: 'Отправить запрос',
       sending: 'Отправляем…',
       success: 'Благодарю за заполнение формы — свяжусь с вами в течение часа.',
-      error: 'Не удалось отправить. Напишите, пожалуйста, напрямую на почту.',
+      error: 'Не удалось отправить. Напишите мне, пожалуйста, в Telegram.',
       errName: 'Укажите имя',
       errEmail: 'Укажите корректный email',
       errMessage: 'Расскажите пару слов о задаче',
       errConsent: 'Без согласия я не смогу обработать заявку',
-      emailLabel: 'Email:',
+      tgLabel: 'Быстрая связь',
+      tgText: 'Удобнее в мессенджере? Напишите мне напрямую — отвечаю лично, обычно в течение часа.',
+      tgBtn: 'Написать в Telegram',
       studioLabel: 'География:',
       studio: 'Работаю по всему миру'
+    },
+
+    /* ---------- Страница «Террабук» ---------- */
+    tb: {
+      metaTitle: 'Террабук — авторская методология Александры Николаевой',
+      metaDesc: 'Террабук — брендбук для территории: стратегия, айдентика, мастер-план, дизайн-код среды и режиссура впечатлений в одном документе.',
+      back: 'К услугам',
+      label: 'Авторская методология',
+      title: 'Террабук',
+      tagline: 'Брендбук для территории — новый стандарт упаковки пространства',
+      lede: 'Террабук для территории — то же самое, чем брендбук является для бизнеса. Единый документ, который фиксирует не только визуальный образ бренда, но и то, как человек живёт внутри пространства и пользуется его точками контакта.',
+      meta: [
+        { l: 'Для кого', v: 'Девелопмент · Туризм · HoReCa' },
+        { l: 'Срок', v: '3–5 месяцев' },
+        { l: 'Команда', v: 'Александра и её команда' },
+        { l: 'Стоимость', v: 'По запросу' }
+      ],
+      coverAlt: 'Развороты Террабука проекта «Менок»',
+      coreLabel: 'Суть',
+      core: 'Синергия пяти дисциплин. Задача Террабука — зафиксировать идентичность места так, чтобы каждое решение, от мастер-плана до этикетки, исходило из одного источника.',
+      disciplines: ['Маркетинг', 'Арт-дирекшн', 'Средовой дизайн', 'Архитектурное планирование', 'Сценарная методика управления впечатлением'],
+      structLabel: 'Структура',
+      structTitle: 'Из чего состоит Террабук',
+      struct: [
+        { t: 'Стратегия и смыслы', p: ['Маркетинговое исследование и анализ аудитории', 'Позиционирование и УТП', 'Нейминг, слоган, легенда места', 'Коммуникационная стратегия'] },
+        { t: 'Визуальная идентичность', p: ['Логотип и знак', 'Цветовая палитра и типографика', 'Паттерны, графика, иллюстрации', 'Фотостиль и иконографика'] },
+        { t: 'Архитектура пространства', p: ['Мастер-план, зонирование, планировки', 'Сценарии пользования и потоки движения', 'CJM — карта пути гостя и клиента'] },
+        { t: 'Общие связующие элементы', p: ['Физические принципы: материалы, свет, тактильность', 'Цифровые принципы: стиль, типографика, анимация', 'Фиджитал-принципы: физика и цифра', 'Сценарные принципы: ритм, паузы, кульминации'] },
+        { t: 'Дизайн-код среды', p: ['Физические точки контакта: фасады, навигация', 'Цифровые точки контакта: сайт, соцсети', 'Фиджитал-элементы — единый опыт'] },
+        { t: 'Режиссура впечатлений', p: ['Программирование среды и поведения гостя', 'Экономика впечатлений — чувство ценности', 'Сценарий пребывания от входа до возвращения'] }
+      ],
+      getLabel: 'Результат',
+      getTitle: 'Что получает заказчик',
+      get: [
+        { t: 'Исследование рынка', d: 'Стратегический документ на 30+ страниц' },
+        { t: 'Бренд-система', d: 'Визуальный язык и стратегия бренда' },
+        { t: 'Мастер-план территории', d: 'Планирование пространства и планировки' },
+        { t: 'Средовые решения', d: 'Цифровые — сайт и соцсети — и физические, в самой среде' },
+        { t: 'Презентация', d: 'Материалы для инвесторов и партнёров' },
+        { t: 'Дорожная карта', d: 'Приоритеты на 6–12 месяцев' }
+      ],
+      whyLabel: 'Эффект',
+      whyTitle: 'Что это даёт проекту',
+      why: [
+        { v: '+30–50%', t: 'к стоимости кв. м и услуги', d: 'Сильный бренд поднимает цену не за счёт площади, а за счёт смысла, который в неё вложен.' },
+        { v: '98%', t: 'согласований', d: 'Упакованный проект с чёткой логикой быстрее одобряют инвесторы и администрация.' },
+        { t: 'Единый язык бренда', d: 'От мастер-плана до этикетки архитектура, дизайн и коммуникация говорят на одном языке.' },
+        { t: 'Без «мёртвых» зон', d: 'Проработанное зонирование и CJM исключают пустующие и нелогичные участки территории.' }
+      ],
+      ctaText: 'Расскажите о своей территории — предложу, с чего начать Террабук.',
+      cta: 'Обсудить Террабук',
+      pick: 'Террабук',
+      more: 'Все услуги'
     },
 
     footer: {
@@ -274,6 +407,7 @@ window.CONTENT = {
 
     nav: {
       work: 'Work',
+      services: 'Services',
       formats: 'Formats',
       contact: 'Contact',
       menu: 'Menu',
@@ -284,16 +418,21 @@ window.CONTENT = {
     hero: {
       name1: 'Sandra',
       name2: 'Niko',
+      kicker: 'Brand Experience Architect',
       role: 'Creative Producer & Brand Strategist',
+      sign: 'I create brands and spaces that are hard to forget',
       location: 'Working with brands worldwide',
+      cta1: 'Discuss a project',
+      cta2: 'Services & fees',
       scroll: 'Scroll',
       tags: ['Tourism', 'MICE', 'HoReCa', 'Development', 'Luxury brands', 'Events', 'Education', 'Phygital systems', 'Cosmetics', 'Creative industries']
     },
 
     about: {
       label: 'About',
-      text: 'My expertise sits where marketing, art direction, environmental design and directing meet. My first degree is in architecture, my second in brand management. Hence the systemic thinking and the ability to lead space, brand and communication as one set of touchpoints.',
+      text: 'My expertise sits where marketing, art direction, environmental design and directing meet. My first degree is in environmental architecture, my second in brand strategy. Hence the systemic thinking and the ability to lead space, brand and communication as one set of touchpoints.',
       text2: 'That hybrid background lets me connect business philosophy, strategy, design and economics so the idea reads clearly to everyone involved — the contractor, the client, the entrepreneur, the administration.',
+      quote: '“Architecture, design and marketing work as one mechanism of experience”',
       m1v: '7',
       m1l: 'years of experience',
       m2v: '60+',
@@ -362,47 +501,116 @@ window.CONTENT = {
       ]
     },
 
-    why: {
-      label: 'Value',
-      title: 'What stands behind the projects',
-      sub: 'Strategic brand management and measurable value',
-      intro: 'I manage brands on an outsourcing basis, wherever the business sits — becoming your strategic partner, lifting equity and delivering measurable growth. Not merely advising: I execute, transform and build systems that create lasting value.',
+    exp: {
+      label: 'Brand Experience',
+      phrase: 'Times are changing. The winners will be companies that create not just a product, but a complete guest experience. That is what defines a brand today —',
+      accent: 'Brand Experience',
+      growLabel: 'Brand metrics',
+      lead: 'Your business grows and thrives when it has a strong, recognisable brand',
       items: [
-        { t: "Part of your brand's family", d: "I immerse myself in your brand's world and act as a trusted partner who genuinely cares about your success." },
-        { t: 'Global brand management', d: 'Full outsourcing of brand strategy — I take on the role of your remote brand director.' },
-        { t: 'Increased capitalization', d: 'I lift market value through luxury positioning and the creation of high-value assets.' },
-        { t: 'Added value & premium pricing', d: 'Strategic repositioning earns the right to a higher price tag — margins grow by 15–30%.' },
-        { t: 'Key brand metrics', d: 'I track Brand Equity Index, CLV, NPS, market share growth and ROI on brand investments.' },
-        { t: 'Phygital innovation', d: 'I join the physical and the digital: seamless phygital scenarios and a considered environment around them.' }
-      ],
-      badges: ['+15–30% margin increase', '100% remote — any location', 'Full cycle: from research to launch'],
-      outro: "I don't only manage brands — I become part of their story, build their legacy, lift their value and keep them relevant in a changing world, while keeping communication open, warm and human."
+        { t: 'Loyalty', d: 'Guests come back not for a discount, but for a feeling no competitor can give them.' },
+        { t: 'Average spend', d: 'Experience earns the right to a higher price — and guests pay it gladly.' },
+        { t: 'Price per service & sq m', d: 'Meaning built into a space lifts its value by 30–50% — without adding a single square metre.' },
+        { t: 'NPS', d: 'People recommend what they lived through, not what they bought.' },
+        { t: 'UGC', d: 'Places and events people want to film and share become free media for the brand.' },
+        { t: 'LTV', d: 'Clients stay with the brand longer and return through new scenarios.' },
+        { t: 'Recognition', d: 'The brand is recognised by the feeling, not only by the logo.' },
+        { t: 'Dwell time', d: 'A considered scenario keeps guests longer and leads to new purchases.' },
+        { t: 'Approval speed', d: 'A well-packaged brand or product with clear logic wins approval from clients, investors and partners faster.' },
+        { t: 'Employer brand & eNPS', d: 'A strong brand culture attracts people to the team and keeps them.' }
+      ]
+    },
+
+    formula: {
+      label: 'My approach',
+      title: 'The formula of a brand that sets trends',
+      text: 'I create brands and products grounded in thorough [market research]. I work with [brand culture]: how it shapes society by giving rise to new [trends] and directions, and how it builds corporate culture and the [employer brand]. To do this, I create {special projects}, {events}, {happenings} and {activations} — and carry them through the brand channels: {communication}, {environmental design}, {directing} and {art direction}.',
+      resultLabel: 'Result',
+      result: 'A brand people choose',
+      outcomes: [
+        { k: 'Outside', t: 'Shapes society — gives rise to new trends and directions' },
+        { k: 'Inside', t: 'Builds corporate culture and a strong employer brand' }
+      ]
     },
 
     do: {
       label: 'Services',
       title: 'What I create',
-      sub: 'Creative production and brand strategy',
+      sub: 'From a one-hour consultation to the full cycle — choose your depth',
+      incLabel: 'What’s included',
+      timeLabel: 'Timeline',
+      priceLabel: 'Fee',
+      cta: 'Discuss',
+      more: 'What is Terrabook',
+      extraLabel: 'Also',
       items: [
-        { t: 'Product and brand development', d: 'Creating and launching new products and brands, plus rebrands: from research and concept to visual code, naming and packaging.' },
-        { t: 'Brand and product management', d: 'Positioning strategy, coherent communication and visual language, customer experience management, content ecosystem, reputation architecture.' },
-        { t: 'Special projects and events', d: 'Formats, scenarios, creative concepts, collaborations, pop-up activations and turnkey events — from concept to the venue itself.' },
-        { t: 'Strategy sessions and training', d: 'Masterclasses, workshops, professional programmes, business and creative games for corporations and universities.' }
+        {
+          t: 'Consultation',
+          d: 'A one-to-one session on a single challenge: a brand, a product, a space or an event. A fresh perspective and clear next steps — no long contracts.',
+          inc: ['Brief before we meet', 'Session online or in person', 'Analysis and hypotheses', 'Recommendations and next steps'],
+          time: '1–2 hours',
+          price: '$60 / hour',
+          pick: 'Consultation'
+        },
+        {
+          t: 'Brand or product audit',
+          d: 'Research into how your brand or product performs today: where it loses guests, money and meaning — and what to fix first.',
+          inc: ['Market and competitor analysis', 'Audience profile and journey (CJM)', 'Touchpoint audit, mystery shopping', 'Positioning and communication', 'Report with priorities'],
+          time: '3–5 weeks',
+          price: 'from $1,800',
+          pick: 'Brand or product audit'
+        },
+        {
+          t: 'Brand or product creation',
+          d: 'A brand or product built from scratch — from research to a complete system ready for the market.',
+          inc: ['Market and audience research', 'Brand platform: mission, values', 'Naming, slogan, legend', 'Communication strategy', 'Visual system and packaging', 'Launch strategy'],
+          time: '2–4 months',
+          price: 'On request',
+          pick: 'Brand or product creation'
+        },
+        {
+          t: 'Terrabook',
+          tag: 'Signature methodology',
+          d: 'A brand book for a territory. One document that captures not only the look, but how people live inside a space — from the master plan to the experience script.',
+          inc: ['Research and DNA of the place', 'Naming and legend', 'CJM and master plan', 'Identity and environmental design code', 'Experience direction'],
+          time: '3–5 months',
+          price: 'On request',
+          pick: 'Terrabook',
+          link: 'terrabook.html'
+        },
+        {
+          t: 'Special project or event direction',
+          d: 'Ad campaigns, events and pop-up activations people talk about. Idea, dramaturgy and delivery — down to the last detail on site.',
+          inc: ['Idea and dramaturgy', 'Script and creative', 'Art direction and visuals', 'Collaborations and partners', 'Production and on-site direction'],
+          time: '4 weeks to 3 months',
+          price: 'On request',
+          pick: 'Special project or event direction'
+        }
+      ],
+      extra: [
+        {
+          t: 'Strategy sessions and training',
+          d: 'Workshops, masterclasses, professional programmes, business and creative games for teams, corporations and universities.',
+          time: 'from 1 day',
+          price: 'On request',
+          pick: 'Strategy sessions and training'
+        },
+        {
+          t: 'Brand management',
+          d: 'Rebranding, brand marketing, brand culture and employer brand. I lead the direction as your outsourced brand director.',
+          time: 'from 2 months',
+          price: 'On request',
+          pick: 'Brand management'
+        }
       ]
     },
 
-    process: {
-      label: 'Process',
-      title: 'How I work: from idea to MVP',
-      sub: 'Full-cycle brand development',
-      items: [
-        { t: 'Research', d: 'Market, audience, business philosophy, mystery shopping' },
-        { t: 'Strategy', d: 'Positioning, meaning, unit economics' },
-        { t: 'Concept', d: 'Idea, CJM, zoning, naming, visual code' },
-        { t: 'Packaging', d: 'Visualizations, a presentation for the investor, administration, partner' },
-        { t: 'Launch (MVP)', d: 'Contractor coordination, implementation control, project support' }
-      ],
-      note: "I don't hand the project over mid-way — I lead it from idea to a living product."
+    calc: {
+      label: 'Free tool',
+      title: 'How strong is your brand?',
+      text: '24 indicators across five areas — finance, perception, customer behaviour, communication and growth. You get a brand strength index from 0 to 100, the weak spots and an order of action.',
+      note: 'Free, no sign-up · the tool is in Russian for now',
+      btn: 'Test your brand'
     },
 
     formats: {
@@ -414,25 +622,10 @@ window.CONTENT = {
         { t: 'Project-based work', d: 'A short engagement on one or several projects — with a clear scope, timeline and deliverable.' },
         { t: 'Intensives and educational programmes', d: 'A one-off workshop, a series of masterclasses or a full professional course — matched to the audience and the task.' },
         { t: 'Independent expert and team', d: 'I lead projects on my own. For a specific task I bring in my team — architects, designers, marketers.' }
-      ],
-      priceLabel: 'Fee',
-      price: 'On request — calculated against the brief.',
-      priceNote: 'Tell me about the task and I will propose a format and scope.'
+      ]
     },
 
 
-
-    edu: {
-      label: 'Education',
-      title: 'Three degrees — one way of thinking',
-      items: [
-        { place: 'RUDN University', what: 'Environmental architect' },
-        { place: 'HSE University', what: 'Brand manager' },
-        { place: 'Rome Business School', what: 'International manager in arts and culture' }
-      ],
-      note: 'My approach sits where architecture, branding and directing meet. 99% of specialists do not have that combination.',
-      note2: 'I cover every stage. From the idea to delivery.'
-    },
 
     work: {
       label: 'Selected',
@@ -456,18 +649,31 @@ window.CONTENT = {
       namePh: 'How should I address you',
       email: 'Email',
       emailPh: 'you@example.com',
-      type: 'Project type',
-      typeOptions: [
-        { t: 'Tourism & MICE' },
-        { t: 'Development & territories' },
-        { t: 'Brand & product' },
-        { t: 'Event & special project' },
-        { t: 'Training & strategy session' },
-        { t: 'Spiktera course',
-          script: 'Hello! I would like to join the Spiktera course at the early-bird price.\n\nCould you tell me:\n— how payment works and when the materials open;\n— what the course includes and how long it takes;\n— how to use the consultation before a talk.' },
-        { t: 'Tourism project constructor',
-          script: 'Hello! I am interested in the Tourism Project Constructor.\n\nAbout us: (organisation, city, stage of the project).\n\nPlease issue an invoice to the legal entity and let me know:\n— what the set of materials includes;\n— when access arrives after payment.' },
-        { t: 'Other' }
+      dirLabel: 'Direction',
+      dirs: [
+        {
+          t: 'Services',
+          label: 'Service',
+          options: [
+            { t: 'Consultation', script: 'Hello Sandra! I would like to book a consultation.\n\nThe challenge: \nPreferred days and time: ' },
+            { t: 'Brand or product audit', script: 'Hello! I am interested in a brand or product audit.\n\nAbout the company: \nWhat we want to understand: ' },
+            { t: 'Brand or product creation', script: 'Hello! We would like to create a brand / product.\n\nAbout the project: \nStage and timeline: ' },
+            { t: 'Terrabook', script: 'Hello! I am interested in a Terrabook for our project.\n\nTerritory or property: (location, area, stage)\nThe task: ' },
+            { t: 'Special project or event direction', script: 'Hello! We need direction for a special project / event.\n\nFormat: (campaign, event, pop-up)\nDate and venue: \nThe task: ' },
+            { t: 'Strategy sessions and training', script: 'Hello! I am interested in a strategy session / training.\n\nFor whom: (team, company, university)\nTopic and format: ' },
+            { t: 'Brand management', script: 'Hello! I am interested in brand management.\n\nAbout the brand: \nThe task: (rebranding, brand marketing, brand culture, employer brand)' },
+            { t: 'Other task' }
+          ]
+        },
+        {
+          t: 'Products',
+          label: 'Product',
+          options: [
+            { t: 'Spiktera course', script: 'Hello! I would like to join the Spiktera course at the early-bird price.\n\nCould you tell me:\n— how payment works and when the materials open;\n— what the course includes and how long it takes;\n— how to use the consultation before a talk.' },
+            { t: 'Tourism project constructor', script: 'Hello! I am interested in the Tourism Project Constructor.\n\nAbout us: (organisation, city, stage of the project).\n\nPlease issue an invoice to the legal entity and let me know:\n— what the set of materials includes;\n— when access arrives after payment.' },
+            { t: 'Master plan variations for tourism projects', script: 'Hello! I would like to order the “Master plan variations for tourism projects” collection.\n\nCould you tell me how to pay and when the file arrives?' }
+          ]
+        }
       ],
       message: 'Message',
       messagePh: 'Briefly about the task, timeline and expected outcome',
@@ -475,14 +681,68 @@ window.CONTENT = {
       submit: 'Send inquiry',
       sending: 'Sending…',
       success: 'Thank you for your message — I will get back to you within the hour.',
-      error: 'Could not send. Please write to me directly by email.',
+      error: 'Could not send. Please message me on Telegram.',
       errName: 'Please enter your name',
       errEmail: 'Please enter a valid email',
       errMessage: 'Tell me a couple of words about the task',
       errConsent: 'Without your consent I cannot process the request',
-      emailLabel: 'Email:',
+      tgLabel: 'Quick contact',
+      tgText: 'Prefer a messenger? Write to me directly — I answer personally, usually within the hour.',
+      tgBtn: 'Message me on Telegram',
       studioLabel: 'Reach:',
       studio: 'Working worldwide'
+    },
+
+    tb: {
+      metaTitle: 'Terrabook — signature methodology by Sandra Niko',
+      metaDesc: 'Terrabook is a brand book for a territory: strategy, identity, master plan, environmental design code and experience direction in one document.',
+      back: 'Back to services',
+      label: 'Signature methodology',
+      title: 'Terrabook',
+      tagline: 'A brand book for a territory — the new standard for packaging a space',
+      lede: 'A Terrabook is to a territory what a brand book is to a business. One document that captures not only the visual image of the brand, but how people live inside the space and use its touchpoints.',
+      meta: [
+        { l: 'For', v: 'Development · Tourism · HoReCa' },
+        { l: 'Timeline', v: '3–5 months' },
+        { l: 'Team', v: 'Sandra and her team' },
+        { l: 'Fee', v: 'On request' }
+      ],
+      coverAlt: 'Spreads from the Menok project Terrabook',
+      coreLabel: 'The essence',
+      core: 'A synergy of five disciplines. The purpose of a Terrabook is to capture the identity of a place so that every decision — from the master plan to the label — comes from a single source.',
+      disciplines: ['Marketing', 'Art direction', 'Environmental design', 'Architectural planning', 'Scenario-based experience management'],
+      structLabel: 'Structure',
+      structTitle: 'What a Terrabook contains',
+      struct: [
+        { t: 'Strategy and meaning', p: ['Market research and audience analysis', 'Positioning and USP', 'Naming, slogan, legend of the place', 'Communication strategy'] },
+        { t: 'Visual identity', p: ['Logo and mark', 'Colour palette and typography', 'Patterns, graphics, illustrations', 'Photo style and iconography'] },
+        { t: 'Spatial architecture', p: ['Master plan, zoning, layouts', 'Use scenarios and movement flows', 'CJM — the guest and client journey map'] },
+        { t: 'Connecting elements', p: ['Physical principles: materials, light, tactility', 'Digital principles: style, typography, motion', 'Phygital principles: physical meets digital', 'Scenario principles: rhythm, pauses, climaxes'] },
+        { t: 'Environmental design code', p: ['Physical touchpoints: facades, wayfinding', 'Digital touchpoints: website, social media', 'Phygital elements — one seamless experience'] },
+        { t: 'Experience direction', p: ['Programming the space and guest behaviour', 'Experience economy — the sense of value', 'The stay scenario, from arrival to return'] }
+      ],
+      getLabel: 'Deliverables',
+      getTitle: 'What the client receives',
+      get: [
+        { t: 'Market research', d: 'A strategic document of 30+ pages' },
+        { t: 'Brand system', d: 'Visual language and brand strategy' },
+        { t: 'Territory master plan', d: 'Spatial planning and layouts' },
+        { t: 'Environmental solutions', d: 'Digital — website and social media — and physical, in the space itself' },
+        { t: 'Presentation', d: 'Materials for investors and partners' },
+        { t: 'Roadmap', d: 'Priorities for 6–12 months' }
+      ],
+      whyLabel: 'Impact',
+      whyTitle: 'What it gives the project',
+      why: [
+        { v: '+30–50%', t: 'to price per sq m and service', d: 'A strong brand lifts the price not through floor area, but through the meaning built into it.' },
+        { v: '98%', t: 'approval rate', d: 'A well-packaged project with clear logic wins investor and authority approval faster.' },
+        { t: 'One brand language', d: 'From the master plan to the label, architecture, design and communication speak the same language.' },
+        { t: 'No “dead” zones', d: 'Thought-through zoning and CJM rule out empty and illogical parts of the territory.' }
+      ],
+      ctaText: 'Tell me about your territory — I will suggest where to start the Terrabook.',
+      cta: 'Discuss a Terrabook',
+      pick: 'Terrabook',
+      more: 'All services'
     },
 
     footer: {
