@@ -2009,6 +2009,13 @@ body.cursor-lg .cursor { opacity: 0; }
   .tb-why { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
+/* Brand Experience на главной: кегль фразы подобран так, чтобы колонка
+   текста была не выше кадра, а выравнивание по низу держит нижние края
+   фото и текста на одной линии при любой ширине экрана.
+   Страницы «Режиссура» (.xp--wide) это правило не касается. */
+.xp:not(.xp--wide) { align-items: end; }
+.xp:not(.xp--wide) .xp__phrase { font-size: clamp(22px, 2.4vw, 34px); }
+
 @media (max-width: 900px) {
   .xp { grid-template-columns: 1fr; }
   .xp__media { max-width: 560px; }
