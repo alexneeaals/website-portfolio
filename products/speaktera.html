@@ -81,6 +81,18 @@
   .sp-footer__links a:hover { color: #0072FF; }
   .sp-footer__legal { margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.7; color: #8aa3bd; }
 
+  /* Шапка: меню по центру, обе кнопки — справа рядом.
+     На широких экранах меню выравнивается по центру самой шапки,
+     на средних — по центру свободного места, чтобы ничего не наезжало. */
+  header > div { position: relative; gap: 12px !important; }
+  header nav { flex: 1 1 auto; justify-content: center; }
+  @media (min-width: 1200px) {
+    header nav { position: absolute; left: 50%; transform: translateX(-50%); flex: 0 0 auto; }
+    /* меню вне потока — кнопки прижимаем к правому краю вместе */
+    header > div { justify-content: flex-start; }
+    .sp-pres--head { margin-left: auto; }
+  }
+
   .sp-pres:hover { border-color: #0072FF !important; color: #0b4ba8 !important; background: #fff !important; }
 
   /* ------------------------------------------------------------------
@@ -154,7 +166,7 @@
         <a href="#bonus" style="color:#3c5a7d;" class="sp-h4">Бонус</a>
         <a href="#price" style="color:#3c5a7d;" class="sp-h5">Стоимость</a>
       </nav>
-      <a href="/products/speaktera-presentation" target="_blank" rel="noopener" class="sp-pres sp-pres--head" style="padding:12px 20px;border-radius:999px;background:rgba(255,255,255,.7);border:1px solid rgba(22,104,217,.3);color:#1668d9;font-size:14px;font-weight:700;white-space:nowrap;margin-right:10px;">Презентация ↗</a><a href="#price" style="padding:12px 22px;border-radius:999px;background:#0072FF;color:#fff;font-size:14px;font-weight:700;white-space:nowrap;box-shadow:0 10px 24px rgba(0,114,255,.28);" class="sp-h6">Записаться</a>
+      <a href="/products/speaktera-presentation" target="_blank" rel="noopener" class="sp-pres sp-pres--head" style="padding:12px 20px;border-radius:999px;background:rgba(255,255,255,.7);border:1px solid rgba(22,104,217,.3);color:#1668d9;font-size:14px;font-weight:700;white-space:nowrap;">Презентация ↗</a><a href="#price" style="padding:12px 22px;border-radius:999px;background:#0072FF;color:#fff;font-size:14px;font-weight:700;white-space:nowrap;box-shadow:0 10px 24px rgba(0,114,255,.28);" class="sp-h6">Записаться</a>
     </div>
   </header>
 
