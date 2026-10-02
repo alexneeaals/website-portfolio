@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Презентация курса «Спиктера» — Александра Николаева</title>
+<meta name="description" content="Презентация онлайн-курса «Спиктера»: программа, модули, библиотека материалов, стоимость и результат за 14 дней.">
+<meta name="robots" content="noindex">
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- ==================================================================
+     Презентация курса, макет «Спиктера - Презентация курса.dc.html».
+     Слайды перенесены один в один (1920×1080). Показ слайдов, листание
+     и масштабирование под экран — обычный скрипт в конце файла.
+     ================================================================== -->
+<style>
+  :root { --sl-k: 1; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #0b2545; font-family: Manrope, system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow: hidden; }
+  a { color: #1668d9; text-decoration: none; }
+
+  /* Полоса сверху: возврат к курсу, название, счётчик */
+  .deck__bar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 20;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 12px clamp(12px, 2.4vw, 26px);
+    background: rgba(11, 37, 69, .92); color: #f2f8ff;
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  }
+  .deck__back { display: inline-flex; align-items: center; gap: 10px; padding: 9px 18px; border-radius: 999px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.26); color: #f2f8ff; font-size: 13px; font-weight: 700; }
+  .deck__back:hover { background: rgba(255,255,255,.2); color: #fff; }
+  .deck__title { font-size: 14px; font-weight: 700; letter-spacing: -.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .deck__count { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #9dbde2; white-space: nowrap; }
+
+  /* Сцена: слайд 1920×1080 ужимается под экран */
+  .deck { position: fixed; inset: 56px 0 64px; display: flex; align-items: center; justify-content: center; }
+  .deck__stage { flex: 0 0 auto; width: 1920px; height: 1080px; transform: scale(var(--sl-k)); transform-origin: center center; position: relative; }
+  .sl {
+    position: absolute; inset: 0;
+    width: 1920px; height: 1080px;
+    display: flex; padding: 40px;
+    background: #e6eef8; color: #0b2545;
+    opacity: 0; visibility: hidden;
+    transition: opacity .35s ease;
+  }
+  .sl.is-on { opacity: 1; visibility: visible; }
+
+  /* Листание */
+  .deck__ctrl { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; display: flex; align-items: center; justify-content: center; gap: 14px; padding: 12px; background: rgba(11,37,69,.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+  .deck__btn { width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgba(255,255,255,.28); background: rgba(255,255,255,.12); color: #f2f8ff; font-size: 17px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .deck__btn:hover { background: rgba(255,255,255,.22); }
+  .deck__btn[disabled] { opacity: .35; cursor: default; }
+  .deck__dots { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; max-width: min(60vw, 620px); }
+  .deck__dot { width: 9px; height: 9px; padding: 0; border: 0; border-radius: 50%; background: rgba(255,255,255,.3); cursor: pointer; }
+  .deck__dot:hover { background: rgba(255,255,255,.55); }
+  .deck__dot.is-on { background: #0072FF; transform: scale(1.25); }
+
+  @media (max-width: 700px) {
+    .deck__title { display: none; }
+    .deck__dots { display: none; }
+  }
+  /* На телефоне в вертикальном положении слайд получается мелким —
+     подсказываем повернуть экран */
+  .deck__hint { display: none; }
+  @media (max-width: 760px) and (orientation: portrait) {
+    .deck__hint {
+      display: block;
+      position: fixed; left: 50%; bottom: 76px; transform: translateX(-50%);
+      z-index: 25; padding: 9px 16px; border-radius: 999px;
+      background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.26);
+      color: #dceeff; font-size: 12px; white-space: nowrap;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) { .sl { transition: none; } }
+</style>
+</head>
+<body>
+
+<header class="deck__bar">
+  <a class="deck__back" href="/products/speaktera">← К курсу</a>
+  <div class="deck__title">Презентация курса «Спиктера»</div>
+  <div class="deck__count"><span id="deck-now">01</span> / 19</div>
+</header>
+
+<div class="deck__hint">Поверните телефон — слайды станут крупнее</div>
+
+<main class="deck">
+  <div class="deck__stage" id="deck-stage">
+<section class="sl" data-first data-label="Титул" data-screen-label="01" style="box-sizing:border-box;width:100%;height:100%;padding:36px;background:#eaf2fb;color:#0b2545;font-family:Manrope,sans-serif;display:flex;">
+  <div style="flex:1;position:relative;border-radius:40px;overflow:hidden;background:linear-gradient(120deg,#f4f8fd 0%,#dfeaf7 100%);">
+    <div style="position:absolute;top:0;right:0;bottom:0;left:36%;background:url('/assets/img/speaktera/web-stage.jpg?v=1') center 58%/cover no-repeat;"></div>
+    <div style="position:absolute;top:0;bottom:0;left:36%;width:22%;background:linear-gradient(90deg,#eef4fb 0%,rgba(238,244,251,0) 100%);"></div>
+    <div style="position:absolute;inset:0;padding:56px 64px;display:flex;flex-direction:column;">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <div style="font-size:34px;font-weight:800;letter-spacing:-.02em;">Спиктера<span style="color:#0072FF;">.</span></div>
+        <div style="display:flex;gap:12px;">
+          <div style="padding:12px 22px;border-radius:999px;background:rgba(255,255,255,.74);border:1px solid rgba(255,255,255,.95);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 20px 60px rgba(11,37,69,.10);font-family:'JetBrains Mono',monospace;font-size:18px;color:#1668d9;">онлайн-курс</div>
+          <div style="padding:12px 22px;border-radius:999px;background:rgba(255,255,255,.74);border:1px solid rgba(255,255,255,.95);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 20px 60px rgba(11,37,69,.10);font-family:'JetBrains Mono',monospace;font-size:18px;color:#0b2545;">2026</div>
+        </div>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;max-width:960px;">
+        <div style="align-self:flex-start;display:inline-flex;align-items:center;gap:12px;padding:12px 22px;border-radius:999px;background:#fff;border:1px solid rgba(22,104,217,.3);font-family:'JetBrains Mono',monospace;font-size:18px;color:#1668d9;margin-bottom:34px;"><span style="width:10px;height:10px;border-radius:50%;background:#0072FF;"></span>Курс для начинающих спикеров</div>
+        <h1 style="margin:0 0 30px;font-size:92px;line-height:1.0;letter-spacing:-.045em;font-weight:800;text-wrap:balance;">Курс-навигатор в мир <span style="color:#0072FF;">публичных выступлений</span></h1>
+        <p style="margin:0;font-size:30px;line-height:1.45;color:#3c5a7d;max-width:760px;">Первый курс, который собирает в одном месте коучинг, психологию, ораторское мастерство и дизайн презентаций с ИИ</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;max-width:1240px;">
+        <div style="padding:24px 28px;border-radius:24px;background:rgba(255,255,255,.74);border:1px solid rgba(255,255,255,.95);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 20px 60px rgba(11,37,69,.10);"><div style="font-size:52px;font-weight:800;letter-spacing:-.04em;line-height:1;color:#0072FF;">10+</div><div style="font-size:22px;color:#3c5a7d;margin-top:8px;">шаблонов</div></div>
+        <div style="padding:24px 28px;border-radius:24px;background:rgba(255,255,255,.74);border:1px solid rgba(255,255,255,.95);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 20px 60px rgba(11,37,69,.10);"><div style="font-size:52px;font-weight:800;letter-spacing:-.04em;line-height:1;color:#0072FF;">24</div><div style="font-size:22px;color:#3c5a7d;margin-top:8px;">видеоурока</div></div>
+        <div style="padding:24px 28px;border-radius:24px;background:rgba(255,255,255,.74);border:1px solid rgba(255,255,255,.95);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 20px 60px rgba(11,37,69,.10);"><div style="font-size:52px;font-weight:800;letter-spacing:-.04em;line-height:1;color:#0072FF;">6</div><div style="font-size:22px;color:#3c5a7d;margin-top:8px;">модулей</div></div>
+        <div style="padding:24px 28px;border-radius:24px;background:rgba(255,255,255,.74);border:1px solid rgba(255,255,255,.95);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 20px 60px rgba(11,37,69,.10);"><div style="font-size:52px;font-weight:800;letter-spacing:-.04em;line-height:1;color:#0072FF;">14</div><div style="font-size:22px;color:#3c5a7d;margin-top:8px;">дней</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sl" data-label="Курс в 5 ответах" data-screen-label="02" style="box-sizing:border-box;width:100%;height:100%;padding:76px 92px;background:#f2f8ff;color:#0b2545;font-family:Manrope,sans-serif;display:flex;flex-direction:column;">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:#8aa3bd;border-bottom:1px solid rgba(11,37,69,.10);padding-bottom:24px;"><span>Курс в 5 ответах</span><span>02</span></div>
+  <h2 style="margin:42px 0 34px;font-size:64px;line-height:1.06;letter-spacing:-.03em;font-weight:800;">Всё о Спиктере за одну минуту</h2>
+  <div style="flex:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:1fr 1fr;gap:20px;">
+    <div style="padding:34px 34px;border-radius:26px;background:#fff;border:1px solid rgba(11,37,69,.10);display:flex;flex-direction:column;gap:16px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-size:40px;font-weight:800;letter-spacing:-.03em;">Про что курс?</div><div style="font-family:'JetBrains Mono',monospace;font-size:18px;color:#8aa3bd;">01</div></div><div style="height:3px;width:56px;border-radius:2px;background:#0072FF;"></div><div style="font-size:27px;line-height:1.38;color:#3c5a7d;">Онлайн-курс-навигатор: 6 модулей, 24 видеоурока и 10+ шаблонов, которые остаются с тобой</div></div>
+    <div style="padding:34px 34px;border-radius:26px;background:#fff;border:1px solid rgba(11,37,69,.10);display:flex;flex-direction:column;gap:16px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-size:40px;font-weight:800;letter-spacing:-.03em;">Кому подойдет?</div><div style="font-family:'JetBrains Mono',monospace;font-size:18px;color:#8aa3bd;">02</div></div><div style="height:3px;width:56px;border-radius:2px;background:#0072FF;"></div><div style="font-size:27px;line-height:1.38;color:#3c5a7d;">Новичкам: экспертам, предпринимателям, специалистам и блогерам, которым страшно выходить на сцену</div></div>
+    <div style="padding:34px 34px;border-radius:26px;background:#fff;border:1px solid rgba(11,37,69,.10);display:flex;flex-direction:column;gap:16px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-size:40px;font-weight:800;letter-spacing:-.03em;">В чем актуальность?</div><div style="font-family:'JetBrains Mono',monospace;font-size:18px;color:#8aa3bd;">03</div></div><div style="height:3px;width:56px;border-radius:2px;background:#0072FF;"></div><div style="font-size:27px;line-height:1.38;color:#3c5a7d;">Чтобы выступать без паники, говорить уверенно и превращать экспертизу в клиентов, партнёров и узнаваемость</div></div>
+    <div style="padding:34px 34px;border-radius:26px;background:#fff;border:1px solid rgba(11,37,69,.10);display:flex;flex-direction:column;gap:16px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-size:40px;font-weight:800;letter-spacing:-.03em;">Как выглядит?</div><div style="font-family:'JetBrains Mono',monospace;font-size:18px;color:#8aa3bd;">04</div></div><div style="height:3px;width:56px;border-radius:2px;background:#0072FF;"></div><div style="font-size:27px;line-height:1.38;color:#3c5a7d;">Психология, ораторство, коучинг и дизайн с ИИ в одном пути. Уроки по 20–30 минут, практика и шаблоны</div></div>
+    <div style="padding:34px 34px;border-radius:26px;background:#fff;border:1px solid rgba(11,37,69,.10);display:flex;flex-direction:column;gap:16px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-size:40px;font-weight:800;letter-spacing:-.03em;">Когда и где?</div><div style="font-family:'JetBrains Mono',monospace;font-size:18px;color:#8aa3bd;">05</div></div><div style="height:3px;width:56px;border-radius:2px;background:#0072FF;"></div><div style="font-size:27px;line-height:1.38;color:#3c5a7d;">14 дней онлайн на платформе, в своём темпе. Доступ навсегда — можно вернуться перед любым выступлением</div></div>
+    <div style="padding:34px 34px;border-radius:26px;background:#0b2545;color:#f2f8ff;display:flex;flex-direction:column;gap:16px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-size:40px;font-weight:800;letter-spacing:-.03em;">Результат</div><div style="font-family:'JetBrains Mono',monospace;font-size:18px;color:#7fa8d8;">=</div></div><div style="height:3px;width:56px;border-radius:2px;background:#4d91e8;"></div><div style="font-size:27px;line-height:1.38;color:#dceeff;">Первое выступление, готовый медиакит, своя презентация и сертификат спикера</div></div>
+  </div>
+</section>
+
+<section class="sl" data-label="Боли" data-screen-label="03" style="box-sizing:border-box;width:100%;height:100%;padding:76px 92px;background:#f2f8ff;color:#0b2545;font-family:Manrope,sans-serif;display:flex;flex-direction:column;">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:#8aa3bd;border-bottom:1px solid rgba(11,37,69,.10);padding-bottom:24px;"><span>Знакомо?</span><span>03</span></div>
+  <h2 style="margin:42px 0 36px;font-size:68px;line-height:1.05;letter-spacing:-.035em;font-weight:800;">Ты эксперт своего дела. <br>Но выступать —страшно?</h2>
+  <div style="flex:1;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr;gap:20px;">
+    <div style="padding:38px 36px;border-radius:24px;background:#fff;border:1px solid rgba(11,37,69,.11);display:flex;flex-direction:column;justify-content:space-between;"><div style="font-family:'JetBrains Mono',monospace;font-size:20px;color:#1668d9;">01</div><div style="font-size:33px;line-height:1.28;font-weight:600;">«Зовут выступить — и я не знаю, как себя упаковать и <br>о чем говорить»</div></div>
+    <div style="padding:38px 36px;border-radius:24px;background:#fff;border:1px solid rgba(11,37,69,.11);display:flex;flex-direction:column;justify-content:space-between;"><div style="font-family:'JetBrains Mono',monospace;font-size:20px;color:#1668d9;">02</div><div style="font-size:33px;line-height:1.28;font-weight:600;">«Перед выходом дрожат руки, меняется голос»</div></div>
+    <div style="padding:38px 36px;border-radius:24px;background:#fff;border:1px solid rgba(11,37,69,.11);display:flex;flex-direction:column;justify-content:space-between;"><div style="font-family:'JetBrains Mono',monospace;font-size:20px;color:#1668d9;">03</div><div style="font-size:33px;line-height:1.28;font-weight:600;">«На сцене в голове каша, <br>и я забываю текст»</div></div>
+    <div style="padding:38px 36px;border-radius:24px;background:#fff;border:1px solid rgba(11,37,69,.11);display:flex;flex-direction:column;justify-content:space-between;"><div style="font-family:'JetBrains Mono',monospace;font-size:20px;color:#1668d9;">04</div><div style="font-size:33px;line-height:1.28;font-weight:600;">«Боюсь вопросов из зала, особенно неудобных»</div></div>
+    <div style="padding:38px 36px;border-radius:24px;background:#fff;border:1px solid rgba(11,37,69,.11);display:flex;flex-direction:column;justify-content:space-between;"><div style="font-family:'JetBrains Mono',monospace;font-size:20px;color:#1668d9;">05</div><div style="font-size:33px;line-height:1.28;font-weight:600;">«Не знаю, где искать площадки и как себя подать»</div></div>
+    <div style="padding:38px 36px;border-radius:24px;background:linear-gradient(140deg,rgba(22,104,217,.12),rgba(8,145,178,.07));border:1px solid rgba(22,104,217,.32);display:flex;flex-direction:column;justify-content:space-between;"><div style="font-family:'JetBrains Mono',monospace;font-size:20px;color:#1668d9;">06</div><div style="font-size:33px;line-height:1.28;font-weight:600;">«Презентация у дизайнера — дорого и долго»</div></div>
+  </div>
+</section>
+
+<section class="sl" data-label="Причины страха" data-screen-label="04" style="box-sizing:border-box;width:100%;height:100%;padding:36px 92px 36px 36px;background:#f2f8ff;color:#0b2545;font-family:Manrope,sans-serif;display:grid;grid-template-columns:.82fr 1.18fr;gap:64px;">
+  <div style="border-radius:36px;overflow:hidden;background:#dfe9f5 url('/assets/img/speaktera/web-cube.jpg?v=1') center/cover no-repeat;position:relative;">
+    <div style="position:absolute;left:28px;bottom:28px;right:28px;padding:22px 26px;border-radius:20px;background:rgba(255,255,255,.74);border:1px solid rgba(255,255,255,.95);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 20px 60px rgba(11,37,69,.10);font-size:24px;line-height:1.35;font-weight:600;">Страх — это невидимые стены, которые мы <br>строим сами</div>
+  </div>
+  <div style="display:flex;flex-direction:column;padding:24px 0;min-height:0;">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:#8aa3bd;border-bottom:1px solid rgba(11,37,69,.10);padding-bottom:24px;"><span>Откуда страх</span><span>04</span></div>
+    <h2 style="margin:42px 0 18px;font-size:64px;line-height:1.06;letter-spacing:-.03em;font-weight:800;">Дело не в таланте</h2>
+    <p style="margin: 0 0 20px; font-size: 29px; line-height: 1.4; color: #4a6785; width: 736px; height: 88px">Страх сцены — это физиология и привычки. А значит, с ним можно работать</p>
+    <div style="flex:1;min-height:0;display:grid;grid-template-rows:repeat(4,minmax(0,1fr));gap:12px;">
+      <div style="display:grid;grid-template-columns:230px 1fr;gap:28px;align-items:center;padding:18px 32px;border-radius:22px;background:#fff;border:1px solid rgba(11,37,69,.10);"><div style="font-size:38px;font-weight:800;color:#1668d9;letter-spacing:-.03em;">Тело</div><div style="font-size:27px;line-height:1.35;color:#3c5a7d;">мозг читает взгляды зала как угрозу и включает «бей, беги или замри»</div></div>
+      <div style="display:grid;grid-template-columns:230px 1fr;gap:28px;align-items:center;padding:18px 32px;border-radius:22px;background:#fff;border:1px solid rgba(11,37,69,.10);"><div style="font-size:38px;font-weight:800;color:#1668d9;letter-spacing:-.03em;">Опыт</div><div style="font-size:27px;line-height:1.35;color:#3c5a7d;">когда-то раскритиковали или высмеяли — и тело запомнило этот сценарий</div></div>
+      <div style="display:grid;grid-template-columns:230px 1fr;gap:28px;align-items:center;padding:18px 32px;border-radius:22px;background:#fff;border:1px solid rgba(11,37,69,.10);"><div style="font-size:38px;font-weight:800;color:#1668d9;letter-spacing:-.03em;">Планка</div><div style="font-size:27px;line-height:1.35;color:#3c5a7d;">перфекционизм: «выступать можно только идеально, без единой заминки»</div></div>
+      <div style="display:grid;grid-template-columns:230px 1fr;gap:28px;align-items:center;padding:18px 32px;border-radius:22px;background:#fff;border:1px solid rgba(11,37,69,.10);"><div style="font-size:38px;font-weight:800;color:#1668d9;letter-spacing:-.03em;">Нет системы</div><div style="font-size:27px;line-height:1.35;color:#3c5a7d;">непонятно, с чего начать, как готовиться и как понять, что получилось</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sl" data-label="Проблема рынка" data-screen-label="05" style="box-sizing:border-box;width:100%;height:100%;padding:36px 36px 36px 92px;background:#f2f8ff;color:#0b2545;font-family:Manrope,sans-serif;display:grid;grid-template-columns:1.18fr .82fr;gap:56px;">
+  <div style="display:flex;flex-direction:column;padding:40px 0;">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:#8aa3bd;border-bottom:1px solid rgba(11,37,69,.10);padding-bottom:24px;"><span>Ситуация на рынке</span><span>05</span></div>
+    <h2 style="margin:38px 0 28px;font-size:58px;line-height:1.06;letter-spacing:-.03em;font-weight:800;">Как сейчас новички пытаются научиться выступать</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:22px;">
+      <div style="padding:28px 30px;border-radius:22px;background:#fff;border:1px solid rgba(11,37,69,.10);"><div style="font-family:'JetBrains Mono',monospace;font-size:17px;letter-spacing:.14em;text-transform:uppercase;color:#1668d9;margin-bottom:14px;">путь 1 · курсы на рынке</div><div style="font-size: 26px; line-height: 1.38; color: #3c5a7d; width: 401px; height: 101px">Ораторство — отдельно, психология — отдельно, бренд и дизайн — ещё два курса</div></div>
+      <div style="padding:28px 30px;border-radius:22px;background:#fff;border:1px solid rgba(11,37,69,.10);"><div style="font-family:'JetBrains Mono',monospace;font-size:17px;letter-spacing:.14em;text-transform:uppercase;color:#1668d9;margin-bottom:14px;">путь 2 · сама, по кусочкам</div><div style="font-size:26px;line-height:1.38;color:#3c5a7d;">Ролики, статьи, советы знакомых — и попытки собрать из этого своё выступление</div></div>
+    </div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:17px;letter-spacing:.14em;text-transform:uppercase;color:#8aa3bd;margin-bottom:12px;">что происходит дальше</div>
+    <div style="flex:1;display:grid;grid-template-rows:repeat(4,1fr);gap:10px;">
+      <div style="display:grid;grid-template-columns:56px 1fr;gap:22px;align-items:center;padding:20px 28px;border-radius:18px;background:#fff;color:#0b2545;border:1px solid rgba(11,37,69,.10);"><div style="width:48px;height:48px;border-radius:50%;background:rgba(22,104,217,.12);color:#1668d9;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;">1</div><div style="font-size:28px;line-height:1.3;font-weight:600;">Знания не складываются в систему</div></div>
+      <div style="display:grid;grid-template-columns:56px 1fr;gap:22px;align-items:center;padding:20px 28px;border-radius:18px;background:#fff;color:#0b2545;border:1px solid rgba(11,37,69,.10);"><div style="width:48px;height:48px;border-radius:50%;background:rgba(22,104,217,.12);color:#1668d9;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;">2</div><div style="font-size:28px;line-height:1.3;font-weight:600;">Первое выступление проходит тяжело</div></div>
+      <div style="display:grid;grid-template-columns:56px 1fr;gap:22px;align-items:center;padding:20px 28px;border-radius:18px;background:#fff;color:#0b2545;border:1px solid rgba(11,37,69,.10);"><div style="width:48px;height:48px;border-radius:50%;background:rgba(22,104,217,.12);color:#1668d9;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;">3</div><div style="font-size:28px;line-height:1.3;font-weight:600;">Пропадает вера в себя</div></div>
+      <div style="display:grid;grid-template-columns:56px 1fr;gap:22px;align-items:center;padding:20px 28px;border-radius:18px;background:#0b2545;color:#f2f8ff;border:1px solid #0b2545;"><div style="width:48px;height:48px;border-radius:50%;background:#4d91e8;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;">4</div><div style="font-size:28px;line-height:1.3;font-weight:700;">Мечту о сцене откладывают «на потом»</div></div>
+    </div>
+  </div>
+  <div style="border-radius:36px;overflow:hidden;background:#dfe9f5 url('/assets/img/speaktera/web-wires.jpg?v=1') center/cover no-repeat;position:relative;">
+    <div style="position:absolute;left:28px;bottom:28px;right:28px;padding:24px 28px;border-radius:20px;background:rgba(255,255,255,.74);border:1px solid rgba(255,255,255,.95);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 20px 60px rgba(11,37,69,.10);"><div style="font-size:26px;line-height:1.35;font-weight:700;">Много информации — и ни одного уверенного выхода на сцену</div></div>
+  </div>
+</section>
+
+<section class="sl" data-label="Уникальность" data-screen-label="06" style="box-sizing:border-box;width:100%;height:100%;padding:76px 92px;background:#0b2545;color:#f2f8ff;font-family:Manrope,sans-serif;display:flex;flex-direction:column;">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:#7fa8d8;border-bottom:1px solid rgba(255,255,255,.14);padding-bottom:24px;"><span>Чем Спиктера отличается</span><span>06</span></div>
+  <div style="display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:end;margin:52px 0 56px;">
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:20px;letter-spacing:.2em;text-transform:uppercase;color:#7fa8d8;margin-bottom:22px;">4 в 1</div>
+      <h2 style="margin:0;font-size:76px;line-height:1.02;letter-spacing:-.04em;font-weight:800;">Ни один курс ещё не собирал это вместе</h2>
+    </div>
+    <p style="margin:0;font-size:30px;line-height:1.45;color:#9dbde2;">Мы соединили четыре направления в один путь — от первого страха до готовой презентации и личного бренда</p>
+  </div>
+  <div style="height:400px;margin:auto 0;display:grid;grid-template-columns:1fr 56px 1fr 56px 1fr 56px 1fr 56px 1.15fr;align-items:stretch;">
+    <div style="padding:40px 34px;border-radius:28px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);display:flex;flex-direction:column;justify-content:flex-start;"><div style="font-family:'JetBrains Mono',monospace;font-size:18px;color:#7fa8d8;margin-bottom:96px;">01</div><div style="display:flex;flex-direction:column;gap:16px;"><div style="font-size:33px;font-weight:800;letter-spacing:-.02em;line-height:1.1;white-space:nowrap;">Психология</div><div style="height:3px;width:48px;border-radius:2px;background:#4d91e8;"></div><div style="font-size:25px;line-height:1.4;color:#9dbde2;">страх, зажимы, уверенность</div></div></div><div style="display:flex;align-items:center;justify-content:center;font-size:52px;font-weight:300;color:#4d91e8;">+</div>
+    <div style="padding:40px 34px;border-radius:28px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);display:flex;flex-direction:column;justify-content:flex-start;"><div style="font-family:'JetBrains Mono',monospace;font-size:18px;color:#7fa8d8;margin-bottom:96px;">02</div><div style="display:flex;flex-direction:column;gap:16px;"><div style="font-size:33px;font-weight:800;letter-spacing:-.02em;line-height:1.1;white-space:nowrap;">Ораторство</div><div style="height:3px;width:48px;border-radius:2px;background:#4d91e8;"></div><div style="font-size:25px;line-height:1.4;color:#9dbde2;">голос, дикция, работа с залом</div></div></div><div style="display:flex;align-items:center;justify-content:center;font-size:52px;font-weight:300;color:#4d91e8;">+</div>
+    <div style="padding:40px 34px;border-radius:28px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);display:flex;flex-direction:column;justify-content:flex-start;"><div style="font-family:'JetBrains Mono',monospace;font-size:18px;color:#7fa8d8;margin-bottom:96px;">03</div><div style="display:flex;flex-direction:column;gap:16px;"><div style="font-size:33px;font-weight:800;letter-spacing:-.02em;line-height:1.1;white-space:nowrap;">Коучинг</div><div style="height:3px;width:48px;border-radius:2px;background:#4d91e8;"></div><div style="font-size:25px;line-height:1.4;color:#9dbde2;">цели, личный бренд, распаковка</div></div></div><div style="display:flex;align-items:center;justify-content:center;font-size:52px;font-weight:300;color:#4d91e8;">+</div>
+    <div style="padding:40px 34px;border-radius:28px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);display:flex;flex-direction:column;justify-content:flex-start;"><div style="font-family:'JetBrains Mono',monospace;font-size:18px;color:#7fa8d8;margin-bottom:96px;">04</div><div style="display:flex;flex-direction:column;gap:16px;"><div style="font-size:33px;font-weight:800;letter-spacing:-.02em;line-height:1.1;white-space:nowrap;">Дизайн с ИИ</div><div style="height:3px;width:48px;border-radius:2px;background:#4d91e8;"></div><div style="font-size:25px;line-height:1.4;color:#9dbde2;">презентация за вечер, без дизайнера</div></div></div><div style="display:flex;align-items:center;justify-content:center;font-size:52px;font-weight:300;color:#4d91e8;">=</div>
+    <div style="padding:40px 34px;border-radius:28px;background:#0072FF;display:flex;flex-direction:column;justify-content:flex-start;box-shadow:0 24px 60px rgba(0,114,255,.35);"><div style="font-family:'JetBrains Mono',monospace;font-size:18px;color:#dceeff;margin-bottom:96px;">один путь</div><div style="display:flex;flex-direction:column;gap:16px;"><div style="font-size:33px;font-weight:800;letter-spacing:-.02em;line-height:1.1;white-space:nowrap;">Спиктера<span style="color:#dceeff;">.</span></div><div style="height:3px;width:48px;border-radius:2px;background:#fff;"></div><div style="font-size:25px;line-height:1.4;color:#eaf3ff;">от первого страха до уверенного выхода на сцену</div></div></div>
+  </div>
+</section>
+
+<section class="sl" data-label="Мы пошли дальше" data-screen-label="07" style="box-sizing:border-box;width:100%;height:100%;padding:76px 92px;background:#f2f8ff;color:#0b2545;font-family:Manrope,sans-serif;display:flex;flex-direction:column;">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:#8aa3bd;border-bottom:1px solid rgba(11,37,69,.10);padding-bottom:24px;"><span>Целостный проект</span><span>07</span></div>
+  <h2 style="margin:42px 0 36px;font-size:64px;line-height:1.06;letter-spacing:-.03em;font-weight:800;">Мы пошли дальше видеоуроков</h2>
+  <div style="flex:1;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;">
+    
+    <div style="padding:40px 34px;border-radius:24px;background:#fff;border:1px solid rgba(11,37,69,.11);display:flex;flex-direction:column;gap:20px;"><div style="font-size:64px;font-weight:800;color:#1668d9;letter-spacing:-.04em;line-height:1;">24</div><div style="font-size:31px;font-weight:700;">видеоурока</div><div style="font-size: 26px; line-height: 1.35; color: #4a6785; width: 325px; height: 65px">6 модулей с методичками и озвучкой</div></div><div style="padding:40px 34px;border-radius:24px;background:#fff;border:1px solid rgba(11,37,69,.11);display:flex;flex-direction:column;gap:20px;"><div style="font-size:64px;font-weight:800;color:#1668d9;letter-spacing:-.04em;line-height:1;">10+</div><div style="font-size:31px;font-weight:700;">шаблонов A4</div><div style="font-size:26px;line-height:1.35;color:#4a6785;">медиакит, резюме, мастер-план выступления, <br>скрипты — заполняешь&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; и используешь</div></div>
+    <div style="padding:40px 34px;border-radius:24px;background:#fff;border:1px solid rgba(11,37,69,.11);display:flex;flex-direction:column;gap:20px;"><div style="font-size:64px;font-weight:800;color:#1668d9;letter-spacing:-.04em;line-height:1;">24/7</div><div style="font-size:31px;font-weight:700;">Telegram-бот</div><div style="font-size:26px;line-height:1.35;color:#4a6785;">личный помощник и поддержка перед каждым выступлением</div></div>
+    <div style="padding:40px 34px;border-radius:24px;background:linear-gradient(160deg,rgba(22,104,217,.14),#fff);border:1px solid rgba(22,104,217,.4);display:flex;flex-direction:column;gap:20px;"><div style="font-size:64px;font-weight:800;color:#1668d9;letter-spacing:-.04em;line-height:1;">2 ч</div><div style="font-size:31px;font-weight:700;">консультации</div><div style="font-size:26px;line-height:1.35;color:#3c5a7d;">разбор ваших старых выступлений, идеи и мысли по вашей упаковке, обсуждение вопросов</div></div>
+  </div>
+</section>
+
+<section class="sl" data-label="Для кого" data-screen-label="08" style="box-sizing:border-box;width:100%;height:100%;padding:76px 92px;background:#f2f8ff;color:#0b2545;font-family:Manrope,sans-serif;display:flex;flex-direction:column;">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:#8aa3bd;border-bottom:1px solid rgba(11,37,69,.10);padding-bottom:24px;"><span>Для кого курс</span><span>08</span></div>
+  <div style="flex:1;display:grid;grid-template-columns:1.2fr .8fr;gap:52px;align-items:center;">
+    <div>
+      <h2 style="margin:0 0 36px;font-size:64px;line-height:1.06;letter-spacing:-.03em;font-weight:800;">Создан для новичков — с нуля до первой сцены</h2>
+      <div style="display:grid;gap:18px;">
+        <div style="display:grid;grid-template-columns:320px 1fr;gap:28px;align-items:center;padding:28px 34px;border-radius:20px;background:#fff;border:1px solid rgba(11,37,69,.11);"><div style="font-size:31px;font-weight:700;">Эксперт</div><div style="font-size:27px;line-height:1.35;color:#4a6785;">знает тему, но боится её показать</div></div>
+        <div style="display:grid;grid-template-columns:320px 1fr;gap:28px;align-items:center;padding:28px 34px;border-radius:20px;background:#fff;border:1px solid rgba(11,37,69,.11);"><div style="font-size:31px;font-weight:700;">Предприниматель</div><div style="font-size:27px;line-height:1.35;color:#4a6785;">хочет продавать и находить партнёров со сцены</div></div>
+        <div style="display:grid;grid-template-columns:320px 1fr;gap:28px;align-items:center;padding:28px 34px;border-radius:20px;background:#fff;border:1px solid rgba(11,37,69,.11);"><div style="font-size:31px;font-weight:700;">Специалист в найме</div><div style="font-size:27px;line-height:1.35;color:#4a6785;">выступает на планёрках и хочет расти в карьере</div></div>
+        <div style="display:grid;grid-template-columns:320px 1fr;gap:28px;align-items:center;padding:28px 34px;border-radius:20px;background:linear-gradient(120deg,rgba(22,104,217,.12),rgba(8,145,178,.07));border:1px solid rgba(22,104,217,.32);"><div style="font-size:31px;font-weight:700;">Блогер и наставник</div><div style="font-size:27px;line-height:1.35;color:#3c5a7d;">строит личный бренд и выходит в офлайн</div></div>
+      </div>
+    </div>
+    <div style="height:820px;border-radius:32px;background:#cfe3f3 url('/assets/img/speaktera/web-student.jpg?v=1') center 72%/cover no-repeat;box-shadow:0 30px 80px rgba(11,37,69,.14);"></div>
+  </div>
+</section>
+
+<section class="sl" data-label="Дорожная карта" data-screen-label="09" style="box-sizing:border-box;width:100%;height:100%;padding:76px 92px;background:#f2f8ff;color:#0b2545;font-family:Manrope,sans-serif;display:flex;flex-direction:column;">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:#8aa3bd;border-bottom:1px solid rgba(11,37,69,.10);padding-bottom:24px;"><span>Дорожная карта</span><span>09</span></div>
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin:42px 0 44px;">
+    <h2 style="margin:0;font-size:64px;line-height:1.06;letter-spacing:-.03em;font-weight:800;">14 дней от страха до сцены</h2>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:21px;color:#6b86a6;white-space:nowrap;">3 модуля в неделю · уроки по 20–30 минут</div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:22px;">
+    <div style="padding:32px 34px;border-radius:26px;background:#fff;border:1px solid rgba(11,37,69,.11);">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:24px;"><div style="font-size:36px;font-weight:800;letter-spacing:-.02em;">Неделя 1 · фундамент</div><div style="font-family:'JetBrains Mono',monospace;font-size:19px;color:#6b86a6;">дни 1–7</div></div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+        <div style="padding:22px 20px;border-radius:18px;background:rgba(22,104,217,.10);border:1px solid rgba(22,104,217,.3);"><div style="font-family:'JetBrains Mono',monospace;font-size:17px;color:#1668d9;margin-bottom:10px;">дни 1–2 · 01</div><div style="font-size:25px;font-weight:700;line-height:1.25;">С чего начать</div></div>
+        <div style="padding:22px 20px;border-radius:18px;background:rgba(22,104,217,.10);border:1px solid rgba(22,104,217,.3);"><div style="font-family:'JetBrains Mono',monospace;font-size:17px;color:#1668d9;margin-bottom:10px;">дни 3–4 · 02</div><div style="font-size:25px;font-weight:700;line-height:1.25;">Страх и уверенность</div></div>
+        <div style="padding:22px 20px;border-radius:18px;background:rgba(22,104,217,.10);border:1px solid rgba(22,104,217,.3);"><div style="font-family:'JetBrains Mono',monospace;font-size:17px;color:#1668d9;margin-bottom:10px;">дни 5–6 · 03</div><div style="font-size:25px;font-weight:700;line-height:1.25;">Речь и голос</div></div>
+      </div>
+      <div style="margin-top:14px;padding:18px 22px;border-radius:14px;background:#f2f8ff;font-size:23px;color:#3c5a7d;"><span style="font-family:'JetBrains Mono',monospace;color:#1668d9;">день 7</span> · пауза: практика и повторение</div>
+    </div>
+    <div style="padding:32px 34px;border-radius:26px;background:#fff;border:1px solid rgba(22,104,217,.4);">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:24px;"><div style="font-size:36px;font-weight:800;letter-spacing:-.02em;">Неделя 2 · мастерство</div><div style="font-family:'JetBrains Mono',monospace;font-size:19px;color:#1668d9;">дни 8–14</div></div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+        <div style="padding:22px 20px;border-radius:18px;background:rgba(22,104,217,.18);border:1px solid rgba(22,104,217,.4);"><div style="font-family:'JetBrains Mono',monospace;font-size:17px;color:#0b4ba8;margin-bottom:10px;">дни 8–9 · 04</div><div style="font-size:25px;font-weight:700;line-height:1.25;">Этика и работа с залом</div></div>
+        <div style="padding:22px 20px;border-radius:18px;background:rgba(22,104,217,.18);border:1px solid rgba(22,104,217,.4);"><div style="font-family:'JetBrains Mono',monospace;font-size:17px;color:#0b4ba8;margin-bottom:10px;">дни 10–11 · 05</div><div style="font-size:25px;font-weight:700;line-height:1.25;">Распаковка бренда</div></div>
+        <div style="padding:22px 20px;border-radius:18px;background:#1668d9;color:#fff;"><div style="font-family:'JetBrains Mono',monospace;font-size:17px;opacity:.85;margin-bottom:10px;">дни 12–13 · 06</div><div style="font-size:25px;font-weight:700;line-height:1.25;">Презентация с ИИ</div></div>
+      </div>
+      <div style="margin-top:14px;padding:18px 22px;border-radius:14px;background:#f2f8ff;font-size:23px;color:#3c5a7d;"><span style="font-family:'JetBrains Mono',monospace;color:#1668d9;">день 14</span> · сборка: медиакит, презентация, заявка</div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:22px;">
+    <div style="padding:22px 28px;border-radius:18px;background:#fff;border:1px solid rgba(11,37,69,.11);font-size:24px;line-height:1.3;"><span style="font-weight:800;color:#1668d9;">4 урока</span> в каждом модуле</div>
+    <div style="padding:22px 28px;border-radius:18px;background:#fff;border:1px solid rgba(11,37,69,.11);font-size:24px;line-height:1.3;"><span style="font-weight:800;color:#1668d9;">≈ 1 час</span> в день — 2 урока</div>
+    <div style="padding:22px 28px;border-radius:18px;background:#fff;border:1px solid rgba(11,37,69,.11);font-size:24px;line-height:1.3;">Можно быстрее или медленнее — <span style="font-weight:800;color:#1668d9;">доступ навсегда</span></div>
+  </div>
+  <div style="flex:1;display:flex;align-items:flex-end;">
+    <div style="width:100%;display:flex;justify-content:space-between;align-items:center;padding:28px 40px;border-radius:24px;background:#0b2545;color:#f2f8ff;">
+      <div style="font-size:30px;font-weight:700;">Финиш: первое выступление + сертификат спикера</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:20px;color:#7fa8d8;">21 день практики уверенности продолжается после курса</div>
+    </div>
+  </div>
+</section>
+
+<section class="sl" data-label="Модуль 1" data-screen-label="10" style="box-sizing:border-box;width:100%;height:100%;padding:76px 92px;background:#f2f8ff;color:#0b2545;font-family:Manrope,sans-serif;display:flex;flex-direction:column;">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:#8aa3bd;border-bottom:1px solid rgba(11,37,69,.10);padding-bottom:24px;"><span>Программа · модуль 1 из 6</span><span>дни 1–2</span></div>
+  <div style="flex:1;display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center;">
+    <div>
+      <div style="font-size:180px;line-height:.85;font-weight:800;letter-spacing:-.06em;color:#1668d9;margin-bottom:28px;">01</div>
+      <h2 style="margin:0 0 22px;font-size:64px;line-height:1.05;letter-spacing:-.035em;font-weight:800;">С чего начать</h2>
+      <p style="margin:0;font-size:30px;line-height:1.45;color:#4a6785;">От «хочу выступать» — к конкретному плану первого выступления</p>
+    </div>
+    <div style="display:grid;gap:20px;">
+      <div style="padding:34px 38px;border-radius:24px;background:#fff;border:1px solid rgba(11,37,69,.11);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:#8aa3bd;margin-bottom:18px;">разделы</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px 30px;font-size:27px;line-height:1.3;">
+          <div>Форматы выступлений</div><div>Как найти свою площадку</div><div>Медиакит эксперта</div><div>Цели и KPI выступления</div><div>Оценка результата</div>
+        </div>
+      </div>
+      <div style="padding:34px 38px;border-radius:24px;background:linear-gradient(150deg,rgba(22,104,217,.14),#fff);border:1px solid rgba(22,104,217,.4);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:#1668d9;margin-bottom:18px;">шаблоны и методики</div>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;">
+          <div style="padding:14px 24px;border-radius:999px;background:#fff;border:1px solid rgba(22,104,217,.35);font-size:24px;font-weight:600;">Медиакит спикера</div>
+          <div style="padding:14px 24px;border-radius:999px;background:#fff;border:1px solid rgba(22,104,217,.35);font-size:24px;font-weight:600;">Резюме эксперта</div>
+          <div style="padding:14px 24px;border-radius:999px;background:#fff;border:1px solid rgba(22,104,217,.35);font-size:24px;font-weight:600;">Мастер-план выступления</div>
+          <div style="padding:14px 24px;border-radius:999px;background:#fff;border:1px solid rgba(22,104,217,.35);font-size:24px;font-weight:600;">Велком-скрипты для организаторов</div>
+          <div style="padding:14px 24px;border-radius:999px;background:#fff;border:1px solid rgba(22,104,217,.35);font-size:24px;font-weight:600;">Справочник площадок России</div>
+          <div style="padding:14px 24px;border-radius:999px;background:#fff;border:1px solid rgba(22,104,217,.35);font-size:24px;font-weight:600;">SMART-шаблон цели</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sl" data-label="Модуль 2" data-screen-label="11" style="box-sizing:border-box;width:100%;height:100%;padding:76px 92px;background:#f2f8ff;color:#0b2545;font-family:Manrope,sans-serif;display:flex;flex-direction:column;">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:#8aa3bd;border-bottom:1px solid rgba(11,37,69,.10);padding-bottom:24px;"><span>Программа · модуль 2 из 6</span><span>дни 3–4</span></div>
+  <div style="flex:1;display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center;">
+    <div>
+      <div style="font-size:180px;line-height:.85;font-weight:800;letter-spacing:-.06em;color:#1668d9;margin-bottom:28px;">02</div>
+      <h2 style="margin:0 0 22px;font-size:64px;line-height:1.05;letter-spacing:-.035em;font-weight:800;">Страх и уверенность</h2>
+      <p style="margin:0;font-size:30px;line-height:1.45;color:#4a6785;">Тело, голос и фокус — арсенал техник на каждый день и на экстренный случай</p>
+    </div>
+    <div style="display:grid;gap:20px;">
+      <div style="padding:34px 38px;border-radius:24px;background:#fff;border:1px solid rgba(11,37,69,.11);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:#8aa3bd;margin-bottom:18px;">разделы</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px 30px;font-size:27px;line-height:1.3;">
+          <div>Откуда берутся зажимы</div><div>Техники для спокойствия</div><div>Голос через тело</div><div>Уверенность за 2 минуты</div><div>Фокус, если в голове каша</div>
+        </div>
+      </div>
+      <div style="padding:34px 38px;border-radius:24px;background:linear-gradient(150deg,rgba(22,104,217,.14),#fff);border:1px solid rgba(22,104,217,.4);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:#1668d9;margin-bottom:18px;">шаблоны и методики</div>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;">
+          <div style="padding:14px 24px;border-radius:999px;background:#fff;border:1px solid rgba(22,104,217,.35);font-size:24px;font-weight:600;">Тетрадь спокойствия</div>
+          <div style="padding:14px 24px;border-radius:999px;background:#fff;border:1px solid rgba(22,104,217,.35);font-size:24px;font-weight:600;">Карта страха</div>
+          <div style="padding:14px 24px;border-radius:999px;background:#fff;border:1px solid rgba(22,104,217,.35);font-size:24px;font-weight:600;">Практика 21 день</div>
+          <div style="padding:14px 24px;border-radius:999px;background:#fff;border:1px solid rgba(22,104,217,.35);font-size:24px;font-weight:600;">Чек-лист «2 минуты до выхода»</div>
+          <div style="padding:14px 24px;border-radius:999px;background:#fff;border:1px solid rgba(22,104,217,.35);font-size:24px;font-weight:600;">Карта смысла доклада</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sl" data-label="Модуль 3" data-screen-label="12" style="box-sizing:border-box;width:100%;height:100%;padding:76px 92px;background:#f2f8ff;color:#0b2545;font-family:Manrope,sans-serif;display:flex;flex-direction:column;">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:#8aa3bd;border-bottom:1px solid rgba(11,37,69,.10);padding-bottom:24px;"><span>Программа · модуль 3 из 6</span><span>дни 5–6</span></div>
+  <div style="flex:1;display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:stretch;padding:44px 0 8px;min-height:0;">
+    <div style="display:flex;flex-direction:column;min-height:0;">
+      <div style="font-size:150px;line-height:.85;font-weight:800;letter-spacing:-.06em;color:#1668d9;margin-bottom:28px;">03</div>
+      <h2 style="margin:0 0 22px;font-size:64px;line-height:1.05;letter-spacing:-.035em;font-weight:800;">Речь и голос</h2>
+      <p style="margin:0;font-size:30px;line-height:1.45;color:#4a6785;">Упражнения без подготовки и инвентаря: карандаш, пробка и телефон-диктофон</p><div style="margin-top:32px;flex:1;min-height:0;border-radius:28px;background:#dfe9f5 url('/assets/img/speaktera/web-wave.jpg?v=1') center/cover no-repeat;"></div>
+    </div>
+    <div style="display:grid;grid-template-rows:auto minmax(0,1fr);gap:20px;min-height:0;">
+      <div style="padding:34px 38px;border-radius:24px;background:#fff;border:1px solid rgba(11,37,69,.11);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:#8aa3bd;margin-bottom:18px;">разделы</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px 30px;font-size:27px;line-height:1.3;">
+          <div>Дикция и артикуляция</div><div>Голос как инструмент влияния</div><div>Слова-паразиты</div><div>Интонация и живая речь</div>
+        </div>
+      </div>
+      <div style="padding:34px 38px;border-radius:24px;background:linear-gradient(150deg,rgba(22,104,217,.14),#fff);border:1px solid rgba(22,104,217,.4);display:flex;flex-direction:column;min-height:0;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:#1668d9;margin-bottom:18px;">шаблоны и методики</div>
+        <div style="flex:1;min-height:0;display:grid;grid-auto-rows:1fr;gap:12px;">
+          <div style="padding:0 28px;border-radius:18px;background:#fff;border:1px solid rgba(22,104,217,.35);font-size:26px;font-weight:600;display:flex;align-items:center;">5-минутная разминка речи</div>
+          <div style="padding:0 28px;border-radius:18px;background:#fff;border:1px solid rgba(22,104,217,.35);font-size:26px;font-weight:600;display:flex;align-items:center;">Набор скороговорок</div>
+          <div style="padding:0 28px;border-radius:18px;background:#fff;border:1px solid rgba(22,104,217,.35);font-size:26px;font-weight:600;display:flex;align-items:center;">Практика с диктофоном</div>
+          <div style="padding:0 28px;border-radius:18px;background:#fff;border:1px solid rgba(22,104,217,.35);font-size:26px;font-weight:600;display:flex;align-items:center;">«Одна фраза — пять эмоций»</div>
+          <div style="padding:0 28px;border-radius:18px;background:#fff;border:1px solid rgba(22,104,217,.35);font-size:26px;font-weight:600;display:flex;align-items:center;">Разметка текста доклада</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sl" data-label="Модуль 4" data-screen-label="13" style="box-sizing:border-box;width:100%;height:100%;padding:76px 92px;background:#f2f8ff;color:#0b2545;font-family:Manrope,sans-serif;display:flex;flex-direction:column;">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:#8aa3bd;border-bottom:1px solid rgba(11,37,69,.10);padding-bottom:24px;"><span>Программа · модуль 4 из 6</span><span>дни 8–9</span></div>
+  <div style="flex:1;display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center;">
+    <div>
+      <div style="font-size:180px;line-height:.85;font-weight:800;letter-spacing:-.06em;color:#1668d9;margin-bottom:28px;">04</div>
+      <h2 style="margin:0 0 22px;font-size:64px;line-height:1.05;letter-spacing:-.035em;font-weight:800;">Этика и работа с залом</h2>
+      <p style="margin:0;font-size:30px;line-height:1.45;color:#4a6785;">Доверие, вопросы из зала, конфликтные ситуации и язык тела на сцене</p>
+    </div>
+    <div style="display:grid;gap:20px;">
+      <div style="padding:34px 38px;border-radius:24px;background:#fff;border:1px solid rgba(11,37,69,.11);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:#8aa3bd;margin-bottom:18px;">разделы</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px 30px;font-size:27px;line-height:1.3;">
+          <div>Этика выступления</div><div>Техника «безопасный ответ»</div><div>Сложные вопросы и конфликты</div><div>Жесты, мимика, дистанция</div>
+        </div>
+      </div>
+      <div style="padding:34px 38px;border-radius:24px;background:linear-gradient(150deg,rgba(22,104,217,.14),#fff);border:1px solid rgba(22,104,217,.4);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:#1668d9;margin-bottom:18px;">шаблоны и методики</div>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;">
+          <div style="padding:14px 24px;border-radius:999px;background:#fff;border:1px solid rgba(22,104,217,.35);font-size:24px;font-weight:600;">Вопросы из зала и готовые ответы</div>
+          <div style="padding:14px 24px;border-radius:999px;background:#fff;border:1px solid rgba(22,104,217,.35);font-size:24px;font-weight:600;">Ред-флаги на сцене</div>
+          <div style="padding:14px 24px;border-radius:999px;background:#fff;border:1px solid rgba(22,104,217,.35);font-size:24px;font-weight:600;">Фразы-выручалочки</div>
+          <div style="padding:14px 24px;border-radius:999px;background:#fff;border:1px solid rgba(22,104,217,.35);font-size:24px;font-weight:600;">Чек-лист «этичный спикер»</div>
+          <div style="padding:14px 24px;border-radius:999px;background:#fff;border:1px solid rgba(22,104,217,.35);font-size:24px;font-weight:600;">Техника «маяк»</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sl" data-label="Модуль 5" data-screen-label="14" style="box-sizing:border-box;width:100%;height:100%;padding:76px 92px;background:#f2f8ff;color:#0b2545;font-family:Manrope,sans-serif;display:flex;flex-direction:column;">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:#8aa3bd;border-bottom:1px solid rgba(11,37,69,.10);padding-bottom:24px;"><span>Программа · модуль 5 из 6 · мастер-класс</span><span>дни 10–11</span></div>
+  <div style="flex:1;display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center;">
+    <div>
+      <div style="font-size:180px;line-height:.85;font-weight:800;letter-spacing:-.06em;color:#1668d9;margin-bottom:28px;">05</div>
+      <h2 style="margin:0 0 22px;font-size:64px;line-height:1.05;letter-spacing:-.035em;font-weight:800;">Распаковка личного бренда</h2>
+      <p style="margin:0;font-size:30px;line-height:1.45;color:#4a6785;">Игровая рабочая тетрадь: 9 уровней самопознания — от ценностей до манифеста</p>
+    </div>
+    <div style="display:grid;gap:20px;">
+      <div style="padding:34px 38px;border-radius:24px;background:#fff;border:1px solid rgba(11,37,69,.11);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:#8aa3bd;margin-bottom:18px;">9 уровней</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px 24px;font-size:25px;line-height:1.3;">
+          <div>Ценности</div><div>Суперсила</div><div>Колесо баланса</div><div>Голос и тон</div><div>Архетип</div><div>Аудитория</div><div>Продуктовая линейка</div><div>Манифест</div><div>Карта на 90 дней</div>
+        </div>
+      </div>
+      <div style="padding:34px 38px;border-radius:24px;background:linear-gradient(150deg,rgba(22,104,217,.14),#fff);border:1px solid rgba(22,104,217,.4);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:#1668d9;margin-bottom:18px;">шаблоны и методики</div>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;">
+          <div style="padding:14px 24px;border-radius:999px;background:#fff;border:1px solid rgba(22,104,217,.35);font-size:24px;font-weight:600;">Personbook — рабочая тетрадь на 21 день</div>
+          <div style="padding:14px 24px;border-radius:999px;background:#fff;border:1px solid rgba(22,104,217,.35);font-size:24px;font-weight:600;">12 архетипов</div>
+          <div style="padding:14px 24px;border-radius:999px;background:#fff;border:1px solid rgba(22,104,217,.35);font-size:24px;font-weight:600;">Шаблон манифеста</div>
+          <div style="padding:14px 24px;border-radius:999px;background:#fff;border:1px solid rgba(22,104,217,.35);font-size:24px;font-weight:600;">Elevator pitch</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sl" data-label="Модуль 6" data-screen-label="15" style="box-sizing:border-box;width:100%;height:100%;padding:76px 92px;background:#f2f8ff;color:#0b2545;font-family:Manrope,sans-serif;display:flex;flex-direction:column;">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:#8aa3bd;border-bottom:1px solid rgba(11,37,69,.10);padding-bottom:24px;"><span>Программа · модуль 6 из 6</span><span>дни 12–13</span></div>
+  <div style="flex:1;display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:stretch;padding:44px 0 8px;min-height:0;">
+    <div style="display:flex;flex-direction:column;min-height:0;">
+      <div style="font-size:150px;line-height:.85;font-weight:800;letter-spacing:-.06em;color:#1668d9;margin-bottom:28px;">06</div>
+      <h2 style="margin:0 0 22px;font-size:64px;line-height:1.05;letter-spacing:-.035em;font-weight:800;">Презентация с ИИ</h2>
+      <p style="margin:0;font-size:30px;line-height:1.45;color:#4a6785;">Профессиональные слайды за один вечер — без дизайнера и копирайтера</p><div style="margin-top:32px;flex:1;min-height:0;border-radius:28px;background:#dfe9f5 url('/assets/img/speaktera/web-desk.jpg?v=1') center/cover no-repeat;"></div>
+    </div>
+    <div style="display:grid;grid-template-rows:auto minmax(0,1fr);gap:20px;min-height:0;">
+      <div style="padding:34px 38px;border-radius:24px;background:#fff;border:1px solid rgba(11,37,69,.11);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:#8aa3bd;margin-bottom:18px;">разделы</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px 30px;font-size:27px;line-height:1.3;">
+          <div>Топ нейросетей</div><div>Claude и ChatGPT для текста</div><div>Figma Make для дизайна</div><div>Адаптация под аудиторию</div><div>Оплата ИИ из России</div><div>Фирменный стиль</div>
+        </div>
+      </div>
+      <div style="padding:34px 38px;border-radius:24px;background:linear-gradient(150deg,rgba(22,104,217,.14),#fff);border:1px solid rgba(22,104,217,.4);display:flex;flex-direction:column;min-height:0;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:#1668d9;margin-bottom:18px;">шаблоны и методики</div>
+        <div style="flex:1;min-height:0;display:grid;grid-auto-rows:1fr;gap:12px;">
+          <div style="padding:0 28px;border-radius:18px;background:#fff;border:1px solid rgba(22,104,217,.35);font-size:26px;font-weight:600;display:flex;align-items:center;">Структура выступления по форматам</div>
+          <div style="padding:0 28px;border-radius:18px;background:#fff;border:1px solid rgba(22,104,217,.35);font-size:26px;font-weight:600;display:flex;align-items:center;">Схемы слайдов: питч, конференция, завтрак</div>
+          <div style="padding:0 28px;border-radius:18px;background:#fff;border:1px solid rgba(22,104,217,.35);font-size:26px;font-weight:600;display:flex;align-items:center;">Рабочий контур «идея → слайд»</div>
+          <div style="padding:0 28px;border-radius:18px;background:#fff;border:1px solid rgba(22,104,217,.35);font-size:26px;font-weight:600;display:flex;align-items:center;">Готовые промпты</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sl" data-label="Библиотека" data-screen-label="16" style="box-sizing:border-box;width:100%;height:100%;padding:76px 92px;background:#f2f8ff;color:#0b2545;font-family:Manrope,sans-serif;display:flex;flex-direction:column;">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:#8aa3bd;border-bottom:1px solid rgba(11,37,69,.10);padding-bottom:24px;"><span>Библиотека спикера</span><span>16</span></div>
+  <div style="flex:1;display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;">
+    <div>
+      <h2 style="margin:0 0 20px;font-size:64px;line-height:1.06;letter-spacing:-.03em;font-weight:800;">Шаблоны, которые остаются с тобой</h2>
+      <p style="margin:0 0 34px;font-size:30px;line-height:1.4;color:#4a6785;">Распечатай, заполни и используй на каждом выступлении</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+        <div style="padding:22px 26px;border-radius:18px;background:#fff;border:1px solid rgba(11,37,69,.11);font-size:25px;font-weight:600;">Медиакит спикера</div>
+        <div style="padding:22px 26px;border-radius:18px;background:#fff;border:1px solid rgba(11,37,69,.11);font-size:25px;font-weight:600;">Резюме эксперта</div>
+        <div style="padding:22px 26px;border-radius:18px;background:#fff;border:1px solid rgba(11,37,69,.11);font-size:25px;font-weight:600;">Мастер-план выступления</div>
+        <div style="padding:22px 26px;border-radius:18px;background:#fff;border:1px solid rgba(11,37,69,.11);font-size:25px;font-weight:600;">Велком-скрипты</div>
+        <div style="padding:22px 26px;border-radius:18px;background:#fff;border:1px solid rgba(11,37,69,.11);font-size:25px;font-weight:600;">Структура по форматам</div>
+        <div style="padding:22px 26px;border-radius:18px;background:#fff;border:1px solid rgba(11,37,69,.11);font-size:25px;font-weight:600;">Вопросы и ред-флаги</div>
+        <div style="padding:22px 26px;border-radius:18px;background:#fff;border:1px solid rgba(11,37,69,.11);font-size:25px;font-weight:600;">Personbook</div>
+        <div style="padding:22px 26px;border-radius:18px;background:#fff;border:1px solid rgba(11,37,69,.11);font-size:25px;font-weight:600;">Тетрадь спокойствия</div>
+        <div style="padding:22px 26px;border-radius:18px;background:#fff;border:1px solid rgba(11,37,69,.11);font-size:25px;font-weight:600;">Справочник площадок</div>
+        <div style="padding:22px 26px;border-radius:18px;background:linear-gradient(120deg,rgba(22,104,217,.14),#fff);border:1px solid rgba(22,104,217,.4);font-size:25px;font-weight:700;">Сертификат спикера</div>
+      </div>
+    </div>
+    <div style="height:880px;border-radius:32px;background:#2b3a55 url('/assets/img/speaktera/web-templates-mockup.jpg?v=1') center 42%/cover no-repeat;box-shadow:0 30px 80px rgba(11,37,69,.18);"></div>
+  </div>
+</section>
+
+<section class="sl" data-label="До и после" data-screen-label="17" style="box-sizing:border-box;width:100%;height:100%;padding:76px 92px;background:#f2f8ff;color:#0b2545;font-family:Manrope,sans-serif;display:flex;flex-direction:column;">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:#8aa3bd;border-bottom:1px solid rgba(11,37,69,.10);padding-bottom:24px;"><span>Результат</span><span>17</span></div>
+  <h2 style="margin:42px 0 30px;font-size:64px;line-height:1.06;letter-spacing:-.03em;font-weight:800;">Что изменится через 14 дней</h2>
+  <div style="display:grid;grid-template-columns:1fr 90px 1fr;gap:0 24px;font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:#8aa3bd;margin-bottom:14px;"><div>до курса</div><div></div><div style="color:#1668d9;">после курса</div></div>
+  <div style="flex:1;display:grid;grid-template-rows:repeat(5,1fr);gap:14px;">
+    <div style="display:grid;grid-template-columns:1fr 90px 1fr;gap:24px;align-items:center;"><div style="padding:24px 32px;border-radius:18px;background:#e8eef6;font-size:28px;color:#6b86a6;">отказываюсь от выступлений</div><div style="text-align:center;font-size:30px;color:#8aa3bd;">→</div><div style="padding:24px 32px;border-radius:18px;background:#fff;border:1px solid rgba(22,104,217,.35);font-size:28px;font-weight:600;">сама пишу организаторам</div></div>
+    <div style="display:grid;grid-template-columns:1fr 90px 1fr;gap:24px;align-items:center;"><div style="padding:24px 32px;border-radius:18px;background:#e8eef6;font-size:28px;color:#6b86a6;">волнение захватывает</div><div style="text-align:center;font-size:30px;color:#8aa3bd;">→</div><div style="padding:24px 32px;border-radius:18px;background:#fff;border:1px solid rgba(22,104,217,.35);font-size:28px;font-weight:600;">есть техники на 2 минуты</div></div>
+    <div style="display:grid;grid-template-columns:1fr 90px 1fr;gap:24px;align-items:center;"><div style="padding:24px 32px;border-radius:18px;background:#e8eef6;font-size:28px;color:#6b86a6;">заучиваю текст и забываю</div><div style="text-align:center;font-size:30px;color:#8aa3bd;">→</div><div style="padding:24px 32px;border-radius:18px;background:#fff;border:1px solid rgba(22,104,217,.35);font-size:28px;font-weight:600;">говорю по карте смысла</div></div>
+    <div style="display:grid;grid-template-columns:1fr 90px 1fr;gap:24px;align-items:center;"><div style="padding:24px 32px;border-radius:18px;background:#e8eef6;font-size:28px;color:#6b86a6;">боюсь вопросов</div><div style="text-align:center;font-size:30px;color:#8aa3bd;">→</div><div style="padding:24px 32px;border-radius:18px;background:#fff;border:1px solid rgba(22,104,217,.35);font-size:28px;font-weight:600;">отвечаю по структуре</div></div>
+    <div style="display:grid;grid-template-columns:1fr 90px 1fr;gap:24px;align-items:center;"><div style="padding:24px 32px;border-radius:18px;background:#e8eef6;font-size:28px;color:#6b86a6;">нет медиакита и презентации</div><div style="text-align:center;font-size:30px;color:#8aa3bd;">→</div><div style="padding:24px 32px;border-radius:18px;background:linear-gradient(120deg,rgba(22,104,217,.14),#fff);border:1px solid rgba(22,104,217,.4);font-size:28px;font-weight:700;">готовый бренд и слайды за вечер</div></div>
+  </div>
+</section>
+
+<section class="sl" data-label="Цена" data-screen-label="18" style="box-sizing:border-box;width:100%;height:100%;padding:76px 92px;background:#f2f8ff;color:#0b2545;font-family:Manrope,sans-serif;display:flex;flex-direction:column;">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:#8aa3bd;border-bottom:1px solid rgba(11,37,69,.10);padding-bottom:24px;"><span>Стоимость</span><span>18</span></div>
+  <div style="flex:1;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;">
+    <div style="padding:56px 52px;border-radius:32px;background:#0b2545;color:#f2f8ff;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:19px;letter-spacing:.2em;text-transform:uppercase;color:#7fa8d8;margin-bottom:26px;">полный курс</div>
+      <div style="font-size:120px;line-height:1;font-weight:800;letter-spacing:-.05em;margin-bottom:14px;">15 000 ₽</div>
+      <div style="font-size:34px;color:#9dbde2;margin-bottom:40px;">доступ навсегда</div>
+      <div style="display:grid;gap:16px;font-size:27px;line-height:1.35;">
+        <div style="display:flex;gap:18px;"><span style="color: rgb(77, 145, 232);">✓</span>6 модулей и 24 видеоурока</div>
+        <div style="display:flex;gap:18px;"><span style="color:#4d91e8;">✓</span>10+ шаблонов и рабочих тетрадей</div>
+        <div style="display:flex;gap:18px;"><span style="color:#4d91e8;">✓</span>2 часа консультации со специалистом</div>
+        <div style="display:flex;gap:18px;"><span style="color:#4d91e8;">✓</span>Личный Telegram-бот поддержки</div>
+        <div style="display:flex;gap:18px;"><span style="color:#4d91e8;">✓</span>Сертификат спикера</div>
+      </div>
+    </div>
+    <div>
+      <h2 style="margin:0 0 30px;font-size:56px;line-height:1.08;letter-spacing:-.03em;font-weight:800;">Сколько это стоит по отдельности</h2>
+      <div style="display:grid;gap:14px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:26px 32px;border-radius:18px;background:#fff;border:1px solid rgba(11,37,69,.11);font-size:27px;"><span>Презентация у дизайнера, 20 слайдов</span><span style="font-family:'JetBrains Mono',monospace;color:#1668d9;white-space:nowrap;">15–20 тыс. ₽</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:26px 32px;border-radius:18px;background:#fff;border:1px solid rgba(11,37,69,.11);font-size:27px;"><span>Консультация психолога</span><span style="font-family:'JetBrains Mono',monospace;color:#1668d9;white-space:nowrap;">5 000 ₽/час</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:26px 32px;border-radius:18px;background:#fff;border:1px solid rgba(11,37,69,.11);font-size:27px;"><span>Педагог по речи</span><span style="font-family:'JetBrains Mono',monospace;color:#1668d9;white-space:nowrap;">от 2 000 ₽/час</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:26px 32px;border-radius:18px;background:#fff;border:1px solid rgba(11,37,69,.11);font-size:27px;"><span>Коучинг перед выступлением</span><span style="font-family:'JetBrains Mono',monospace;color:#1668d9;white-space:nowrap;">10 000 ₽</span></div>
+      </div>
+      <div style="margin-top:22px;padding:28px 32px;border-radius:20px;background:linear-gradient(120deg,rgba(22,104,217,.14),rgba(8,145,178,.07));border:1px solid rgba(22,104,217,.35);font-size:28px;line-height:1.35;font-weight:700;">В Спиктере всё это — в одном курсе и один раз</div>
+    </div>
+  </div>
+</section>
+
+<section class="sl" data-label="Призыв и контакты" data-screen-label="19" style="box-sizing:border-box;width:100%;height:100%;padding:36px;background:#eaf2fb;color:#0b2545;font-family:Manrope,sans-serif;display:flex;">
+  <div style="flex:1;position:relative;border-radius:40px;overflow:hidden;background:linear-gradient(120deg,#f4f8fd 0%,#dfeaf7 100%);">
+    <div style="position:absolute;top:0;right:0;bottom:0;left:40%;background:url('/assets/img/speaktera/web-runway.jpg?v=1') 70% center/cover no-repeat;"></div>
+    <div style="position:absolute;top:0;bottom:0;left:40%;width:20%;background:linear-gradient(90deg,#eef4fb 0%,rgba(238,244,251,0) 100%);"></div>
+    <div style="position:absolute;inset:0;padding:56px 64px;display:flex;flex-direction:column;">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <div style="font-size:34px;font-weight:800;letter-spacing:-.02em;">Спиктера<span style="color:#0072FF;">.</span></div>
+        <div style="padding:12px 22px;border-radius:999px;background:rgba(255,255,255,.74);border:1px solid rgba(255,255,255,.95);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 20px 60px rgba(11,37,69,.10);font-family:'JetBrains Mono',monospace;font-size:18px;color:#1668d9;">начни сегодня</div>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;max-width:900px;">
+        <h2 style="margin:0 0 28px;font-size:112px;line-height:.98;letter-spacing:-.05em;font-weight:800;">Время<br><span style="color:#0072FF;">проявляться</span></h2>
+        <p style="margin: 0 0 40px; font-size: 30px; line-height: 1.45; color: #3c5a7d; max-width: 760px; width: 721px; height: 131px">Не нужно ждать, пока станешь «готовой». Готовность появляется на сцене — а мы будем рядом на каждом шаге</p>
+        <div style="display:flex;align-items:center;gap:26px;">
+          <div style="padding:28px 50px;border-radius:999px;background:#0072FF;color:#fff;font-size:32px;font-weight:700;box-shadow:0 18px 40px rgba(0,114,255,.3);">Записаться на курс →</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:22px;color:#3c5a7d;">15 000 ₽ · доступ навсегда</div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1.5fr;gap:16px;max-width:1500px;">
+        <div style="padding:24px 30px;border-radius:24px;background:rgba(255,255,255,.74);border:1px solid rgba(255,255,255,.95);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 20px 60px rgba(11,37,69,.10);"><div style="font-family:'JetBrains Mono',monospace;font-size:16px;letter-spacing:.14em;text-transform:uppercase;color:#8aa3bd;margin-bottom:8px;">почта</div><div style="font-size:30px;font-weight:700;">info@speaktera.ru</div></div>
+        <div style="padding:24px 30px;border-radius:24px;background:rgba(255,255,255,.74);border:1px solid rgba(255,255,255,.95);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 20px 60px rgba(11,37,69,.10);"><div style="font-family:'JetBrains Mono',monospace;font-size:16px;letter-spacing:.14em;text-transform:uppercase;color:#8aa3bd;margin-bottom:8px;">telegram</div><div style="font-size:30px;font-weight:700;">@speaktera_bot</div></div>
+        <div style="padding:24px 30px;border-radius:24px;background:rgba(255,255,255,.74);border:1px solid rgba(255,255,255,.95);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 20px 60px rgba(11,37,69,.10);font-size:24px;line-height:1.38;">Сомневаешься? Запишись на разбор выступления за 3 000 ₽ — и поймёшь, подходит ли тебе курс</div>
+      </div>
+    </div>
+  </div>
+</section>
+  </div>
+</main>
+
+<nav class="deck__ctrl">
+  <button type="button" class="deck__btn" id="deck-prev" aria-label="Предыдущий слайд">←</button>
+  <div class="deck__dots" id="deck-dots">
+        <button type="button" class="deck__dot" data-go="0" aria-label="Титул"></button>
+        <button type="button" class="deck__dot" data-go="1" aria-label="Курс в 5 ответах"></button>
+        <button type="button" class="deck__dot" data-go="2" aria-label="Боли"></button>
+        <button type="button" class="deck__dot" data-go="3" aria-label="Причины страха"></button>
+        <button type="button" class="deck__dot" data-go="4" aria-label="Проблема рынка"></button>
+        <button type="button" class="deck__dot" data-go="5" aria-label="Уникальность"></button>
+        <button type="button" class="deck__dot" data-go="6" aria-label="Мы пошли дальше"></button>
+        <button type="button" class="deck__dot" data-go="7" aria-label="Для кого"></button>
+        <button type="button" class="deck__dot" data-go="8" aria-label="Дорожная карта"></button>
+        <button type="button" class="deck__dot" data-go="9" aria-label="Модуль 1"></button>
+        <button type="button" class="deck__dot" data-go="10" aria-label="Модуль 2"></button>
+        <button type="button" class="deck__dot" data-go="11" aria-label="Модуль 3"></button>
+        <button type="button" class="deck__dot" data-go="12" aria-label="Модуль 4"></button>
+        <button type="button" class="deck__dot" data-go="13" aria-label="Модуль 5"></button>
+        <button type="button" class="deck__dot" data-go="14" aria-label="Модуль 6"></button>
+        <button type="button" class="deck__dot" data-go="15" aria-label="Библиотека"></button>
+        <button type="button" class="deck__dot" data-go="16" aria-label="До и после"></button>
+        <button type="button" class="deck__dot" data-go="17" aria-label="Цена"></button>
+        <button type="button" class="deck__dot" data-go="18" aria-label="Призыв и контакты"></button>
+  </div>
+  <button type="button" class="deck__btn" id="deck-next" aria-label="Следующий слайд">→</button>
+</nav>
+
+<script>
+/* ------------------------------------------------------------------
+   Показ слайдов: масштаб под экран, листание стрелками, колесом,
+   свайпом и точками внизу. В макете это делал движок редактора.
+   ------------------------------------------------------------------ */
+(function () {
+  'use strict';
+
+  var stage = document.getElementById('deck-stage');
+  var slides = [].slice.call(document.querySelectorAll('.sl'));
+  var dots = [].slice.call(document.querySelectorAll('.deck__dot'));
+  var prev = document.getElementById('deck-prev');
+  var next = document.getElementById('deck-next');
+  var now = document.getElementById('deck-now');
+  var i = 0;
+
+  function fit() {
+    var box = document.querySelector('.deck').getBoundingClientRect();
+    var k = Math.min(box.width / 1920, box.height / 1080);
+    document.documentElement.style.setProperty('--sl-k', k.toFixed(4));
+  }
+
+  function show(n) {
+    i = Math.max(0, Math.min(n, slides.length - 1));
+    slides.forEach(function (s, k) { s.classList.toggle('is-on', k === i); });
+    dots.forEach(function (d, k) { d.classList.toggle('is-on', k === i); });
+    now.textContent = String(i + 1).padStart(2, '0');
+    prev.disabled = i === 0;
+    next.disabled = i === slides.length - 1;
+    if (history.replaceState) history.replaceState(null, '', '#' + (i + 1));
+  }
+
+  prev.addEventListener('click', function () { show(i - 1); });
+  next.addEventListener('click', function () { show(i + 1); });
+  dots.forEach(function (d) { d.addEventListener('click', function () { show(+d.dataset.go); }); });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); show(i + 1); }
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); show(i - 1); }
+    if (e.key === 'Home') show(0);
+    if (e.key === 'End') show(slides.length - 1);
+    if (e.key === 'Escape') window.location.href = '/products/speaktera';
+  });
+
+  // Колесо мыши и трекпад — с паузой, чтобы не пролистывать пачками
+  var lock = 0;
+  window.addEventListener('wheel', function (e) {
+    var t = Date.now();
+    if (t - lock < 600 || Math.abs(e.deltaY) < 12) return;
+    lock = t;
+    show(i + (e.deltaY > 0 ? 1 : -1));
+  }, { passive: true });
+
+  // Свайп на телефоне
+  var x0 = null;
+  window.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+  window.addEventListener('touchend', function (e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 50) show(i + (dx < 0 ? 1 : -1));
+    x0 = null;
+  }, { passive: true });
+
+  window.addEventListener('resize', fit);
+  fit();
+  var start = parseInt((location.hash || '').replace('#', ''), 10);
+  show(start > 0 ? start - 1 : 0);
+})();
+</script>
+</body>
+</html>

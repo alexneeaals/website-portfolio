@@ -81,6 +81,18 @@
   .sp-footer__links a:hover { color: #0072FF; }
   .sp-footer__legal { margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.7; color: #8aa3bd; }
 
+  .sp-pres:hover { border-color: #0072FF !important; color: #0b4ba8 !important; background: #fff !important; }
+
+  /* ------------------------------------------------------------------
+     Планшеты и небольшие ноутбуки. В макете у части блоков жёстко задана
+     ширина в пикселях — на таких экранах они не помещались в колонку.
+     ------------------------------------------------------------------ */
+  @media (max-width: 1180px) {
+    [style*="width: 486px"], [style*="width: 283px"], [style*="width: 276px"] { width: auto !important; height: auto !important; }
+    header > div { gap: 12px !important; }
+    header nav { gap: 14px !important; font-size: 13px !important; }
+  }
+
   /* ------------------------------------------------------------------
      Узкие экраны. В макете их не было — он рисовался только под компьютер,
      и на телефоне страница уезжала вбок. Правила включаются ниже 900px
@@ -88,9 +100,10 @@
      ------------------------------------------------------------------ */
   @media (max-width: 900px) {
     /* Колонки на flex тянулись по длинному тексту и выходили за экран */
-    [style*="flex:1"] { min-width: 0 !important; }
+    [style*="flex:1"], [style*="flex: 1"] { min-width: 0 !important; }
     /* Меню в шапке не помещается рядом с кнопкой — разделы доступны прокруткой */
     header nav { display: none !important; }
+    .sp-pres--head { display: none !important; }
     header > div { padding: 10px 12px 10px 18px !important; }
     /* Первый экран: текст на всю ширину, кадр остаётся фоном */
     #top div[style*="left:38%"] { left: 0 !important; }
@@ -100,8 +113,22 @@
        на телефоне они не помещались */
     [style*="width: 486px"], [style*="width: 283px"], [style*="width: 276px"] { width: auto !important; height: auto !important; }
     [style*="grid-template-columns:minmax(150px,200px)"] { grid-template-columns: 1fr !important; }
-    /* Длинные слова переносим, чтобы не растягивали колонку */
-    h1, h2 { overflow-wrap: anywhere; }
+    /* Длинные слова переносим только если иначе не помещаются */
+    h1, h2 { overflow-wrap: break-word; }
+    /* «Было → стало» на телефоне в одну колонку: три колонки не помещались */
+    [style*="1fr) 40px minmax"] { grid-template-columns: 1fr !important; gap: 6px !important; }
+    [style*="1fr) 40px minmax"] > div { overflow-wrap: break-word; }
+    /* Две колонки «для кого» и «формат» на телефоне не нужны */
+    [style*="200px) 1fr"] { grid-template-columns: 1fr !important; gap: 6px !important; }
+    [style*="36px 1fr"], [style*="40px 1fr"], [style*="44px 1fr"] { gap: 12px !important; }
+  }
+
+  /* Совсем узкие телефоны (iPhone SE и подобные) */
+  @media (max-width: 380px) {
+    h1 { font-size: 34px !important; }
+    #top div[style*="padding:clamp(20px,3vw,36px)"] { padding: 16px !important; }
+    header > div { padding: 8px 10px 8px 14px !important; }
+    header a[href="#top"] { font-size: 19px !important; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -127,7 +154,7 @@
         <a href="#bonus" style="color:#3c5a7d;" class="sp-h4">Бонус</a>
         <a href="#price" style="color:#3c5a7d;" class="sp-h5">Стоимость</a>
       </nav>
-      <a href="#price" style="padding:12px 22px;border-radius:999px;background:#0072FF;color:#fff;font-size:14px;font-weight:700;white-space:nowrap;box-shadow:0 10px 24px rgba(0,114,255,.28);" class="sp-h6">Записаться</a>
+      <a href="/products/speaktera-presentation" target="_blank" rel="noopener" class="sp-pres sp-pres--head" style="padding:12px 20px;border-radius:999px;background:rgba(255,255,255,.7);border:1px solid rgba(22,104,217,.3);color:#1668d9;font-size:14px;font-weight:700;white-space:nowrap;margin-right:10px;">Презентация ↗</a><a href="#price" style="padding:12px 22px;border-radius:999px;background:#0072FF;color:#fff;font-size:14px;font-weight:700;white-space:nowrap;box-shadow:0 10px 24px rgba(0,114,255,.28);" class="sp-h6">Записаться</a>
     </div>
   </header>
 
@@ -145,6 +172,7 @@
           <div data-reveal="up" data-delay="300" style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
             <a href="#price" style="padding:18px 32px;border-radius:999px;background:#0072FF;color:#fff;font-size:17px;font-weight:700;box-shadow:0 18px 40px rgba(0,114,255,.3);" class="sp-h7">Записаться на курс →</a>
             <a href="#video" style="padding:18px 28px;border-radius:999px;background:rgba(255,255,255,.8);border:1px solid rgba(11,37,69,.12);color:#0b2545;font-size:17px;font-weight:700;" class="sp-h8">▶ Смотреть бесплатно</a>
+            <a href="/products/speaktera-presentation" target="_blank" rel="noopener" class="sp-pres" style="padding:18px 28px;border-radius:999px;background:rgba(255,255,255,.8);border:1px solid rgba(22,104,217,.35);color:#1668d9;font-size:17px;font-weight:700;">Презентация курса ↗</a>
           </div>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;max-width:820px;">
