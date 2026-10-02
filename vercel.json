@@ -5,6 +5,16 @@
       "source": "/team.html",
       "destination": "/team",
       "permanent": true
+    },
+    {
+      "source": "/products/spiktera",
+      "destination": "/products/speaktera",
+      "permanent": true
+    },
+    {
+      "source": "/products/spiktera.html",
+      "destination": "/products/speaktera",
+      "permanent": true
     }
   ],
   "rewrites": [
