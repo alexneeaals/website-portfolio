@@ -8,12 +8,32 @@
     },
     {
       "source": "/products/spiktera",
-      "destination": "/products/speaktera",
+      "destination": "https://speaktera.ru",
       "permanent": true
     },
     {
       "source": "/products/spiktera.html",
-      "destination": "/products/speaktera",
+      "destination": "https://speaktera.ru",
+      "permanent": true
+    },
+    {
+      "source": "/products/speaktera",
+      "destination": "https://speaktera.ru",
+      "permanent": true
+    },
+    {
+      "source": "/products/speaktera.html",
+      "destination": "https://speaktera.ru",
+      "permanent": true
+    },
+    {
+      "source": "/products/speaktera-presentation",
+      "destination": "https://speaktera.ru",
+      "permanent": true
+    },
+    {
+      "source": "/products/speaktera-presentation.html",
+      "destination": "https://speaktera.ru",
       "permanent": true
     }
   ],
