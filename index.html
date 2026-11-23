@@ -1,407 +1,246 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Александра Николаева — креативный продюсер и бренд-стратег</title>
-<meta name="description" content="Креативный продюсер и бренд-стратег. Полный цикл: аналитика, стратегия, концепция, визуализация, упаковка для инвесторов и запуск.">
-<meta name="author" content="Александра Николаева">
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="Александра Николаева — креативный продюсер и бренд-стратег">
-<meta property="og:description" content="Полный цикл: аналитика, стратегия, концепция, визуализация, упаковка для инвесторов и запуск.">
-<meta property="og:image" content="https://sandraniko.com/assets/img/projects/rodnoe/hero.jpg">
-
-<link rel="canonical" href="https://sandraniko.com/">
-<meta property="og:url" content="https://sandraniko.com/">
-<meta property="og:site_name" content="Sandra Niko">
-<meta property="og:locale" content="ru_RU">
-<meta property="og:locale:alternate" content="en_US">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://sandraniko.com/assets/img/projects/rodnoe/hero.jpg">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="icon" href="/favicon-32.png" sizes="32x32">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@200;300;400;500&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=20260923a">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sandra Niko — креативное агентство Александры Николаевой</title>
+  <meta name="description" content="Креативное агентство Александры Николаевой. Бренды, места и события для туризма, гостеприимства и культуры.">
+  <meta name="author" content="Александра Николаева">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sandra Niko — креативное агентство Александры Николаевой">
+  <meta property="og:description" content="Бренды, места и события для туризма, гостеприимства и культуры.">
+  <meta property="og:image" content="https://sandraniko.com/assets/img/projects/menok-spa/hero.jpg">
+  <meta property="og:url" content="https://sandraniko.com/">
+  <meta property="og:site_name" content="Sandra Niko">
+  <link rel="canonical" href="https://sandraniko.com/">
+  <link rel="alternate" hreflang="ru" href="https://sandraniko.com/?lang=ru">
+  <link rel="alternate" hreflang="en" href="https://sandraniko.com/?lang=en">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..650&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/home.css">
+  <script defer src="assets/js/content.js"></script>
+  <script defer src="assets/js/home-content.js"></script>
+  <script defer src="assets/js/home.js"></script>
 </head>
-<body>
-
-<!-- ============================== Шапка ============================== -->
-<header class="topbar">
-  <div class="shell topbar__in">
+<body id="top">
+  <a class="skip" href="#main" data-copy="skip">К содержанию</a>
+  <header class="header shell">
     <a class="brand" href="#top">Sandra Niko</a>
-
-    <nav class="nav">
-      <a class="nav__link" href="#work"     data-i18n="nav.work"     data-magnet>Портфолио</a>
-      <a class="nav__link" href="#services" data-i18n="nav.services" data-magnet>Услуги</a>
-      <a class="nav__link nav__link--ru" href="/products/" data-magnet>Продукты</a>
-      <a class="nav__link nav__link--ru" href="/team" data-magnet>Команда</a>
-      <a class="nav__link" href="#contact"  data-i18n="nav.contact"  data-magnet>Контакты</a>
+    <nav class="nav" aria-label="Основное меню" data-label="navigation">
+      <a href="#work" data-copy="navWork">Проекты</a>
+      <a href="#services" data-copy="navServices">Услуги</a>
+      <a href="#agenda" data-copy="navProducts">Продукты</a>
     </nav>
-
-    <div class="topbar__actions">
-      <div class="lang" data-lang="ru">
-        <button class="lang__btn" data-lang="ru" aria-pressed="true">RU</button>
-        <span class="lang__track"><span class="lang__dot"></span></span>
-        <button class="lang__btn" data-lang="en" aria-pressed="false">EN</button>
+    <div class="header-actions">
+      <div class="language" aria-label="Язык / Language">
+        <a href="?lang=ru" lang="ru" hreflang="ru" aria-current="true">RU</a>
+        <a href="?lang=en" lang="en" hreflang="en">EN</a>
       </div>
-      <button class="burger" aria-label="Меню"><span></span><span></span></button>
+      <a class="header-contact" href="#contact" data-copy="contactLink">Связаться</a>
     </div>
-  </div>
-</header>
+  </header>
 
-<nav class="nav nav--mobile">
-  <a class="nav__link" href="#work"     data-i18n="nav.work">Портфолио</a>
-  <a class="nav__link" href="#services" data-i18n="nav.services">Услуги</a>
-  <a class="nav__link nav__link--ru" href="/products/">Продукты</a>
-  <a class="nav__link nav__link--ru" href="/team">Команда</a>
-  <a class="nav__link" href="#contact"  data-i18n="nav.contact">Контакты</a>
-</nav>
-
-<main id="top">
-
-  <!-- ============================== Герой ============================== -->
-  <section class="hero">
-    <!-- Коллаж двигается вслед за курсором: data-parallax = глубина слоя -->
-    <div class="collage" aria-hidden="true">
-      <figure class="collage__item collage__item--a" data-parallax="1.6">
-        <img src="assets/img/collage/05-arches.jpg" alt="">
-      </figure>
-      <figure class="collage__item collage__item--b" data-parallax="1">
-        <img src="assets/img/collage/02-interior.jpg" alt="">
-      </figure>
-      <figure class="collage__item collage__item--c" data-parallax="2.2">
-        <img src="assets/img/collage/04-pool.jpg" alt="">
-      </figure>
-      <figure class="collage__item collage__item--d" data-parallax="1.3">
-        <img src="assets/img/collage/01-lake.jpg" alt="">
-      </figure>
-    </div>
-
-    <div class="shell hero__in">
-      <span class="hero__kicker" data-i18n="hero.kicker">Brand Experience Architect</span>
-      <h1 class="hero__title">
-        <span class="h-display" data-i18n="hero.name1">Александра</span>
-        <span class="h-display" data-i18n="hero.name2">Николаева</span>
-      </h1>
-      <div class="hero__meta">
-        <div class="hero__role" data-i18n="hero.role">Креативный продюсер и бренд-стратег</div>
-        <p class="hero__sign" data-i18n="hero.sign">Создаю бренды и пространства, которые трудно забыть</p>
-        <div class="hero__loc" data-i18n="hero.location">Работаю с брендами по всему миру</div>
+  <main id="main">
+    <section class="hero shell" aria-labelledby="home-title">
+      <div class="hero-content">
+        <div class="hero-intro">
+          <p class="hero-label" data-copy="studio">Независимое креативное агентство</p>
+          <p data-copy="intro">Создаю бренды, места и события, которые запоминаются.</p>
+        </div>
+        <h1 id="home-title"><span data-copy="heroFirstName">Александра</span><br><span data-copy="heroLastName">Николаева</span></h1>
+        <a class="hero-jump" href="#work" data-copy="viewWork">Смотреть проекты</a>
       </div>
-      <div class="hero__cta">
-        <a class="btn btn--solid" href="#contact"><span data-i18n="hero.cta1">Обсудить проект</span></a>
-        <a class="btn hero__cta-more" href="#services"><span data-i18n="hero.cta2">Услуги и стоимость</span></a>
-      </div>
-    </div>
-
-    <div class="hero__scroll">
-      <span data-i18n="hero.scroll">Листайте</span>
-      <i></i>
-    </div>
-  </section>
-
-  <!-- ========================= Сферы работы — бегущая строка ========================= -->
-  <div class="tagline-strip" aria-hidden="true">
-    <div class="tagline-strip__track" id="tag-strip"></div>
-  </div>
-
-  <!-- ============================== Обо мне ============================== -->
-  <section class="section section--ivory" id="about">
-    <div class="shell about__grid">
-      <figure class="about__figure rv">
-        <img src="assets/img/portrait.jpg?v=2" alt="Александра Николаева">
-        <span class="about__dot"></span>
+      <figure class="portrait">
+        <div class="portrait-image"><img src="assets/img/home/alexandra.webp" alt="Александра Николаева за работой" data-alt="portrait" fetchpriority="high"></div>
+        <figcaption>
+          <strong data-copy="name">Александра Николаева</strong>
+          <span data-copy="role">Креативный продюсер и стратег бренд-опыта</span>
+        </figcaption>
       </figure>
+    </section>
 
-      <div class="about__text rv" data-rv-delay="120">
-        <div class="tick"></div>
-        <span class="label" data-i18n="about.label">Обо мне</span>
-
-        <p class="lede" style="margin-top:22px" data-i18n="about.text"></p>
-        <p data-i18n="about.text2"></p>
-        <p class="quote about__quote" data-i18n="about.quote"></p>
-
-        <div class="about__stats">
-          <div class="stat">
-            <span class="stat__v" data-count data-i18n="about.m1v">7</span>
-            <span class="stat__l" data-i18n="about.m1l">лет опыта</span>
+    <section class="work" id="work" aria-labelledby="work-title">
+      <div class="work-heading shell">
+        <div>
+          <p data-copy="workMeta">Туризм, гостеприимство и культура</p>
+          <h2 id="work-title" data-copy="work">Избранные проекты</h2>
+        </div>
+        <a href="#archive" data-copy="archive">Все проекты</a>
+      </div>
+      <div class="cinema" role="group" aria-labelledby="work-title" aria-roledescription="карусель" data-roledescription="carousel">
+        <div class="cinema-sticky">
+          <div class="stage">
+            <div class="gallery-track">
+              <a class="project-card exhibition-card" href="projects/menok-spa.html">
+                <div class="card-image"><img src="assets/img/home/menok-spa.webp" width="660" height="440" alt=""></div>
+                <div class="card-caption"><strong>MENOK SPA</strong><span>Гостеприимство / wellness</span></div>
+              </a>
+            </div>
+            <img class="stage-floor" src="assets/img/home/screening-floor.webp" width="1536" height="313" alt="">
           </div>
-          <div class="stat">
-            <span class="stat__v" data-count data-i18n="about.m2v">60+</span>
-            <span class="stat__l" data-i18n="about.m2l">реализованных кейсов</span>
+          <div class="cinema-controls shell">
+            <span class="film-title">MENOK SPA</span>
+            <div class="controls">
+              <button type="button" class="control prev" aria-label="Предыдущий проект" data-label="previous">←</button>
+              <span class="counter" aria-hidden="true">01 / 06</span>
+              <button type="button" class="control next" aria-label="Следующий проект" data-label="next">→</button>
+            </div>
+            <a class="case-link" href="projects/menok-spa.html" data-copy="caseLink">Смотреть кейс</a>
           </div>
-          <div class="stat">
-            <span class="stat__v" data-count data-i18n="about.m3v">35+</span>
-            <span class="stat__l" data-i18n="about.m3l">выступлений на форумах</span>
-          </div>
+          <span class="sr-only film-status" role="status"></span>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ====================== Brand Experience — кадр, фраза, метрики ====================== -->
-  <section class="section" id="experience">
-    <div class="shell xp">
-      <figure class="xp__media rv">
-        <img src="assets/img/decor/brand-experience.jpg?v=1" alt="" loading="lazy">
-      </figure>
-
-      <div class="xp__body rv" data-rv-delay="120">
-        <div class="tick"></div>
-        <span class="label label--accent" data-i18n="exp.label">Brand Experience</span>
-        <p class="xp__phrase">
-          <span data-i18n="exp.phrase"></span>
-          <em data-i18n="exp.accent">Brand Experience</em>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====================== Метрики бренда — всё раскрыто сразу ====================== -->
-  <section class="section section--ivory" id="growth">
-    <div class="shell">
-      <div class="section-head section-head--wide rv">
-        <div class="tick"></div>
-        <span class="label" data-i18n="exp.growLabel">Метрики бренда</span>
-        <h2 class="h-section" style="margin-top:14px" data-i18n="exp.lead">Что растёт, когда бренд проживается, а не просто выглядит</h2>
-      </div>
-      <!-- Метрики расставляет main.js -->
-      <div class="grow" id="grow"></div>
-    </div>
-  </section>
-
-  <!-- ============================== Портфолио ============================== -->
-  <section class="section" id="work">
-    <div class="shell">
-      <div class="section-head rv">
-        <div class="tick"></div>
-        <span class="label" data-i18n="work.label">Избранное</span>
-        <h2 class="h-section" style="margin-top:14px" data-i18n="work.title">Портфолио</h2>
-      </div>
-      <!-- Категории: раскладку и фильтрацию делает main.js -->
-      <div class="work-cats rv" id="work-cats"></div>
-      <div class="works" id="works"></div>
-    </div>
-  </section>
-
-  <!-- ============================== УТП — формула бренда ============================== -->
-  <section class="section section--ivory" id="formula">
-    <div class="shell">
-      <div class="section-head rv">
-        <div class="tick"></div>
-        <span class="label" data-i18n="formula.label">Мой подход</span>
-        <h2 class="h-section" style="margin-top:14px" data-i18n="formula.title">Формула бренда, который задаёт тренды</h2>
-      </div>
-      <!-- Текст с фирменными тегами и результат собирает main.js -->
-      <p class="ftext rv" id="formula-text"></p>
-      <div class="fres rv" id="formula-result"></div>
-    </div>
-  </section>
-
-  <!-- ============================== Услуги ============================== -->
-  <section class="section" id="services">
-    <div class="shell">
-      <div class="decos">
-        <figure class="deco deco--tr" style="--rot:-1.5deg;--w:18%" data-parallax="0.6">
-          <img src="assets/img/decor/event.jpg" alt="" loading="lazy">
-        </figure>
-      </div>
-
-      <div class="section-head rv">
-        <div class="tick"></div>
-        <span class="label" data-i18n="do.label">Услуги</span>
-        <h2 class="h-section" style="margin-top:14px" data-i18n="do.title">Что я создаю</h2>
-        <p data-i18n="do.sub"></p>
-      </div>
-
-      <div class="svc" id="svc-list"></div>
-
-      <span class="label label--accent svc-extra__label rv" data-i18n="do.extraLabel">Дополнительно</span>
-      <div class="svc-extra" id="svc-extra"></div>
-    </div>
-  </section>
-
-  <!-- ====================== Калькулятор силы бренда — приглашение ====================== -->
-  <section class="section section--ivory section--compact">
-    <div class="shell">
-      <div class="ct rv">
-        <div class="ct__gauge" aria-hidden="true">
-          <span class="ct__num">0<i>—</i>100</span>
-          <span class="ct__scale"><b></b></span>
+      <div class="archive shell" id="archive">
+        <div class="archive-heading">
+          <h3 data-copy="archive">Все проекты</h3>
+          <span class="archive-count" aria-live="polite" aria-atomic="true">12</span>
         </div>
-        <div class="ct__body">
-          <span class="label label--accent" data-i18n="calc.label">Бесплатный инструмент</span>
-          <h2 class="ct__t" data-i18n="calc.title">Насколько силён ваш бренд?</h2>
-          <p class="ct__d" data-i18n="calc.text"></p>
-          <span class="ct__note" data-i18n="calc.note">Бесплатно и без регистрации</span>
+        <div class="project-filters" role="group" aria-label="Фильтр проектов" data-label="projectFilter" hidden>
+          <button type="button" data-filter="all" aria-pressed="true" data-copy="filterAll">Все</button>
+          <button type="button" data-filter="brands" aria-pressed="false" data-copy="filterBrands">Бренды</button>
+          <button type="button" data-filter="places" aria-pressed="false" data-copy="filterPlaces">Места</button>
+          <button type="button" data-filter="events" aria-pressed="false" data-copy="filterEvents">События</button>
         </div>
-        <a class="btn btn--solid ct__btn" href="/products/brand-calculator.html#calc">
-          <span data-i18n="calc.btn">Проверить свой бренд</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================== Форматы работы ============================== -->
-  <section class="section" id="formats">
-    <div class="shell">
-      <div class="decos">
-        <figure class="deco deco--tr" style="--rot:-2.4deg;--w:17%" data-parallax="0.6">
-          <img src="assets/img/decor/landscape.jpg" alt="" loading="lazy">
-        </figure>
-      </div>
-
-      <div class="section-head rv">
-        <div class="tick"></div>
-        <span class="label" data-i18n="formats.label">Сотрудничество</span>
-        <h2 class="h-section" style="margin-top:14px" data-i18n="formats.title">Форматы работы со мной</h2>
-        <p data-i18n="formats.sub"></p>
-      </div>
-      <div class="cards cards--2" id="formats-cards"></div>
-    </div>
-  </section>
-
-  <!-- ====================== С какими задачами я работаю ====================== -->
-  <section class="section section--ivory" id="solve">
-    <div class="shell">
-      <div class="section-head rv">
-        <div class="tick"></div>
-        <span class="label" data-i18n="solve.label">Задачи</span>
-        <h2 class="h-section" style="margin-top:14px" data-i18n="solve.title">С какими задачами я работаю</h2>
-        <p class="lede" style="margin-top:18px" data-i18n="solve.intro"></p>
-      </div>
-
-      <!-- Горизонтальный слайдер на scroll-snap: свайп, колесо и клавиатура
-           работают нативно, JS нужен только для стрелок и точек -->
-      <div class="aslider rv" data-rv-delay="80">
-        <div class="aslider__view" id="solve-list" tabindex="0"></div>
-        <div class="aslider__bar">
-          <div class="aslider__dots" id="solve-dots"></div>
-          <div class="aslider__arrows">
-            <button class="sbtn" data-dir="-1" data-i18n-attr="aria-label:solve.prev">
-              <svg width="20" height="8" viewBox="0 0 20 8" fill="none" aria-hidden="true">
-                <path d="M20 4H1M5 1 1 4l4 3" stroke="currentColor" stroke-width="1"/>
-              </svg>
-            </button>
-            <button class="sbtn" data-dir="1" data-i18n-attr="aria-label:solve.next">
-              <svg width="20" height="8" viewBox="0 0 20 8" fill="none" aria-hidden="true">
-                <path d="M0 4h19M15 1l4 3-4 3" stroke="currentColor" stroke-width="1"/>
-              </svg>
-            </button>
-          </div>
+        <div class="project-index">
+          <a href="projects/menok-spa.html">MENOK SPA</a>
+          <a href="projects/rebirth-forum.html">RE:BIRTH</a>
+          <a href="projects/rodnoe.html">Родное</a>
+          <a href="projects/accessories-era.html">Thomas Münz</a>
+          <a href="projects/rose-stone.html">Rosé &amp; Stone</a>
+          <a href="projects/moscow-picnic.html">Пикник в парках Москвы</a>
+          <a href="projects/agrobiotuscany.html">AgroBioTuscany</a>
+          <a href="projects/bagstory.html">История чемодана</a>
+          <a href="projects/meshchovsk.html">Мещовск</a>
+          <a href="projects/mesto-history.html">Место с историей</a>
+          <a href="projects/novosibirsk.html">Новосибирск</a>
+          <a href="projects/valley-wanderers.html">Долина странников</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ============================== Контакты ============================== -->
-  <section class="section" id="contact">
+    <section class="approach shell" id="approach" aria-labelledby="approach-title">
+      <p class="eyebrow" data-copy="navApproach">Подход</p>
+      <div>
+        <h2 id="approach-title" data-copy="approachTitle">Сначала — опыт человека.</h2>
+        <p class="approach-text" data-copy="approachText">Начинаю с того, что человек почувствует и сделает. Затем перевожу этот сценарий в бренд, пространство и коммуникацию. Собираю команду под задачу и веду проект от идеи до запуска.</p>
+        <dl class="metrics">
+          <div><dt>7+</dt><dd data-copy="years">лет опыта</dd></div>
+          <div><dt>60+</dt><dd data-copy="brands">продуктов и брендов</dd></div>
+          <div><dt>12+</dt><dd data-copy="countries">стран в географии проектов</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="services shell" id="services" aria-labelledby="services-title" hidden>
+      <div class="services-heading">
+        <p class="eyebrow" data-copy="navServices">Услуги</p>
+        <h2 id="services-title" data-copy="servicesTitle">Направления работы</h2>
+      </div>
+      <div class="service-list"></div>
+    </section>
+
+    <div class="brand-quote shell" id="brand-experience">
+      <blockquote>
+        <p>«<span data-copy="experienceQuote">Времена меняются. Выигрывать будут компании, которые создают не просто продукт, а целостный опыт и впечатление гостя. Именно это сегодня определяет бренд —</span> <em lang="en">Brand Experience</em>»</p>
+      </blockquote>
+      <div class="brand-quote-media">
+        <img class="brand-quote-portrait" src="assets/img/home/brand-experience.webp" width="988" height="806" alt="Александра Николаева в чёрном костюме сидит в светлом кресле на бордовом фоне" data-alt="experiencePortrait" loading="lazy" decoding="async">
+      </div>
+    </div>
+
+    <section class="agenda shell" id="agenda" aria-labelledby="agenda-title">
+      <div class="agenda-heading">
+        <h2 id="agenda-title" data-copy="learning">Курсы и вебинары</h2>
+        <a href="products/index.html" data-copy="catalog">Все программы</a>
+      </div>
+      <ul class="agenda-list">
+        <li>
+          <span class="agenda-type" data-copy="course">Авторский курс</span>
+          <div><h3 data-copy="courseName">Спиктера</h3><p data-copy="courseText">Практика экспертных выступлений</p></div>
+          <a href="https://speaktera.ru/" data-copy="courseDates">Даты и набор</a>
+        </li>
+        <li>
+          <span class="agenda-type" data-copy="intensive">Интенсив</span>
+          <div>
+            <h3 data-copy="intensiveName">Креативное продюсирование бренда/продукта в эпоху турбулентности</h3>
+            <p><time datetime="2026-12-16" data-copy="intensiveStart">С 16 декабря</time> · <span data-copy="intensiveDuration">1 неделя</span></p>
+          </div>
+          <a href="https://t.me/AlexandraNikolaevaDirects" data-copy="intensiveLink">Узнать об интенсиве</a>
+        </li>
+      </ul>
+    </section>
+    <section class="ideas shell" id="ideas" aria-labelledby="ideas-title">
+      <h2 id="ideas-title" data-copy="ideasTitle">Статьи и идеи</h2>
+      <div class="ideas-list">
+        <article>
+          <h3><a href="terrabook.html" data-copy="ideaPlaceTitle">Террабук</a></h3>
+          <p data-copy="ideaPlaceDescription">Как связать мастер-план, айдентику и сценарий впечатлений гостя в брендбуке территории.</p>
+        </article>
+        <article>
+          <h3><a href="events.html" data-copy="ideaEventTitle">Режиссура событий</a></h3>
+          <p data-copy="ideaEventDescription">Как собрать концепцию, программу, пространство и визуальный язык фестиваля или форума.</p>
+        </article>
+        <article>
+          <h3><a href="products/brand-calculator.html" data-copy="ideaBrandTitle">Калькулятор силы бренда</a></h3>
+          <p data-copy="ideaBrandDescription">24 показателя, которые помогают оценить бренд и понять, над чем работать в первую очередь.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contact">
     <div class="shell">
-      <div class="section-head rv">
-        <div class="tick"></div>
-        <span class="label" data-i18n="contact.label">Контакты</span>
-        <h2 class="h-section" style="margin-top:14px" data-i18n="contact.title">Давайте создавать вместе</h2>
-        <p data-i18n="contact.sub"></p>
+      <p class="eyebrow" data-copy="contact">Контакты</p>
+      <h2 data-copy="contactTitle">Обсудим проект?</h2>
+      <div class="footer-actions">
+        <a class="contact-button" href="mailto:alexneeaals@gmail.com" data-copy="email">Написать на почту</a>
+        <a class="contact-button secondary" href="https://t.me/AlexandraNikolaevaDirects">Telegram</a>
       </div>
-
-      <div class="contact__grid">
-        <form class="rv" id="contact-form" novalidate>
-          <!-- honeypot: настоящие люди это поле не видят -->
-          <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-          <!-- Сначала направление, затем конкретная услуга или продукт:
-               список пунктов меняет main.js -->
-          <div class="field">
-            <span class="label" id="field-dir-label" data-i18n="contact.dirLabel">Направление</span>
-            <div class="fdirs" id="field-dir" role="group" aria-labelledby="field-dir-label"></div>
-          </div>
-
-          <div class="field">
-            <label class="label" for="field-type" id="field-type-label">Услуга</label>
-            <select id="field-type" name="type"></select>
-            <span class="field__err"></span>
-          </div>
-
-          <div class="field">
-            <label class="label" for="field-name" data-i18n="contact.name">Имя</label>
-            <input id="field-name" name="name" type="text" autocomplete="name"
-                   data-i18n-attr="placeholder:contact.namePh">
-            <span class="field__err"></span>
-          </div>
-
-          <div class="field">
-            <label class="label" for="field-email" data-i18n="contact.email">Email</label>
-            <input id="field-email" name="email" type="email" autocomplete="email"
-                   data-i18n-attr="placeholder:contact.emailPh">
-            <span class="field__err"></span>
-          </div>
-
-          <div class="field">
-            <label class="label" for="field-message" data-i18n="contact.message">Сообщение</label>
-            <textarea id="field-message" name="message" rows="4"
-                      data-i18n-attr="placeholder:contact.messagePh"></textarea>
-            <span class="field__err"></span>
-          </div>
-
-          <div class="field field--check">
-            <label class="check">
-              <input type="checkbox" id="field-consent" name="consent">
-              <span class="check__box" aria-hidden="true"></span>
-              <span class="check__text" data-i18n="contact.consent" data-i18n-link="/legal/privacy.html">Я даю согласие на обработку персональных данных на условиях Политики конфиденциальности</span>
-            </label>
-            <span class="field__err"></span>
-          </div>
-
-          <button class="btn" type="submit" id="form-submit">
-            <span id="form-submit-label" data-i18n="contact.submit">Отправить запрос</span>
-          </button>
-          <div class="form__status" id="form-status" role="status" aria-live="polite"></div>
-        </form>
-
-        <aside class="contact__side rv" data-rv-delay="140">
-          <div class="contact__tg">
-            <span class="label label--accent" data-i18n="contact.tgLabel">Быстрая связь</span>
-            <p class="contact__tg-t" data-i18n="contact.tgText"></p>
-            <a class="btn btn--solid" href="https://t.me/AlexandraNikolaevaDirects" target="_blank" rel="noopener noreferrer">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.7.8l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.8 8.8-8c.4-.3-.1-.5-.6-.2L6.7 13.2 2.1 11.8c-1-.3-1-1 .2-1.5l18.2-7c.8-.3 1.6.2 1.4 1z"/></svg>
-              <span data-i18n="contact.tgBtn">Написать в Telegram</span>
-            </a>
-          </div>
-          <div class="contact__row">
-            <span class="label" data-i18n="contact.studioLabel">География:</span>
-            <span data-i18n="contact.studio">Работаю по всему миру</span>
-          </div>
-        </aside>
+      <div class="footer-base">
+        <a class="brand" href="#top">Sandra Niko</a>
+        <nav aria-label="Правовые документы" data-label="legal">
+          <a href="legal/privacy.html" data-copy="privacy">Конфиденциальность</a>
+          <a href="legal/cookies.html" data-copy="cookies">Cookie</a>
+          <a href="legal/offer.html" data-copy="offer">Публичная оферта</a>
+        </nav>
+        <small>© Sandra Niko</small>
       </div>
     </div>
-  </section>
+  </footer>
 
-</main>
+  <template id="service-package">
+    <details class="service-package">
+      <summary>
+        <span class="service-number"></span>
+        <span class="service-name"></span>
+        <span class="service-toggle" aria-hidden="true"></span>
+      </summary>
+      <div class="service-body">
+        <div class="service-scope">
+          <p class="service-intro"></p>
+          <p class="service-included"></p>
+          <ul></ul>
+        </div>
+        <div class="service-side">
+          <dl>
+            <div><dt></dt><dd></dd></div>
+            <div><dt></dt><dd></dd></div>
+          </dl>
+          <div class="service-links"><a href="#contact"></a><a class="service-more" hidden></a></div>
+        </div>
+      </div>
+    </details>
+  </template>
 
-<footer class="footer">
-  <div class="shell">
-    <div class="footer__in">
-      <span class="footer__copy" data-i18n="footer.copy">© Александра Николаева</span>
-      <nav class="footer__links">
-        <a href="/legal/privacy.html" data-i18n="footer.privacy">Политика конфиденциальности</a>
-        <a href="/legal/cookies.html" data-i18n="footer.cookies">Политика cookie</a>
-        <a href="/legal/offer.html" data-i18n="footer.offer">Публичная оферта</a>
-        <a class="is-en-only" href="https://instagram.com/sandraniko_com" target="_blank" rel="noopener noreferrer">Instagram</a>
-        <a href="https://t.me/AlexandraNikolaevaDirects" target="_blank" rel="noopener noreferrer">Telegram</a>
-      </nav>
-    </div>
-    <p class="footer__legal" data-i18n="footer.legal">ИП Николаева Александра Владимировна · ОГРНИП 324508100031852 · ИНН 503618605992</p>
-  </div>
-</footer>
-
-<script src="assets/js/content.js?v=20260923a"></script>
-<script src="assets/js/i18n.js?v=20260923a"></script>
-<script src="assets/js/motion.js?v=20260923a"></script>
-<script src="assets/js/contact-pop.js?v=20260923a"></script>
-<script src="assets/js/main.js?v=20260923a"></script>
+  <template id="project-card">
+    <a class="project-card">
+      <div class="card-image"><img width="660" height="440" alt="" loading="lazy" decoding="async"></div>
+      <div class="card-caption"><strong></strong><span></span></div>
+    </a>
+  </template>
 </body>
 </html>
