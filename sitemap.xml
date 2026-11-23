@@ -88,4 +88,8 @@
     <loc>https://sandraniko.com/legal/offer</loc>
     <priority>0.3</priority>
   </url>
+  <url>
+    <loc>https://sandraniko.com/products/intensive</loc>
+    <priority>0.8</priority>
+  </url>
 </urlset>
